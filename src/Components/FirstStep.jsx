@@ -5,15 +5,29 @@ import Button from './Button';
 const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
   const step = HeroJSON.step1;
   const { button, fields, index } = step;
-  const [error, setError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [errorValue, setError] = useState(false);
 
-  const errorHandler = () => {
-    console.log('hello');
+  const checkEmpty = () => {
+    if (form.email === '' || form.company === '') {
+      setError(true);
+      return true;
+    }
+    return false;
+  };
+
+  const errorHandler = (e) => {
+    e.preventDefault();
+    if (checkEmpty()) return;
+    form.step === index && formStateHandler({ field: 'step', value: 2 });
+    setError(false);
   };
 
   return (
-    <form className={`${style.wrapper}  ${style.stepFirst}`} id='step1'>
+    <form
+      onSubmit={(e) => errorHandler(e)}
+      className={`${style.wrapper}  ${style.stepFirst}`}
+      id='step1'
+    >
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of 3</p>
@@ -27,9 +41,7 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
             }
             type='email'
             required
-            className={`${style.input} ${
-              submitted && form.email === '' ? style.submitError : ''
-            }`}
+            className={style.input}
             placeholder={fields.email.placeholder}
           />
         </div>
@@ -40,25 +52,29 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
               formStateHandler({ field: 'companyName', value: e.target.value })
             }
             type='text'
+            required
             placeholder={fields.company.placeholder}
-            className={`${style.input} ${
-              submitted && form.companyName === '' ? style.submitError : ''
-            }`}
+            className={`${style.input}`}
           />
         </div>
       </div>
-      <span
-        onClick={() => {
-          form.step === index && formStateHandler({ field: 'step', value: 2 });
-          setSubmitted(true);
+      <div
+        style={{
+          display: 'grid',
+          gridAutoFlow: 'column',
+          alignItems: 'center',
+          gap: '20px',
         }}
       >
-        <Button
-          size='btnLg'
-          type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
-          text={button}
-        />
-      </span>
+        <span onClick={checkEmpty} type='submit'>
+          <Button
+            size='btnLg'
+            type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
+            text={button}
+          />
+        </span>
+        {errorValue && <span>Fill all red fields before next step</span>}
+      </div>
     </form>
   );
 };
