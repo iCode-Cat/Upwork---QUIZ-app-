@@ -61,7 +61,7 @@ const Quiz = () => {
                 background: '#E4F6FC',
                 display: 'flex',
                 alignItems: 'center',
-                width: '99vw',
+                width: '98.7vw',
                 justifyContent: 'center',
                 marginTop: '10rem',
               }}
