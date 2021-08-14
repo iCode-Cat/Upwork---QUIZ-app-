@@ -1,0 +1,21 @@
+.wrapper {
+  padding-bottom: 7.5rem;
+}
+.steps {
+  width: 100vw;
+  max-width: 971px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+}
+
+.rope {
+  position: absolute;
+  justify-self: flex-start;
+  top: 75px;
+  z-index: 0;
+}

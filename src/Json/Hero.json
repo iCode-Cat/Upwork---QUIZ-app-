@@ -1,0 +1,130 @@
+{
+  "welcomePage": {
+    "title": "Cost of Information Risk",
+    "sub_title": "See how much money you can save with autonomous <br/> information intelligence in just 3 easy steps.",
+    "button_text": "Start Quiz"
+  },
+  "step1": {
+    "index": 1,
+    "fields": {
+      "email": {
+        "name": "email",
+        "type": "input",
+        "text": "Enter your corporate email to get started",
+        "placeholder": "Corporate email"
+      },
+      "company": {
+        "name": "company",
+        "type": "input",
+        "text": "Your company name",
+        "placeholder": "Company name"
+      }
+    },
+    "button": "Next Step"
+  },
+  "step2": {
+    "index": 2,
+    "fields": {
+      "quantity": {
+        "name": "quantity",
+        "type": "input",
+        "text": 100,
+        "icon1": "icon",
+        "icon2": "icon"
+      },
+      "question1": {
+        "name": "question1",
+        "type": "button",
+        "text": "Are your organization working on the cloud",
+        "buttons": [
+          {
+            "text": "Yes",
+            "icon": "icon"
+          },
+          {
+            "text": "No",
+            "icon": "icon"
+          }
+        ]
+      },
+      "question2": {
+        "name": "question2",
+        "type": "button",
+        "text": "Are your organization working on the cloud",
+        "buttons": [
+          {
+            "text": "Yes",
+            "icon": "icon"
+          },
+          {
+            "text": "Partially",
+            "icon": null
+          },
+          {
+            "text": "No",
+            "icon": "icon"
+          }
+        ]
+      },
+      "question3": {
+        "text": "Number of employees"
+      }
+    },
+    "button": "Next Step"
+  },
+  "step3": {
+    "index": 3,
+    "fields": {
+      "dropdown1": {
+        "name": "dropdown",
+        "type": "select",
+        "text": "How are you protecting your information?",
+        "placeholder": "Choose answer",
+        "icon": "icon",
+        "drops": [
+          {
+            "answer": "Not yet"
+          },
+          {
+            "answer": "Microsoft Information Protection"
+          },
+          {
+            "answer": "Forcepoint DLP"
+          },
+          {
+            "answer": "Mcafee DLP"
+          },
+          {
+            "answer": "Other DLP"
+          }
+        ]
+      },
+      "dropdown2": {
+        "name": "dropdown",
+        "type": "select",
+        "text": "How are you monitoring information risks?",
+        "placeholder": "Choose answer",
+        "icon": "icon",
+        "drops": [
+          {
+            "answer": "Not yet"
+          },
+          {
+            "answer": "Microsoft Cloud App Security"
+          },
+          {
+            "answer": "Microsoft Sentinel"
+          },
+          {
+            "answer": "Other CASB or SIEM"
+          }
+        ]
+      }
+    },
+    "button": "Calculate"
+  },
+  "conclusionPage": {
+    "title": "Thanks for participation in our survey!",
+    "sub_title": "We send you our deal on your email."
+  }
+}

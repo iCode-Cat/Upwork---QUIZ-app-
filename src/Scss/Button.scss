@@ -1,0 +1,46 @@
+.btn_settings {
+  border-radius: 100px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  // For temporary
+  min-height: 50px;
+}
+
+.btnShadow {
+  box-shadow: 0px 17px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+.btnSm {
+  padding: 1.1rem 3.1rem;
+}
+
+.btnMd {
+  padding: 1.1rem 4.6rem;
+}
+
+.btnLg {
+  padding: 1.1rem 8.1rem;
+}
+
+// Theme
+.btnBlue {
+  background: #2196f3;
+  color: #fff;
+}
+
+.btnGreen {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btnGray {
+  background: #c4c4c4;
+  color: #fff;
+}
+
+.btnWhite {
+  font-weight: 400;
+  background: #fff;
+  color: #565656;
+  border: 1px solid #aeaeae;
+}

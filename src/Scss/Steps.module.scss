@@ -1,0 +1,61 @@
+.wrapper {
+  width: 525px;
+  display: grid;
+  gap: 5rem;
+  align-items: center;
+  justify-items: flex-start;
+  grid-template-columns: auto;
+  margin-top: 15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stepSecond {
+  margin-top: unset;
+  padding-top: 5rem;
+}
+
+.step {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 6px;
+  font-size: 1.8rem;
+  strong {
+    color: rgb(47, 47, 47);
+  }
+  p {
+    color: rgba(129, 129, 129, 0.787);
+    font-weight: 600;
+  }
+}
+
+.input_container {
+  display: grid;
+  gap: 4rem;
+}
+
+.input_box {
+  display: grid;
+  gap: 2rem;
+}
+
+.input,
+.input_title {
+  color: #565656;
+}
+
+.input_title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.input {
+  width: 525px;
+  border-radius: 100px;
+  height: 50px;
+  border: 1px solid #aeaeae;
+  padding: 1.1rem 4rem;
+  color: #565656;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
