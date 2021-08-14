@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 
 const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
   const step = HeroJSON.step2;
   const { button, fields, index } = step;
-  console.log(HeroJSON);
+
+  const [shortAnswer, setShortAnswer] = useState({
+    type: 'shortAnswer',
+    isAnswered: false,
+    index: null,
+  });
+
+  const [longAnswer, setLongAnswer] = useState({
+    type: 'longAnswer',
+    isAnswered: false,
+    index: null,
+  });
+
   return (
-    <section className={`${style.wrapper} ${style.stepSecond}`} id='step1'>
+    <section className={`${style.wrapper} ${style.stepSecond}`} id='step2'>
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of 3</p>
@@ -17,11 +29,15 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
           <p className={style.input_title}>{fields.question3.text}</p>
           <input
             onChange={(e) =>
-              formStateHandler({ field: 'email', value: e.target.value })
+              formStateHandler({
+                field: 'numberEmployees',
+                value: e.target.value,
+              })
             }
+            defaultValue='100'
+            step='50'
             type='number'
             className={style.input}
-            placeholder={fields.quantity.text}
           />
         </div>
         <div className={style.input_box}>
@@ -35,8 +51,30 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
             }}
           >
             {fields.question1.buttons.map((btn, i) => (
-              <span key={i}>
-                <Button text={btn.text} size='btnMd' type='btnWhite' />
+              <span
+                onClick={() => {
+                  setShortAnswer({
+                    ...shortAnswer,
+                    isAnswered: true,
+                    index: i,
+                  });
+                  // numberEmployees: null,
+                  formStateHandler({
+                    field: 'youWorkingCloud',
+                    value: btn.text,
+                  });
+                }}
+                key={i}
+              >
+                <Button
+                  text={btn.text}
+                  size='btnMd'
+                  type={
+                    shortAnswer.isAnswered && shortAnswer.index === i
+                      ? 'btnBlueMutaiton'
+                      : 'btnWhite'
+                  }
+                />
               </span>
             ))}
           </div>
@@ -52,8 +90,30 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
             }}
           >
             {fields.question2.buttons.map((btn, i) => (
-              <span key={i}>
-                <Button text={btn.text} size='btnMd' type='btnWhite' />
+              <span
+                onClick={() => {
+                  setLongAnswer({
+                    ...longAnswer,
+                    isAnswered: true,
+                    index: i,
+                  });
+                  // numberEmployees: null,
+                  formStateHandler({
+                    field: 'youWorkingCloud',
+                    value: btn.text,
+                  });
+                }}
+                key={i}
+              >
+                <Button
+                  text={btn.text}
+                  size='btnMd'
+                  type={
+                    longAnswer.isAnswered && longAnswer.index === i
+                      ? 'btnBlueMutaiton'
+                      : 'btnWhite'
+                  }
+                />
               </span>
             ))}
           </div>

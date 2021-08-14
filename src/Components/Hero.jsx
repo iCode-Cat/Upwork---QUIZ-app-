@@ -18,8 +18,7 @@ const Hero = ({ formStateHandler, form, HeroJSON }) => {
           />
           <span
             onClick={() =>
-              form.step === null &&
-              formStateHandler({ field: 'step', value: 1 })
+              form.step === '' && formStateHandler({ field: 'step', value: 1 })
             }
           >
             <Button

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 
 const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
   const step = HeroJSON.step1;
   const { button, fields, index } = step;
-  console.log(fields);
+  const [error, setError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const errorHandler = () => {
+    console.log('hello');
+  };
+
   return (
-    <section className={`${style.wrapper}  ${style.stepFirst}`} id='step1'>
+    <form className={`${style.wrapper}  ${style.stepFirst}`} id='step1'>
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of 3</p>
@@ -21,7 +27,9 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
             }
             type='email'
             required
-            className={style.input}
+            className={`${style.input} ${
+              submitted && form.email === '' ? style.submitError : ''
+            }`}
             placeholder={fields.email.placeholder}
           />
         </div>
@@ -33,14 +41,17 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
             }
             type='text'
             placeholder={fields.company.placeholder}
-            className={style.input}
+            className={`${style.input} ${
+              submitted && form.companyName === '' ? style.submitError : ''
+            }`}
           />
         </div>
       </div>
       <span
-        onClick={() =>
-          form.step === index && formStateHandler({ field: 'step', value: 2 })
-        }
+        onClick={() => {
+          form.step === index && formStateHandler({ field: 'step', value: 2 });
+          setSubmitted(true);
+        }}
       >
         <Button
           size='btnLg'
@@ -48,7 +59,7 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
           text={button}
         />
       </span>
-    </section>
+    </form>
   );
 };
 

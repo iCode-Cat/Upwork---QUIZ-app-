@@ -4,6 +4,8 @@
   font-weight: 700;
   // For temporary
   min-height: 50px;
+  transition: 0.3s;
+  border: 1px solid #00000000;
 }
 
 .btnShadow {
@@ -43,4 +45,19 @@
   background: #fff;
   color: #565656;
   border: 1px solid #aeaeae;
+}
+
+// Hovers
+.btnWhite:hover {
+  border: 1px solid #ffc300;
+  color: #ffc300;
+}
+.btnBlue:hover {
+  background: #2080cd;
+}
+
+// Mutaion
+.btnBlueMutaiton {
+  @extend .btnBlue;
+  font-weight: 400;
 }

@@ -11,14 +11,14 @@ import step3 from '../Images/step3.png';
 const Quiz = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: null,
-    email: null,
-    companyName: null,
-    numberEmployees: null,
-    youWorkingCloud: null,
-    yourCompWorkingCloud: null,
-    howProtectYourInfo: null,
-    howYouMonitorRisks: null,
+    step: '',
+    email: '',
+    companyName: '',
+    numberEmployees: '',
+    youWorkingCloud: '',
+    yourCompWorkingCloud: '',
+    howProtectYourInfo: '',
+    howYouMonitorRisks: '',
   });
 
   const formStateHandler = ({ field, value }) => {
@@ -61,7 +61,7 @@ const Quiz = () => {
                 background: '#E4F6FC',
                 display: 'flex',
                 alignItems: 'center',
-                width: '99vw',
+                width: '98.7vw',
                 justifyContent: 'center',
                 marginTop: '10rem',
               }}
