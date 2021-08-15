@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
+import ErrorMessage from './ErrorMessage';
 
-const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
+const FirstStep = ({
+  errorClassHandler,
+  HeroJSON,
+  formStateHandler,
+  form,
+  step1,
+  scrollToView,
+  step2,
+}) => {
   const step = HeroJSON.step1;
   const { button, fields, index } = step;
   const [errorValue, setError] = useState(false);
 
   const checkEmpty = () => {
-    if (form.email === '' || form.company === '') {
+    if (form.email === '' || form.companyName === '') {
       setError(true);
       return true;
     }
@@ -20,12 +29,16 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
     if (checkEmpty()) return;
     form.step === index && formStateHandler({ field: 'step', value: 2 });
     setError(false);
+    scrollToView(step2);
   };
 
   return (
     <form
+      ref={step1}
       onSubmit={(e) => errorHandler(e)}
-      className={`${style.wrapper}  ${style.stepFirst}`}
+      className={`${style.wrapper}  ${style.stepFirst} ${
+        form.step !== index ? style.disableEvents : ''
+      }`}
       id='step1'
     >
       <div className={style.step}>
@@ -41,7 +54,9 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
             }
             type='email'
             required
-            className={style.input}
+            className={`${style.input} ${
+              errorValue && errorClassHandler('email') ? style.submitError : ''
+            }`}
             placeholder={fields.email.placeholder}
           />
         </div>
@@ -54,26 +69,24 @@ const FirstStep = ({ HeroJSON, formStateHandler, form }) => {
             type='text'
             required
             placeholder={fields.company.placeholder}
-            className={`${style.input}`}
+            className={`${style.input} ${
+              errorValue && errorClassHandler('companyName')
+                ? style.submitError
+                : ''
+            }`}
           />
         </div>
       </div>
-      <div
-        style={{
-          display: 'grid',
-          gridAutoFlow: 'column',
-          alignItems: 'center',
-          gap: '20px',
-        }}
-      >
+      <div>
         <span onClick={checkEmpty} type='submit'>
           <Button
+            submit
             size='btnLg'
             type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
             text={button}
           />
         </span>
-        {errorValue && <span>Fill all red fields before next step</span>}
+        {errorValue && <ErrorMessage />}
       </div>
     </form>
   );

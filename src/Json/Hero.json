@@ -124,7 +124,7 @@
     "button": "Calculate"
   },
   "conclusionPage": {
-    "title": "Thanks for participation in our survey!",
+    "title": "Thanks for participation <br/> in our survey!",
     "sub_title": "We send you our deal on your email."
   }
 }

@@ -66,3 +66,8 @@
 .submitError {
   border: 1px solid #ff8282;
 }
+
+// Disable
+.disableEvents {
+  pointer-events: none;
+}

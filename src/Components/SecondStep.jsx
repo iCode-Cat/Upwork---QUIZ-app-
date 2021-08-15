@@ -1,10 +1,40 @@
 import React, { useState } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
+import ErrorMessage from './ErrorMessage';
 
-const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
+const SecondStep = ({
+  errorClassHandler,
+  HeroJSON,
+  formStateHandler,
+  form,
+  step2,
+  scrollToView,
+  step3,
+}) => {
   const step = HeroJSON.step2;
   const { button, fields, index } = step;
+  const [errorValue, setError] = useState(false);
+  console.log(errorValue);
+  const checkEmpty = () => {
+    if (
+      form.numberEmployees === '' ||
+      form.youWorkingCloud === '' ||
+      form.yourCompWorkingCloud === ''
+    ) {
+      setError(true);
+      return true;
+    }
+    return false;
+  };
+
+  const errorHandler = (e) => {
+    e.preventDefault();
+    if (checkEmpty()) return;
+    form.step === index && formStateHandler({ field: 'step', value: 3 });
+    setError(false);
+    scrollToView(step3);
+  };
 
   const [shortAnswer, setShortAnswer] = useState({
     type: 'shortAnswer',
@@ -19,7 +49,14 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
   });
 
   return (
-    <section className={`${style.wrapper} ${style.stepSecond}`} id='step2'>
+    <form
+      ref={step2}
+      onSubmit={(e) => errorHandler(e)}
+      className={`${style.wrapper} ${style.stepSecond} ${
+        form.step !== index ? style.disableEvents : ''
+      }`}
+      id='step2'
+    >
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of 3</p>
@@ -28,6 +65,7 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
         <div className={style.input_box}>
           <p className={style.input_title}>{fields.question3.text}</p>
           <input
+            required
             onChange={(e) =>
               formStateHandler({
                 field: 'numberEmployees',
@@ -37,7 +75,11 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
             defaultValue='100'
             step='50'
             type='number'
-            className={style.input}
+            className={`${style.input} ${
+              errorValue && errorClassHandler('numberEmployees')
+                ? style.submitError
+                : ''
+            }`}
           />
         </div>
         <div className={style.input_box}>
@@ -67,6 +109,11 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
                 key={i}
               >
                 <Button
+                  error={`${
+                    errorValue && errorClassHandler('youWorkingCloud')
+                      ? true
+                      : false
+                  }`}
                   text={btn.text}
                   size='btnMd'
                   type={
@@ -99,13 +146,16 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
                   });
                   // numberEmployees: null,
                   formStateHandler({
-                    field: 'youWorkingCloud',
+                    field: 'yourCompWorkingCloud',
                     value: btn.text,
                   });
                 }}
                 key={i}
               >
                 <Button
+                  error={`${
+                    errorValue && errorClassHandler('yourCompWorkingCloud')
+                  }`}
                   text={btn.text}
                   size='btnMd'
                   type={
@@ -119,19 +169,18 @@ const SecondStep = ({ HeroJSON, formStateHandler, form }) => {
           </div>
         </div>
       </div>
-      <span
-        style={{ paddingBottom: '5rem' }}
-        onClick={() =>
-          form.step === index && formStateHandler({ field: 'step', value: 3 })
-        }
-      >
-        <Button
-          size='btnLg'
-          type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
-          text={button}
-        />
-      </span>
-    </section>
+      <div style={{ paddingBottom: '5rem' }}>
+        <span onClick={checkEmpty}>
+          <Button
+            submit
+            size='btnLg'
+            type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
+            text={button}
+          />
+        </span>
+        {errorValue && <ErrorMessage />}
+      </div>
+    </form>
   );
 };
 
