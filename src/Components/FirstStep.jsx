@@ -14,9 +14,9 @@ const FirstStep = ({
   step2,
 }) => {
   const { stepOneValue } = steps;
-  const questions = stepOneValue.fileds;
+  const questions = stepOneValue.fields;
   const step = HeroJSON.step1;
-  const { button, fields, index } = step;
+  const { button, index } = step;
   const [errorValue, setError] = useState(false);
 
   const checkEmpty = () => {
@@ -49,36 +49,27 @@ const FirstStep = ({
         <p>of 3</p>
       </div>
       <div className={style.input_container}>
-        <div className={style.input_box}>
-          <p className={style.input_title}>{fields.email.text}</p>
-          <input
-            onChange={(e) =>
-              formStateHandler({ field: 'email', value: e.target.value })
-            }
-            type='email'
-            required
-            className={`${style.input} ${
-              errorValue && errorClassHandler('email') ? style.submitError : ''
-            }`}
-            placeholder={fields.email.placeholder}
-          />
-        </div>
-        <div className={style.input_box}>
-          <p className={style.input_title}>{fields.company.text}</p>
-          <input
-            onChange={(e) =>
-              formStateHandler({ field: 'companyName', value: e.target.value })
-            }
-            type='text'
-            required
-            placeholder={fields.company.placeholder}
-            className={`${style.input} ${
-              errorValue && errorClassHandler('companyName')
-                ? style.submitError
-                : ''
-            }`}
-          />
-        </div>
+        {questions.map((fields) => (
+          <div className={style.input_box}>
+            <p className={style.input_title}>{fields.text}</p>
+            <input
+              onChange={(e) =>
+                formStateHandler({
+                  field: fields.stateName,
+                  value: e.target.value,
+                })
+              }
+              type={fields.type}
+              required
+              className={`${style.input} ${
+                errorValue && errorClassHandler(fields.stateName)
+                  ? style.submitError
+                  : ''
+              }`}
+              placeholder={fields.placeholder}
+            />
+          </div>
+        ))}
       </div>
       <div>
         <span onClick={checkEmpty} type='submit'>

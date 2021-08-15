@@ -1,20 +1,22 @@
 module.exports.steps = {
-  step1: {
+  stepOneValue: {
     index: 1,
     fields: [
       {
         name: 'email',
-        type: 'input',
+        type: 'email',
         stateName: 'email',
         text: 'Enter your corporate email to get started',
         placeholder: 'Corporate email',
+        questionType: 'input',
       },
       {
         name: 'company',
-        type: 'input',
-        stateName: 'company',
+        type: 'text',
+        stateName: 'companyName',
         text: 'Your company name',
         placeholder: 'Company name',
+        questionType: 'input',
       },
     ],
     button: 'Next Step',
