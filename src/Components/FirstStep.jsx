@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
+import { steps } from '../Json/Steps';
 
 const FirstStep = ({
   errorClassHandler,
@@ -12,6 +13,8 @@ const FirstStep = ({
   scrollToView,
   step2,
 }) => {
+  const { stepOneValue } = steps;
+  const questions = stepOneValue.fileds;
   const step = HeroJSON.step1;
   const { button, fields, index } = step;
   const [errorValue, setError] = useState(false);

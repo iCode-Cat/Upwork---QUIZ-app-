@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
+import Dropdown from './Dropdown';
 import ErrorMessage from './ErrorMessage';
 
 const ThirdStep = ({
@@ -13,8 +14,14 @@ const ThirdStep = ({
   step3,
 }) => {
   const step = HeroJSON.step3;
+  const dropdownOne = step.fields.dropdown1;
+
   const { button, fields, index } = step;
   const [errorValue, setError] = useState(false);
+  const [toggleShort, setToggleShort] = useState({
+    isActive: false,
+    state: '',
+  });
 
   const checkEmpty = () => {
     if (form.howProtectYourInfo === '' || form.howYouMonitorRisks === '') {
@@ -32,6 +39,13 @@ const ThirdStep = ({
     scrollToView(hero);
   };
 
+  useEffect(() => {
+    formStateHandler({
+      field: 'howProtectYourInfo',
+      value: toggleShort.state,
+    });
+  }, [toggleShort]);
+
   return (
     <form
       ref={step3}
@@ -48,26 +62,39 @@ const ThirdStep = ({
       <div className={style.input_container}>
         <div className={style.input_box}>
           <p className={style.input_title}>{fields.dropdown1.text}</p>
-          <input
-            onChange={(e) =>
-              formStateHandler({
-                field: 'howProtectYourInfo',
-                value: e.target.value,
-              })
-            }
-            type='text'
-            required
-            className={`${style.input} ${
-              errorValue && errorClassHandler('howProtectYourInfo')
-                ? style.submitError
-                : ''
-            }`}
-            placeholder={fields.dropdown1.placeholder}
-          />
+          <div className={style.dropDownWrapper}>
+            <input
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                setToggleShort({
+                  ...toggleShort,
+                  isActive: !toggleShort.isActive,
+                });
+              }}
+              readOnly
+              type='text'
+              required
+              value={toggleShort.state}
+              className={`${style.input} ${
+                errorValue && errorClassHandler('howProtectYourInfo')
+                  ? style.submitError
+                  : ''
+              }`}
+              placeholder={fields.dropdown1.placeholder}
+            />
+            {toggleShort.isActive && (
+              <Dropdown
+                state={toggleShort}
+                setState={setToggleShort}
+                list={dropdownOne}
+              />
+            )}
+          </div>
         </div>
         <div className={style.input_box}>
           <p className={style.input_title}>{fields.dropdown2.text}</p>
           <input
+            readOnly
             onChange={(e) =>
               formStateHandler({
                 field: 'howYouMonitorRisks',

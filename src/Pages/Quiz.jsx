@@ -8,6 +8,7 @@ import HeroJSON from '../Json/Hero.json';
 import stepOne from '../Images/stepOne.png';
 import stepTwo from '../Images/stepTwo.png';
 import stepThree from '../Images/stepThree.png';
+import Dropdown from '../Components/Dropdown';
 const Quiz = () => {
   // State that saves user answers
   const [form, setForm] = useState({
