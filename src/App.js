@@ -1,9 +1,9 @@
-import Quiz from './Pages/Quiz';
+import Homepage from './Pages/Quiz';
 
 function App() {
   return (
     <>
-      <Quiz />
+      <Homepage />
     </>
   );
 }

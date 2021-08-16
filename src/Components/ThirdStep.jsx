@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
-import Dropdown from './Dropdown';
+import DropdownList from './DropdownList';
 import ErrorMessage from './ErrorMessage';
 
 const ThirdStep = ({
@@ -83,7 +83,7 @@ const ThirdStep = ({
               placeholder={fields.dropdown1.placeholder}
             />
             {toggleShort.isActive && (
-              <Dropdown
+              <DropdownList
                 state={toggleShort}
                 setState={setToggleShort}
                 list={dropdownOne}

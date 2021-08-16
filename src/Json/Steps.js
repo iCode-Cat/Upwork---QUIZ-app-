@@ -4,20 +4,53 @@ module.exports.steps = {
     fields: [
       {
         name: 'email',
-        type: 'email',
+        validation: 'number',
         stateName: 'email',
         text: 'Enter your corporate email to get started',
         placeholder: 'Corporate email',
-        questionType: 'input',
+        questionType: 'increment',
       },
       {
         name: 'company',
-        type: 'text',
+        validation: 'text',
         stateName: 'companyName',
         text: 'Your company name',
         placeholder: 'Company name',
         questionType: 'input',
       },
+      {
+        name: 'company',
+        validation: 'text',
+        stateName: 'numberEmployees',
+        text: 'Your company name',
+        placeholder: 'Company name',
+        questionType: 'dropdown',
+        options: [
+          {
+            text: 'Zuhal',
+          },
+          {
+            text: 'Ali',
+          },
+        ],
+      },
+
+      // {
+      //   name: 'company',
+      //   validation: 'text',
+      //   stateName: 'CloudName',
+      //   text: 'Your company name',
+      //   placeholder: 'Company name',
+      //   questionType: 'dropdown',
+      //   options: [
+      //     {
+      //       text: 'Microsoft',
+      //     },
+      //     {
+      //       text: 'Apple',
+      //     },
+      //   ],
+      // },
     ],
     button: 'Next Step',
   },
