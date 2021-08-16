@@ -3,9 +3,9 @@ import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
 import { steps } from '../Json/Steps';
-import Input from './QuestionTypes/Input';
-import Increment from './QuestionTypes/Increment';
-import Options from './QuestionTypes/Options';
+import Text from './QuestionTypes/Text';
+import Numeric from './QuestionTypes/Numeric';
+import Boolean from './QuestionTypes/Boolean';
 import Dropdown from './QuestionTypes/Dropdown';
 
 const FirstStep = ({
@@ -21,7 +21,7 @@ const FirstStep = ({
   const { stepOneValue } = steps;
   const questions = stepOneValue.fields;
   const step = HeroJSON.step1;
-  const { button, index } = step;
+  const { index } = stepOneValue;
   const [errorValue, setError] = useState(false);
 
   const stateHandler = () => {
@@ -58,9 +58,9 @@ const FirstStep = ({
   };
 
   const questionTypeHandler = (fields) => {
-    if (fields.questionType === 'input') {
+    if (fields.questionType === 'text') {
       return (
-        <Input
+        <Text
           errorValue={errorValue}
           fields={fields}
           formStateHandler={formStateHandler}
@@ -68,9 +68,9 @@ const FirstStep = ({
         />
       );
     }
-    if (fields.questionType === 'increment') {
+    if (fields.questionType === 'numeric') {
       return (
-        <Increment
+        <Numeric
           errorValue={errorValue}
           fields={fields}
           formStateHandler={formStateHandler}
@@ -78,9 +78,9 @@ const FirstStep = ({
         />
       );
     }
-    if (fields.questionType === 'options') {
+    if (fields.questionType === 'boolean') {
       return (
-        <Options
+        <Boolean
           errorValue={errorValue}
           fields={fields}
           formStateHandler={formStateHandler}
@@ -122,7 +122,7 @@ const FirstStep = ({
             submit
             size='btnLg'
             type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
-            text={button}
+            text={stepOneValue.button}
           />
         </span>
         {errorValue && <ErrorMessage />}

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import FirstStep from '../Components/FirstStep';
 import Hero from '../Components/Hero';
 import style from '../Scss/Quiz.module.scss';
@@ -12,8 +12,9 @@ import stepThree from '../Images/stepThree.png';
 const Quiz = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 3,
   });
+  const [isEnd, setIsEnd] = useState(true);
 
   // References
   const hero = useRef();
@@ -40,7 +41,13 @@ const Quiz = () => {
     return false;
   };
 
-  console.log(form);
+  // useEffect(() => {
+  //   if (form.step > 3) {
+  //     setTimeout(() => {
+  //       setIsEnd(false);
+  //     }, 2000);
+  //   }
+  // }, [form]);
 
   return (
     <main className={style.wrapper}>
@@ -53,63 +60,69 @@ const Quiz = () => {
           form={form}
           formStateHandler={formStateHandler}
         />
-        <section className={style.steps}>
-          <img
-            className={style.rope}
-            src={
-              (form.step === 1 ? stepOne : '') ||
-              (form.step === 2 ? stepTwo : '') ||
-              (form.step === 3 ? stepThree : '') ||
-              (form.step > 3 ? stepThree : '')
-            }
-            alt=''
-          />
-          {form.step >= 1 && (
-            <FirstStep
-              errorClassHandler={errorClassHandler}
-              step2={step2}
-              scrollToView={scrollToView}
-              step1={step1}
-              HeroJSON={HeroJSON}
-              formStateHandler={formStateHandler}
-              form={form}
-              setForm={setForm}
-            />
-          )}
-          {form.step >= 2 && (
-            <div
-              style={{
-                background: '#E4F6FC',
-                display: 'flex',
-                alignItems: 'center',
-                width: '98.7vw',
-                justifyContent: 'center',
-                marginTop: '9.8rem',
-              }}
-            >
-              <SecondStep
-                errorClassHandler={errorClassHandler}
-                step3={step3}
-                scrollToView={scrollToView}
-                step2={step2}
-                HeroJSON={HeroJSON}
-                formStateHandler={formStateHandler}
-                form={form}
+        {isEnd && (
+          <>
+            <section className={style.steps}>
+              <img
+                className={style.rope}
+                src={
+                  (form.step === 1 ? stepOne : '') ||
+                  (form.step === 2 ? stepTwo : '') ||
+                  (form.step === 3 ? stepThree : '') ||
+                  (form.step > 3 ? stepThree : '')
+                }
+                alt=''
               />
-            </div>
-          )}
-          {form.step >= 3 && (
-            <ThirdStep
-              errorClassHandler={errorClassHandler}
-              hero={hero}
-              scrollToView={scrollToView}
-              step3={step3}
-              HeroJSON={HeroJSON}
-              formStateHandler={formStateHandler}
-              form={form}
-            />
-          )}
-        </section>
+              {form.step >= 1 && (
+                <FirstStep
+                  errorClassHandler={errorClassHandler}
+                  step2={step2}
+                  scrollToView={scrollToView}
+                  step1={step1}
+                  HeroJSON={HeroJSON}
+                  formStateHandler={formStateHandler}
+                  form={form}
+                  setForm={setForm}
+                />
+              )}
+              {form.step >= 2 && (
+                <div
+                  style={{
+                    background: '#E4F6FC',
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '98.7vw',
+                    justifyContent: 'center',
+                    marginTop: '9.8rem',
+                  }}
+                >
+                  <SecondStep
+                    errorClassHandler={errorClassHandler}
+                    step3={step3}
+                    scrollToView={scrollToView}
+                    step2={step2}
+                    HeroJSON={HeroJSON}
+                    formStateHandler={formStateHandler}
+                    form={form}
+                    setForm={setForm}
+                  />
+                </div>
+              )}
+              {form.step >= 3 && (
+                <ThirdStep
+                  errorClassHandler={errorClassHandler}
+                  hero={hero}
+                  scrollToView={scrollToView}
+                  step3={step3}
+                  HeroJSON={HeroJSON}
+                  formStateHandler={formStateHandler}
+                  form={form}
+                  setForm={setForm}
+                />
+              )}
+            </section>
+          </>
+        )}
       </article>
     </main>
   );

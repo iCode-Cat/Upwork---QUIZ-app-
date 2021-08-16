@@ -41,6 +41,7 @@ const Options = ({
             key={i}
           >
             <Button
+              icon={btn.icon}
               error={`${
                 errorValue && errorClassHandler(fields.stateName) ? true : false
               }`}

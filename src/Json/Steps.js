@@ -4,54 +4,122 @@ module.exports.steps = {
     fields: [
       {
         name: 'email',
-        validation: 'number',
         stateName: 'email',
         text: 'Enter your corporate email to get started',
         placeholder: 'Corporate email',
-        questionType: 'increment',
+        questionType: 'text',
+        validation: 'email',
       },
       {
-        name: 'company',
-        validation: 'text',
+        name: 'company name',
         stateName: 'companyName',
         text: 'Your company name',
         placeholder: 'Company name',
-        questionType: 'input',
+        questionType: 'text',
+        validation: 'text',
+      },
+    ],
+    button: 'Next Step',
+  },
+  stepTwoValue: {
+    index: 2,
+    fields: [
+      {
+        name: 'Number of employees',
+        stateName: 'numberEmployees',
+        text: 'Number of employees',
+        questionType: 'numeric',
+        initialValue: 100,
       },
       {
-        name: 'company',
-        validation: 'text',
-        stateName: 'numberEmployees',
-        text: 'Your company name',
-        placeholder: 'Company name',
-        questionType: 'dropdown',
+        name: 'Working with cloud?',
+        stateName: 'workingCloud',
+        text: 'Are your organization working on the cloud',
+        questionType: 'boolean',
         options: [
           {
-            text: 'Zuhal',
+            text: 'Yes',
+            icon: 'fa-check',
           },
           {
-            text: 'Ali',
+            text: 'No',
+            icon: 'fa-times',
           },
         ],
       },
+      {
+        name: 'Working with cloud v2?',
+        stateName: 'workingCloudv2',
+        text: 'Are your organization working on the cloud',
+        questionType: 'boolean',
 
-      // {
-      //   name: 'company',
-      //   validation: 'text',
-      //   stateName: 'CloudName',
-      //   text: 'Your company name',
-      //   placeholder: 'Company name',
-      //   questionType: 'dropdown',
-      //   options: [
-      //     {
-      //       text: 'Microsoft',
-      //     },
-      //     {
-      //       text: 'Apple',
-      //     },
-      //   ],
-      // },
+        options: [
+          {
+            text: 'Yes',
+            icon: 'fa-check',
+          },
+          {
+            text: 'Maybe',
+            icon: false,
+          },
+          {
+            text: 'No',
+            icon: 'fa-check',
+          },
+        ],
+      },
     ],
     button: 'Next Step',
+  },
+  stepThreeValue: {
+    index: 3,
+    fields: [
+      {
+        name: 'how do you',
+        stateName: 'howProtectInfo',
+        text: 'How are you protecting your information?',
+        placeholder: 'Choose answer',
+        questionType: 'dropdown',
+        options: [
+          {
+            text: 'Not yet',
+          },
+          {
+            text: 'Microsoft Information Protection',
+          },
+          {
+            text: 'Forcepoint DLP',
+          },
+          {
+            text: 'Mcafee DLP',
+          },
+          {
+            text: 'Other DLP',
+          },
+        ],
+      },
+      {
+        name: 'how do you risk',
+        stateName: 'howProtectRisk',
+        text: 'How are you protecting your information?',
+        placeholder: 'Choose answer',
+        questionType: 'dropdown',
+        options: [
+          {
+            text: 'Not yet',
+          },
+          {
+            text: 'Microsoft Cloud App Security',
+          },
+          {
+            text: 'Microsoft Sentinel',
+          },
+          {
+            text: 'Other CASB or SIEM',
+          },
+        ],
+      },
+    ],
+    button: 'Calculate',
   },
 };

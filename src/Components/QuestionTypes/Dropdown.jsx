@@ -49,6 +49,7 @@ const Dropdown = ({
             list={fields.options}
           />
         )}
+        <i class={`fas fa-chevron-up ${style.icon}`}></i>
       </div>
     </div>
   );

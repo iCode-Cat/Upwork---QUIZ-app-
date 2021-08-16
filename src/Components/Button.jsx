@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Scss/Button.scss';
 
-const Button = ({ text, type, size, shadow, submit, error }) => {
+const Button = ({ text, type, size, shadow, submit, error, icon }) => {
   return (
     <button
       type={submit ? 'submit' : 'button'}
@@ -9,6 +9,14 @@ const Button = ({ text, type, size, shadow, submit, error }) => {
         error === 'true' ? 'submitError' : ''
       }`}
     >
+      {icon ? (
+        <i
+          style={{ fontSize: '1.6rem', marginRight: '0.8rem', opacity: '50%' }}
+          className={`fas ${icon}`}
+        ></i>
+      ) : (
+        ''
+      )}
       {text}
     </button>
   );

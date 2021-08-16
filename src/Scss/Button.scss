@@ -28,6 +28,10 @@
 .btnBlue {
   background: #2196f3;
   color: #fff;
+  i {
+    color: #fff;
+    opacity: 100% !important;
+  }
 }
 
 .btnGreen {
@@ -54,6 +58,7 @@
 }
 .btnBlue:hover {
   background: #2080cd;
+  color: #fff !important;
 }
 
 // Mutaion

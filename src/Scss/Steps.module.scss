@@ -18,6 +18,10 @@
   padding-top: 5rem;
 }
 
+.stepSecondBtnPd {
+  padding-bottom: 5rem !important;
+}
+
 .step {
   display: grid;
   grid-auto-flow: column;
@@ -61,6 +65,16 @@
   color: #565656;
   font-size: 1.8rem;
   font-weight: 400;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  bottom: 0;
+  top: 18px;
+  right: 30px;
+  color: #aeaeae;
+  cursor: pointer;
 }
 
 .submitError {

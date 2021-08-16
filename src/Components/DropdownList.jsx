@@ -10,9 +10,7 @@ const DropdownList = ({ list, state, setState }) => {
           onClick={() =>
             setState({ ...state, state: option.text, isActive: false })
           }
-          key={index}
           className={style.item}
-          key={index}
         >
           {option.text}
         </h1>
