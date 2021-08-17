@@ -8,9 +8,35 @@
   margin-top: 15rem;
   position: relative;
   z-index: 1;
+  counter-increment: section;
+
   button {
     border-radius: 100px;
   }
+}
+
+// .wrapper:nth-child(odd) {
+//   border-right: 3px dotted;
+//   padding-left: 0;
+// }
+// //even number borders
+// .wrapper:nth-child(even) {
+//   border-left: 3px dotted;
+//   padding-right: 0;
+// }
+
+// .wrapper:first-child {
+//   border-top: 3px dotted;
+//   border-top-right-radius: 0;
+//   border-top-left-radius: 0;
+// }
+// .wrapper:last-child {
+//   border-bottom-right-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+.stepFirst {
+  margin-bottom: 5rem;
 }
 
 .stepSecond {

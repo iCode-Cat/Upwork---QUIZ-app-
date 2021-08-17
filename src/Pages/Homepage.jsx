@@ -12,7 +12,7 @@ import stepThree from '../Images/stepThree.png';
 const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 2,
+    step: '',
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -94,7 +94,7 @@ const Homepage = () => {
                     alignItems: 'center',
                     width: '98.7vw',
                     justifyContent: 'center',
-                    marginTop: '9.8rem',
+                    // marginTop: '9.8rem',
                   }}
                 >
                   <SecondStep
