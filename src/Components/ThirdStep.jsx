@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { steps } from '../Json/Steps';
-import Text from './QuestionTypes/Text';
-import Numeric from './QuestionTypes/Numeric';
-import Boolean from './QuestionTypes/Boolean';
-import Dropdown from './QuestionTypes/Dropdown';
+import { steps } from '../Json/headless';
+import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const ThirdStep = ({
   errorClassHandler,
@@ -20,8 +17,7 @@ const ThirdStep = ({
 }) => {
   const { stepThreeValue } = steps;
   const questions = stepThreeValue.fields;
-  const step = HeroJSON.step3;
-  const { button, index } = step;
+  const { index } = stepThreeValue;
   const [errorValue, setError] = useState(false);
 
   const stateHandler = () => {
@@ -57,49 +53,6 @@ const ThirdStep = ({
     scrollToView(hero);
   };
 
-  const questionTypeHandler = (fields) => {
-    if (fields.questionType === 'text') {
-      return (
-        <Text
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'numeric') {
-      return (
-        <Numeric
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'boolean') {
-      return (
-        <Boolean
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'dropdown') {
-      return (
-        <Dropdown
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-  };
-
   return (
     <form
       ref={step3}
@@ -115,7 +68,15 @@ const ThirdStep = ({
       </div>
       <div className={style.input_container}>
         {questions.map((fields, index) => (
-          <div key={index}>{questionTypeHandler(fields)}</div>
+          <div key={index}>
+            {QuesionTypeHandler(
+              fields,
+              index,
+              errorValue,
+              formStateHandler,
+              errorClassHandler
+            )}
+          </div>
         ))}
       </div>
       <div className={style.stepSecondBtnPd}>

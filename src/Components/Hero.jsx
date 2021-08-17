@@ -28,6 +28,8 @@ const Hero = ({
     }
   }, [form.step]);
 
+  console.log(form);
+
   const { welcomePage, subTitle, button } = heroState;
 
   return (

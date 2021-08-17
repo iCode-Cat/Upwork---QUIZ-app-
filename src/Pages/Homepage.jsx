@@ -1,18 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import FirstStep from '../Components/FirstStep';
 import Hero from '../Components/Hero';
-import style from '../Scss/Quiz.module.scss';
+import style from '../Scss/Homepage.module.scss';
 import SecondStep from '../Components/SecondStep';
 import ThirdStep from '../Components/ThirdStep';
-import HeroJSON from '../Json/Hero.json';
+import { heroJSON } from '../Json/headless';
 import stepOne from '../Images/stepOne.png';
 import stepTwo from '../Images/stepTwo.png';
 import stepThree from '../Images/stepThree.png';
 
-const Quiz = () => {
+const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 3,
+    step: 2,
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -41,6 +41,7 @@ const Quiz = () => {
     return false;
   };
 
+  // On concluliton delete all steps
   // useEffect(() => {
   //   if (form.step > 3) {
   //     setTimeout(() => {
@@ -56,7 +57,7 @@ const Quiz = () => {
           step1={step1}
           scrollToView={scrollToView}
           hero={hero}
-          HeroJSON={HeroJSON}
+          HeroJSON={heroJSON}
           form={form}
           formStateHandler={formStateHandler}
         />
@@ -79,7 +80,7 @@ const Quiz = () => {
                   step2={step2}
                   scrollToView={scrollToView}
                   step1={step1}
-                  HeroJSON={HeroJSON}
+                  HeroJSON={heroJSON}
                   formStateHandler={formStateHandler}
                   form={form}
                   setForm={setForm}
@@ -101,7 +102,7 @@ const Quiz = () => {
                     step3={step3}
                     scrollToView={scrollToView}
                     step2={step2}
-                    HeroJSON={HeroJSON}
+                    HeroJSON={heroJSON}
                     formStateHandler={formStateHandler}
                     form={form}
                     setForm={setForm}
@@ -114,7 +115,7 @@ const Quiz = () => {
                   hero={hero}
                   scrollToView={scrollToView}
                   step3={step3}
-                  HeroJSON={HeroJSON}
+                  HeroJSON={heroJSON}
                   formStateHandler={formStateHandler}
                   form={form}
                   setForm={setForm}
@@ -128,4 +129,4 @@ const Quiz = () => {
   );
 };
 
-export default Quiz;
+export default Homepage;

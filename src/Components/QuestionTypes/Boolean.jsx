@@ -26,6 +26,7 @@ const Options = ({
       >
         {fields.options.map((btn, i) => (
           <span
+            key={i}
             onClick={() => {
               setShortAnswer({
                 ...shortAnswer,
@@ -38,7 +39,6 @@ const Options = ({
                 value: btn.text,
               });
             }}
-            key={i}
           >
             <Button
               icon={btn.icon}

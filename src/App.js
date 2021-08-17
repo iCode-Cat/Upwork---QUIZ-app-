@@ -1,4 +1,4 @@
-import Homepage from './Pages/Quiz';
+import Homepage from './Pages/Homepage';
 
 function App() {
   return (

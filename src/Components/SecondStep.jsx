@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { steps } from '../Json/Steps';
-import Text from './QuestionTypes/Text';
-import Numeric from './QuestionTypes/Numeric';
-import Boolean from './QuestionTypes/Boolean';
-import Dropdown from './QuestionTypes/Dropdown';
+import { steps } from '../Json/headless';
+import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const SecondStep = ({
   errorClassHandler,
@@ -56,49 +53,6 @@ const SecondStep = ({
     scrollToView(step3);
   };
 
-  const questionTypeHandler = (fields) => {
-    if (fields.questionType === 'text') {
-      return (
-        <Text
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'numeric') {
-      return (
-        <Numeric
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'boolean') {
-      return (
-        <Boolean
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-    if (fields.questionType === 'dropdown') {
-      return (
-        <Dropdown
-          errorValue={errorValue}
-          fields={fields}
-          formStateHandler={formStateHandler}
-          errorClassHandler={errorClassHandler}
-        />
-      );
-    }
-  };
-
   return (
     <form
       ref={step2}
@@ -112,7 +66,15 @@ const SecondStep = ({
         <p>of 3</p>
       </div>
       <div className={style.input_container}>
-        {questions.map((fields) => questionTypeHandler(fields))}
+        {questions.map((fields, index) =>
+          QuesionTypeHandler(
+            fields,
+            index,
+            errorValue,
+            formStateHandler,
+            errorClassHandler
+          )
+        )}
       </div>
       <div className={style.stepSecondBtnPd}>
         <span onClick={checkEmpty} type='submit'>

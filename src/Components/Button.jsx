@@ -11,7 +11,11 @@ const Button = ({ text, type, size, shadow, submit, error, icon }) => {
     >
       {icon ? (
         <i
-          style={{ fontSize: '1.6rem', marginRight: '0.8rem', opacity: '50%' }}
+          style={{
+            fontSize: '1.75rem',
+            marginRight: '0.8rem',
+            opacity: '50%',
+          }}
           className={`fas ${icon}`}
         ></i>
       ) : (

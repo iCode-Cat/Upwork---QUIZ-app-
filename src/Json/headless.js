@@ -123,3 +123,16 @@ module.exports.steps = {
     button: 'Calculate',
   },
 };
+
+module.exports.heroJSON = {
+  welcomePage: {
+    title: 'Cost of Information Risk',
+    sub_title:
+      'See how much money you can save with autonomous <br/> information intelligence in just 3 easy steps.',
+    button_text: 'Start Quiz',
+  },
+  conclusionPage: {
+    title: 'Thanks for participation <br/> in our survey!',
+    sub_title: 'We send you our deal on your email.',
+  },
+};

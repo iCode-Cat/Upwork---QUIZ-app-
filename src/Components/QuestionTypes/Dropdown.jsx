@@ -22,7 +22,7 @@ const Dropdown = ({
   return (
     <div className={style.input_box}>
       <p className={style.input_title}>{fields.text}</p>
-      <div className={style.dropDownWrapper}>
+      <div className={style.relativeWrapper}>
         <input
           style={{ cursor: 'pointer' }}
           onClick={() => {
@@ -49,7 +49,7 @@ const Dropdown = ({
             list={fields.options}
           />
         )}
-        <i class={`fas fa-chevron-up ${style.icon}`}></i>
+        <i className={`fas fa-chevron-up ${style.icon}`}></i>
       </div>
     </div>
   );
