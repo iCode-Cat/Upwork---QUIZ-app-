@@ -50,6 +50,10 @@ const Homepage = () => {
   //   }
   // }, [form]);
 
+  useEffect(() => {
+    document.title = heroJSON.welcomePage.title;
+  }, []);
+
   return (
     <main className={style.wrapper}>
       <article>

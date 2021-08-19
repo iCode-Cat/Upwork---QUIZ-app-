@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial';
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 800px;
+  min-height: 200px;
+  position: relative;
+  padding: 2rem;
+}
+
+.box:nth-child(1) {
+  top: 13px;
+  right: 14px;
+}
+
+.box:nth-child(2) {
+}
+
+.box:nth-child(3) {
+  bottom: 8px;
+  right: 6.5px;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+}
