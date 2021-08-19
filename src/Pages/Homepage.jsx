@@ -5,9 +5,7 @@ import style from '../Scss/Homepage.module.scss';
 import SecondStep from '../Components/SecondStep';
 import ThirdStep from '../Components/ThirdStep';
 import { heroJSON } from '../Json/headless';
-import stepOne from '../Images/stepOne.png';
-import stepTwo from '../Images/stepTwo.png';
-import stepThree from '../Images/stepThree.png';
+import Timeline from '../Components/Timeline';
 
 const Homepage = () => {
   // State that saves user answers
@@ -35,6 +33,8 @@ const Homepage = () => {
       view.current.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
+
+  console.log(step2);
 
   const errorClassHandler = (field) => {
     if (form[field] === '') return true;
@@ -68,15 +68,12 @@ const Homepage = () => {
         {isEnd && (
           <>
             <section className={style.steps}>
-              <img
-                className={style.rope}
-                src={
-                  (form.step === 1 ? stepOne : '') ||
-                  (form.step === 2 ? stepTwo : '') ||
-                  (form.step === 3 ? stepThree : '') ||
-                  (form.step > 3 ? stepThree : '')
-                }
-                alt=''
+              <Timeline
+                form={form}
+                step1={step1}
+                step2={step2}
+                step3={step3}
+                style={style}
               />
               {form.step >= 1 && (
                 <FirstStep
