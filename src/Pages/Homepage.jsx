@@ -6,11 +6,13 @@ import SecondStep from '../Components/SecondStep';
 import ThirdStep from '../Components/ThirdStep';
 import { heroJSON } from '../Json/headless';
 import Timeline from '../Components/Timeline';
+import Stats from '../Components/Stats/Stats';
+import Background from '../Components/Background';
 
 const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 3,
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -33,8 +35,6 @@ const Homepage = () => {
       view.current.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
-
-  console.log(step2);
 
   const errorClassHandler = (field) => {
     if (form[field] === '') return true;
@@ -88,16 +88,7 @@ const Homepage = () => {
                 />
               )}
               {form.step >= 2 && (
-                <div
-                  style={{
-                    background: '#E4F6FC',
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '98.7vw',
-                    justifyContent: 'center',
-                    // marginTop: '9.8rem',
-                  }}
-                >
+                <Background>
                   <SecondStep
                     errorClassHandler={errorClassHandler}
                     step3={step3}
@@ -108,7 +99,7 @@ const Homepage = () => {
                     form={form}
                     setForm={setForm}
                   />
-                </div>
+                </Background>
               )}
               {form.step >= 3 && (
                 <ThirdStep
@@ -123,6 +114,9 @@ const Homepage = () => {
                 />
               )}
             </section>
+            <Background>
+              <Stats />
+            </Background>
           </>
         )}
       </article>

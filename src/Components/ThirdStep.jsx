@@ -57,7 +57,7 @@ const ThirdStep = ({
     <form
       ref={step3}
       onSubmit={(e) => errorHandler(e)}
-      className={`${style.wrapper}  ${style.stepFirst} ${
+      className={`${style.wrapper} ${
         form.step !== index ? style.disableEvents : ''
       }`}
       id='step1'
