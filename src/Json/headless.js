@@ -136,3 +136,61 @@ module.exports.heroJSON = {
     sub_title: 'We send you our deal on your email.',
   },
 };
+
+module.exports.stats = {
+  tabMenuMod: 2,
+  currency: '$',
+  tabMenus: [
+    {
+      key: 0,
+      name: 'Estimate Cost',
+      mainTitle: "Here's how much money </br> you can save EVERY year",
+      costs: [
+        {
+          yourCost: {
+            title: 'Your Current Cost',
+            amount: '1,389,600',
+          },
+          cognniCost: {
+            title: 'With Cognni',
+            amount: '1,036,560',
+          },
+        },
+      ],
+      breakDown: {
+        title: 'Cost break down in the next 12 months:',
+        disclaimer: {
+          isActive: true,
+          content:
+            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool. Cognni undertakes to keep in confidentiality all information provided within the tool. Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+        },
+      },
+    },
+    {
+      key: 1,
+      name: 'Estimate Rist',
+      mainTitle:
+        "Here's how much you can minimize </br> your organization’s Information Risk EVERY year",
+      costs: [
+        {
+          yourCost: {
+            title: 'Your Current Cost',
+            amount: '1,389,600',
+          },
+          cognniCost: {
+            title: 'With Cognni',
+            amount: '1,036,560',
+          },
+        },
+      ],
+      breakDown: {
+        title: 'Cost break down in the next 12 months:',
+        disclaimer: {
+          isActive: true,
+          content:
+            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool. Cognni undertakes to keep in confidentiality all information provided within the tool. Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+        },
+      },
+    },
+  ],
+};

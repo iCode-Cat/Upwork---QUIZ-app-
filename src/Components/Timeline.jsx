@@ -75,7 +75,7 @@ const Timeline = ({ form, step1, step2, step3, style }) => {
           />
         </svg>
       )}
-      {form.step === 3 && (
+      {form.step >= 3 && (
         <svg
           className={style.rope}
           width='972'

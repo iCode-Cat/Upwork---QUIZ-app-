@@ -14,6 +14,7 @@ const ThirdStep = ({
   step3,
   scrollToView,
   hero,
+  results,
 }) => {
   const { stepThreeValue } = steps;
   const questions = stepThreeValue.fields;
@@ -50,7 +51,7 @@ const ThirdStep = ({
     if (checkEmpty()) return;
     form.step === index && formStateHandler({ field: 'step', value: 4 });
     setError(false);
-    scrollToView(hero);
+    scrollToView(results);
   };
 
   return (

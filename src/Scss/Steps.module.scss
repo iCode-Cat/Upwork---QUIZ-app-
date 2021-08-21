@@ -139,3 +139,11 @@
     font-weight: 400;
   }
 }
+
+// Boolean
+.boolean_layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2.5rem;
+}

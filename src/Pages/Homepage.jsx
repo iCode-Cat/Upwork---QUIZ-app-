@@ -18,6 +18,7 @@ const Homepage = () => {
 
   // References
   const hero = useRef();
+  const results = useRef();
   const step1 = useRef();
   const step2 = useRef();
   const step3 = useRef();
@@ -111,11 +112,12 @@ const Homepage = () => {
                   formStateHandler={formStateHandler}
                   form={form}
                   setForm={setForm}
+                  results={results}
                 />
               )}
             </section>
             <Background>
-              <Stats />
+              <Stats results={results} />
             </Background>
           </>
         )}

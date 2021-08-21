@@ -16,14 +16,7 @@ const Options = ({
   return (
     <div className={style.input_box}>
       <p className={style.input_title}>{fields.text}</p>
-      <div
-        style={{
-          display: 'grid',
-          gridAutoFlow: 'column',
-          justifyContent: 'flex-start',
-          gap: '2.5rem',
-        }}
-      >
+      <div className={style.boolean_layout}>
         {fields.options.map((btn, i) => (
           <span
             key={i}
