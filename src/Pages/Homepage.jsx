@@ -12,7 +12,7 @@ import Background from '../Components/Background';
 const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 3,
+    step: '',
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -116,9 +116,11 @@ const Homepage = () => {
                 />
               )}
             </section>
-            <Background>
-              <Stats results={results} />
-            </Background>
+            {form.step >= 4 && (
+              <Background>
+                <Stats results={results} />
+              </Background>
+            )}
           </>
         )}
       </article>

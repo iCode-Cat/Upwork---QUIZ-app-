@@ -1,4 +1,14 @@
 $black: #34314c;
+$blue: #2196f3;
+// Tabmenu and Cost Area
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .tabMenu {
   display: grid;
@@ -17,6 +27,13 @@ $black: #34314c;
     color: $black;
     font-weight: 600;
   }
+  &_progressContainer {
+    align-items: center;
+    justify-content: center;
+    margin-top: 6.4rem;
+    display: grid;
+    gap: 2.8rem;
+  }
 }
 
 .menuItem {
@@ -28,8 +45,61 @@ $black: #34314c;
   color: $black;
 }
 
+// Breakdown Area
+
+.breakDown {
+  margin-top: 9.6rem;
+  &_title {
+    text-align: center;
+    color: $black;
+    font-weight: 600;
+    font-size: 3.4rem;
+  }
+  &_stats {
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+    justify-content: space-between;
+    gap: 8rem;
+    width: 98vw;
+    max-width: 800px;
+    margin-top: 6.4rem;
+  }
+}
+
+.svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &_container {
+    position: absolute;
+  }
+  &_currency,
+  &_amount {
+    display: inline;
+    font-size: 4rem;
+    color: $blue;
+    font-weight: 700;
+  }
+  &_subTitle {
+    text-align: center;
+    color: $black;
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+}
+
+.labels {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 8rem;
+  align-items: center;
+}
+
 .Active {
-  border-bottom: 2px solid #2196f3;
+  border-bottom: 2px solid $blue;
 }
 
 .Passive {

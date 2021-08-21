@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import style from '../../Scss/Stats.module.scss';
 import { stats } from '../../Json/headless';
+import ToggleMenu from './ToggleMenu';
+import CostStats from './CostStats';
+import BreakDown from './BreakDown';
 
 const Stats = ({ results }) => {
   const [toggle, setToggle] = useState(0);
@@ -10,24 +13,18 @@ const Stats = ({ results }) => {
       {/* TAB MENU */}
       <div className={style.tabMenu}>
         {stats.tabMenus.map((menu, index) => (
-          <p
-            onClick={() => setToggle(menu.key)}
-            className={`${style.menuItem} ${
-              toggle === menu.key ? style.Active : style.Passive
-            }`}
-            key={index}
-          >
-            {menu.name}
-          </p>
+          <ToggleMenu
+            menu={menu}
+            style={style}
+            toggle={toggle}
+            setToggle={setToggle}
+          />
         ))}
       </div>
       {/* TAB CONTENT */}
-      <div className={style.tabMenu_content}>
-        <p
-          className={style.tabMenu_title}
-          dangerouslySetInnerHTML={{ __html: stats.tabMenus[toggle].mainTitle }}
-        />
-      </div>
+
+      <CostStats style={style} data={stats.tabMenus[toggle]} />
+      <BreakDown style={style} data={stats.tabMenus[toggle]} />
     </section>
   );
 };
