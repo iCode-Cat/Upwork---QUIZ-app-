@@ -7,7 +7,7 @@ const Numeric = ({
   errorClassHandler,
 }) => {
   const input = useRef();
-  const [inputValue, setInputValue] = useState(100);
+  const [inputValue, setInputValue] = useState(fields.placeholder);
   const step = 1;
 
   const increment = () => {
@@ -22,7 +22,7 @@ const Numeric = ({
     input.current.value = inputValue;
     formStateHandler({
       field: fields.stateName,
-      value: inputValue,
+      value: Number(inputValue),
     });
   }, [inputValue]);
 
@@ -31,11 +31,13 @@ const Numeric = ({
       <p className={style.input_title}>{fields.text}</p>
       <div className={style.relativeWrapper}>
         <input
+          style={{ textAlign: 'center' }}
+          onChange={(e) => setInputValue(e.target.value)}
           ref={input}
           required
-          placeholder={fields.initialValue}
+          placeholder={fields.placeholder}
           min='0'
-          max='999999'
+          max='255000'
           type='number'
           defaultValue={inputValue}
           className={`${style.input} ${
@@ -44,11 +46,11 @@ const Numeric = ({
               : ''
           }`}
         />
-        <div className={style.icon_box}>
+        {/* <div className={style.icon_box}>
           <i onClick={decrement} className='fas fa-chevron-left'></i>
           <p>100</p>
           <i onClick={increment} className='fas fa-chevron-right'></i>
-        </div>
+        </div> */}
       </div>
     </div>
   );

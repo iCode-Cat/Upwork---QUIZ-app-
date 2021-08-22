@@ -4,6 +4,7 @@ import { stats } from '../../Json/headless';
 import ToggleMenu from './ToggleMenu';
 import CostStats from './CostStats';
 import BreakDown from './BreakDown';
+import triangle from '../../Images/triangleBlue.svg';
 
 const Stats = ({ results }) => {
   const [toggle, setToggle] = useState(0);
@@ -14,6 +15,7 @@ const Stats = ({ results }) => {
       <div className={style.tabMenu}>
         {stats.tabMenus.map((menu, index) => (
           <ToggleMenu
+            key={index}
             menu={menu}
             style={style}
             toggle={toggle}
@@ -25,6 +27,10 @@ const Stats = ({ results }) => {
 
       <CostStats style={style} data={stats.tabMenus[toggle]} />
       <BreakDown style={style} data={stats.tabMenus[toggle]} />
+      <div className={style.cta}>
+        <p className={style.cta_text}>{stats.ctaText}</p>
+        <img src={triangle} alt='icon' className={style.cta_icon} />
+      </div>
     </section>
   );
 };

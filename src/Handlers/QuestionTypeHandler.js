@@ -3,6 +3,7 @@ import Numeric from '../Components/QuestionTypes/Numeric';
 import Boolean from '../Components/QuestionTypes/Boolean';
 import Dropdown from '../Components/QuestionTypes/Dropdown';
 
+// Handle question types according to JSON
 const QuestionTypeHandler = (
   fields,
   index,

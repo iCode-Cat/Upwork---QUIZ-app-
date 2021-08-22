@@ -1,8 +1,9 @@
 .wrapper {
   // padding-bottom: 7.5rem;
+  overflow: hidden;
 }
 .steps {
-  width: 100vw;
+  width: 100%;
   max-width: 1071px;
   margin: 0 auto;
   display: grid;

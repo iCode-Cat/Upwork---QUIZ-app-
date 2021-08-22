@@ -85,7 +85,7 @@ const ThirdStep = ({
           <Button
             submit
             size='btnLg'
-            type={`${form.step === index ? 'btnGreen' : 'btnGray'}`}
+            type={`${form.step === index ? 'btnGreen' : 'btnGreen'}`}
             text={stepThreeValue.button}
           />
         </span>

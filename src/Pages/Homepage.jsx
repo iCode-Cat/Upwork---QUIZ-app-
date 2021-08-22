@@ -8,11 +8,13 @@ import { heroJSON } from '../Json/headless';
 import Timeline from '../Components/Timeline';
 import Stats from '../Components/Stats/Stats';
 import Background from '../Components/Background';
+import footer from '../Images/footer.png';
+import header from '../Images/header.png';
 
 const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 4,
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -58,6 +60,7 @@ const Homepage = () => {
   return (
     <main className={style.wrapper}>
       <article>
+        <img width='100%' src={header} alt='' />
         <Hero
           step1={step1}
           scrollToView={scrollToView}
@@ -121,6 +124,7 @@ const Homepage = () => {
                 <Stats results={results} />
               </Background>
             )}
+            <img width='100%' src={footer} alt='' />
           </>
         )}
       </article>

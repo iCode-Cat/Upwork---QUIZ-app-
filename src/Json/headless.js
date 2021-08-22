@@ -29,7 +29,7 @@ module.exports.steps = {
         stateName: 'numberEmployees',
         text: 'Number of employees',
         questionType: 'numeric',
-        initialValue: 100,
+        placeholder: 'Enter number',
       },
       {
         name: 'Working with cloud?',
@@ -139,7 +139,7 @@ module.exports.heroJSON = {
 
 module.exports.stats = {
   tabMenuMod: 2,
-
+  ctaText: 'Want to Learn More?',
   tabMenus: [
     {
       key: 0,
@@ -160,11 +160,11 @@ module.exports.stats = {
         },
       ],
       breakDown: {
-        title: 'Cost break down in the next 12 months:',
+        title: "Here's how the break down in the next 12 months:",
         disclaimer: {
           isActive: true,
           content:
-            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool. Cognni undertakes to keep in confidentiality all information provided within the tool. Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. <br/><br/> The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool.<br/><br/> Cognni undertakes to keep in confidentiality all information provided within the tool.<br/><br/>  Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
         },
         labels: [
           {
@@ -214,27 +214,27 @@ module.exports.stats = {
         disclaimer: {
           isActive: true,
           content:
-            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool. Cognni undertakes to keep in confidentiality all information provided within the tool. Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+            'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. <br/><br/> The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool.<br/><br/> Cognni undertakes to keep in confidentiality all information provided within the tool.<br/><br/>  Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
         },
         labels: [
           {
             color: '#2196F3',
-            name: 'Implementing MIP',
+            name: 'Reduced Insider Potential Impact',
             value: '$190,800',
           },
           {
             color: '#00B746',
-            name: 'Know Your Data',
+            name: 'Reduced Databreach Potential Impact',
             value: '$124,800',
           },
           {
             color: '#565656',
-            name: 'Detecting Risks',
+            name: 'Reduced Ransomeware Potential Impact',
             value: '$32,640',
           },
           {
             color: '#FFC300',
-            name: 'Investigating Incidents',
+            name: 'Reduced Information Likelihood',
             value: '$12,240',
           },
         ],
