@@ -14,7 +14,7 @@ import header from '../Images/header.png';
 const Homepage = () => {
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 4,
+    step: '',
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -120,7 +120,7 @@ const Homepage = () => {
               )}
             </section>
             {form.step >= 4 && (
-              <Background>
+              <Background bg>
                 <Stats results={results} />
               </Background>
             )}

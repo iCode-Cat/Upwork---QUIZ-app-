@@ -3,7 +3,7 @@ import ProgressBar from '@ramonak/react-progress-bar';
 
 const CostStats = ({ style, data }) => {
   const { yourCost, cognniCost } = data.costs[0];
-  console.log(yourCost);
+  const numberFormat = new Intl.NumberFormat('en-US');
 
   return (
     <section className={style.tabMenu_content}>
@@ -26,7 +26,7 @@ const CostStats = ({ style, data }) => {
             isLabelVisible={false}
           />
           <p className={`${style.progressBar_cost} ${style.textDark}`}>
-            {'$' + yourCost.amount}
+            {'$ ' + numberFormat.format(yourCost.amount)}
           </p>
         </div>
         <div className={style.progressBar}>
@@ -43,7 +43,7 @@ const CostStats = ({ style, data }) => {
             isLabelVisible={false}
           />
           <p className={`${style.progressBar_cost} ${style.textWhite}`}>
-            {'$' + cognniCost.amount}
+            {'$ ' + numberFormat.format(cognniCost.amount)}
           </p>
         </div>
       </div>

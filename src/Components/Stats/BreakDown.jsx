@@ -26,10 +26,11 @@ const Labels = ({ style, data }) => {
 };
 
 const BreakDown = ({ data, style }) => {
-  const { costs } = data;
+  const { costs, breakDown } = data;
   const { yourCost, cognniCost } = costs[0];
+  const { disclaimer } = breakDown;
   const [isVisible, setIsVisible] = useState(false);
-
+  const totalSaving = Number(yourCost.amount) - Number(cognniCost.amount);
   return (
     <section className={style.breakDown}>
       <p className={style.breakDown_title}>{data.breakDown.title}</p>
@@ -39,7 +40,7 @@ const BreakDown = ({ data, style }) => {
             <p className={style.svg_currency}>{data.currency}</p>
             {/* SAVING AMOUNT */}
             <p className={style.svg_amount}>
-              {Number(yourCost.amount) - Number(cognniCost.amount)}
+              {totalSaving.toString().slice(0, 3) + 'K'}
             </p>
             <p className={style.svg_subTitle}>{data.subTitle}</p>
           </div>
@@ -47,20 +48,21 @@ const BreakDown = ({ data, style }) => {
         </span>
         <Labels style={style} data={data.breakDown.labels} />
         {/* DISCLAIMER */}
-
-        <div
-          onMouseEnter={() => setIsVisible(true)}
-          onMouseLeave={() => setIsVisible(false)}
-          className={style.disclaimer}
-        >
-          <PopupInfo
-            isVisible={isVisible}
-            disclaimer={data.breakDown.disclaimer}
-            setIsVisible={setIsVisible}
-          />
-          <img src={info} alt='info-icon' className={style.disclaimer_icon} />
-          <p className={style.disclaimer_text}>Disclaimer</p>
-        </div>
+        {disclaimer.isActive && (
+          <div
+            onMouseEnter={() => setIsVisible(true)}
+            onMouseLeave={() => setIsVisible(false)}
+            className={style.disclaimer}
+          >
+            <PopupInfo
+              isVisible={isVisible}
+              disclaimer={data.breakDown.disclaimer}
+              setIsVisible={setIsVisible}
+            />
+            <img src={info} alt='info-icon' className={style.disclaimer_icon} />
+            <p className={style.disclaimer_text}>Disclaimer</p>
+          </div>
+        )}
       </div>
     </section>
   );

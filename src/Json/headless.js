@@ -144,7 +144,7 @@ module.exports.stats = {
     {
       key: 0,
       currency: '$',
-      subTitle: 'savings',
+      subTitle: 'Savings',
       name: 'Estimate Cost',
       mainTitle: "Here's how much money </br> you can save EVERY year",
       costs: [
@@ -194,7 +194,7 @@ module.exports.stats = {
       key: 1,
       currency: '$',
       name: 'Estimate Rist',
-      subTitle: 'savings',
+      subTitle: 'Savings',
       mainTitle:
         "Here's how much you can minimize </br> your organization’s Information Risk EVERY year",
       costs: [
@@ -212,7 +212,7 @@ module.exports.stats = {
       breakDown: {
         title: 'Cost break down in the next 12 months:',
         disclaimer: {
-          isActive: true,
+          isActive: false,
           content:
             'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. <br/><br/> The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool.<br/><br/> Cognni undertakes to keep in confidentiality all information provided within the tool.<br/><br/>  Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
         },
