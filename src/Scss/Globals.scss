@@ -26,6 +26,10 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 // Hide input number arrows
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

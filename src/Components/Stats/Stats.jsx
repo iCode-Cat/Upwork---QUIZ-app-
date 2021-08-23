@@ -55,10 +55,10 @@ const Stats = ({ results }) => {
 
             <CostStats style={style} data={stats.tabMenus[toggle]} />
             <BreakDown style={style} data={stats.tabMenus[toggle]} />
-            <div className={style.cta}>
+            <a href={stats.ctaUrl} className={style.cta}>
               <p className={style.cta_text}>{stats.ctaText}</p>
               <img src={triangle} alt='icon' className={style.cta_icon} />
-            </div>
+            </a>
           </>
         )}{' '}
       </>

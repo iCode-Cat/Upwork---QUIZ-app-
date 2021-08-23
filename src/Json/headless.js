@@ -141,6 +141,7 @@ module.exports.heroJSON = {
 module.exports.stats = {
   tabMenuMod: 2,
   ctaText: 'Want to Learn More?',
+  ctaUrl: '/',
   tabMenus: [
     {
       key: 0,
