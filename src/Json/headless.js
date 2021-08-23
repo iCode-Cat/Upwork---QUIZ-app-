@@ -35,6 +35,7 @@ module.exports.steps = {
         name: 'Working with cloud?',
         stateName: 'workingCloud',
         text: 'Are your organization working on the cloud',
+
         questionType: 'boolean',
         options: [
           {
@@ -50,20 +51,20 @@ module.exports.steps = {
       {
         name: 'Working with cloud v2?',
         stateName: 'workingCloudv2',
-        text: 'Are your organization working on the cloud',
-        questionType: 'boolean',
+        text: 'Which of those information risks are you working to minimize in the next 12 months?',
+        questionType: 'booleanMulti',
 
         options: [
           {
-            text: 'Yes',
+            text: 'Deploy MIP',
             icon: 'fa-check',
           },
           {
-            text: 'Maybe',
+            text: 'Data breach',
             icon: false,
           },
           {
-            text: 'No',
+            text: 'Compliance & Governance',
             icon: 'fa-check',
           },
         ],

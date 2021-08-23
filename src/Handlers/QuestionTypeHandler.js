@@ -2,6 +2,7 @@ import Text from '../Components/QuestionTypes/Text';
 import Numeric from '../Components/QuestionTypes/Numeric';
 import Boolean from '../Components/QuestionTypes/Boolean';
 import Dropdown from '../Components/QuestionTypes/Dropdown';
+import BooleanMulti from '../Components/QuestionTypes/BooleanMulti';
 
 // Handle question types according to JSON
 const QuestionTypeHandler = (
@@ -36,6 +37,17 @@ const QuestionTypeHandler = (
   if (fields.questionType === 'boolean') {
     return (
       <Boolean
+        key={index}
+        errorValue={errorValue}
+        fields={fields}
+        formStateHandler={formStateHandler}
+        errorClassHandler={errorClassHandler}
+      />
+    );
+  }
+  if (fields.questionType === 'booleanMulti') {
+    return (
+      <BooleanMulti
         key={index}
         errorValue={errorValue}
         fields={fields}
