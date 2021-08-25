@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import style from '../../Scss/Stats.module.scss';
-import { stats } from '../../Json/headless';
+import { defaultJson } from '../../Json/default';
 import ToggleMenu from './ToggleMenu';
 import CostStats from './CostStats';
 import BreakDown from './BreakDown';
@@ -13,7 +13,7 @@ const TabHandler = ({ setToggle, tabMode }) => {
 
 const Stats = ({ results }) => {
   const [toggle, setToggle] = useState(0);
-  const tabMode = stats.tabMenuMod;
+  const tabMode = defaultJson.stats.tabMenuMod;
   const [loader, setLoader] = useState(true);
 
   setTimeout(() => {

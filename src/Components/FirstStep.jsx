@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { steps } from '../Json/headless';
+import { defaultJson } from '../Json/default';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const FirstStep = ({
@@ -15,13 +15,13 @@ const FirstStep = ({
   scrollToView,
   step2,
 }) => {
-  const { stepOneValue } = steps;
-  const questions = stepOneValue.fields;
-  const { index } = stepOneValue;
+  const { steps } = defaultJson;
+  const questions = steps[0].fields;
+  const { index } = steps[0];
   const [errorValue, setError] = useState(false);
 
   const stateHandler = () => {
-    stepOneValue.fields.map((value) => {
+    questions.fields.map((value) => {
       const formField = value.stateName;
       form[formField] = '';
       setForm({ ...form });

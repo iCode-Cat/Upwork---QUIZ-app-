@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { steps } from '../Json/headless';
+import { defaultJson } from '../Json/default';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const SecondStep = ({
