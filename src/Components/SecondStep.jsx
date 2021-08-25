@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { defaultJson } from '../Json/default';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const SecondStep = ({
   errorClassHandler,
-  HeroJSON,
+  defaultJson,
   formStateHandler,
   form,
   setForm,
   step2,
   step3,
   scrollToView,
+  results,
 }) => {
-  const { stepTwoValue } = steps;
-  const questions = stepTwoValue.fields;
-  const { index } = stepTwoValue;
+  const { steps } = defaultJson;
+  const questions = steps[1].fields;
+  const { index } = steps[1];
   const [errorValue, setError] = useState(false);
 
   const stateHandler = () => {
-    stepTwoValue.fields.map((value) => {
+    questions.map((value) => {
       const formField = value.stateName;
       form[formField] = '';
       setForm({ ...form });
@@ -32,8 +32,15 @@ const SecondStep = ({
     stateHandler();
   }, []);
 
+  const checkLastStep = () => {
+    if (index === defaultJson.numberOfSteps) {
+      return true;
+    }
+    return false;
+  };
+
   const checkEmpty = () => {
-    const result = stepTwoValue.fields.map((value) => {
+    const result = questions.map((value) => {
       const formField = value.stateName;
       if (form[formField] === '') {
         setError(true);
@@ -48,9 +55,13 @@ const SecondStep = ({
   const errorHandler = (e) => {
     e.preventDefault();
     if (checkEmpty()) return;
-    form.step === index && formStateHandler({ field: 'step', value: 3 });
+    form.step === index &&
+      formStateHandler({
+        field: 'step',
+        value: checkLastStep() ? 4 : index + 1,
+      });
     setError(false);
-    scrollToView(step3);
+    checkLastStep() ? scrollToView(results) : scrollToView(step3);
   };
 
   return (
@@ -63,7 +74,7 @@ const SecondStep = ({
     >
       <div className={style.step}>
         <strong>Step {index}</strong>
-        <p>of 3</p>
+        <p>of {defaultJson.numberOfSteps}</p>
       </div>
       <div className={style.input_container}>
         {questions.map((fields, index) =>
@@ -78,12 +89,21 @@ const SecondStep = ({
       </div>
       <div className={style.stepSecondBtnPd}>
         <span onClick={checkEmpty} type='submit'>
-          <Button
-            submit
-            size='btnLg'
-            type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
-            text={stepTwoValue.button}
-          />
+          {checkLastStep() ? (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnGreen' : 'btnGreen'}`}
+              text={defaultJson.ctaButton}
+            />
+          ) : (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
+              text={defaultJson.nextButton}
+            />
+          )}
         </span>
         {errorValue && <ErrorMessage />}
       </div>

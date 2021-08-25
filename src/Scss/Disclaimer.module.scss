@@ -1,0 +1,16 @@
+// Disclaimer
+.disclaimer {
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 3.8rem;
+  grid-row: 1/2;
+  position: relative;
+  cursor: pointer;
+  &_icon {
+  }
+  &_text {
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+}

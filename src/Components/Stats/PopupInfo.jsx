@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import info from '../../Images/info.svg';
 
-const PopupInfo = ({ disclaimer, isVisible }) => {
+const PopupInfo = ({ disclaimer, isVisible, label }) => {
   const Wrapper = styled.section`
     display: ${isVisible ? 'grid' : 'none'};
     grid-template-columns: auto auto;
@@ -11,10 +11,10 @@ const PopupInfo = ({ disclaimer, isVisible }) => {
     border-radius: 8px;
     position: absolute;
     width: 100vw;
-    max-width: 755px;
+    max-width: ${label ? '455px' : '755px'};
     padding: 2.4rem;
     bottom: 30px;
-    margin-left: 6.3rem;
+    margin-left: ${label ? '-20.3rem' : '6.3rem'};
     transition: 1s;
     cursor: text;
   `;

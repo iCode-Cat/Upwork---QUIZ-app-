@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
-import { defaultJson } from '../Json/default';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 
 const ThirdStep = ({
   errorClassHandler,
-  HeroJSON,
+  defaultJson,
   formStateHandler,
   form,
   setForm,
@@ -16,13 +15,13 @@ const ThirdStep = ({
   hero,
   results,
 }) => {
-  const { stepThreeValue } = steps;
-  const questions = stepThreeValue.fields;
-  const { index } = stepThreeValue;
+  const { steps } = defaultJson;
+  const questions = steps[2].fields;
+  const { index } = steps[2];
   const [errorValue, setError] = useState(false);
 
   const stateHandler = () => {
-    stepThreeValue.fields.map((value) => {
+    questions.map((value) => {
       const formField = value.stateName;
       form[formField] = '';
       setForm({ ...form });
@@ -33,8 +32,15 @@ const ThirdStep = ({
     stateHandler();
   }, []);
 
+  const checkLastStep = () => {
+    if (index === defaultJson.numberOfSteps) {
+      return true;
+    }
+    return false;
+  };
+
   const checkEmpty = () => {
-    const result = stepThreeValue.fields.map((value) => {
+    const result = questions.map((value) => {
       const formField = value.stateName;
       if (form[formField] === '') {
         setError(true);
@@ -49,7 +55,11 @@ const ThirdStep = ({
   const errorHandler = (e) => {
     e.preventDefault();
     if (checkEmpty()) return;
-    form.step === index && formStateHandler({ field: 'step', value: 4 });
+    form.step === index &&
+      formStateHandler({
+        field: 'step',
+        value: checkLastStep() ? 4 : index + 1,
+      });
     setError(false);
     scrollToView(results);
   };
@@ -65,7 +75,7 @@ const ThirdStep = ({
     >
       <div className={style.step}>
         <strong>Step {index}</strong>
-        <p>of 3</p>
+        <p>of {defaultJson.numberOfSteps}</p>
       </div>
       <div className={style.input_container}>
         {questions.map((fields, index) => (
@@ -82,12 +92,21 @@ const ThirdStep = ({
       </div>
       <div className={style.stepSecondBtnPd}>
         <span type='submit'>
-          <Button
-            submit
-            size='btnLg'
-            type={`${form.step === index ? 'btnGreen' : 'btnGreen'}`}
-            text={stepThreeValue.button}
-          />
+          {checkLastStep() ? (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnGreen' : 'btnGreen'}`}
+              text={defaultJson.ctaButton}
+            />
+          ) : (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
+              text={defaultJson.nextButton}
+            />
+          )}
         </span>
         {errorValue && <ErrorMessage />}
       </div>

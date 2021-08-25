@@ -112,12 +112,12 @@ $blue: #2196f3;
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: center;
-  gap: 4rem 2rem;
+  gap: 4rem 7rem;
   align-items: center;
 
   &_container {
     display: grid;
-    grid-template-columns: 1fr 195px;
+    grid-template-columns: 1fr 190px;
     gap: 0.4rem 2.4rem;
   }
   &_value {
@@ -126,6 +126,8 @@ $blue: #2196f3;
     font-size: 2.4rem;
   }
   &_title {
+    display: flex;
+    align-items: center;
     grid-column: 2/3;
     font-weight: 400;
     color: $main;

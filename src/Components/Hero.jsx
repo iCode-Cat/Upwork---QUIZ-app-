@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import style from '../Scss/Hero.module.scss';
 import Button from './Button';
-import Logo from '../Images/logo.svg';
 
 const Hero = ({
   formStateHandler,
   form,
-  HeroJSON,
+  defaultJson,
   hero,
   scrollToView,
   step1,
@@ -15,20 +14,18 @@ const Hero = ({
 
   useEffect(() => {
     setHeroState({
-      welcomePage: HeroJSON.welcomePage.title,
-      subTitle: HeroJSON.welcomePage.sub_title,
-      button: HeroJSON.welcomePage.button_text,
+      welcomePage: defaultJson.hero.title,
+      subTitle: defaultJson.hero.sub_title,
+      button: defaultJson.hero.button_text,
     });
     if (form.step > 3) {
       setHeroState({
-        welcomePage: HeroJSON.conclusionPage.title,
-        subTitle: HeroJSON.conclusionPage.sub_title,
+        welcomePage: defaultJson.conclusion.title,
+        subTitle: defaultJson.conclusion.sub_title,
         button: false,
       });
     }
   }, [form.step]);
-
-  console.log(form);
 
   const { welcomePage, subTitle, button } = heroState;
 
@@ -61,7 +58,11 @@ const Hero = ({
             </span>
           )}
         </div>
-        <img src={Logo} alt='logo-company' className={style.logo} />
+        <img
+          src={defaultJson.hero.image}
+          alt='logo-company'
+          className={style.logo}
+        />
       </div>
     </section>
   );

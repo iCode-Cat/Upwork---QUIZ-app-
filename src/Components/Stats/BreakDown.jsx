@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import circle from '../../Images/circle.svg';
 import info from '../../Images/info.svg';
+import Dislaimer from './Dislaimer';
 import PopupInfo from './PopupInfo.jsx';
+import classes from '../../Scss/Disclaimer.module.scss';
 
 const Labels = ({ style, data }) => {
+  console.log(data);
   return (
     <section className={style.labels}>
-      {data.map((item, index) => (
+      {data.labels.map((item, index) => (
         <div key={index} className={style.labels_container}>
           <div
             style={{
@@ -17,8 +20,22 @@ const Labels = ({ style, data }) => {
             }}
             className={style.labels_dot}
           ></div>
+
           <p className={style.labels_value}>{item.value}</p>
-          <p className={style.labels_title}>{item.name}</p>
+          <div className={style.labels_title}>
+            <p>{item.name}</p>
+            <div>
+              {!data.disclaimer.isActive && (
+                <Dislaimer
+                  label={true}
+                  data={data}
+                  style={classes}
+                  info={info}
+                />
+              )}
+            </div>
+          </div>
+          {/* DISCLAIMER */}
         </div>
       ))}
     </section>
@@ -46,7 +63,7 @@ const BreakDown = ({ data, style }) => {
           </div>
           <img src={circle} alt='circle' className={style.breakDown_svg} />
         </span>
-        <Labels style={style} data={data.breakDown.labels} />
+        <Labels style={style} data={data.breakDown} />
         {/* DISCLAIMER */}
         {disclaimer.isActive && (
           <div
