@@ -1,4 +1,4 @@
-module.exports.defaultJson = {
+module.exports.oxfordJson = {
   numberOfSteps: 2,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
@@ -9,7 +9,8 @@ module.exports.defaultJson = {
     sub_title:
       'See how much money you can save with autonomous <br/> information intelligence in just 3 easy steps.',
     button_text: 'Start Quiz',
-    image: '/logo.svg',
+    image:
+      'https://cognni.ai/wp-content/uploads/2020/09/OCG-Landscape-Logo-clear.png',
   },
   conclusion: {
     title: 'Thanks for participation <br/> in our survey!',

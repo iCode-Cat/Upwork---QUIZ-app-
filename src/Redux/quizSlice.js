@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
+import { oxfordJson } from '../Json/oxford_123';
 
 const initialState = {
   defaultJson,
