@@ -12,6 +12,7 @@ const Labels = ({ style, data }) => {
       {data.labels.map((item, index) => (
         <div key={index} className={style.labels_container}>
           <div
+            className={style.labels_dot}
             style={{
               background: item.color,
               width: '24px',

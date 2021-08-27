@@ -45,7 +45,7 @@
   max-width: 263px;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 60em) {
   .wrapper {
     height: unset;
   }
@@ -55,6 +55,7 @@
   }
   .hero_container {
     padding: 0rem 3rem;
+    justify-content: center;
   }
   .hero {
     margin-top: 6rem;
@@ -68,6 +69,8 @@
     .description {
       font-size: 1.6rem;
       white-space: pre-wrap;
+
+      width: 100%;
       line-height: 27px;
       margin-top: -0.8rem;
     }

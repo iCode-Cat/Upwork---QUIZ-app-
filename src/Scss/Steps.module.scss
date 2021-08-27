@@ -1,5 +1,6 @@
 .wrapper {
-  width: 525px;
+  width: 100%;
+  max-width: 525px;
   display: grid;
   gap: 5rem;
   align-items: center;
@@ -131,7 +132,7 @@
 
 @media (max-width: 50em) {
   .wrapper {
-    width: 100vw;
+    // width: 100vw;
     align-items: center;
     justify-items: unset;
     max-width: unset !important;
@@ -148,5 +149,19 @@
   }
   .stepSecondBtnPd {
     padding-bottom: unset !important;
+  }
+}
+
+@media (max-width: 50em) {
+  .boolean_layout {
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 1.6rem;
+    span {
+      flex: 1 0;
+      min-width: 150px;
+    }
   }
 }

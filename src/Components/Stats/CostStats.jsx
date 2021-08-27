@@ -15,8 +15,8 @@ const CostStats = ({ style, data }) => {
         <div className={style.progressBar}>
           <p className={style.progressBar_title}>{yourCost.title}</p>
           <ProgressBar
+            className={style.bar1}
             completed='85'
-            width='344px'
             baseBgColor='hsla(187, 10%, 84%, 0.301)'
             bgColor='hsla(0, 0%, 61%, 0.200)'
             labelAlignment='center'
@@ -32,8 +32,8 @@ const CostStats = ({ style, data }) => {
         <div className={style.progressBar}>
           <p className={style.progressBar_title}>{cognniCost.title}</p>
           <ProgressBar
+            className={style.bar2}
             completed='70'
-            width='344px'
             baseBgColor='#D2EDF6'
             bgColor='#2196F3'
             labelAlignment='center'
