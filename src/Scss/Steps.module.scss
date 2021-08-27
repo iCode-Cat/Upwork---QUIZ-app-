@@ -147,3 +147,21 @@
   justify-content: flex-start;
   gap: 2.5rem;
 }
+
+@media (max-width: 50em) {
+  .wrapper {
+    width: 100vw;
+    align-items: center;
+    justify-items: unset;
+    background: red;
+    max-width: unset !important;
+    padding-right: 2.5rem;
+    padding-left: 6.3rem;
+  }
+  form {
+    display: grid;
+  }
+  .input {
+    width: 100%;
+  }
+}

@@ -44,3 +44,37 @@
   width: 100%;
   max-width: 263px;
 }
+
+@media (max-width: 50em) {
+  .wrapper {
+    height: unset;
+  }
+  // Ignore line break
+  br {
+    display: none;
+  }
+  .hero_container {
+    padding: 0rem 3rem;
+  }
+  .hero {
+    margin-top: 6rem;
+    gap: 1.6rem;
+    .title {
+      font-size: 3.4rem;
+      white-space: pre-wrap;
+      max-width: 317px;
+      line-height: 42px;
+    }
+    .description {
+      font-size: 1.6rem;
+      white-space: pre-wrap;
+      line-height: 27px;
+      margin-top: -0.8rem;
+    }
+  }
+  .logo {
+    grid-row: 2/3;
+    max-width: 180px;
+    margin-top: 2.4rem;
+  }
+}
