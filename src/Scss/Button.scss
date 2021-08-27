@@ -70,3 +70,8 @@
 .submitError {
   border: 1px solid #ff8282;
 }
+@media (max-width: 50em) {
+  .btn_settings {
+    font-size: 1.6rem;
+  }
+}

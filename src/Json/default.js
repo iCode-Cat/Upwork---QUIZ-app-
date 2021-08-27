@@ -73,16 +73,16 @@ module.exports.defaultJson = {
 
           options: [
             {
-              text: 'Deploy MIP',
+              text: 'Yes',
               icon: 'fa-check',
             },
             {
-              text: 'Data breach',
+              text: 'No',
+              icon: 'fa-check',
+            },
+            {
+              text: 'Partially',
               icon: false,
-            },
-            {
-              text: 'Compliance & Governance',
-              icon: 'fa-check',
             },
           ],
         },
