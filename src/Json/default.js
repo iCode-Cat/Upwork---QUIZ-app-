@@ -144,6 +144,7 @@ module.exports.defaultJson = {
     tabMenuMod: 2,
     ctaText: 'Want to Learn More?',
     ctaUrl: '/',
+    currency: '$',
     tabMenus: [
       {
         key: 0,
@@ -176,24 +177,26 @@ module.exports.defaultJson = {
               name: 'Implementing MIP',
               value: '$190,800',
               content: 'hello',
+              formulaVariable: 232,
             },
             {
               color: '#00B746',
               name: 'Know Your Data',
               value: '$124,800',
               content: 'hello',
+              formulaVariable: 232,
             },
             {
               color: '#565656',
               name: 'Detecting Risks',
-              value: '$32,640',
               content: 'hello',
+              formulaVariable: 232,
             },
             {
               color: '#FFC300',
               name: 'Investigating Incidents',
-              value: '$12,240',
               content: 'hello',
+              formulaVariable: 232,
             },
           ],
         },
@@ -209,11 +212,9 @@ module.exports.defaultJson = {
           {
             yourCost: {
               title: 'Your Current Cost',
-              amount: '1700000',
             },
             cognniCost: {
               title: 'With Cognni',
-              amount: '1500000',
             },
           },
         ],
@@ -228,22 +229,22 @@ module.exports.defaultJson = {
             {
               color: '#2196F3',
               name: 'Reduced Insider Potential Impact',
-              value: '$190,800',
+              formulaVariable: 232,
             },
             {
               color: '#00B746',
               name: 'Reduced Databreach Potential Impact',
-              value: '$124,800',
+              formulaVariable: 232,
             },
             {
               color: '#565656',
               name: 'Reduced Ransomeware Potential Impact',
-              value: '$32,640',
+              formulaVariable: 232,
             },
             {
               color: '#FFC300',
               name: 'Reduced Information Likelihood',
-              value: '$12,240',
+              formulaVariable: 232,
             },
           ],
         },

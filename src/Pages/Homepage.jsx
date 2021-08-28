@@ -9,11 +9,13 @@ import Stats from '../Components/Stats/Stats';
 import Background from '../Components/Background';
 import footer from '../Images/footer.png';
 import header from '../Images/header.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserState } from '../Redux/quizSlice';
 
 const Homepage = () => {
   // Main state
   const state = useSelector((state) => state.quiz);
+  const dispatch = useDispatch();
   const defaultJson = state.defaultJson;
 
   // State that saves user answers
@@ -54,6 +56,11 @@ const Homepage = () => {
   useEffect(() => {
     document.title = defaultJson.hero.title;
   }, []);
+
+  // Update redux user state
+  useEffect(() => {
+    dispatch(setUserState(form));
+  }, [form]);
 
   return (
     <main className={style.wrapper}>

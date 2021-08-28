@@ -1,7 +1,10 @@
 import React from 'react';
 import ProgressBar from '@ramonak/react-progress-bar';
+import { useSelector } from 'react-redux';
 
-const CostStats = ({ style, data }) => {
+const CostStats = ({ style, data, toggle }) => {
+  const formulas = useSelector((state) => state.quiz.userState.results);
+
   const { yourCost, cognniCost } = data.costs[0];
   const numberFormat = new Intl.NumberFormat('en-US');
 
@@ -26,7 +29,7 @@ const CostStats = ({ style, data }) => {
             isLabelVisible={false}
           />
           <p className={`${style.progressBar_cost} ${style.textDark}`}>
-            {'$ ' + numberFormat.format(yourCost.amount)}
+            {'$ ' + numberFormat.format(formulas[toggle].withOutFormula)}
           </p>
         </div>
         <div className={style.progressBar}>
@@ -43,7 +46,7 @@ const CostStats = ({ style, data }) => {
             isLabelVisible={false}
           />
           <p className={`${style.progressBar_cost} ${style.textWhite}`}>
-            {'$ ' + numberFormat.format(cognniCost.amount)}
+            {'$ ' + numberFormat.format(formulas[toggle].withFormula)}
           </p>
         </div>
       </div>

@@ -4,6 +4,7 @@ import ToggleMenu from './ToggleMenu';
 import CostStats from './CostStats';
 import BreakDown from './BreakDown';
 import triangle from '../../Images/triangleBlue.svg';
+import { useSelector } from 'react-redux';
 
 const TabHandler = ({ setToggle, tabMode }) => {
   setToggle(tabMode);
@@ -11,6 +12,7 @@ const TabHandler = ({ setToggle, tabMode }) => {
 };
 
 const Stats = ({ results, defaultJson }) => {
+  const state = useSelector((state) => state.quiz.userState);
   const { stats } = defaultJson;
   const [toggle, setToggle] = useState(0);
   const tabMode = defaultJson.stats.tabMenuMod;
@@ -53,8 +55,18 @@ const Stats = ({ results, defaultJson }) => {
               )}
             </div>
 
-            <CostStats style={style} data={stats.tabMenus[toggle]} />
-            <BreakDown style={style} data={stats.tabMenus[toggle]} />
+            {state.results && (
+              <CostStats
+                toggle={toggle}
+                style={style}
+                data={stats.tabMenus[toggle]}
+              />
+            )}
+            <BreakDown
+              toggle={toggle}
+              style={style}
+              data={stats.tabMenus[toggle]}
+            />
             <a href={stats.ctaUrl} className={style.cta}>
               <p className={style.cta_text}>{stats.ctaText}</p>
               <img src={triangle} alt='icon' className={style.cta_icon} />
