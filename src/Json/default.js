@@ -229,22 +229,22 @@ module.exports.defaultJson = {
             {
               color: '#2196F3',
               name: 'Reduced Insider Potential Impact',
-              formulaVariable: 232,
+              formulaVariable: 130,
             },
             {
               color: '#00B746',
               name: 'Reduced Databreach Potential Impact',
-              formulaVariable: 232,
+              formulaVariable: 130,
             },
             {
               color: '#565656',
               name: 'Reduced Ransomeware Potential Impact',
-              formulaVariable: 232,
+              formulaVariable: 130,
             },
             {
               color: '#FFC300',
               name: 'Reduced Information Likelihood',
-              formulaVariable: 232,
+              formulaVariable: 130,
             },
           ],
         },
