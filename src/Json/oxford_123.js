@@ -1,5 +1,5 @@
 module.exports.oxfordJson = {
-  numberOfSteps: 2,
+  numberOfSteps: 3,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   parterId: null,
