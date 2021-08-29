@@ -3,14 +3,10 @@
   overflow: hidden;
 }
 .steps {
-  width: 100%;
-  max-width: 1071px;
+  // max-width: 1071px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+  grid-template-columns: 1fr;
   position: relative;
 }
 

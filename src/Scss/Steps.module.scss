@@ -1,6 +1,7 @@
 .wrapper {
   width: 100%;
   max-width: 525px;
+  margin: 0 auto;
   display: grid;
   gap: 5rem;
   align-items: center;
@@ -47,6 +48,7 @@
 .input_container {
   display: grid;
   gap: 4rem;
+  width: 100%;
 }
 
 .input_box {
@@ -65,7 +67,7 @@
 }
 
 .input {
-  width: 525px;
+  width: 100%;
   border-radius: 100px;
   height: 50px;
   border: 1px solid #aeaeae;
@@ -95,6 +97,7 @@
 }
 
 .relativeWrapper {
+  width: 100%;
   position: relative;
 }
 

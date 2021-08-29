@@ -9,7 +9,7 @@ const Background = (props) => {
         backgroundPosition: 'bottom',
         display: 'flex',
         alignItems: 'center',
-        width: '98.7vw',
+        // width: '98.7vw',
         justifyContent: 'center',
         // marginTop: '9.8rem',
       }}

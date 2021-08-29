@@ -5,10 +5,10 @@ module.exports.defaultJson = {
   parterId: null,
   campaignId: null,
   hero: {
-    title: 'Cost of Information Risk',
+    title: 'Calculate Cognni’s ROI',
     sub_title:
-      'See how much money you can save with autonomous <br/> information intelligence in just 3 easy steps.',
-    button_text: 'Start Quiz',
+      'See how much you can save with autonomous mapping </br> and information intelligence',
+    button_text: 'Start Calculation',
     image: '/logo.svg',
   },
   conclusion: {
@@ -20,20 +20,19 @@ module.exports.defaultJson = {
       index: 1,
       fields: [
         {
+          name: 'Number of employees',
+          stateName: 'numberEmployees',
+          text: 'Number of employees',
+          questionType: 'numeric',
+          placeholder: 'Enter number',
+        },
+        {
           name: 'email',
           stateName: 'email',
           text: 'Enter your corporate email to get started',
           placeholder: 'Corporate email',
           questionType: 'text',
           validation: 'email',
-        },
-        {
-          name: 'company name',
-          stateName: 'companyName',
-          text: 'Your company name',
-          placeholder: 'Company name',
-          questionType: 'text',
-          validation: 'text',
         },
       ],
       button: 'Next Step',
@@ -42,30 +41,6 @@ module.exports.defaultJson = {
       index: 2,
       fields: [
         {
-          name: 'Number of employees',
-          stateName: 'numberEmployees',
-          text: 'Number of employees',
-          questionType: 'numeric',
-          placeholder: 'Enter number',
-        },
-        {
-          name: 'Working with cloud?',
-          stateName: 'workingCloud',
-          text: 'Are your organization working on the cloud',
-
-          questionType: 'boolean',
-          options: [
-            {
-              text: 'Yes',
-              icon: 'fa-check',
-            },
-            {
-              text: 'No',
-              icon: 'fa-times',
-            },
-          ],
-        },
-        {
           name: 'Working with cloud v2?',
           stateName: 'workingCloudv2',
           text: 'Which of those information risks are you working to minimize in the next 12 months?',
@@ -73,15 +48,23 @@ module.exports.defaultJson = {
 
           options: [
             {
-              text: 'Yes',
+              text: 'Data breach',
               icon: 'fa-check',
             },
             {
-              text: 'No',
+              text: 'Insider Threats',
               icon: 'fa-check',
             },
             {
-              text: 'Partially',
+              text: 'Insider Threats',
+              icon: false,
+            },
+            {
+              text: 'Regulation & Compliance',
+              icon: false,
+            },
+            {
+              text: 'Ransomware',
               icon: false,
             },
           ],
