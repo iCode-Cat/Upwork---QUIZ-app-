@@ -1,5 +1,6 @@
 .wrapper {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 22rem;
   justify-content: center;
   align-items: center;
@@ -13,16 +14,14 @@
 
 .hero_container {
   display: grid;
-  gap: 1rem;
+  padding: 2rem;
+  gap: 15rem;
   grid-template-columns: repeat(2, auto);
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   justify-items: center;
 
-  // padding: 0 0;
-  // max-width: 1036px;
-  max-width: 1136px;
-  padding: 0 5rem;
+  // padding: 0 5rem;
 }
 
 .hero {
@@ -54,6 +53,7 @@
     display: none;
   }
   .hero_container {
+    gap: 1rem;
     padding: 0rem 3rem;
     justify-content: center;
   }

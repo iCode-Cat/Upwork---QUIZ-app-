@@ -31,7 +31,7 @@ const Numeric = ({
       <p className={style.input_title}>{fields.text}</p>
       <div className={style.relativeWrapper}>
         <input
-          style={{ textAlign: 'center' }}
+          // style={{ textAlign: 'center' }}
           onChange={(e) => setInputValue(e.target.value)}
           ref={input}
           required

@@ -5,7 +5,7 @@ import ThirdStep from '../Components/ThirdStep';
 import Hero from '../Components/Hero';
 import style from '../Scss/Homepage.module.scss';
 import Timeline from '../Components/Timeline';
-import Stats from '../Components/Stats/Stats';
+import Stats from '../Components/Statsv2/Stats';
 import Background from '../Components/Background';
 import footer from '../Images/footer.png';
 import header from '../Images/header.png';
@@ -20,7 +20,7 @@ const Homepage = () => {
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 4,
   });
 
   console.log(form);
@@ -128,9 +128,12 @@ const Homepage = () => {
             </section>
 
             {form.step >= 4 && (
-              <Background bg>
-                <Stats defaultJson={defaultJson} results={results} />
-              </Background>
+              <>
+                {/* OLD VERSION */}
+                {/* <Stats defaultJson={defaultJson} results={results} /> */}
+                {/* NEW VERSION */}
+                <Stats />
+              </>
             )}
             <img width='100%' src={footer} alt='' />
           </>

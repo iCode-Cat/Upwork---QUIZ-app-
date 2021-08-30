@@ -4,7 +4,7 @@ const Background = (props) => {
   return (
     <div
       style={{
-        background: props.bg ? 'url("/background.jpg")' : '#E4F6FC',
+        background: props.bg ? 'url("/background.jpg")' : '#ddf2f7',
         backgroundSize: 'cover',
         backgroundPosition: 'bottom',
         display: 'flex',
