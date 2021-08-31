@@ -49,7 +49,7 @@ const BooleanMulti = ({
                 errorValue && errorClassHandler(fields.stateName) ? true : false
               }`}
               text={btn.text}
-              size='btnMd'
+              size='btnSm'
               type={
                 shortAnswer.find((answer) => answer.index === i)
                   ? 'btnBlueMutaiton'

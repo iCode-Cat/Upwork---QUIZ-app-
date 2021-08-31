@@ -39,7 +39,7 @@ const Options = ({
                 errorValue && errorClassHandler(fields.stateName) ? true : false
               }`}
               text={btn.text}
-              size='btnMd'
+              size='btnSm'
               type={
                 shortAnswer.isAnswered && shortAnswer.index === i
                   ? 'btnBlueMutaiton'

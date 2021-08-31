@@ -11,6 +11,7 @@ import footer from '../Images/footer.png';
 import header from '../Images/header.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
+import AnimatedButton from '../Components/AnimatedButton';
 
 const Homepage = () => {
   // Main state
@@ -132,7 +133,10 @@ const Homepage = () => {
                 {/* OLD VERSION */}
                 {/* <Stats defaultJson={defaultJson} results={results} /> */}
                 {/* NEW VERSION */}
-                <Stats />
+                <Background bg>
+                  <Stats />
+                </Background>
+                <AnimatedButton />
               </>
             )}
             <img width='100%' src={footer} alt='' />

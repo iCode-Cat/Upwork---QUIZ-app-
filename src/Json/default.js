@@ -128,10 +128,10 @@ module.exports.defaultJson = {
     ctaText: 'Want to Learn More?',
     ctaUrl: '/',
     currency: '$',
+    disclaimer: true,
     tabMenus: [
       {
         key: 0,
-        currency: '$',
         subTitle: 'Savings',
         name: 'Cost of Information Protection',
         mainTitle: 'Potential financial impact',
@@ -172,7 +172,6 @@ module.exports.defaultJson = {
       },
       {
         key: 1,
-        currency: '$',
         name: 'Cost of Exposure',
         subTitle: 'Savings',
         mainTitle: 'Potential financial impact',
@@ -189,17 +188,17 @@ module.exports.defaultJson = {
         labels: [
           {
             color: '#2196F3',
-            name: 'Classiying your critical data',
+            name: 'Insider Risk',
             formulaVariable: 130,
           },
           {
             color: '#00B746',
-            name: 'Managing information behavior',
+            name: 'Data Breach',
             formulaVariable: 130,
           },
           {
             color: '#565656',
-            name: 'Detecting information risks',
+            name: 'Ransomware',
             formulaVariable: 130,
           },
           // {

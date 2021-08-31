@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Compare from './Compare';
 import './Stats.scss';
 import Toggle from './Toggle';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Graphics from './Graphics';
-import Slider from 'react-slick';
 import SlideShow from './SlideShow';
 
 const Stats = () => {
@@ -41,8 +37,7 @@ const Stats = () => {
   return (
     <section className='stats-wrapper'>
       <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
-
-      <SlideShow mainTitle={mainTitle} labels={labels} />
+      <SlideShow mainTitle={mainTitle} labels={labels} toggle={toggle} />
     </section>
   );
 };
