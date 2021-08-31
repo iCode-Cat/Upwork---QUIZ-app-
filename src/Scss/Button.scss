@@ -39,7 +39,13 @@
   color: #fff;
 }
 
-.btnGray {
+.btnGreenDisable {
+  background: #4caf50;
+  opacity: 60%;
+  color: #fff;
+}
+
+.btnBlueDisable {
   background: hsla(207, 90%, 54%, 0.6);
   color: #fff;
 }

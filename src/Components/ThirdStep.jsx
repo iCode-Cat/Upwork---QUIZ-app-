@@ -96,14 +96,14 @@ const ThirdStep = ({
             <Button
               submit
               size='btnLg'
-              type={`${form.step === index ? 'btnGreen' : 'btnGreen'}`}
+              type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
               text={defaultJson.ctaButton}
             />
           ) : (
             <Button
               submit
               size='btnLg'
-              type={`${form.step === index ? 'btnBlue' : 'btnGray'}`}
+              type={`${form.step === index ? 'btnBlue' : 'btnBlueDisable'}`}
               text={defaultJson.nextButton}
             />
           )}
