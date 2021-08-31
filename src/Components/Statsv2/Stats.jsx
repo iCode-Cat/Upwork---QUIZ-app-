@@ -41,9 +41,8 @@ const Stats = () => {
   return (
     <section className='stats-wrapper'>
       <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
-      <Graphics mainTitle={mainTitle} labels={labels} />
-      <Compare />
-      {/* <SlideShow mainTitle={mainTitle} labels={labels} /> */}
+
+      <SlideShow mainTitle={mainTitle} labels={labels} />
     </section>
   );
 };

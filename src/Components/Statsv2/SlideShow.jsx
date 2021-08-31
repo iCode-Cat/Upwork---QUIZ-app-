@@ -1,15 +1,16 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import Compare from './Compare';
 import Graphics from './Graphics';
 
-const SlideShow = ({ mainTitle, Labels }) => {
+const SlideShow = ({ mainTitle, labels }) => {
   return (
     <Carousel>
       <Carousel.Item>
-        <Graphics />
+        <Graphics mainTitle={mainTitle} labels={labels} />
       </Carousel.Item>
       <Carousel.Item>
-        <h1>HELLO</h1>
+        <Compare />
       </Carousel.Item>
     </Carousel>
   );
