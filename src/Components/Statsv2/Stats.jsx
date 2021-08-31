@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Carousel from './Carousel';
 import Circle from './Circle';
+import Compare from './Compare';
 import Labels from './Labels';
 import './Stats.scss';
 import Title from './Title';
 import Toggle from './Toggle';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Stats = () => {
   // Redux State
@@ -37,6 +40,7 @@ const Stats = () => {
         <Circle />
         <Labels labels={labels} />
       </div>
+      <Compare />
     </section>
   );
 };
