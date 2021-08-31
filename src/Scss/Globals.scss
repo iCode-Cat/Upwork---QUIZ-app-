@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --black: #34314c;
+  --lightBlue: #e4f6fc;
+  --blue: #2196f3;
+  --main: #565656;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +27,7 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  background: none;
 }
 
 input {

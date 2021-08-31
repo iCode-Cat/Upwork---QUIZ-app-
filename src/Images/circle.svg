@@ -1,6 +1,8 @@
-<svg width="244" height="244" viewBox="0 0 244 244" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M159 16.1485C134.315 7.63417 107.429 7.97203 82.9668 17.104C58.5046 26.2359 37.9959 43.5909 24.9689 66.1834C11.9418 88.7758 7.21106 115.193 11.5904 140.89C14.0316 155.215 19.2187 168.817 26.7578 181" stroke="#2196F3" stroke-width="20" stroke-linecap="round"/>
-<path d="M43 201C58.6944 216.757 78.6904 227.488 100.459 231.835C113.559 234.451 126.946 234.685 140 232.598" stroke="#00B746" stroke-width="20" stroke-linecap="round"/>
-<path d="M183 28C194.249 35.2801 204.17 44.5517 212.231 55.4385C222.078 68.7393 228.792 83.9682 232 100" stroke="#FFC300" stroke-width="20" stroke-linecap="round"/>
-<path d="M165 226C185.442 217.508 202.913 203.127 215.206 184.676C226.822 167.24 233.32 146.91 234 126" stroke="#565656" stroke-width="20" stroke-linecap="round"/>
+<svg width="238" height="238" viewBox="0 0 238 238" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Rectangle">
+<path id="Ellipse 15" d="M156 13.1485C131.315 4.63417 104.429 4.97203 79.9668 14.104C55.5046 23.2359 34.9959 40.5909 21.9689 63.1834C8.94185 85.7758 4.21106 112.193 8.59035 137.89C11.0316 152.215 16.2187 165.817 23.7578 178" stroke="#2196F3" stroke-width="14" stroke-linecap="round"/>
+<path id="Ellipse 13" d="M40 198C55.6944 213.757 75.6904 224.488 97.4592 228.835C110.559 231.451 123.946 231.685 137 229.598" stroke="#00B746" stroke-width="14" stroke-linecap="round"/>
+<path id="Ellipse 14" d="M180 25C191.249 32.2801 201.17 41.5517 209.231 52.4385C219.078 65.7393 225.792 80.9682 229 97" stroke="#FFC300" stroke-width="14" stroke-linecap="round"/>
+<path id="Ellipse 16" d="M162 223C182.442 214.508 199.913 200.127 212.206 181.676C223.822 164.24 230.32 143.91 231 123" stroke="#565656" stroke-width="14" stroke-linecap="round"/>
+</g>
 </svg>

@@ -133,8 +133,8 @@ module.exports.defaultJson = {
         key: 0,
         currency: '$',
         subTitle: 'Savings',
-        name: 'Estimate Cost',
-        mainTitle: "Here's how much money </br> you can save EVERY year",
+        name: 'Cost of Information Protection',
+        mainTitle: 'Potential financial impact',
         costs: [
           {
             yourCost: {
@@ -147,50 +147,35 @@ module.exports.defaultJson = {
             },
           },
         ],
-        breakDown: {
-          title: "Here's how the break down in the next 12 months:",
-          disclaimer: {
-            isActive: true,
-            content:
-              'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. <br/><br/> The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool.<br/><br/> Cognni undertakes to keep in confidentiality all information provided within the tool.<br/><br/>  Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+        labels: [
+          {
+            color: '#2196F3',
+            name: 'Classiying your critical data',
+            formulaVariable: 130,
           },
-          labels: [
-            {
-              color: '#2196F3',
-              name: 'Implementing MIP',
-              value: '$190,800',
-              content: 'hello',
-              formulaVariable: 232,
-            },
-            {
-              color: '#00B746',
-              name: 'Know Your Data',
-              value: '$124,800',
-              content: 'hello',
-              formulaVariable: 232,
-            },
-            {
-              color: '#565656',
-              name: 'Detecting Risks',
-              content: 'hello',
-              formulaVariable: 232,
-            },
-            {
-              color: '#FFC300',
-              name: 'Investigating Incidents',
-              content: 'hello',
-              formulaVariable: 232,
-            },
-          ],
-        },
+          {
+            color: '#00B746',
+            name: 'Managing information behavior',
+            formulaVariable: 130,
+          },
+          {
+            color: '#565656',
+            name: 'Detecting information risks',
+            formulaVariable: 130,
+          },
+          {
+            color: '#FFC300',
+            name: 'Investigating risks',
+            formulaVariable: 130,
+          },
+        ],
       },
       {
         key: 1,
         currency: '$',
-        name: 'Estimate Rist',
+        name: 'Cost of Exposure',
         subTitle: 'Savings',
-        mainTitle:
-          "Here's how much you can minimize </br> your organization’s Information Risk EVERY year",
+        mainTitle: 'Potential financial impact',
         costs: [
           {
             yourCost: {
@@ -201,36 +186,28 @@ module.exports.defaultJson = {
             },
           },
         ],
-        breakDown: {
-          title: 'Cost break down in the next 12 months:',
-          disclaimer: {
-            isActive: false,
-            content:
-              'The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni\'s experience. <br/><br/> The Cognni Calculator is provided "as is" and Cognni does not warrant nor make any representations regarding the use, validity, or accuracy of the results of this tool.<br/><br/> Cognni undertakes to keep in confidentiality all information provided within the tool.<br/><br/>  Actual savings may vary and a more accurate result, that will also take into account the investment in purchasing the Cognni Security Management Solution, may be obtained by contacting us via the online contact form.',
+        labels: [
+          {
+            color: '#2196F3',
+            name: 'Classiying your critical data',
+            formulaVariable: 130,
           },
-          labels: [
-            {
-              color: '#2196F3',
-              name: 'Reduced Insider Potential Impact',
-              formulaVariable: 130,
-            },
-            {
-              color: '#00B746',
-              name: 'Reduced Databreach Potential Impact',
-              formulaVariable: 130,
-            },
-            {
-              color: '#565656',
-              name: 'Reduced Ransomeware Potential Impact',
-              formulaVariable: 130,
-            },
-            {
-              color: '#FFC300',
-              name: 'Reduced Information Likelihood',
-              formulaVariable: 130,
-            },
-          ],
-        },
+          {
+            color: '#00B746',
+            name: 'Managing information behavior',
+            formulaVariable: 130,
+          },
+          {
+            color: '#565656',
+            name: 'Detecting information risks',
+            formulaVariable: 130,
+          },
+          // {
+          //   color: '#FFC300',
+          //   name: 'Investigating risks',
+          //   formulaVariable: 130,
+          // },
+        ],
       },
     ],
   },
