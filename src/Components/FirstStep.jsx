@@ -3,6 +3,7 @@ import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
+import { Terms } from './Terms';
 
 const FirstStep = ({
   errorClassHandler,
@@ -108,6 +109,7 @@ const FirstStep = ({
         </span>
         {errorValue && <ErrorMessage />}
       </div>
+      <Terms />
     </form>
   );
 };

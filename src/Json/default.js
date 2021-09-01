@@ -15,6 +15,12 @@ module.exports.defaultJson = {
     title: 'Thanks for participation <br/> in our survey!',
     sub_title: 'We send you our deal on your email.',
   },
+  terms: {
+    content:
+      'I agree to receive my quiz results and a series of emails that will teach me how to get potential financial impact. I also have read and agree to the Privacy Policy and Terms of Service.',
+    privacyPolicyUrl: '/',
+    termsOfServiceUrl: '/',
+  },
   steps: [
     {
       index: 1,

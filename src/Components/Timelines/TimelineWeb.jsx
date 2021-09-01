@@ -8,7 +8,7 @@ const TimelineWeb = () => {
   const userState = useSelector((state) => state.quiz.userState);
   const { step } = userState;
 
-  const ropeOneHeight = 650;
+  const ropeOneHeight = 710;
 
   return (
     <div className='svg-animation'>
@@ -132,13 +132,13 @@ const TimelineWeb = () => {
                     <svg
                       className='rightRope2 rightRope'
                       width='2'
-                      height='286'
-                      viewBox='0 0 2 186'
+                      height='300'
+                      viewBox='0 0 2 286'
                       fill='none'
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        d='M1 0L1.00001 286'
+                        d='M1 0L1.00001 300'
                         stroke='black'
                         stroke-dasharray='3 3'
                       />
