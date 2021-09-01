@@ -4,7 +4,7 @@ import './Stats.scss';
 import Toggle from './Toggle';
 import SlideShow from './SlideShow';
 
-const Stats = () => {
+const Stats = ({ results }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -35,7 +35,7 @@ const Stats = () => {
   console.log(data);
 
   return (
-    <section className='stats-wrapper'>
+    <section ref={results} className='stats-wrapper'>
       <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
       <SlideShow mainTitle={mainTitle} labels={labels} toggle={toggle} />
     </section>

@@ -12,6 +12,7 @@ import header from '../Images/header.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import AnimatedButton from '../Components/AnimatedButton';
+import TimelineWeb from '../Components/Timelines/TimelineWeb';
 
 const Homepage = () => {
   // Main state
@@ -21,7 +22,7 @@ const Homepage = () => {
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 4,
+    step: '',
   });
 
   console.log(form);
@@ -78,13 +79,7 @@ const Homepage = () => {
         {isEnd && (
           <>
             <section className={style.steps}>
-              {/* <Timeline
-                  form={form}
-                  step1={step1}
-                  step2={step2}
-                  step3={step3}
-                  style={style}
-                /> */}
+              <TimelineWeb />
               {form.step >= 1 && (
                 <FirstStep
                   errorClassHandler={errorClassHandler}
@@ -134,7 +129,7 @@ const Homepage = () => {
                 {/* <Stats defaultJson={defaultJson} results={results} /> */}
                 {/* NEW VERSION */}
                 <Background bg>
-                  <Stats />
+                  <Stats results={results} />
                 </Background>
                 <AnimatedButton />
               </>

@@ -1,0 +1,93 @@
+.svg-animation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 2s;
+  width: 970px;
+  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: 2s;
+  }
+  #rope1 {
+    transition: 2s;
+  }
+
+  .yellow-arrows {
+    position: absolute;
+    left: -7px;
+    height: 100%;
+    animation-name: rope1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    #yellow1 {
+      transform: translateY(-130px);
+    }
+    #yellow2 {
+      transform: translateY(-110px);
+    }
+  }
+
+  .green-arrows {
+    position: absolute;
+    right: -7px;
+    height: 100%;
+    top: 40%;
+    z-index: 1;
+    animation-name: rope2;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    #green1 {
+      left: 10px;
+      bottom: 0;
+      transform: translateY(190px);
+    }
+    #green2 {
+      transform: translateY(170px);
+    }
+  }
+
+  .leftCorner1 {
+    position: absolute;
+    z-index: 999;
+    bottom: -58px;
+    left: 0.5px;
+  }
+  .horizantal1 {
+    position: absolute;
+    bottom: -58px;
+    left: 56px;
+  }
+  .rightCorner1 {
+    position: absolute;
+    bottom: -127px;
+    right: 0;
+  }
+  .rightRope {
+    position: absolute;
+    right: -0.3px;
+    bottom: -316px;
+    z-index: 0;
+  }
+}
+
+@keyframes rope1 {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 40%;
+  }
+}
+
+@keyframes rope2 {
+  0% {
+    top: 40%;
+  }
+  100% {
+    top: 68%;
+  }
+}
