@@ -66,11 +66,34 @@
     bottom: -127px;
     right: 0;
   }
+
   .rightRope {
     position: absolute;
     right: -0.3px;
     bottom: -316px;
     z-index: 0;
+    &2 {
+      bottom: -550px;
+    }
+  }
+  .rightCornerBottom {
+    position: absolute;
+    right: 0;
+    bottom: -95.1%;
+  }
+  .bottomRope2 {
+    position: absolute;
+    bottom: -95.1%;
+    right: 58px;
+  }
+  .rightCorner2 {
+    position: absolute;
+    bottom: -101.2%;
+    right: 420px;
+    width: 100px;
+  }
+  #blueArrow {
+    transform: translateY(27px) translate(-7px);
   }
 }
 

@@ -125,6 +125,75 @@ const TimelineWeb = () => {
                   stroke-dasharray='3 3'
                 />
               </svg>
+              {
+                /* LEVEL 3 */
+                step >= 3 && (
+                  <>
+                    <svg
+                      className='rightRope2 rightRope'
+                      width='2'
+                      height='286'
+                      viewBox='0 0 2 186'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M1 0L1.00001 286'
+                        stroke='black'
+                        stroke-dasharray='3 3'
+                      />
+                    </svg>
+                    <svg
+                      className='rightCornerBottom'
+                      width='59'
+                      height='66'
+                      viewBox='0 0 59 66'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M58 -2.53526e-06L58 45C58 56.0457 49.0457 65 38 65L29 65L2.84124e-06 65'
+                        stroke='black'
+                        stroke-dasharray='3 3'
+                      />
+                    </svg>
+                    <svg
+                      className='bottomRope2'
+                      width='389'
+                      height='2'
+                      viewBox='0 0 389 2'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M0 1L389 0.999966'
+                        stroke='black'
+                        stroke-dasharray='3 3'
+                      />
+                    </svg>
+                    <svg
+                      className='rightCorner2'
+                      width='40'
+                      height='42'
+                      viewBox='0 0 40 42'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M40 0.999999L21 1.00001C9.95429 1.00002 1 9.95433 1 21L1 21.5L1 42'
+                        stroke='black'
+                        stroke-dasharray='3 3'
+                      />
+                      <path
+                        id='blueArrow'
+                        d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
+                        fill='#2196F3'
+                        stroke='black'
+                      />
+                    </svg>
+                  </>
+                )
+              }
             </>
           )}
         </>
