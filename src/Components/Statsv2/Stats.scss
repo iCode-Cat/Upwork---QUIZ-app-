@@ -83,7 +83,6 @@
 
 // Green Button Animations
 #layer2 {
-  opacity: 0;
   animation-name: fade2;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -93,15 +92,11 @@
 }
 
 #layer1 {
-  opacity: 0;
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
-  animation-delay: 1s;
-  animation-fill-mode: both;
   animation-delay: 2s;
-  transition: 1s;
   animation-timing-function: ease-in-out;
 }
 
