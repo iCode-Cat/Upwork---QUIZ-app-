@@ -4,6 +4,7 @@ import ToggleMenu from './ToggleMenu';
 import CostStats from './CostStats';
 import BreakDown from './BreakDown';
 import triangle from '../../Images/triangleBlue.svg';
+import Pin from '../../Images/Pin.svg';
 import { useSelector } from 'react-redux';
 
 const TabHandler = ({ setToggle, tabMode }) => {
@@ -72,8 +73,9 @@ const Stats = ({ results, defaultJson }) => {
               <img src={triangle} alt='icon' className={style.cta_icon} />
             </a>
           </>
-        )}{' '}
+        )}
       </>
+      Pin
     </section>
   );
 };

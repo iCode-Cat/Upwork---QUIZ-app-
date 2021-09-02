@@ -1,9 +1,24 @@
 import React from 'react';
 import style from '../../Scss/Steps.module.scss';
+import styled from 'styled-components';
+
+const Astral = styled.p`
+  color: var(--red);
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
 const Input = ({ errorValue, fields, formStateHandler, errorClassHandler }) => {
   return (
     <div className={style.input_box}>
-      <p className={style.input_title}>{fields.text}</p>
+      <TextWrapper>
+        <p className={style.input_title}>{fields.text}</p>
+        <Astral>*</Astral>
+      </TextWrapper>
+
       <input
         onChange={(e) =>
           formStateHandler({

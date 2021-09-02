@@ -20,6 +20,7 @@ const FirstStep = ({
   const questions = steps[0].fields;
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const stateHandler = () => {
     questions.map((value) => {
@@ -43,7 +44,7 @@ const FirstStep = ({
   const checkEmpty = () => {
     const result = questions.map((value) => {
       const formField = value.stateName;
-      if (form[formField] === '') {
+      if (form[formField] === '' || !checked) {
         setError(true);
         return true;
       }
@@ -102,14 +103,16 @@ const FirstStep = ({
             <Button
               submit
               size='btnLg'
-              type={`${form.step === index ? 'btnBlue' : 'btnBlueDisable'}`}
+              type={`${
+                form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
+              }`}
               text={defaultJson.nextButton}
             />
           )}
         </span>
-        {errorValue && <ErrorMessage />}
+        {errorValue && <ErrorMessage checked={checked} />}
       </div>
-      <Terms />
+      <Terms step={form.step} setChecked={setChecked} checked={checked} />
     </form>
   );
 };

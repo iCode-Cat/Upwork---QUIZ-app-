@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   align-items: flex-start;
   max-width: 602px;
   width: 80vw;
-  opacity: ${(props) => (props.checked ? '60%' : '100%')};
+  /* If step bigger than 1, disable to click */
+  opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
 `;
 
 const Icon = styled.img`
@@ -24,19 +25,27 @@ const Text = styled.p`
   color: var(--main);
 `;
 
-export const Terms = () => {
-  const [checked, setChecked] = useState(false);
+const Link = styled.a`
+  color: var(--blue);
+`;
 
+export const Terms = ({ checked, setChecked, step }) => {
   const terms = useSelector((state) => state.quiz.defaultJson.terms);
+  // Term text from json
   const { content } = terms;
   return (
-    <Wrapper checked={checked}>
+    <Wrapper checked={checked} step={step}>
       <Icon
         onClick={() => setChecked(!checked)}
         src={checked ? checkedTrue : checkFalse}
         alt='check-false'
       />
-      <Text>{content}</Text>
+      <Text>
+        I agree to receive my quiz results and a series of emails that will
+        teach me how to get potential financial impact. I also have read and
+        agree to the <Link href='/'>Privacy Policy</Link> and
+        <Link href='/'> Terms of Service.</Link>
+      </Text>
     </Wrapper>
   );
 };

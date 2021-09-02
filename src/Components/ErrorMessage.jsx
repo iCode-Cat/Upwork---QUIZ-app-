@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({ checked }) => {
   const errorMsg = {
     color: '#ff8282',
     fontSize: '1.5rem',
@@ -9,7 +9,13 @@ const ErrorMessage = () => {
     marginLeft: '2rem',
   };
 
-  return <span style={errorMsg}>Fill all red fields before next step</span>;
+  return (
+    <span style={errorMsg}>
+      {!checked
+        ? 'Accept the term and conditions'
+        : 'Fill all red fields before next step'}
+    </span>
+  );
 };
 
 export default ErrorMessage;
