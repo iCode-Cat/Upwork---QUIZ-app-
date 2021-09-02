@@ -1,6 +1,7 @@
 .stats {
   &-wrapper {
     display: grid;
+    position: relative;
     place-items: center;
     width: 1170px;
     margin: 14.6rem auto 10rem auto;
@@ -14,6 +15,11 @@
     font-weight: 600;
     color: var(--black);
     margin-top: 6.3rem;
+  }
+  // Pin SVG
+  &-pin {
+    position: absolute;
+    bottom: -160px;
   }
 }
 

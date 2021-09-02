@@ -4,7 +4,7 @@ import ToggleMenu from './ToggleMenu';
 import CostStats from './CostStats';
 import BreakDown from './BreakDown';
 import triangle from '../../Images/triangleBlue.svg';
-import Pin from '../../Images/Pin.svg';
+
 import { useSelector } from 'react-redux';
 
 const TabHandler = ({ setToggle, tabMode }) => {
@@ -24,7 +24,11 @@ const Stats = ({ results, defaultJson }) => {
   }, 3000);
 
   return (
-    <section ref={results} className={style.wrapper}>
+    <section
+      style={{ display: 'none' }}
+      ref={results}
+      className={style.wrapper}
+    >
       <>
         {loader ? (
           <p
@@ -66,6 +70,7 @@ const Stats = ({ results, defaultJson }) => {
             <BreakDown
               toggle={toggle}
               style={style}
+              disclaimer={true}
               data={stats.tabMenus[toggle]}
             />
             <a href={stats.ctaUrl} className={style.cta}>
@@ -75,7 +80,6 @@ const Stats = ({ results, defaultJson }) => {
           </>
         )}
       </>
-      Pin
     </section>
   );
 };

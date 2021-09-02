@@ -48,9 +48,9 @@ const Labels = ({ style, data, toggle, withFormula }) => {
 
 const BreakDown = ({ data, style, toggle }) => {
   const dispatch = useDispatch();
-  const { costs, breakDown } = data;
+  const { costs } = data;
   const { yourCost, cognniCost } = costs[0];
-  const { disclaimer } = breakDown;
+  // const { disclaimer } = breakDown;
   const [isVisible, setIsVisible] = useState(false);
   const [resultWithFormula, setResultWithFormula] = useState({});
   const totalSaving = Number(yourCost.amount) - Number(cognniCost.amount);
@@ -68,7 +68,7 @@ const BreakDown = ({ data, style, toggle }) => {
   };
   // Send to server
   const withFormula = tabMenus.map((item, index) => {
-    const calc = item.breakDown.labels.map((label) => {
+    const calc = item.labels.map((label) => {
       return {
         name: label.name,
         formulaVariable: label.formulaVariable,
@@ -101,7 +101,7 @@ const BreakDown = ({ data, style, toggle }) => {
 
   return (
     <section className={style.breakDown}>
-      <p className={style.breakDown_title}>{data.breakDown.title}</p>
+      {/* <p className={style.breakDown_title}>{data.breakDown.title}</p> */}
       <div className={style.breakDown_stats}>
         <span className={style.svg}>
           <div className={style.svg_container}>
@@ -114,24 +114,24 @@ const BreakDown = ({ data, style, toggle }) => {
           </div>
           <img src={circle} alt='circle' className={style.breakDown_svg} />
         </span>
-        <Labels
+        {/* <Labels
           withFormula={withFormula}
           toggle={toggle}
           style={style}
           data={data.breakDown}
-        />
+        /> */}
         {/* DISCLAIMER */}
-        {disclaimer.isActive && (
+        {false && (
           <div
             onMouseEnter={() => setIsVisible(true)}
             onMouseLeave={() => setIsVisible(false)}
             className={style.disclaimer}
           >
-            <PopupInfo
+            {/* <PopupInfo
               isVisible={isVisible}
               disclaimer={data.breakDown.disclaimer}
               setIsVisible={setIsVisible}
-            />
+            /> */}
             <img src={info} alt='info-icon' className={style.disclaimer_icon} />
             <p className={style.disclaimer_text}>Disclaimer</p>
           </div>

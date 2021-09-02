@@ -6,6 +6,7 @@ import Hero from '../Components/Hero';
 import style from '../Scss/Homepage.module.scss';
 import Timeline from '../Components/Timeline';
 import Stats from '../Components/Statsv2/Stats';
+import StatsOld from '../Components/Stats/Stats';
 import Background from '../Components/Background';
 import footer from '../Images/footer.png';
 import header from '../Images/header.png';
@@ -126,7 +127,7 @@ const Homepage = () => {
             {form.step >= 4 && (
               <>
                 {/* OLD VERSION */}
-                {/* <Stats defaultJson={defaultJson} results={results} /> */}
+                <StatsOld defaultJson={defaultJson} results={results} />
                 {/* NEW VERSION */}
                 <Background bg>
                   <Stats results={results} />

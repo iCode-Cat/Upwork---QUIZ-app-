@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './Stats.scss';
 import Toggle from './Toggle';
 import SlideShow from './SlideShow';
-
+import Pin from '../../Images/Pin.svg';
 const Stats = ({ results }) => {
   const settings = {
     dots: false,
@@ -38,6 +38,7 @@ const Stats = ({ results }) => {
     <section ref={results} className='stats-wrapper'>
       <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
       <SlideShow mainTitle={mainTitle} labels={labels} toggle={toggle} />
+      <img className='stats-pin' src={Pin} alt='svg' />
     </section>
   );
 };
