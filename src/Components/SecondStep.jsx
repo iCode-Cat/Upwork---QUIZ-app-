@@ -3,6 +3,7 @@ import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
+import RopeMob from './Timelines/RopeMob';
 
 const SecondStep = ({
   errorClassHandler,
@@ -72,6 +73,13 @@ const SecondStep = ({
         form.step !== index ? style.disableEvents : ''
       }`}
     >
+      {step2.current !== undefined && (
+        <RopeMob
+          color='
+#4CAF50'
+          referance={step2}
+        />
+      )}
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of {defaultJson.numberOfSteps}</p>

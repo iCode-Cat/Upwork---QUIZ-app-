@@ -3,6 +3,7 @@ import style from '../Scss/Steps.module.scss';
 import Button from './Button';
 import ErrorMessage from './ErrorMessage';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
+import RopeMob from './Timelines/RopeMob';
 
 const ThirdStep = ({
   errorClassHandler,
@@ -73,6 +74,14 @@ const ThirdStep = ({
       }`}
       id='step1'
     >
+      {step3.current !== undefined && (
+        <RopeMob
+          color='
+
+        #2196F3'
+          referance={step3}
+        />
+      )}
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of {defaultJson.numberOfSteps}</p>

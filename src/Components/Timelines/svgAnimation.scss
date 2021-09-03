@@ -1,4 +1,4 @@
-.svg-animation {
+.svg-animation-web {
   position: absolute;
   left: 0;
   right: 0;
@@ -112,5 +112,49 @@
   }
   100% {
     top: 68%;
+  }
+}
+
+// Mobile Version
+.svg-animation-mob {
+  display: none;
+  position: absolute;
+  left: 25px;
+
+  bottom: 0;
+  margin: 0 auto;
+  width: 20px;
+  #arrow1,
+  #arrow2 {
+    position: absolute;
+  }
+  #arrow1 {
+    translate: -7px 0%;
+    animation: arrowMove 2s ease-in-out forwards;
+  }
+
+  // Disabled
+  #arrow2 {
+    display: none;
+    translate: -7px 53%;
+  }
+}
+
+// Animation for Mobile
+@keyframes arrowMove {
+  0% {
+    translate: -7px 0%;
+  }
+  100% {
+    translate: -7px 50%;
+  }
+}
+
+@media (max-width: 50em) {
+  .svg-animation-web {
+    display: none;
+  }
+  .svg-animation-mob {
+    display: block;
   }
 }

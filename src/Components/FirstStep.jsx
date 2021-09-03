@@ -4,6 +4,7 @@ import Button from './Button';
 import ErrorMessage from './ErrorMessage';
 import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
 import { Terms } from './Terms';
+import RopeMob from './Timelines/RopeMob';
 
 const FirstStep = ({
   errorClassHandler,
@@ -75,6 +76,14 @@ const FirstStep = ({
       }`}
       id='step1'
     >
+      {step1.current !== undefined && (
+        <RopeMob
+          marginTop={60}
+          color='
+#FFC300'
+          referance={step1}
+        />
+      )}
       <div className={style.step}>
         <strong>Step {index}</strong>
         <p>of {defaultJson.numberOfSteps}</p>

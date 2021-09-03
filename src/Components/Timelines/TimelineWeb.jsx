@@ -5,13 +5,14 @@ import { useSelector } from 'react-redux';
 // position: absolute;
 // justify-self: flex-start;
 const TimelineWeb = () => {
-  const userState = useSelector((state) => state.quiz.userState);
-  const { step } = userState;
+  const state = useSelector((state) => state.quiz);
+  const { step } = state.userState;
+  const {numberOfSteps} = state.defaultJson
 
   const ropeOneHeight = 710;
 
   return (
-    <div className='svg-animation'>
+    <div className='svg-animation-web'>
       {step >= 1 && (
         <>
           <svg

@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import AnimatedButton from '../Components/AnimatedButton';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
+import TimelineMob from '../Components/Timelines/TimelineMob';
 
 const Homepage = () => {
   // Main state
@@ -80,7 +81,10 @@ const Homepage = () => {
         {isEnd && (
           <>
             <section className={style.steps}>
+              {/* Timeline animation for web */}
               <TimelineWeb />
+              {/* Timeline animation for mob */}
+              {/* <TimelineMob /> */}
               {form.step >= 1 && (
                 <FirstStep
                   errorClassHandler={errorClassHandler}
