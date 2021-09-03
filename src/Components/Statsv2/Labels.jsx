@@ -56,7 +56,9 @@ const Labels = ({ labels, items, currency }) => {
             <Dot color={label.color} />
             <AmountWrapper className='label-amount'>
               {items[index] && (
-                <Amount>{numberFormat.format(items[index].result)}</Amount>
+                <Amount>
+                  {currency + numberFormat.format(items[index].result)}
+                </Amount>
               )}
               <img src={info} alt='info-icon' />
             </AmountWrapper>
