@@ -136,7 +136,9 @@ const Homepage = () => {
                 <Background bg>
                   <Stats results={results} />
                 </Background>
-                <AnimatedButton />
+                <Background bg>
+                  <AnimatedButton />
+                </Background>
               </>
             )}
             <img width='100%' src={footer} alt='' />

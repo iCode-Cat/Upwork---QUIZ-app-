@@ -11,9 +11,13 @@ const ErrorMessage = ({ checked }) => {
 
   return (
     <span style={errorMsg}>
-      {!checked
-        ? 'Accept the term and conditions'
-        : 'Fill all red fields before next step'}
+      {!checked ? (
+        <p style={{ fontSize: '1.3rem', display: 'inline-block' }}>
+          Please, accept service terms and conditions first
+        </p>
+      ) : (
+        'Fill all red fields before next step'
+      )}
     </span>
   );
 };

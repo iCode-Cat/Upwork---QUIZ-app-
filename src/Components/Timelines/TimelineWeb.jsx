@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux';
 const TimelineWeb = () => {
   const state = useSelector((state) => state.quiz);
   const { step } = state.userState;
-  const {numberOfSteps} = state.defaultJson
+  const { numberOfSteps } = state.defaultJson;
 
-  const ropeOneHeight = 710;
+  const ropeOneHeight = 610;
 
   return (
     <div className='svg-animation-web'>

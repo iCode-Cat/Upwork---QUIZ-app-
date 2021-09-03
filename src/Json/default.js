@@ -1,5 +1,5 @@
 module.exports.defaultJson = {
-  numberOfSteps: 3,
+  numberOfSteps: 2,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   parterId: null,
@@ -134,7 +134,7 @@ module.exports.defaultJson = {
     ctaText: 'Want to Learn More?',
     ctaUrl: '/',
     currency: '$',
-    disclaimer: true,
+    disclaimer: false,
     tabMenus: [
       {
         key: 0,
