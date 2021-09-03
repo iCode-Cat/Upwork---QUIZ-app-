@@ -4,8 +4,14 @@ import Compare from './Compare';
 import Graphics from './Graphics';
 import Previous from '../../Images/Previous.svg';
 import Next from '../../Images/Next.svg';
-
+import { useSelector } from 'react-redux';
 const SlideShow = ({ mainTitle, labels, toggle }) => {
+  const stats = useSelector((state) => state.quiz.userState.results);
+
+  if (!stats) {
+    return 'CALCULATING';
+  }
+
   return (
     <Carousel
       indicators
@@ -16,7 +22,12 @@ const SlideShow = ({ mainTitle, labels, toggle }) => {
       style={{ width: '100%', padding: 0, height: '500px' }}
     >
       <Carousel.Item>
-        <Graphics toggle={toggle} mainTitle={mainTitle} labels={labels} />
+        <Graphics
+          stats={stats}
+          toggle={toggle}
+          mainTitle={mainTitle}
+          labels={labels}
+        />
       </Carousel.Item>
       <Carousel.Item>
         <Compare />

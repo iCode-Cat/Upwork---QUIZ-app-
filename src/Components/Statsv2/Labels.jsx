@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   width: 100%;
   grid-template-columns: repeat(2, auto);
   justify-items: flex-start;
+  justify-content: flex-start;
   align-items: center;
   gap: 4.6rem 3rem;
 `;
@@ -45,15 +46,15 @@ const Title = styled.p`
   grid-column: 2/3;
 `;
 
-const Labels = ({ labels }) => {
+const Labels = ({ labels, items }) => {
   return (
     <Wrapper>
       {labels &&
-        labels.map((label) => (
+        labels.map((label, index) => (
           <Label>
             <Dot color={label.color} />
             <AmountWrapper className='label-amount'>
-              <Amount>100.000</Amount>
+              {items[index] && <Amount>{items[index].result}</Amount>}
               <img src={info} alt='info-icon' />
             </AmountWrapper>
             <Title>{label.name}</Title>

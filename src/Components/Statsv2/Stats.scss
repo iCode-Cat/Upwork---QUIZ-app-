@@ -21,23 +21,26 @@
     position: absolute;
     bottom: -160px;
   }
+
+  // Dissolve Animation
+  &-fade {
+    animation-name: dissolve;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
 }
 
 .breakdown {
   &-wrapper {
-    display: grid;
-    grid-template-columns: auto auto;
-    place-items: center;
-    align-items: center;
+    display: flex;
     margin-top: 6.4rem;
-    justify-content: center;
-    justify-items: center;
     gap: 8.4rem;
   }
 }
 
 .circle {
   &-wrapper {
+    margin-left: 14rem;
     display: grid;
     place-items: center;
     position: relative;
@@ -104,6 +107,17 @@
   animation-fill-mode: both;
   animation-delay: 2s;
   animation-timing-function: ease-in-out;
+}
+
+// Animations
+
+@keyframes dissolve {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 @keyframes fade {

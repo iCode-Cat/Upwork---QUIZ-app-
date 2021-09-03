@@ -157,22 +157,22 @@ module.exports.defaultJson = {
           {
             color: '#2196F3',
             name: 'Classiying your critical data',
-            formulaVariable: 130,
+            formulaVariable: 122,
           },
           {
             color: '#00B746',
             name: 'Managing information behavior',
-            formulaVariable: 130,
+            formulaVariable: 122,
           },
           {
             color: '#565656',
             name: 'Detecting information risks',
-            formulaVariable: 130,
+            formulaVariable: 122,
           },
           {
             color: '#FFC300',
             name: 'Investigating risks',
-            formulaVariable: 130,
+            formulaVariable: 122,
           },
         ],
       },
