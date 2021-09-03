@@ -1,11 +1,11 @@
 import React from 'react';
 import Svg from '../../Images/circle.svg';
 
-const Circle = ({ savings }) => {
+const Circle = ({ savings, currency }) => {
   return (
     <div className='circle-wrapper'>
       <div className='circle-savings'>
-        <p className='circle-savings-amount'>{savings}</p>
+        <p className='circle-savings-amount'>{currency + ' ' + savings}</p>
         <p className='circle-savings-title'>Savings</p>
       </div>
       <svg

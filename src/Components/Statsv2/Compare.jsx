@@ -75,7 +75,8 @@ const Bar = styled.div`
   z-index: 0;
 `;
 
-const Compare = () => {
+const Compare = ({ stats, currency, toggle }) => {
+  const { withFormula, withOutFormula } = stats[toggle];
   return (
     <Wrapper>
       <Title>
@@ -87,7 +88,7 @@ const Compare = () => {
             <img src={redArrow} alt='arrow' />
             <p>Your Current Cost</p>
           </Label>
-          <YourCost>$ 1,389,600</YourCost>
+          <YourCost>{currency + ' ' + withOutFormula} </YourCost>
         </ProgressWrapper>
         <ProgressWrapper>
           <Label>
@@ -95,7 +96,7 @@ const Compare = () => {
             <p>With Cognni</p>
           </Label>
           <OurCost>
-            <Bar>$ 1,036,560</Bar>
+            <Bar>{currency + ' ' + withFormula}</Bar>
           </OurCost>
         </ProgressWrapper>
       </div>

@@ -46,7 +46,8 @@ const Title = styled.p`
   grid-column: 2/3;
 `;
 
-const Labels = ({ labels, items }) => {
+const Labels = ({ labels, items, currency }) => {
+  const numberFormat = new Intl.NumberFormat('en-US');
   return (
     <Wrapper>
       {labels &&
@@ -54,7 +55,9 @@ const Labels = ({ labels, items }) => {
           <Label>
             <Dot color={label.color} />
             <AmountWrapper className='label-amount'>
-              {items[index] && <Amount>{items[index].result}</Amount>}
+              {items[index] && (
+                <Amount>{numberFormat.format(items[index].result)}</Amount>
+              )}
               <img src={info} alt='info-icon' />
             </AmountWrapper>
             <Title>{label.name}</Title>

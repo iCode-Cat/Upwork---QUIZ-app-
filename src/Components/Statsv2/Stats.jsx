@@ -21,7 +21,7 @@ const Stats = ({ results }) => {
   const defaultJson = state.defaultJson;
   const userState = state.userState;
   const { stats } = defaultJson;
-  const { tabMenus } = stats;
+  const { tabMenus, currency } = stats;
   // console.log(tabMenus);
 
   // Change Data According to Toggle
@@ -37,7 +37,12 @@ const Stats = ({ results }) => {
   return (
     <section ref={results} className='stats-wrapper'>
       <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
-      <SlideShow mainTitle={mainTitle} labels={labels} toggle={toggle} />
+      <SlideShow
+        currency={currency}
+        mainTitle={mainTitle}
+        labels={labels}
+        toggle={toggle}
+      />
       <img className='stats-pin' src={Pin} alt='svg' />
     </section>
   );

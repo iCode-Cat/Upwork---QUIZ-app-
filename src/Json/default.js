@@ -162,17 +162,17 @@ module.exports.defaultJson = {
           {
             color: '#00B746',
             name: 'Managing information behavior',
-            formulaVariable: 122,
+            formulaVariable: 11,
           },
           {
             color: '#565656',
             name: 'Detecting information risks',
-            formulaVariable: 122,
+            formulaVariable: 140,
           },
           {
             color: '#FFC300',
             name: 'Investigating risks',
-            formulaVariable: 122,
+            formulaVariable: 34,
           },
         ],
       },

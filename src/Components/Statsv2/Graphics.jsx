@@ -4,7 +4,7 @@ import Circle from './Circle';
 import Labels from './Labels';
 import Title from './Title';
 
-const Graphics = ({ mainTitle, labels, toggle, stats }) => {
+const Graphics = ({ mainTitle, labels, toggle, stats, currency }) => {
   const parent = useRef();
 
   useEffect(() => {
@@ -21,8 +21,8 @@ const Graphics = ({ mainTitle, labels, toggle, stats }) => {
     <div ref={parent} className='stats-graphics'>
       <Title mainTitle={mainTitle} />
       <div className='breakdown-wrapper'>
-        <Circle savings={savings} />
-        <Labels items={items} labels={labels} />
+        <Circle currency={currency} savings={savings} />
+        <Labels currency={currency} items={items} labels={labels} />
       </div>
     </div>
   );

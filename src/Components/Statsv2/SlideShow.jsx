@@ -5,7 +5,7 @@ import Graphics from './Graphics';
 import Previous from '../../Images/Previous.svg';
 import Next from '../../Images/Next.svg';
 import { useSelector } from 'react-redux';
-const SlideShow = ({ mainTitle, labels, toggle }) => {
+const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
   const stats = useSelector((state) => state.quiz.userState.results);
 
   if (!stats) {
@@ -23,6 +23,7 @@ const SlideShow = ({ mainTitle, labels, toggle }) => {
     >
       <Carousel.Item>
         <Graphics
+          currency={currency}
           stats={stats}
           toggle={toggle}
           mainTitle={mainTitle}
@@ -30,7 +31,7 @@ const SlideShow = ({ mainTitle, labels, toggle }) => {
         />
       </Carousel.Item>
       <Carousel.Item>
-        <Compare />
+        <Compare toggle={toggle} stats={stats} currency={currency} />
       </Carousel.Item>
     </Carousel>
   );
