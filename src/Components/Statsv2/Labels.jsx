@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import info from '../../Images/info.svg';
 import styled from 'styled-components';
+import Tooltip from './Tooltip';
 
 const Wrapper = styled.div`
   display: grid;
@@ -20,6 +21,7 @@ const Label = styled.div`
 
 const AmountWrapper = styled.div`
   display: grid;
+  position: relative;
   grid-template-columns: 0fr 0fr;
   align-items: center;
   gap: 0.65rem;
@@ -48,6 +50,7 @@ const Title = styled.p`
 `;
 
 const Labels = ({ labels, items, currency }) => {
+  const [order, setOrder] = useState();
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
     <Wrapper>
@@ -61,7 +64,13 @@ const Labels = ({ labels, items, currency }) => {
                   {currency + numberFormat.format(items[index].result)}
                 </Amount>
               )}
-              <img src={info} alt='info-icon' />
+              <img
+                onMouseLeave={() => setOrder()}
+                onMouseEnter={() => setOrder(index)}
+                src={info}
+                alt='info-icon'
+              />
+              <Tooltip isVisible={order === index && true} />
             </AmountWrapper>
             <Title>{label.name}</Title>
           </Label>
