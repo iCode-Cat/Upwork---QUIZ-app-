@@ -99,29 +99,28 @@ const FirstStep = ({
           )
         )}
       </div>
-      <div>
-        <div className={style.submit} onClick={checkEmpty} type='submit'>
-          {checkLastStep() ? (
-            <Button
-              submit
-              size='btnLg'
-              type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
-              text={defaultJson.ctaButton}
-            />
-          ) : (
-            <Button
-              submit
-              size='btnLg'
-              type={`${
-                form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
-              }`}
-              text={defaultJson.nextButton}
-            />
-          )}
-        </div>
 
+      <div className={style.submit} onClick={checkEmpty} type='submit'>
+        {checkLastStep() ? (
+          <Button
+            submit
+            size='btnLg'
+            type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
+            text={defaultJson.ctaButton}
+          />
+        ) : (
+          <Button
+            submit
+            size='btnLg'
+            type={`${
+              form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
+            }`}
+            text={defaultJson.nextButton}
+          />
+        )}
         <ErrorMessage errorValue={errorValue} checked={checked} />
       </div>
+
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
     </form>
   );

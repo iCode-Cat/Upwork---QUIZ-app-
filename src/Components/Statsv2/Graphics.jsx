@@ -1,17 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import Circle from './Circle';
 import Labels from './Labels';
 import Title from './Title';
 
 const Graphics = ({ mainTitle, labels, toggle, stats, currency }) => {
   const parent = useRef();
+  const fade = useRef();
 
   useEffect(() => {
-    // parent.current.classList.add('stats-fade');
-    // setTimeout(() => {
-    //   parent.current.classList.remove('stats-fade');
-    // }, 2000);
+    // Call fade function
+    // fadeAnim();
   }, [toggle]);
 
   // Items declare saving amonunt of each category
@@ -21,7 +19,7 @@ const Graphics = ({ mainTitle, labels, toggle, stats, currency }) => {
     <div ref={parent} className='stats-graphics'>
       <Title mainTitle={mainTitle} />
       <div className='breakdown-wrapper'>
-        <Circle currency={currency} savings={savings} />
+        <Circle type={toggle} currency={currency} savings={savings} />
         <Labels currency={currency} items={items} labels={labels} />
       </div>
     </div>

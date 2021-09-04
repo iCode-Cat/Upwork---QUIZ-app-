@@ -112,8 +112,8 @@ const SecondStep = ({
               text={defaultJson.nextButton}
             />
           )}
+          <ErrorMessage checked errorValue={errorValue} />
         </div>
-        <ErrorMessage errorValue={errorValue} />
       </div>
     </form>
   );

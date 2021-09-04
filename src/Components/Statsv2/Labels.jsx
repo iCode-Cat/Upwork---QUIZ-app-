@@ -4,15 +4,16 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
-  width: 100%;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, 0fr);
   justify-items: flex-start;
   justify-content: flex-start;
   align-items: center;
-  gap: 4.6rem 3rem;
+  gap: 0rem 0rem;
 `;
 const Label = styled.div`
+  width: 310px;
   display: grid;
+  justify-content: flex-start;
   grid-template-columns: repeat(2, auto);
   gap: 0.8rem 2.4rem;
 `;

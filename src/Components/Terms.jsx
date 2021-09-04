@@ -11,7 +11,10 @@ const Wrapper = styled.div`
   width: 80vw;
   /* If step bigger than 1, disable to click */
   opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
-  margin-top: 2rem;
+  margin-top: 5rem;
+  @media (max-width: 50em) {
+    margin-top: 2rem;
+  }
 `;
 
 const Icon = styled.img`
