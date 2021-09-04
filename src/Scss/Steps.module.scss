@@ -3,7 +3,7 @@
   max-width: 525px;
   margin: 0 auto;
   display: grid;
-  gap: 5rem;
+  // gap: 5rem;
   align-items: center;
   justify-items: flex-start;
   grid-template-columns: auto;
@@ -14,6 +14,9 @@
 
   button {
     border-radius: 100px;
+  }
+  .submit {
+    margin-top: 5rem;
   }
 }
 

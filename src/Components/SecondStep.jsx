@@ -96,7 +96,7 @@ const SecondStep = ({
         )}
       </div>
       <div className={style.stepSecondBtnPd}>
-        <span onClick={checkEmpty} type='submit'>
+        <div className={style.submit} onClick={checkEmpty} type='submit'>
           {checkLastStep() ? (
             <Button
               submit
@@ -112,8 +112,8 @@ const SecondStep = ({
               text={defaultJson.nextButton}
             />
           )}
-        </span>
-        {errorValue && <ErrorMessage />}
+        </div>
+        <ErrorMessage errorValue={errorValue} />
       </div>
     </form>
   );

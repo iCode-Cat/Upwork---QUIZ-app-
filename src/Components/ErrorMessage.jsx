@@ -1,23 +1,21 @@
 import React from 'react';
 
-const ErrorMessage = ({ checked }) => {
+const ErrorMessage = ({ checked, errorValue }) => {
   const errorMsg = {
+    display: 'block',
+    opacity: `${errorValue ? '1' : '0'}`,
     color: '#ff8282',
     fontSize: '1.5rem',
-    whiteSpace: 'nowrap',
     fontWeight: '400',
-    marginLeft: '2rem',
+    marginLeft: '1rem',
+    marginTop: '1rem',
   };
 
   return (
     <span style={errorMsg}>
-      {!checked ? (
-        <p style={{ fontSize: '1.3rem', display: 'inline-block' }}>
-          Please, accept service terms and conditions first
-        </p>
-      ) : (
-        'Fill all red fields before next step'
-      )}
+      {!checked
+        ? ' Please, accept service terms and conditions'
+        : 'Fill all red fields before next step'}
     </span>
   );
 };

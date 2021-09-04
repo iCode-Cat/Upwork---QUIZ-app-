@@ -100,7 +100,7 @@ const ThirdStep = ({
         ))}
       </div>
       <div className={style.stepSecondBtnPd}>
-        <span type='submit'>
+        <div className={style.submit} type='submit'>
           {checkLastStep() ? (
             <Button
               submit
@@ -116,8 +116,8 @@ const ThirdStep = ({
               text={defaultJson.nextButton}
             />
           )}
-        </span>
-        {errorValue && <ErrorMessage />}
+        </div>
+        <ErrorMessage errorValue={errorValue} />
       </div>
     </form>
   );

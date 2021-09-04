@@ -100,7 +100,7 @@ const FirstStep = ({
         )}
       </div>
       <div>
-        <span onClick={checkEmpty} type='submit'>
+        <div className={style.submit} onClick={checkEmpty} type='submit'>
           {checkLastStep() ? (
             <Button
               submit
@@ -118,8 +118,9 @@ const FirstStep = ({
               text={defaultJson.nextButton}
             />
           )}
-        </span>
-        {errorValue && <ErrorMessage checked={checked} />}
+        </div>
+
+        <ErrorMessage errorValue={errorValue} checked={checked} />
       </div>
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
     </form>

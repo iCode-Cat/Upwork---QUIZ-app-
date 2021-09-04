@@ -79,16 +79,16 @@
   .rightCornerBottom {
     position: absolute;
     right: 0;
-    bottom: -110.5%;
+    bottom: -122.5%;
   }
   .bottomRope2 {
     position: absolute;
-    bottom: -110.5%;
+    bottom: -122.5%;
     right: 58px;
   }
   .rightCorner2 {
     position: absolute;
-    bottom: -117.1%;
+    bottom: -129.8%;
     right: 420px;
     width: 100px;
   }
@@ -129,24 +129,24 @@
     position: absolute;
   }
   #arrow1 {
-    translate: -7px 0%;
+    transform: translate(-7px, 0%);
     animation: arrowMove 2s ease-in-out forwards;
   }
 
   // Disabled
   #arrow2 {
     display: none;
-    translate: -7px 53%;
+    transform: translate(-7px, 53%);
   }
 }
 
 // Animation for Mobile
 @keyframes arrowMove {
   0% {
-    translate: -7px 0%;
+    transform: translate(-7px, 0%);
   }
   100% {
-    translate: -7px 50%;
+    transform: translate(-7px, 50%);
   }
 }
 

@@ -9,7 +9,7 @@ const TimelineWeb = () => {
   const { step } = state.userState;
   const { numberOfSteps } = state.defaultJson;
 
-  const ropeOneHeight = 610;
+  const ropeOneHeight = 550;
 
   return (
     <div className='svg-animation-web'>
