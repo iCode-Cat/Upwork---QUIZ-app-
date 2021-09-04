@@ -10,6 +10,11 @@ const Graphics = ({ mainTitle, labels, toggle, stats, currency }) => {
   useEffect(() => {
     // Call fade function
     // fadeAnim();
+    parent.current.style.opacity = 0;
+    parent.current.style.transition = '1s';
+    setTimeout(() => {
+      parent.current.style.opacity = 1;
+    }, 200);
   }, [toggle]);
 
   // Items declare saving amonunt of each category
