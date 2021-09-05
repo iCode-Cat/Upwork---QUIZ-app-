@@ -202,7 +202,7 @@ module.exports.defaultJson = {
         name: 'Cost of Exposure',
         subTitle: 'Savings',
         mainTitle: 'Potential financial impact',
-        tooltip: false,
+        tooltip: true,
         costs: [
           {
             yourCost: {

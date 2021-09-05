@@ -13,7 +13,7 @@ const CalculationStats = () => {
     height: 300px;
     font-weight: 700;
     color: var(--main);
-    background: var(--lightBlue);
+    background: center bottom / 100% rgb(221, 242, 247);
   `;
   // Stats
   const state = useSelector((state) => state.quiz);
