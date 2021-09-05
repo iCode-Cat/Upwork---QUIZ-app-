@@ -49,21 +49,18 @@ const Title = styled.p`
   grid-column: 2/3;
 `;
 
-const Labels = ({ labels, items, currency }) => {
+const Labels = ({ items, currency }) => {
+  console.log(items.items);
   const [order, setOrder] = useState();
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
     <Wrapper>
-      {labels &&
-        labels.map((label, index) => (
+      {items.items &&
+        items.items.map((label, index) => (
           <Label>
             <Dot color={label.color} />
             <AmountWrapper className='label-amount'>
-              {items[index] && (
-                <Amount>
-                  {currency + numberFormat.format(items[index].result)}
-                </Amount>
-              )}
+              <Amount>{currency + numberFormat.format(label.result)}</Amount>
               <img
                 onMouseLeave={() => setOrder()}
                 onMouseEnter={() => setOrder(index)}
