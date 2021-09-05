@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import './Stats.scss';
 import Toggle from './Toggle';
 import SlideShow from './SlideShow';
+import Background from '../Background';
 
-const Stats = ({ results }) => {
+const Stats = ({ results, state }) => {
   // Redux State
-  const state = useSelector((state) => state.quiz);
-  const resultsState = state.userState.results;
+
   // Stats
   const [data, setData] = useState(false);
   const [toggle, setToggle] = useState(0);
@@ -25,18 +24,18 @@ const Stats = ({ results }) => {
   // Data Structure
   const { mainTitle, labels } = data;
 
-  return resultsState ? (
-    <section ref={results} className='stats-wrapper'>
-      <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
-      <SlideShow
-        currency={currency}
-        mainTitle={mainTitle}
-        labels={labels}
-        toggle={toggle}
-      />
-    </section>
-  ) : (
-    ''
+  return (
+    <Background bg>
+      <section ref={results} className='stats-wrapper'>
+        <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
+        <SlideShow
+          currency={currency}
+          mainTitle={mainTitle}
+          labels={labels}
+          toggle={toggle}
+        />
+      </section>
+    </Background>
   );
 };
 

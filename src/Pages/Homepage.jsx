@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import AnimatedButton from '../Components/AnimatedButton';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
+import CalculationStats from '../Components/Steps/CalculationStats';
 
 const Homepage = () => {
   // Main state
@@ -129,12 +130,8 @@ const Homepage = () => {
                 {/* OLD VERSION */}
                 <Calculation defaultJson={defaultJson} results={results} />
                 {/* NEW VERSION */}
-                <Background bg>
-                  <Stats results={results} />
-                </Background>
-                <Background report bg>
-                  <AnimatedButton />
-                </Background>
+
+                <CalculationStats />
               </>
             )}
             <img width='100%' src={footer} alt='' />
