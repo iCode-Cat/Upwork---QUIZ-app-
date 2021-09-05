@@ -8,8 +8,19 @@ import { useSelector } from 'react-redux';
 const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
   const stats = useSelector((state) => state.quiz.userState.results);
 
+  const sliderStyle = {
+    width: '100%',
+    padding: 0,
+    height: '500px',
+    background: 'red',
+  };
+
+  const sliderItem = {
+    overflow: 'auto !important',
+  };
+
   if (!stats) {
-    return 'CALCULATING';
+    return <h1>CALCULATING</h1>;
   }
 
   return (
@@ -19,9 +30,9 @@ const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
       touch
       prevIcon={<img src={Previous} />}
       nextIcon={<img src={Next} />}
-      style={{ width: '100%', padding: 0, height: '500px' }}
+      style={sliderStyle}
     >
-      <Carousel.Item>
+      <Carousel.Item style={sliderItem}>
         <Graphics
           currency={currency}
           stats={stats}
@@ -30,7 +41,7 @@ const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
           labels={labels}
         />
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item style={sliderItem}>
         <Compare toggle={toggle} stats={stats} currency={currency} />
       </Carousel.Item>
     </Carousel>
