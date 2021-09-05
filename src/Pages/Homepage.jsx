@@ -23,7 +23,7 @@ const Homepage = () => {
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: 4,
+    step: '',
   });
 
   const [isEnd, setIsEnd] = useState(true);
