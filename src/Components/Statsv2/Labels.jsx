@@ -3,7 +3,7 @@ import info from '../../Images/info.svg';
 import styled from 'styled-components';
 import Tooltip from './Tooltip';
 
-const Labels = ({ items, currency }) => {
+const Labels = ({ items, currency, tooltip }) => {
   const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 0fr);
@@ -60,12 +60,14 @@ const Labels = ({ items, currency }) => {
             <Dot color={label.color} />
             <AmountWrapper className='label-amount'>
               <Amount>{currency + numberFormat.format(label.result)}</Amount>
-              <img
-                onMouseLeave={() => setOrder()}
-                onMouseEnter={() => setOrder(index)}
-                src={info}
-                alt='info-icon'
-              />
+              {tooltip && (
+                <img
+                  onMouseLeave={() => setOrder()}
+                  onMouseEnter={() => setOrder(index)}
+                  src={info}
+                  alt='info-icon'
+                />
+              )}
               <Tooltip
                 data={label.tooltipText}
                 isVisible={order === index && true}

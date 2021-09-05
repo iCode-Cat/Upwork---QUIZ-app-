@@ -22,7 +22,7 @@ const Stats = ({ results, state }) => {
   }, [toggle]);
 
   // Data Structure
-  const { mainTitle, labels } = data;
+  const { mainTitle, labels, tooltip } = data;
 
   return (
     <Background bg>
@@ -33,6 +33,7 @@ const Stats = ({ results, state }) => {
           mainTitle={mainTitle}
           labels={labels}
           toggle={toggle}
+          tooltip={tooltip}
         />
       </section>
     </Background>

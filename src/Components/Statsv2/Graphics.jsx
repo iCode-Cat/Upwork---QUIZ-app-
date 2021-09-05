@@ -4,12 +4,8 @@ import CircleSecond from './CircleSecond';
 import Labels from './Labels';
 import Title from './Title';
 
-const Graphics = ({ mainTitle, toggle, stats, currency }) => {
+const Graphics = ({ mainTitle, toggle, stats, currency, tooltip }) => {
   const parent = useRef();
-
-  // Trigger SVG circle change everytime toggle changes
-  useEffect(() => {}, [toggle]);
-
   return stats.map((item, index) => (
     <div
       key={index}
@@ -36,7 +32,7 @@ const Graphics = ({ mainTitle, toggle, stats, currency }) => {
           />
         )}
 
-        <Labels currency={currency} items={item} />
+        <Labels tooltip={tooltip} currency={currency} items={item} />
       </div>
     </div>
   ));

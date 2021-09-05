@@ -5,12 +5,12 @@ import Graphics from './Graphics';
 import Previous from '../../Images/Previous.svg';
 import Next from '../../Images/Next.svg';
 import { useSelector } from 'react-redux';
-const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
+const SlideShow = ({ mainTitle, labels, toggle, currency, tooltip }) => {
   const stats = useSelector((state) => state.quiz.userState.results);
 
-  // if (!stats) {
-  //   return <h1>CALCULATING</h1>;
-  // }
+  if (!stats) {
+    return <h1>CALCULATING</h1>;
+  }
 
   return (
     <Carousel
@@ -29,6 +29,7 @@ const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
           toggle={toggle}
           mainTitle={mainTitle}
           labels={labels}
+          tooltip={tooltip}
         />
       </Carousel.Item>
       <Carousel.Item>
