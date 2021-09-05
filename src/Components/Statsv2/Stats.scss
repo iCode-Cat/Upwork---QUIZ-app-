@@ -20,7 +20,8 @@
   // Pin SVG
   &-pin {
     position: absolute;
-    bottom: -160px;
+    bottom: 150px;
+    z-index: 999;
   }
 
   // Dissolve Animation

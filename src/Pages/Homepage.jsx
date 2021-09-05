@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import FirstStep from '../Components/FirstStep';
-import SecondStep from '../Components/SecondStep';
-import ThirdStep from '../Components/ThirdStep';
+import FirstStep from '../Components/Steps/FirstStep';
+import SecondStep from '../Components/Steps/SecondStep';
+import ThirdStep from '../Components/Steps/ThirdStep';
 import Hero from '../Components/Hero';
 import style from '../Scss/Homepage.module.scss';
-import Timeline from '../Components/Timeline';
 import Stats from '../Components/Statsv2/Stats';
-import StatsOld from '../Components/Stats/Stats';
+import Calculation from '../Components/Calculation/Stats';
 import Background from '../Components/Background';
 import footer from '../Images/footer.png';
 import header from '../Images/header.png';
@@ -14,7 +13,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import AnimatedButton from '../Components/AnimatedButton';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
-import TimelineMob from '../Components/Timelines/TimelineMob';
 
 const Homepage = () => {
   // Main state
@@ -26,8 +24,6 @@ const Homepage = () => {
   const [form, setForm] = useState({
     step: 4,
   });
-
-  console.log(form);
 
   const [isEnd, setIsEnd] = useState(true);
 
@@ -131,12 +127,12 @@ const Homepage = () => {
             {form.step >= 4 && (
               <>
                 {/* OLD VERSION */}
-                <StatsOld defaultJson={defaultJson} results={results} />
+                <Calculation defaultJson={defaultJson} results={results} />
                 {/* NEW VERSION */}
                 <Background bg>
                   <Stats results={results} />
                 </Background>
-                <Background bg>
+                <Background report bg>
                   <AnimatedButton />
                 </Background>
               </>

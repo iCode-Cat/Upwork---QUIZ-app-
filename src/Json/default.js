@@ -9,7 +9,7 @@ module.exports.defaultJson = {
     sub_title:
       'See how much you can save with autonomous mapping </br> and information intelligence',
     button_text: 'Start Calculation',
-    image: '/logo.svg',
+    image: '/CompanyLogo.svg',
   },
   conclusion: {
     title: 'Thanks for participation <br/> in our survey!',
@@ -141,6 +141,7 @@ module.exports.defaultJson = {
         subTitle: 'Savings',
         name: 'Cost of Information Protection',
         mainTitle: 'Potential financial impact',
+        tooltip: true,
         costs: [
           {
             yourCost: {
@@ -158,21 +159,41 @@ module.exports.defaultJson = {
             color: '#2196F3',
             name: 'Classiying your critical data',
             formulaVariable: 122,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           {
             color: '#00B746',
             name: 'Managing information behavior',
             formulaVariable: 11,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           {
             color: '#565656',
             name: 'Detecting information risks',
             formulaVariable: 140,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           {
             color: '#FFC300',
             name: 'Investigating risks',
             formulaVariable: 34,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
         ],
       },
@@ -181,6 +202,7 @@ module.exports.defaultJson = {
         name: 'Cost of Exposure',
         subTitle: 'Savings',
         mainTitle: 'Potential financial impact',
+        tooltip: false,
         costs: [
           {
             yourCost: {
@@ -196,16 +218,31 @@ module.exports.defaultJson = {
             color: '#2196F3',
             name: 'Insider Risk',
             formulaVariable: 130,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           {
             color: '#00B746',
             name: 'Data Breach',
             formulaVariable: 130,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           {
             color: '#565656',
             name: 'Ransomware',
             formulaVariable: 130,
+            tooltipText: {
+              title: 'Classiying your critical data',
+              content:
+                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+            },
           },
           // {
           //   color: '#FFC300',

@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import style from '../Scss/Steps.module.scss';
-import Button from './Button';
-import ErrorMessage from './ErrorMessage';
-import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
-import { Terms } from './Terms';
-import RopeMob from './Timelines/RopeMob';
+import style from '../../Scss/Steps.module.scss';
+import Button from '../Button';
+import ErrorMessage from '../ErrorMessage';
+import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
+import RopeMob from '../Timelines/RopeMob';
 
-const FirstStep = ({
+const SecondStep = ({
   errorClassHandler,
   defaultJson,
   formStateHandler,
   form,
   setForm,
-  step1,
-  scrollToView,
   step2,
+  step3,
+  scrollToView,
   results,
 }) => {
   const { steps } = defaultJson;
-  const questions = steps[0].fields;
-  const { index } = steps[0];
+  const questions = steps[1].fields;
+  const { index } = steps[1];
   const [errorValue, setError] = useState(false);
-  const [checked, setChecked] = useState(false);
 
   const stateHandler = () => {
     questions.map((value) => {
@@ -31,6 +29,10 @@ const FirstStep = ({
     });
   };
 
+  useEffect(() => {
+    stateHandler();
+  }, []);
+
   const checkLastStep = () => {
     if (index === defaultJson.numberOfSteps) {
       return true;
@@ -38,14 +40,10 @@ const FirstStep = ({
     return false;
   };
 
-  useEffect(() => {
-    stateHandler();
-  }, []);
-
   const checkEmpty = () => {
     const result = questions.map((value) => {
       const formField = value.stateName;
-      if (form[formField] === '' || !checked) {
+      if (form[formField] === '') {
         setError(true);
         return true;
       }
@@ -64,24 +62,22 @@ const FirstStep = ({
         value: checkLastStep() ? 4 : index + 1,
       });
     setError(false);
-    checkLastStep() ? scrollToView(results) : scrollToView(step2);
+    checkLastStep() ? scrollToView(results) : scrollToView(step3);
   };
 
   return (
     <form
-      ref={step1}
+      ref={step2}
       onSubmit={(e) => errorHandler(e)}
-      className={`${style.wrapper}  ${style.stepFirst} ${
+      className={`${style.wrapper}  ${style.stepSecond} ${
         form.step !== index ? style.disableEvents : ''
       }`}
-      id='step1'
     >
-      {step1.current !== undefined && (
+      {step2.current !== undefined && (
         <RopeMob
-          marginTop={60}
           color='
-#FFC300'
-          referance={step1}
+#4CAF50'
+          referance={step2}
         />
       )}
       <div className={style.step}>
@@ -99,31 +95,28 @@ const FirstStep = ({
           )
         )}
       </div>
-
-      <div className={style.submit} onClick={checkEmpty} type='submit'>
-        {checkLastStep() ? (
-          <Button
-            submit
-            size='btnLg'
-            type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
-            text={defaultJson.ctaButton}
-          />
-        ) : (
-          <Button
-            submit
-            size='btnLg'
-            type={`${
-              form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
-            }`}
-            text={defaultJson.nextButton}
-          />
-        )}
-        <ErrorMessage errorValue={errorValue} checked={checked} />
+      <div className={style.stepSecondBtnPd}>
+        <div className={style.submit} onClick={checkEmpty} type='submit'>
+          {checkLastStep() ? (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
+              text={defaultJson.ctaButton}
+            />
+          ) : (
+            <Button
+              submit
+              size='btnLg'
+              type={`${form.step === index ? 'btnBlue' : 'btnBlueDisable'}`}
+              text={defaultJson.nextButton}
+            />
+          )}
+          <ErrorMessage checked errorValue={errorValue} />
+        </div>
       </div>
-
-      <Terms step={form.step} setChecked={setChecked} checked={checked} />
     </form>
   );
 };
 
-export default FirstStep;
+export default SecondStep;

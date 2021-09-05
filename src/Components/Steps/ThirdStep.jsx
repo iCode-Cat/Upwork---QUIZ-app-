@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import style from '../Scss/Steps.module.scss';
-import Button from './Button';
-import ErrorMessage from './ErrorMessage';
-import QuesionTypeHandler from '../Handlers/QuestionTypeHandler';
-import RopeMob from './Timelines/RopeMob';
+import style from '../../Scss/Steps.module.scss';
+import Button from '../Button';
+import ErrorMessage from '../ErrorMessage';
+import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
+import RopeMob from '../Timelines/RopeMob';
 
 const ThirdStep = ({
   errorClassHandler,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import info from '../../Images/info.svg';
 
-const Tooltip = ({ disclaimer, label, isVisible }) => {
+const Tooltip = ({ isVisible, data }) => {
   //   const [isVisible, setIsVisible] = useState(false);
   const Wrapper = styled.section`
     display: ${isVisible ? 'grid' : 'none'};
@@ -34,16 +34,13 @@ const Tooltip = ({ disclaimer, label, isVisible }) => {
     font-weight: 700;
   `;
 
+  console.log(data);
+
   return (
     <Wrapper>
       <i class='fas fa-info-circle'></i>
-      <Title>Classiying your critical data</Title>
-      <Text>
-        The Cognni Calculator is intended to provide an example of your
-        potential savings when using the Cognni Security Management Solution,
-        the results are based on your input and some assumptions derived from
-        Cognni's experience.
-      </Text>
+      <Title>{data.title}</Title>
+      <Text>{data.content}</Text>
     </Wrapper>
   );
 };

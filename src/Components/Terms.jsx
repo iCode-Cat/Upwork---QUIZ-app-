@@ -4,36 +4,36 @@ import styled from 'styled-components';
 import checkFalse from '../Images/checkFalse.svg';
 import checkedTrue from '../Images/checkedTrue.svg';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  max-width: 602px;
-  width: 80vw;
-  /* If step bigger than 1, disable to click */
-  opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
-  margin-top: 5rem;
-  @media (max-width: 50em) {
-    margin-top: 2rem;
-  }
-`;
-
-const Icon = styled.img`
-  margin-top: 0.5rem;
-  margin-right: 0.8rem;
-  cursor: pointer;
-`;
-
-const Text = styled.p`
-  max-width: 602px;
-  font-size: 1.3rem;
-  color: var(--main);
-`;
-
-const Link = styled.a`
-  color: var(--blue);
-`;
-
 export const Terms = ({ checked, setChecked, step }) => {
+  const Wrapper = styled.div`
+    display: flex;
+    align-items: flex-start;
+    max-width: 602px;
+    width: 80vw;
+    /* If step bigger than 1, disable to click */
+    opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
+    margin-top: 5rem;
+    @media (max-width: 50em) {
+      margin-top: 2rem;
+    }
+  `;
+
+  const Icon = styled.img`
+    margin-top: 0.5rem;
+    margin-right: 0.8rem;
+    cursor: pointer;
+  `;
+
+  const Text = styled.p`
+    max-width: 602px;
+    font-size: 1.3rem;
+    color: var(--main);
+  `;
+
+  const Link = styled.a`
+    color: var(--blue);
+  `;
+
   const terms = useSelector((state) => state.quiz.defaultJson.terms);
   // Term text from json
   const { content } = terms;

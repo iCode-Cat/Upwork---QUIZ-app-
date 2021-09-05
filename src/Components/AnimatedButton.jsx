@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const Wrapper = styled.section`
-  display: grid;
-  place-items: center;
-  margin: 9rem 0;
-  cursor: pointer;
-`;
+import Pin from '../Images/Pin.svg';
 
 const AnimatedButton = () => {
+  const Wrapper = styled.section`
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin: 9rem 0;
+    cursor: pointer;
+  `;
   return (
     <Wrapper className='stats-animated-button'>
+      <img className='stats-pin' src={Pin} alt='svg' />
       <svg
         width='488'
         height='121'

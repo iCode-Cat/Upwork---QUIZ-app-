@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 const SlideShow = ({ mainTitle, labels, toggle, currency }) => {
   const stats = useSelector((state) => state.quiz.userState.results);
 
-  if (!stats) {
-    return <h1>CALCULATING</h1>;
-  }
+  // if (!stats) {
+  //   return <h1>CALCULATING</h1>;
+  // }
 
   return (
     <Carousel
