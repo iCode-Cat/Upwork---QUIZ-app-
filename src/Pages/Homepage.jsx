@@ -45,10 +45,10 @@ const Homepage = () => {
 
   const scrollToView = (view) => {
     console.log(view.current);
-    let speedInSeconds = 100;
+    let speedInSeconds = 1;
     setTimeout(() => {
       scrollIntoView(view.current, {
-        time: 100,
+        time: 500,
       });
     }, speedInSeconds);
   };
