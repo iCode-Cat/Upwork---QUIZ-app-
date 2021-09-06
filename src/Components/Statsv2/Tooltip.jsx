@@ -33,8 +33,6 @@ const Title = styled.p`
 `;
 
 const Tooltip = ({ isVisible, data }) => {
-  console.log(data);
-
   return (
     <Wrapper isVisible={isVisible}>
       <i class='fas fa-info-circle'></i>

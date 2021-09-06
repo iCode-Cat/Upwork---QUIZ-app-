@@ -13,6 +13,7 @@ import { setUserState } from '../Redux/quizSlice';
 import '../Components/Steps/svgLine.scss';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
+var scrollIntoView = require('scroll-into-view');
 
 const Homepage = () => {
   // Main state
@@ -43,12 +44,11 @@ const Homepage = () => {
   };
 
   const scrollToView = (view) => {
-    let speedInSeconds = 300;
+    console.log(view.current);
+    let speedInSeconds = 100;
     setTimeout(() => {
-      view.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-        inline: 'nearest',
+      scrollIntoView(view.current, {
+        time: 100,
       });
     }, speedInSeconds);
   };

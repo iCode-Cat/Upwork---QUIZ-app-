@@ -10353,6 +10353,11 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scroll-into-view@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/scroll-into-view/-/scroll-into-view-1.16.0.tgz#07141fc4ba8a14b898d2163d6167f3d84cb9b05b"
+  integrity sha512-N8T/4mKzQXMorcbMzNm+rOfy0lPmga3zl7SmUSHDryA6cqGVlzG9pePQCqHA/UPaJtC2KOJP/r93pHm9df+5/A==
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -10360,6 +10365,11 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+seamless-scroll-polyfill@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/seamless-scroll-polyfill/-/seamless-scroll-polyfill-2.0.1.tgz#ec830ae9bb0835436c65b81b3d7ec0a2e3139b23"
+  integrity sha512-YABfz6DzXz/tQkfihU9Nl5eIn5eBGxKH2P3i+XeBZ+CO4hf/4hApEriORa99V79XeO+zGrTm3HkwQK5+heid6Q==
 
 select-hose@^2.0.0:
   version "2.0.0"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import style from '../Scss/Hero.module.scss';
 import Button from './Button';
 
