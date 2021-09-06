@@ -50,7 +50,6 @@ const Title = styled.p`
 `;
 
 const Labels = ({ items, currency, tooltip }) => {
-  console.log(items.items);
   const [order, setOrder] = useState();
   const numberFormat = new Intl.NumberFormat('en-US');
   return (

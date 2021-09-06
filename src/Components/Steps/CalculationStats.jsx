@@ -14,13 +14,13 @@ const Loader = styled.p`
   color: var(--main);
   background: center bottom / 100% rgb(221, 242, 247);
 `;
-const CalculationStats = () => {
+const CalculationStats = ({ results }) => {
   // Stats
   const state = useSelector((state) => state.quiz);
   const resultsState = state.userState.results;
   return resultsState ? (
     <>
-      <Stats state={state} />
+      <Stats results={results} state={state} />
       <Background report bg>
         <AnimatedButton />
       </Background>

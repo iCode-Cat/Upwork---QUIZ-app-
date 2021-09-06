@@ -20,7 +20,7 @@ const SecondStep = ({
   const questions = steps[1].fields;
   const { index } = steps[1];
   const [errorValue, setError] = useState(false);
-
+  console.log(results);
   const stateHandler = () => {
     questions.map((value) => {
       const formField = value.stateName;
@@ -96,7 +96,7 @@ const SecondStep = ({
         )}
       </div>
       <div className={style.stepSecondBtnPd}>
-        <div className={style.submit} onClick={checkEmpty} type='submit'>
+        <span className={style.submit} onClick={checkEmpty} type='submit'>
           {checkLastStep() ? (
             <Button
               submit
@@ -113,7 +113,7 @@ const SecondStep = ({
             />
           )}
           <ErrorMessage checked errorValue={errorValue} />
-        </div>
+        </span>
       </div>
     </form>
   );

@@ -13,7 +13,7 @@ import { setUserState } from '../Redux/quizSlice';
 import '../Components/Steps/svgLine.scss';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
-var scrollIntoView = require('scroll-into-view');
+import scrollIntoView from 'scroll-into-view';
 
 const Homepage = () => {
   // Main state
@@ -44,9 +44,9 @@ const Homepage = () => {
   };
 
   const scrollToView = (view) => {
-    console.log(view.current);
     let speedInSeconds = 1;
     setTimeout(() => {
+      console.log(view);
       scrollIntoView(view.current, {
         time: 500,
       });
@@ -132,10 +132,10 @@ const Homepage = () => {
             {form.step >= 4 && (
               <>
                 {/* OLD VERSION */}
-                <Calculation defaultJson={defaultJson} results={results} />
+                <Calculation defaultJson={defaultJson} />
                 {/* NEW VERSION */}
 
-                <CalculationStats />
+                <CalculationStats results={results} />
               </>
             )}
             <img width='100%' src={footer} alt='' />
