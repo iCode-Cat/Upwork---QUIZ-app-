@@ -1,0 +1,51 @@
+#svg-container {
+  position: absolute;
+  top: 60px;
+  left: -250px;
+  z-index: -1;
+
+  // First Line
+  .firstline {
+    top: 0px;
+    width: 120px;
+
+    * {
+      transition: 1s;
+    }
+    .arrow1 {
+      transform: translate(-7px, 3%);
+      animation: arrow1 3s forwards;
+    }
+    .arrow2 {
+      transform: translate(-7px, 0%);
+      animation: arrow2 3s forwards;
+    }
+    .leftCorner {
+      transform: translate(0px, calc(100% - 57px));
+    }
+  }
+  .bottomHr {
+    position: absolute;
+    bottom: 0;
+    left: 115px;
+  }
+  @keyframes arrow1 {
+    0% {
+      transform: translate(-7px, 3%);
+    }
+    100% {
+      transform: translate(-7px, 50%);
+    }
+  }
+  @keyframes arrow2 {
+    0% {
+      transform: translate(-7px, 0%);
+    }
+    100% {
+      transform: translate(-7px, 47%);
+    }
+  }
+  @media (max-width: 70em) {
+    display: none;
+  }
+}

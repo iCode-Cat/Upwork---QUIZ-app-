@@ -1,7 +1,7 @@
 import React from 'react';
 import numeral from 'numeral';
 
-const Circle = ({ savings, currency, type, toggle }) => {
+const Circle = ({ savings, currency, toggle }) => {
   return (
     <div className='circle-wrapper'>
       <div className='circle-savings'>
@@ -13,7 +13,7 @@ const Circle = ({ savings, currency, type, toggle }) => {
       <svg
         style={{
           transition: '1s',
-          transform: `${toggle === 0 ? 'rotate(90deg)' : 'rotate( 0deg)'}`,
+          transform: `${toggle === 1 ? 'rotate(90deg)' : 'rotate( 0deg)'}`,
           opacity: `${toggle === 1 ? '0' : '1'}`,
         }}
         className='circle-svg'

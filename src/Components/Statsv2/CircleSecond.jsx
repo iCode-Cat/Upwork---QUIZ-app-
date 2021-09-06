@@ -1,7 +1,7 @@
 import React from 'react';
 import numeral from 'numeral';
 
-const CircleSecond = ({ savings, currency, type, toggle }) => {
+const CircleSecond = ({ savings, currency, toggle }) => {
   return (
     <div className='circle-wrapper'>
       <div className='circle-savings'>

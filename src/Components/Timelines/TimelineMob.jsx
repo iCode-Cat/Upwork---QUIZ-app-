@@ -1,4 +1,3 @@
-import React from 'react';
 import './svgAnimation.scss';
 import { useSelector } from 'react-redux';
 

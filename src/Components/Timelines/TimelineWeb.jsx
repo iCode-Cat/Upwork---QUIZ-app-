@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 const TimelineWeb = () => {
   const state = useSelector((state) => state.quiz);
   const { step } = state.userState;
-  const { numberOfSteps } = state.defaultJson;
 
   const ropeOneHeight = 550;
 

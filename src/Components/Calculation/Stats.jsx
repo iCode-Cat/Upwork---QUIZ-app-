@@ -3,8 +3,6 @@ import style from '../../Scss/Stats.module.scss';
 import BreakDown from './BreakDown';
 import triangle from '../../Images/triangleBlue.svg';
 
-import { useSelector } from 'react-redux';
-
 const Stats = ({ results, defaultJson }) => {
   const { stats } = defaultJson;
   const [toggle, setToggle] = useState(0);

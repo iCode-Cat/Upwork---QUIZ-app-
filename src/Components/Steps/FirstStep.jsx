@@ -5,6 +5,7 @@ import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { Terms } from '../Terms';
 import RopeMob from '../Timelines/RopeMob';
+import FirstLine from './svg-line/FirstLine';
 
 const FirstStep = ({
   errorClassHandler,
@@ -76,6 +77,10 @@ const FirstStep = ({
       }`}
       id='step1'
     >
+      {step1.current !== undefined && (
+        <FirstLine DOM={step1} step={form.step} />
+      )}
+
       {step1.current !== undefined && (
         <RopeMob
           marginTop={60}

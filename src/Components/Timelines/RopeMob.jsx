@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const RopeMob = ({ referance, color, marginTop }) => {
   const height = referance.current.clientHeight;
@@ -15,7 +15,7 @@ const RopeMob = ({ referance, color, marginTop }) => {
       <path
         d={`M1 0V${marginTop ? height - marginTop : height}`}
         stroke='#565656'
-        stroke-dasharray='3 3'
+        strokeDasharray='3 3'
       />
       <path
         id='arrow1'

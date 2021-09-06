@@ -4,14 +4,13 @@ import SecondStep from '../Components/Steps/SecondStep';
 import ThirdStep from '../Components/Steps/ThirdStep';
 import Hero from '../Components/Hero';
 import style from '../Scss/Homepage.module.scss';
-import Stats from '../Components/Statsv2/Stats';
 import Calculation from '../Components/Calculation/Stats';
 import Background from '../Components/Background';
 import footer from '../Images/footer.png';
 import header from '../Images/header.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
-import AnimatedButton from '../Components/AnimatedButton';
+import '../Components/Steps/svgLine.scss';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
 
@@ -44,9 +43,14 @@ const Homepage = () => {
   };
 
   const scrollToView = (view) => {
+    let speedInSeconds = 300;
     setTimeout(() => {
-      view.current.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+      view.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+      });
+    }, speedInSeconds);
   };
 
   const errorClassHandler = (field) => {
@@ -79,7 +83,7 @@ const Homepage = () => {
           <>
             <section className={style.steps}>
               {/* Timeline animation for web */}
-              <TimelineWeb />
+              {/* <TimelineWeb /> */}
               {/* Timeline animation for mob */}
               {/* <TimelineMob /> */}
               {form.step >= 1 && (
