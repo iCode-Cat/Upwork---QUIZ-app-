@@ -1,12 +1,12 @@
 import React from 'react';
 import DelayedComponents from '../../../Handlers/DelayedComponents';
 
-const FirstLine = ({ DOM, step }) => {
+const Secondline = ({ DOM, step }) => {
   // 56 pixels of corner SVG
   let dynamicHeight = DOM.current.clientHeight;
 
   return (
-    <div id='svg-container-1'>
+    <div id='svg-container-2'>
       <svg
         className='firstline'
         width='2'
@@ -24,22 +24,22 @@ const FirstLine = ({ DOM, step }) => {
         <path
           className='arrow1'
           d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
-          fill='#FFC300'
+          fill='#4CAF50'
           stroke='black'
         />
         <path
           className='arrow2'
           d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
-          fill='#FFC300'
+          fill='#4CAF50'
           stroke='black'
         />
         {step > 1 && (
           <DelayedComponents delay={500}>
             <path
-              className='leftCorner'
-              d='M1 0L1 36C1 47.0457 9.95431 56 21 56L57 56'
+              className='rightBottomCorner'
+              d='M58 -2.53526e-06L58 45C58 56.0457 49.0457 65 38 65L29 65L2.84124e-06 65'
               stroke='black'
-              strokeDasharray='3 3'
+              stroke-dasharray='3 3'
             />
           </DelayedComponents>
         )}
@@ -48,14 +48,14 @@ const FirstLine = ({ DOM, step }) => {
         <>
           <DelayedComponents delay={600}>
             <svg
-              width='867'
-              className='bottomHr'
+              width='389'
+              className='bottomHrShort'
               height='2'
-              viewBox='0 0 867 2'
+              viewBox='0 0 389 2'
               fill='none'
               xmlns='http://www.w3.org/2000/svg'
             >
-              <path d='M0 1H866.5' stroke='black' stroke-dasharray='3 3' />
+              <path d='M0 1H389.5' stroke='black' stroke-dasharray='3 3' />
             </svg>
           </DelayedComponents>
           <DelayedComponents delay={600}>
@@ -74,10 +74,30 @@ const FirstLine = ({ DOM, step }) => {
               />
             </svg>
           </DelayedComponents>
+          <svg
+            className='bottomCornerEnd'
+            width='80'
+            height='42'
+            viewBox='0 0 60 42'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M40 0.999999L21 1.00001C9.95429 1.00002 1 9.95433 1 21L1 21.5L1 42'
+              stroke='black'
+              stroke-dasharray='3 3'
+            />
+            <path
+              id='blueArrow'
+              d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
+              fill='#2196F3'
+              stroke='black'
+            />
+          </svg>
         </>
       )}
     </div>
   );
 };
 
-export default FirstLine;
+export default Secondline;

@@ -36,12 +36,8 @@ export const Terms = ({ checked, setChecked, step }) => {
   // Term text from json
 
   return (
-    <Wrapper checked={checked} step={step}>
-      <Icon
-        onClick={() => setChecked(!checked)}
-        src={checked ? checkedTrue : checkFalse}
-        alt='check-false'
-      />
+    <Wrapper onClick={() => setChecked(!checked)} checked={checked} step={step}>
+      <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' />
       <Text>
         I agree to receive my quiz results and a series of emails that will
         teach me how to get potential financial impact. I also have read and

@@ -6,6 +6,7 @@ import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { Terms } from '../Terms';
 import RopeMob from '../Timelines/RopeMob';
 import FirstLine from './svg-line/FirstLine';
+import Secondline from './svg-line/SecondLine';
 
 const FirstStep = ({
   errorClassHandler,

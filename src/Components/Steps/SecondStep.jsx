@@ -4,6 +4,7 @@ import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import RopeMob from '../Timelines/RopeMob';
+import Secondline from './svg-line/SecondLine';
 
 const SecondStep = ({
   errorClassHandler,
@@ -73,6 +74,9 @@ const SecondStep = ({
         form.step !== index ? style.disableEvents : ''
       }`}
     >
+      {step2.current !== undefined && (
+        <Secondline DOM={step2} step={form.step} />
+      )}
       {step2.current !== undefined && (
         <RopeMob
           color='

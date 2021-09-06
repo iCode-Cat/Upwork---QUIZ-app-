@@ -1,7 +1,7 @@
-#svg-container {
+#svg-container-1 {
   position: absolute;
   top: 60px;
-  left: -250px;
+  left: -300px;
   z-index: -1;
 
   // First Line
@@ -29,6 +29,12 @@
     bottom: 0;
     left: 115px;
   }
+
+  .rightCorner {
+    position: absolute;
+    bottom: -69px;
+    left: 980px;
+  }
   @keyframes arrow1 {
     0% {
       transform: translate(-7px, 3%);
@@ -45,7 +51,79 @@
       transform: translate(-7px, 47%);
     }
   }
-  @media (max-width: 70em) {
+  @media (max-width: 65em) {
+    display: none;
+  }
+}
+
+#svg-container-2 {
+  position: absolute;
+  top: 31px;
+  left: 668.9px;
+  z-index: -1;
+
+  // First Line
+  .firstline {
+    top: 0px;
+    width: 120px;
+
+    * {
+      transition: 1s;
+    }
+    .arrow1 {
+      transform: translate(-7px, 3%);
+      animation: arrow1 3s forwards;
+    }
+    .arrow2 {
+      transform: translate(-7px, 0%);
+      animation: arrow2 3s forwards;
+    }
+    .rightBottomCorner {
+      transform: translate(-57px, calc(100% - 66px));
+    }
+  }
+  .bottomHr {
+    position: absolute;
+    bottom: 0;
+    left: -865px;
+  }
+
+  .bottomHrShort {
+    position: absolute;
+    bottom: 0;
+    left: -384px;
+  }
+
+  .rightCorner {
+    position: absolute;
+    bottom: -69px;
+    left: 980px;
+  }
+  .bottomCornerEnd {
+    position: absolute;
+    bottom: -40px;
+    left: -437px;
+    #blueArrow {
+      transform: translate(-8px, 28px);
+    }
+  }
+  @keyframes arrow1 {
+    0% {
+      transform: translate(-7px, 3%);
+    }
+    100% {
+      transform: translate(-7px, 50%);
+    }
+  }
+  @keyframes arrow2 {
+    0% {
+      transform: translate(-7px, 0%);
+    }
+    100% {
+      transform: translate(-7px, 47%);
+    }
+  }
+  @media (max-width: 65em) {
     display: none;
   }
 }
