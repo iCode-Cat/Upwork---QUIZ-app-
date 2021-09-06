@@ -52,3 +52,10 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+[type='button'],
+[type='reset'],
+[type='submit'],
+button {
+  -webkit-appearance: none;
+}
