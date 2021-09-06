@@ -96,7 +96,7 @@ const SecondStep = ({
         )}
       </div>
       <div className={style.stepSecondBtnPd}>
-        <span className={style.submit} onClick={checkEmpty} type='submit'>
+        <div className={style.submit} onClick={checkEmpty} type='submit'>
           {checkLastStep() ? (
             <Button
               submit
@@ -113,7 +113,7 @@ const SecondStep = ({
             />
           )}
           <ErrorMessage checked errorValue={errorValue} />
-        </span>
+        </div>
       </div>
     </form>
   );
