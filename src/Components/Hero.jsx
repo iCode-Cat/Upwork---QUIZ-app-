@@ -19,13 +19,6 @@ const Hero = ({
       subTitle: defaultJson.hero.sub_title,
       button: defaultJson.hero.button_text,
     });
-    // if (form.step > 3) {
-    //   setHeroState({
-    //     welcomePage: defaultJson.conclusion.title,
-    //     subTitle: defaultJson.conclusion.sub_title,
-    //     button: false,
-    //   });
-    // }
   }, [form.step]);
 
   const { welcomePage, subTitle, button } = heroState;
@@ -60,7 +53,7 @@ const Hero = ({
           )}
         </div>
         <img
-          src={defaultJson.hero.image}
+          src={defaultJson.hero.logo}
           alt='logo-company'
           className={style.logo}
         />

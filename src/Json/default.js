@@ -2,14 +2,26 @@ module.exports.defaultJson = {
   numberOfSteps: 2,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
+  heroBackground: '',
   parterId: null,
   campaignId: null,
+  heroVersion: 1,
   hero: {
     title: 'Calculate Cognni’s ROI',
     sub_title:
       'See how much you can save with autonomous mapping </br> and information intelligence',
     button_text: 'Start Calculation',
-    image: '/CompanyLogo.svg',
+    logo: '/CompanyLogo.svg',
+  },
+  heroTabMenu: {
+    status: false,
+    brandLogo: String,
+    tabs: [
+      {
+        name: '',
+        href: '',
+      },
+    ],
   },
   conclusion: {
     title: 'Thanks for participation <br/> in our survey!',
