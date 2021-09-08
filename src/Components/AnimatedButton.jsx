@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Pin from '../Images/Pin.svg';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.section`
   position: relative;
@@ -11,6 +12,7 @@ const Wrapper = styled.section`
 `;
 
 const AnimatedButton = () => {
+  const state = useSelector((state) => state.defaultJson);
   return (
     <Wrapper className='stats-animated-button'>
       <img className='stats-pin' src={Pin} alt='svg' />

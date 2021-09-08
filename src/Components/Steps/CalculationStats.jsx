@@ -12,7 +12,7 @@ const Loader = styled.p`
   height: 300px;
   font-weight: 700;
   color: var(--main);
-  background: center bottom / 100% rgb(221, 242, 247);
+  background: #ddf2f7;
 `;
 const CalculationStats = ({ results }) => {
   // Stats
@@ -26,7 +26,7 @@ const CalculationStats = ({ results }) => {
       </Background>
     </>
   ) : (
-    <Loader>CALCULATING</Loader>
+    <Loader></Loader>
   );
 };
 

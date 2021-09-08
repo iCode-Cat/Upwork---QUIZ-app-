@@ -17,7 +17,7 @@ const Secondline = ({ DOM, step }) => {
       >
         <path
           id='rope1'
-          d={`M1 0V${step === 1 ? dynamicHeight / 2 : dynamicHeight - 56}`}
+          d={`M1 0V${step === 2 ? dynamicHeight / 2 : dynamicHeight - 56}`}
           stroke='black'
           strokeDasharray='3 3'
         />
@@ -33,7 +33,7 @@ const Secondline = ({ DOM, step }) => {
           fill='#4CAF50'
           stroke='black'
         />
-        {step > 1 && (
+        {step > 2 && (
           <DelayedComponents delay={500}>
             <path
               className='rightBottomCorner'
@@ -44,9 +44,9 @@ const Secondline = ({ DOM, step }) => {
           </DelayedComponents>
         )}
       </svg>
-      {step > 1 && (
+      {step > 2 && (
         <>
-          <DelayedComponents delay={600}>
+          <DelayedComponents delay={700}>
             <svg
               width='389'
               className='bottomHrShort'
@@ -58,7 +58,7 @@ const Secondline = ({ DOM, step }) => {
               <path d='M0 1H389.5' stroke='black' stroke-dasharray='3 3' />
             </svg>
           </DelayedComponents>
-          <DelayedComponents delay={600}>
+          <DelayedComponents delay={800}>
             <svg
               className='rightCorner'
               width='50'
@@ -74,26 +74,28 @@ const Secondline = ({ DOM, step }) => {
               />
             </svg>
           </DelayedComponents>
-          <svg
-            className='bottomCornerEnd'
-            width='80'
-            height='42'
-            viewBox='0 0 60 42'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M40 0.999999L21 1.00001C9.95429 1.00002 1 9.95433 1 21L1 21.5L1 42'
-              stroke='black'
-              stroke-dasharray='3 3'
-            />
-            <path
-              id='blueArrow'
-              d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
-              fill='#2196F3'
-              stroke='black'
-            />
-          </svg>
+          <DelayedComponents delay={900}>
+            <svg
+              className='bottomCornerEnd'
+              width='80'
+              height='42'
+              viewBox='0 0 60 42'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M40 0.999999L21 1.00001C9.95429 1.00002 1 9.95433 1 21L1 21.5L1 42'
+                stroke='black'
+                stroke-dasharray='3 3'
+              />
+              <path
+                id='blueArrow'
+                d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
+                fill='#2196F3'
+                stroke='black'
+              />
+            </svg>
+          </DelayedComponents>
         </>
       )}
     </div>

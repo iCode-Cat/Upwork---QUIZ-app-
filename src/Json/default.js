@@ -14,9 +14,18 @@ module.exports.defaultJson = {
     logo: '/CompanyLogo.svg',
   },
   heroTabMenu: {
-    status: false,
-    brandLogo: String,
+    active: false,
+    brandLogo: 'String',
+    mainColor: '#F8F8F8',
     tabs: [
+      {
+        name: '',
+        href: '',
+      },
+      {
+        name: '',
+        href: '',
+      },
       {
         name: '',
         href: '',
@@ -143,8 +152,6 @@ module.exports.defaultJson = {
   ],
   stats: {
     tabMenuMod: 2,
-    ctaText: 'Want to Learn More?',
-    ctaUrl: '/',
     currency: '$',
     disclaimer: false,
     tabMenus: [
@@ -256,13 +263,12 @@ module.exports.defaultJson = {
                 "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
             },
           },
-          // {
-          //   color: '#FFC300',
-          //   name: 'Investigating risks',
-          //   formulaVariable: 130,
-          // },
         ],
       },
     ],
+  },
+  lastSection: {
+    buttonText: 'Generate Risk Assesement Report',
+    href: '/',
   },
 };

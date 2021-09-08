@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
 import { oxfordJson } from '../Json/oxford_123';
 
 const initialState = {
   defaultJson,
-  userState: 1,
+  userState: false,
 };
 
 export const quizSlice = createSlice({

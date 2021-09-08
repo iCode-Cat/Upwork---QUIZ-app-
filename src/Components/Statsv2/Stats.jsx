@@ -25,7 +25,7 @@ const Stats = ({ results, state }) => {
   const { mainTitle, labels, tooltip } = data;
 
   return (
-    <Background bg>
+    <Background>
       <section ref={results} className='stats-wrapper'>
         <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
         <SlideShow
