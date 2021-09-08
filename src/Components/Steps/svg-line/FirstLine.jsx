@@ -46,7 +46,7 @@ const FirstLine = ({ DOM, step }) => {
       </svg>
       {step > 1 && (
         <>
-          <DelayedComponents delay={600}>
+          <DelayedComponents delay={700}>
             <svg
               width='867'
               className='bottomHr'
@@ -58,7 +58,7 @@ const FirstLine = ({ DOM, step }) => {
               <path d='M0 1H866.5' stroke='black' stroke-dasharray='3 3' />
             </svg>
           </DelayedComponents>
-          <DelayedComponents delay={600}>
+          <DelayedComponents delay={900}>
             <svg
               className='rightCorner'
               width='50'

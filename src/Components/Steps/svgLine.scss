@@ -79,7 +79,7 @@
       animation: arrow2 3s forwards;
     }
     .rightBottomCorner {
-      transform: translate(-57px, calc(100% - 66px));
+      transform: translate(-57px, calc(100% - 74px));
     }
   }
   .bottomHr {
@@ -90,7 +90,7 @@
 
   .bottomHrShort {
     position: absolute;
-    bottom: 0;
+    bottom: 8px;
     left: -384px;
   }
 
@@ -101,7 +101,7 @@
   }
   .bottomCornerEnd {
     position: absolute;
-    bottom: -40px;
+    bottom: -32px;
     left: -437px;
     #blueArrow {
       transform: translate(-8px, 28px);
