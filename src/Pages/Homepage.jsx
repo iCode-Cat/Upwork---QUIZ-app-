@@ -70,7 +70,7 @@ const Homepage = () => {
   return (
     <main className={style.wrapper}>
       <article>
-        <img width='100%' src={header} alt='' />
+        {/* <img width='100%' src={header} alt='' /> */}
         <Hero
           step1={step1}
           scrollToView={scrollToView}
@@ -138,7 +138,7 @@ const Homepage = () => {
                 <CalculationStats results={results} />
               </>
             )}
-            <img width='100%' src={footer} alt='' />
+            {/* <img width='100%' src={footer} alt='' /> */}
           </>
         )}
       </article>
