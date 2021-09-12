@@ -19,7 +19,7 @@ function App() {
 
     // Add Origin for external requestObject
     if (requestObject === 'external') {
-      config.headers.Origin = 'hostname';
+      // config.headers.Origin = 'hostname';
     }
 
     try {
@@ -34,15 +34,15 @@ function App() {
   const monitoringURIS = async ({ route, requestObject }) => {
     const corsPass = 'https://weather-api-33323.herokuapp.com/';
     const URIS = [
-      {
-        uri: 'https://dev-int.web.api.cognni.ai/analytic/events/',
-      },
+      // {
+      //   uri: 'https://dev-int.web.api.cognni.ai/analytic/events/',
+      // },
       // {
       //   uri: 'https://qa-int.web.api.cognni.ai/analytic/events/',
       // },
-      // {
-      //   uri: 'https://stage-webapi.cognni.ai/analytic/events/',
-      // },
+      {
+        uri: 'https://stage-webapi.cognni.ai/analytic/events/',
+      },
     ];
 
     let data = {};
