@@ -1,0 +1,209 @@
+.wrapper {
+  width: 100%;
+  max-width: 525px;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: flex-start;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  padding-top: 7.5rem;
+  position: relative;
+  z-index: 1;
+  counter-increment: section;
+}
+
+.wrapper button {
+  border-radius: 100px;
+}
+
+.wrapper .submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stepFirst {
+  margin-bottom: 10rem;
+}
+
+.stepSecond {
+  margin-top: unset;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.stepSecondBtnPd {
+  padding-bottom: 5rem !important;
+}
+
+.step {
+  width: 100px;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 6px;
+  font-size: 1.8rem;
+}
+
+.step strong {
+  color: #2f2f2f;
+}
+
+.step p {
+  color: rgba(129, 129, 129, 0.787);
+  font-weight: 600;
+}
+
+.input_container {
+  display: -ms-grid;
+  display: grid;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 4.8rem;
+  margin-bottom: 5rem;
+}
+
+.input_box {
+  display: -ms-grid;
+  display: grid;
+}
+
+.input,
+.input_title {
+  color: #565656;
+}
+
+.input_title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.input {
+  width: 100%;
+  border-radius: 100px;
+  height: 50px;
+  border: 1px solid #aeaeae;
+  padding: 1.1rem 4rem;
+  color: #404040;
+  font-size: 1.8rem;
+  font-weight: 400;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  bottom: 0;
+  top: 18px;
+  right: 30px;
+  color: #aeaeae;
+  cursor: pointer;
+}
+
+.submitError {
+  border: 1px solid #ff8282;
+}
+
+.disableEvents {
+  pointer-events: none;
+}
+
+.relativeWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.icon_box {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -ms-grid-columns: 0fr 0fr 0fr;
+      grid-template-columns: 0fr 0fr 0fr;
+  margin-right: 4rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5rem;
+}
+
+.icon_box i {
+  color: #aeaeae;
+  cursor: pointer;
+}
+
+.icon_box p {
+  color: #565656;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.boolean_layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 2.5rem;
+}
+
+@media (max-width: 50em) {
+  .wrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: unset;
+    max-width: unset !important;
+    padding: 6rem 2.5rem 3.2rem 6.3rem;
+  }
+  .wrapper .submit {
+    display: unset;
+  }
+  .input {
+    width: 100%;
+  }
+  .input_title {
+    font-size: 1.4rem;
+  }
+  .stepFirst {
+    margin-bottom: unset;
+  }
+  .stepSecondBtnPd {
+    padding-bottom: unset !important;
+  }
+}
+
+@media (max-width: 50em) {
+  .boolean_layout {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+  .boolean_layout span {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0;
+            flex: 1 0;
+  }
+}
+/*# sourceMappingURL=Steps.module.css.map */

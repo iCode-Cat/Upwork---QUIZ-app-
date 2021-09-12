@@ -5,6 +5,7 @@ import { oxfordJson } from '../Json/oxford_123';
 const initialState = {
   defaultJson,
   userState: false,
+  scrollSize: 'Hello',
 };
 
 export const quizSlice = createSlice({
@@ -16,6 +17,9 @@ export const quizSlice = createSlice({
     },
     updateUserState: (state, action) => {
       state.userState.results = action.payload;
+    },
+    getScrollSize: (state, action) => {
+      state.scrollSize = action.payload;
     },
   },
 });

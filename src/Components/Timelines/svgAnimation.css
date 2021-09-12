@@ -1,0 +1,222 @@
+.svg-animation-web {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  -webkit-transition: 2s;
+  transition: 2s;
+  width: 970px;
+}
+
+.svg-animation-web .path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+.svg-animation-web #rope1 {
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+.svg-animation-web .yellow-arrows {
+  position: absolute;
+  left: -7px;
+  height: 100%;
+  -webkit-animation-name: rope1;
+          animation-name: rope1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.svg-animation-web .yellow-arrows #yellow1 {
+  -webkit-transform: translateY(-160px);
+          transform: translateY(-160px);
+}
+
+.svg-animation-web .yellow-arrows #yellow2 {
+  -webkit-transform: translateY(-140px);
+          transform: translateY(-140px);
+}
+
+.svg-animation-web .green-arrows {
+  position: absolute;
+  right: -7px;
+  height: 100%;
+  top: 40%;
+  z-index: 1;
+  -webkit-animation-name: rope2;
+          animation-name: rope2;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.svg-animation-web .green-arrows #green1 {
+  left: 10px;
+  bottom: 0;
+  -webkit-transform: translateY(200px);
+          transform: translateY(200px);
+}
+
+.svg-animation-web .green-arrows #green2 {
+  -webkit-transform: translateY(180px);
+          transform: translateY(180px);
+}
+
+.svg-animation-web .leftCorner1 {
+  position: absolute;
+  z-index: 999;
+  bottom: -58px;
+  left: 0.5px;
+}
+
+.svg-animation-web .horizantal1 {
+  position: absolute;
+  bottom: -58px;
+  left: 56px;
+}
+
+.svg-animation-web .rightCorner1 {
+  position: absolute;
+  bottom: -127px;
+  right: 0;
+}
+
+.svg-animation-web .rightRope {
+  position: absolute;
+  right: -0.3px;
+  bottom: -316px;
+  z-index: 0;
+}
+
+.svg-animation-web .rightRope2 {
+  bottom: -608px;
+}
+
+.svg-animation-web .rightCornerBottom {
+  position: absolute;
+  right: 0;
+  bottom: -122.5%;
+}
+
+.svg-animation-web .bottomRope2 {
+  position: absolute;
+  bottom: -122.5%;
+  right: 58px;
+}
+
+.svg-animation-web .rightCorner2 {
+  position: absolute;
+  bottom: -129.8%;
+  right: 420px;
+  width: 100px;
+}
+
+.svg-animation-web #blueArrow {
+  -webkit-transform: translateY(27px) translate(-7px);
+          transform: translateY(27px) translate(-7px);
+}
+
+@-webkit-keyframes rope1 {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 40%;
+  }
+}
+
+@keyframes rope1 {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 40%;
+  }
+}
+
+@-webkit-keyframes rope2 {
+  0% {
+    top: 40%;
+  }
+  100% {
+    top: 68%;
+  }
+}
+
+@keyframes rope2 {
+  0% {
+    top: 40%;
+  }
+  100% {
+    top: 68%;
+  }
+}
+
+.svg-animation-mob {
+  display: none;
+  position: absolute;
+  left: 25px;
+  bottom: 0;
+  margin: 0 auto;
+  width: 20px;
+}
+
+.svg-animation-mob #arrow1,
+.svg-animation-mob #arrow2 {
+  position: absolute;
+}
+
+.svg-animation-mob #arrow1 {
+  -webkit-transform: translate(-7px, 0%);
+          transform: translate(-7px, 0%);
+  -webkit-animation: arrowMove 2s ease-in-out forwards;
+          animation: arrowMove 2s ease-in-out forwards;
+}
+
+.svg-animation-mob #arrow2 {
+  display: none;
+  -webkit-transform: translate(-7px, 53%);
+          transform: translate(-7px, 53%);
+}
+
+@-webkit-keyframes arrowMove {
+  0% {
+    -webkit-transform: translate(-7px, 0%);
+            transform: translate(-7px, 0%);
+  }
+  100% {
+    -webkit-transform: translate(-7px, 50%);
+            transform: translate(-7px, 50%);
+  }
+}
+
+@keyframes arrowMove {
+  0% {
+    -webkit-transform: translate(-7px, 0%);
+            transform: translate(-7px, 0%);
+  }
+  100% {
+    -webkit-transform: translate(-7px, 50%);
+            transform: translate(-7px, 50%);
+  }
+}
+
+@media (max-width: 50em) {
+  .svg-animation-web {
+    display: none;
+  }
+  .svg-animation-mob {
+    display: block;
+  }
+}
+/*# sourceMappingURL=svgAnimation.css.map */

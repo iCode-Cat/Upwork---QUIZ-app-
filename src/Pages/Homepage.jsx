@@ -15,7 +15,7 @@ import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
 import scrollIntoView from 'scroll-into-view';
 
-const Homepage = () => {
+const Homepage = ({ app }) => {
   // Main state
   const state = useSelector((state) => state.quiz);
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const Homepage = () => {
   }, [form]);
 
   return (
-    <main className={style.wrapper}>
+    <main ref={app} className={style.wrapper}>
       <article>
         {/* <img width='100%' src={header} alt='' /> */}
         <Hero

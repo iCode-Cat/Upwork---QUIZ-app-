@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,WAAW,CAAC;EACV,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,GAAG,EAAE,MAAM;EACX,UAAU,EAAE,MAAM;EAClB,QAAQ,EAAE,GAAG;EACb,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,OAAO;CAOhB;;AAJE,AAAD,gBAAM,CAAC;EACL,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,MAAM;CAClB",
+    "sources": [
+        "Disclaimer.module.scss"
+    ],
+    "names": [],
+    "file": "Disclaimer.module.css"
+}

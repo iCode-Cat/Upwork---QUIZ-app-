@@ -1,15 +1,24 @@
 import Homepage from './Pages/Homepage';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
+// Cors Error
+// Dev does not work
+// Is monitoring work
+// Stage or another
+
 function App() {
+  // Refs
+  const app = useRef();
+
   const tokenBearer =
     'Bearer NWM4MDE2NTItZjZhOS00NjdlLTk5NjgtNmZmNjUxMWRlYWEyOiYxPGhiXVZCYHZVTypgRHo8bXQrWWsrJjc5VGxZWWQwJD0qb0JmaUktZXpXUFRbNEAxaG5oR2RfJ1VeIUtOWg==';
   const tokenBasic =
     'Basic NWM4MDE2NTItZjZhOS00NjdlLTk5NjgtNmZmNjUxMWRlYWEyOiYxPGhiXVZCYHZVTypgRHo8bXQrWWsrJjc5VGxZWWQwJD0qb0JmaUktZXpXUFRbNEAxaG5oR2RfJ1VeIUtOWg==';
   const state = useSelector((state) => state.quiz);
   const userState = state.userState;
+  const scrollSize = state.scrollSize;
 
   // Posting Function
   const monitoringPost = async ({ url, data, headers, requestObject }) => {
@@ -24,7 +33,7 @@ function App() {
 
     try {
       const post = await axios.post(url, data, config);
-      console.log(post);
+      // console.log(post);
     } catch (error) {
       console.log(error);
     }
@@ -109,16 +118,25 @@ function App() {
     await Promise.all(loop);
   };
 
+  const sendMessageParent = ({ message }) => {
+    window.parent.postMessage(message, '*');
+  };
+
   useEffect(() => {
     if (userState) {
       monitoringLoop();
     }
   }, [userState.step]);
 
+  useEffect(() => {
+    const scrollSize = app.current.clientHeight;
+    sendMessageParent({ message: scrollSize });
+  }, [userState]);
+
   return (
-    <>
-      <Homepage />
-    </>
+    <div>
+      <Homepage app={app} />
+    </div>
   );
 }
 

@@ -1,0 +1,238 @@
+.stats-wrapper {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  place-items: center;
+  width: 1170px;
+  margin: 14.6rem auto 10rem auto;
+  padding: 6rem 0 2.6rem 0;
+  background: #fff;
+  -webkit-box-shadow: 0px 26px 80px 0px rgba(155, 162, 171, 0.1);
+          box-shadow: 0px 26px 80px 0px rgba(155, 162, 171, 0.1);
+  height: 620px;
+  overflow: hidden;
+}
+
+.stats-title {
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-top: 6.3rem;
+}
+
+.stats-pin {
+  position: absolute;
+  bottom: 150px;
+  z-index: 999;
+}
+
+.stats-fade {
+  -webkit-animation-name: dissolve;
+          animation-name: dissolve;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.breakdown-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 6.4rem;
+  gap: 8.4rem;
+}
+
+.breakdown-fade {
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.circle-wrapper {
+  margin-left: 14rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.circle-savings {
+  text-align: center;
+  position: absolute;
+}
+
+.circle-savings-amount {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 2rem;
+  color: var(--blue);
+}
+
+.circle-savings-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--main);
+}
+
+.slider-wrapper {
+  width: 100%;
+  padding: 0;
+  height: 500px;
+}
+
+.carousel-control-prev-icon {
+  color: var(--blue);
+}
+
+.carousel-control-next {
+  width: unset;
+  margin-right: 3rem;
+  margin-bottom: 12rem;
+}
+
+.carousel-control-prev {
+  width: unset;
+  margin-left: 3rem;
+  margin-bottom: 12rem;
+}
+
+.carousel-indicators .active {
+  background-color: var(--blue) !important;
+  border: solid 0.1px var(--blue) !important;
+  background: var(--blue) !important;
+}
+
+.carousel-indicators button {
+  background-color: #e4f6fc !important;
+  border: solid 0.1px #e4f6fc !important;
+  background: #e4f6fc !important;
+}
+
+.carousel-inner {
+  overflow: unset;
+}
+
+#layer2 {
+  -webkit-animation-name: fade2;
+          animation-name: fade2;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+#layer1 {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes dissolve {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes dissolve {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  70% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  70% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fade2 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade2 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=Stats.css.map */
