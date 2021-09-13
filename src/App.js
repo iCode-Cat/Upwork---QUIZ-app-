@@ -129,9 +129,11 @@ function App() {
   }, [userState.step]);
 
   useEffect(() => {
-    const scrollSize = app.current.clientHeight;
-    sendMessageParent({ message: scrollSize });
-  }, [userState]);
+    setInterval(() => {
+      let scrollSize = app.current.clientHeight;
+      sendMessageParent({ message: scrollSize });
+    }, 100);
+  }, []);
 
   return (
     <div>
