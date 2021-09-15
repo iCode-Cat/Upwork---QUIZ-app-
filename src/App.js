@@ -11,6 +11,12 @@ import axios from 'axios';
 function App() {
   // Refs
   const app = useRef();
+  // References
+  const hero = useRef();
+  const results = useRef();
+  const step1 = useRef();
+  const step2 = useRef();
+  const step3 = useRef();
 
   const tokenBearer =
     'Bearer NWM4MDE2NTItZjZhOS00NjdlLTk5NjgtNmZmNjUxMWRlYWEyOiYxPGhiXVZCYHZVTypgRHo8bXQrWWsrJjc5VGxZWWQwJD0qb0JmaUktZXpXUFRbNEAxaG5oR2RfJ1VeIUtOWg==';
@@ -125,6 +131,10 @@ function App() {
   useEffect(() => {
     if (userState) {
       monitoringLoop();
+      // Send iframe message everytime step changes
+      sendMessageParent({
+        message: { step: userState.step, scrollSize: app.current.scrollHeight },
+      });
     }
   }, [userState.step]);
 
@@ -137,7 +147,14 @@ function App() {
 
   return (
     <div>
-      <Homepage app={app} />
+      <Homepage
+        hero={hero}
+        step1={step1}
+        step1={step2}
+        step1={step3}
+        results={results}
+        app={app}
+      />
     </div>
   );
 }

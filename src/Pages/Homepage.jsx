@@ -15,7 +15,7 @@ import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
 import scrollIntoView from 'scroll-into-view';
 
-const Homepage = ({ app }) => {
+const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
   const state = useSelector((state) => state.quiz);
   const dispatch = useDispatch();
@@ -27,13 +27,6 @@ const Homepage = ({ app }) => {
   });
 
   const [isEnd, setIsEnd] = useState(true);
-
-  // References
-  const hero = useRef();
-  const results = useRef();
-  const step1 = useRef();
-  const step2 = useRef();
-  const step3 = useRef();
 
   // Functions
   const formStateHandler = ({ field, value }) => {
