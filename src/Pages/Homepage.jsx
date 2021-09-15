@@ -6,8 +6,6 @@ import Hero from '../Components/Hero';
 import style from '../Scss/Homepage.module.scss';
 import Calculation from '../Components/Calculation/Stats';
 import Background from '../Components/Background';
-import footer from '../Images/footer.png';
-import header from '../Images/header.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import '../Components/Steps/svgLine.scss';

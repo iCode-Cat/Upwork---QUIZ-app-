@@ -10,7 +10,7 @@ const Stats = ({ results, defaultJson }) => {
 
   setTimeout(() => {
     setLoader(false);
-  }, 1000);
+  }, 1);
 
   return (
     <section

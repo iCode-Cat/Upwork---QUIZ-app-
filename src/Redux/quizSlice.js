@@ -6,6 +6,7 @@ const initialState = {
   defaultJson,
   userState: false,
   scrollSize: 'Hello',
+  globalStepHeight: 0,
 };
 
 export const quizSlice = createSlice({
@@ -21,10 +22,14 @@ export const quizSlice = createSlice({
     getScrollSize: (state, action) => {
       state.scrollSize = action.payload;
     },
+    updateStepHeight: (state, action) => {
+      state.globalStepHeight = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserState, updateUserState } = quizSlice.actions;
+export const { setUserState, updateUserState, updateStepHeight } =
+  quizSlice.actions;
 
 export default quizSlice.reducer;

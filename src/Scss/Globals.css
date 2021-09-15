@@ -15,13 +15,19 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */
+}
+
 html {
   font-size: 62.5%;
+  min-height: 101vh;
 }
 
 body {
   font-size: 1.6rem;
-  min-height: 101vh;
 }
 
 button {

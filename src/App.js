@@ -124,16 +124,46 @@ function App() {
     await Promise.all(loop);
   };
 
+  const stepHeightHandler = (step) => {
+    let stepHeight;
+    switch (step) {
+      case 1:
+        stepHeight = step1.current.scrollHeight;
+        break;
+      case 2:
+        stepHeight = step2.current.scrollHeight;
+        break;
+      case 3:
+        stepHeight = step3.current.scrollHeight;
+        break;
+      case 4:
+        stepHeight = 100;
+        break;
+      default:
+        break;
+    }
+    return stepHeight;
+  };
+
   const sendMessageParent = ({ message }) => {
     window.parent.postMessage(message, '*');
   };
 
   useEffect(() => {
     if (userState) {
+      // Send monitoring
       monitoringLoop();
-      // Send iframe message everytime step changes
+      const stepCount = userState.step;
+      const fullSize = app.current.scrollHeight;
+      //  const steps = [null, step1, step2, step3, results];
+
+      console.log(stepHeightHandler(stepCount));
+
       sendMessageParent({
-        message: { step: userState.step, scrollSize: app.current.scrollHeight },
+        message: {
+          step: stepCount,
+          scrollSize: fullSize - stepHeightHandler(stepCount),
+        },
       });
     }
   }, [userState.step]);
@@ -150,8 +180,8 @@ function App() {
       <Homepage
         hero={hero}
         step1={step1}
-        step1={step2}
-        step1={step3}
+        step2={step2}
+        step3={step3}
         results={results}
         app={app}
       />
