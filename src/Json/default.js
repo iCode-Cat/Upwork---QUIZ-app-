@@ -7,10 +7,9 @@ module.exports.defaultJson = {
   campaignId: null,
   heroVersion: 1,
   hero: {
-    title: 'Calculate Cognni’s ROI',
-    sub_title:
-      'See how much you can save with autonomous mapping </br> and information intelligence',
-    button_text: 'Start Calculation',
+    title: 'Information Risk Assessment',
+    sub_title: 'See how much information risks are costing you',
+    button_text: 'Calculate your risk',
     logo: '/CompanyLogo.svg',
   },
   heroTabMenu: {
@@ -68,30 +67,49 @@ module.exports.defaultJson = {
       index: 2,
       fields: [
         {
-          name: 'Working with cloud v2?',
-          stateName: 'workingCloudv2',
-          text: 'Which of those information risks are you working to minimize in the next 12 months?',
+          name: 'Relevant Threats',
+          stateName: 'relevantThreats',
+          text: 'Which of the following information risks are you worried about?',
           questionType: 'booleanMulti',
-
           options: [
             {
-              text: 'Data breach',
-              icon: 'fa-check',
-            },
-            {
-              text: 'Insider Threats',
-              icon: 'fa-check',
-            },
-            {
-              text: 'Insider Threats',
+              text: 'Data breaches',
               icon: false,
             },
             {
-              text: 'Regulation & Compliance',
+              text: 'Insider threats',
               icon: false,
             },
             {
-              text: 'Ransomware',
+              text: 'Ransomware attacks',
+              icon: false,
+            },
+            {
+              text: 'Regulations',
+              icon: false,
+            },
+          ],
+        },
+        {
+          name: 'Relevant Use Cases',
+          stateName: 'useCases',
+          text: 'Which of the following are you already doing to minimize the risk?',
+          questionType: 'booleanMulti',
+          options: [
+            {
+              text: 'Cloud migration',
+              icon: false,
+            },
+            {
+              text: 'Deploying Information Protection',
+              icon: false,
+            },
+            {
+              text: 'Investigating information risks',
+              icon: false,
+            },
+            {
+              text: 'Data Classification',
               icon: false,
             },
           ],
@@ -103,7 +121,7 @@ module.exports.defaultJson = {
       index: 3,
       fields: [
         {
-          name: 'how do you',
+          name: 'Not used 1',
           stateName: 'howProtectInfo',
           text: 'How are you protecting your information?',
           placeholder: 'Choose answer',
@@ -127,7 +145,7 @@ module.exports.defaultJson = {
           ],
         },
         {
-          name: 'how do you risk',
+          name: 'Not used 2',
           stateName: 'howProtectRisk',
           text: 'How are you protecting your information?',
           placeholder: 'Choose answer',
@@ -151,67 +169,57 @@ module.exports.defaultJson = {
     },
   ],
   stats: {
-    tabMenuMod: 2,
+    tabMenuMod: 1,
     currency: '$',
     disclaimer: false,
     tabMenus: [
       {
         key: 0,
         subTitle: 'Savings',
-        name: 'Cost of Information Protection',
-        mainTitle: 'Potential financial impact',
+        name: 'Potential Impact',
+        mainTitle: 'With Cognni you can minimize the potential impact by:',
         tooltip: true,
         costs: [
           {
             yourCost: {
-              title: 'Your Current Cost',
-              amount: '1389600',
+              title: 'The total potential cost is',
+              formulaVariable: 494.4,
             },
             cognniCost: {
-              title: 'With Cognni',
-              amount: '1036560',
+              title: 'With Cognni you can minimize your potential impact by',
+              formulaVariable: 486.4,
             },
           },
         ],
         labels: [
           {
             color: '#2196F3',
-            name: 'Classiying your critical data',
-            formulaVariable: 122,
+            name: 'Insider threats',
+            formulaVariable: 1110,
             tooltipText: {
-              title: 'Classiying your critical data',
+              title: 'Insider threats',
               content:
-                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+                'Insider threats potential impact is a direct result of exposure of the critical information in the organization, the potential impact assume average exposure of critical information in your organization.',
             },
           },
           {
             color: '#00B746',
-            name: 'Managing information behavior',
-            formulaVariable: 11,
+            name: 'Ransomware Threats',
+            formulaVariable: 868,
             tooltipText: {
-              title: 'Classiying your critical data',
+              title: 'Ransomware Threats',
               content:
-                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+                'Ransomware potential impact is a direct result of exposure of the critical information in the organization, the potential impact assume average exposure of critical information in your organization.',
             },
           },
           {
             color: '#565656',
-            name: 'Detecting information risks',
-            formulaVariable: 140,
+            name: 'Data Breaches',
+            formulaVariable: 1496,
             tooltipText: {
-              title: 'Classiying your critical data',
+              title: 'Data Breaches',
               content:
-                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
-            },
-          },
-          {
-            color: '#FFC300',
-            name: 'Investigating risks',
-            formulaVariable: 34,
-            tooltipText: {
-              title: 'Classiying your critical data',
-              content:
-                "The Cognni Calculator is intended to provide an example of your potential savings when using the Cognni Security Management Solution, the results are based on your input and some assumptions derived from Cognni's experience.",
+                'Data breach potential impact is a direct result of exposure of the critical information in the organization, the potential impact assume average exposure of critical information in your organization.',
             },
           },
         ],
@@ -268,7 +276,7 @@ module.exports.defaultJson = {
     ],
   },
   lastSection: {
-    buttonText: 'Generate Risk Assesement Report',
+    buttonText: 'Connect Cognni',
     href: '/',
   },
 };

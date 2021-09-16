@@ -29,20 +29,28 @@ const BreakDown = ({ style }) => {
         }),
       };
     });
+
     return {
       items: [...calc],
       menu: item.name,
       withFormula: null,
+      cost: item.costs,
     };
   });
 
   useEffect(() => {
     const finalCalculate = withFormula.map((ctx) => {
+      const coggniCompare = ctx.cost[0].cognniCost.formulaVariable;
+      const yourCostCompare = ctx.cost[0].yourCost.formulaVariable;
       const object = ctx.items.map((ctx) => ctx.result);
       const sum = object.reduce((a, b) => a + b, 0);
       ctx.withFormula = Math.floor(sum);
       ctx.withOutFormula = Math.floor(sum * 3.33);
+      ctx.withFormulaCompare = Math.floor(numberEmployees * coggniCompare);
+      ctx.withOutFormulaCompare = Math.floor(numberEmployees * yourCostCompare);
       ctx.savings = Math.floor(sum * 3.33) - sum;
+      ctx.savingsCompare =
+        ctx.withOutFormulaTabCompare - ctx.withFormulaCompare;
       return ctx;
     });
     dispatch(updateUserState(finalCalculate));
