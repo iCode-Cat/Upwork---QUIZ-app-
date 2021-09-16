@@ -5,7 +5,6 @@ import { oxfordJson } from '../Json/oxford_123';
 const initialState = {
   defaultJson,
   userState: false,
-  scrollSize: 'Hello',
   globalStepHeight: 0,
 };
 

@@ -76,11 +76,13 @@ const Bar = styled.div`
 
 const Compare = ({ stats, currency, toggle }) => {
   const {
+    cost,
     withFormula,
     withOutFormula,
     withFormulaCompare,
     withOutFormulaCompare,
   } = stats[toggle];
+  const { cognniCost, yourCost } = cost[0];
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
     <Wrapper>
@@ -91,7 +93,7 @@ const Compare = ({ stats, currency, toggle }) => {
         <ProgressWrapper>
           <Label>
             <img src={redArrow} alt='arrow' />
-            <p>Your Current Cost</p>
+            <p>{yourCost.title}</p>
           </Label>
           <YourCost>
             {currency + ' ' + numberFormat.format(withOutFormulaCompare)}
@@ -100,11 +102,10 @@ const Compare = ({ stats, currency, toggle }) => {
         <ProgressWrapper>
           <Label>
             <img src={blueArrow} alt='arrow' />
-            <p>With Cognni</p>
+            <p>{cognniCost.title}</p>
           </Label>
           <OurCost>
             <Bar>
-              {' '}
               {currency + ' ' + numberFormat.format(withFormulaCompare)}
             </Bar>
           </OurCost>

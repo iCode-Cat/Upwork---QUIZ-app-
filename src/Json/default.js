@@ -31,10 +31,6 @@ module.exports.defaultJson = {
       },
     ],
   },
-  conclusion: {
-    title: 'Thanks for participation <br/> in our survey!',
-    sub_title: 'We send you our deal on your email.',
-  },
   terms: {
     content:
       'I agree to receive my quiz results and a series of emails that will teach me how to get potential financial impact. I also have read and agree to the Privacy Policy and Terms of Service.',
@@ -54,7 +50,7 @@ module.exports.defaultJson = {
         },
         {
           name: 'email',
-          stateName: 'email',
+          stateName: 'Work email',
           text: 'Enter your corporate email to get started',
           placeholder: 'Corporate email',
           questionType: 'text',

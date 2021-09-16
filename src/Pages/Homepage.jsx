@@ -21,7 +21,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 4,
   });
 
   const [isEnd, setIsEnd] = useState(true);
@@ -122,11 +122,8 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
             {form.step >= 4 && (
               <>
-                {/* OLD VERSION */}
                 <Calculation defaultJson={defaultJson} />
-                {/* NEW VERSION */}
-
-                <CalculationStats results={results} />
+                <CalculationStats state={state} results={results} />
               </>
             )}
             {/* <img width='100%' src={footer} alt='' /> */}

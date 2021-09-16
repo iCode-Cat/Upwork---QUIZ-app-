@@ -14,7 +14,7 @@ const Stats = ({ results, state }) => {
   const defaultJson = state.defaultJson;
 
   const { stats } = defaultJson;
-  const { tabMenus, currency } = stats;
+  const { tabMenus, currency, tabMenuMod } = stats;
 
   // Change Data According to Toggle
   useEffect(() => {
@@ -23,11 +23,14 @@ const Stats = ({ results, state }) => {
 
   // Data Structure
   const { mainTitle, labels, tooltip } = data;
+  console.log(tabMenuMod);
 
   return (
     <Background>
       <section ref={results} className='stats-wrapper'>
-        <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
+        {tabMenuMod === 0 && (
+          <Toggle toggle={toggle} setToggle={setToggle} tabMenus={tabMenus} />
+        )}
         <SlideShow
           currency={currency}
           mainTitle={mainTitle}

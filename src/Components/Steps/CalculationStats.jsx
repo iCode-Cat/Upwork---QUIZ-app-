@@ -14,15 +14,16 @@ const Loader = styled.p`
   color: var(--main);
   background: #ddf2f7;
 `;
-const CalculationStats = ({ results }) => {
+const CalculationStats = ({ results, state }) => {
+  const lastSection = state.defaultJson.lastSection;
+
   // Stats
-  const state = useSelector((state) => state.quiz);
   const resultsState = state.userState.results;
   return resultsState ? (
     <>
       <Stats results={results} state={state} />
       <Background report bg>
-        <AnimatedButton />
+        <AnimatedButton lastSection={lastSection} />
       </Background>
     </>
   ) : (
