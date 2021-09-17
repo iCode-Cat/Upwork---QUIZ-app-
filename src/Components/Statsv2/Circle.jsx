@@ -1,14 +1,14 @@
 import React from 'react';
 import numeral from 'numeral';
 
-const Circle = ({ savings, currency, toggle }) => {
+const Circle = ({ savings, currency, toggle, subTitle }) => {
   return (
     <div className='circle-wrapper'>
       <div className='circle-savings'>
         <p className='circle-savings-amount'>
           {currency + ' ' + numeral(savings).format('0a')}
         </p>
-        <p className='circle-savings-title'>Savings</p>
+        <p className='circle-savings-title'>{subTitle}</p>
       </div>
       <svg
         style={{

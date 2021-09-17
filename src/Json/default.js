@@ -224,7 +224,7 @@ module.exports.defaultJson = {
       {
         key: 1,
         name: 'Cost of Exposure',
-        subTitle: 'Savings',
+        subTitle: 'Cost',
         mainTitle: 'Potential financial impact',
         compareTitle: "Here's how much money you can <br /> save every year",
         tooltip: true,

@@ -21,8 +21,10 @@ const Stats = ({ results, state }) => {
     setData(tabMenus[toggle]);
   }, [toggle]);
 
+  console.log(data);
+
   // Data Structure
-  const { mainTitle, labels, tooltip } = data;
+  const { mainTitle, labels, tooltip, subTitle } = data;
   console.log(tabMenuMod);
 
   return (
@@ -37,6 +39,7 @@ const Stats = ({ results, state }) => {
           labels={labels}
           toggle={toggle}
           tooltip={tooltip}
+          subTitle={subTitle}
         />
       </section>
     </Background>

@@ -4,7 +4,14 @@ import CircleSecond from './CircleSecond';
 import Labels from './Labels';
 import Title from './Title';
 
-const Graphics = ({ mainTitle, toggle, stats, currency, tooltip }) => {
+const Graphics = ({
+  mainTitle,
+  toggle,
+  stats,
+  currency,
+  tooltip,
+  subTitle,
+}) => {
   const parent = useRef();
   return stats.map((item, index) => (
     <div
@@ -23,12 +30,17 @@ const Graphics = ({ mainTitle, toggle, stats, currency, tooltip }) => {
       <Title mainTitle={mainTitle} />
       <div className='breakdown-wrapper'>
         {index === 0 ? (
-          <Circle currency={currency} savings={item.savings} />
+          <Circle
+            currency={currency}
+            savings={item.savings}
+            subTitle={subTitle}
+          />
         ) : (
           <CircleSecond
             type={toggle}
             savings={item.savings}
             currency={currency}
+            subTitle={subTitle}
           />
         )}
 

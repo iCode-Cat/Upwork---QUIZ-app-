@@ -5,7 +5,14 @@ import Graphics from './Graphics';
 import Previous from '../../Images/Previous.svg';
 import Next from '../../Images/Next.svg';
 import { useSelector } from 'react-redux';
-const SlideShow = ({ mainTitle, labels, toggle, currency, tooltip }) => {
+const SlideShow = ({
+  mainTitle,
+  labels,
+  toggle,
+  currency,
+  tooltip,
+  subTitle,
+}) => {
   const stats = useSelector((state) => state.quiz);
   const compareContent = stats.defaultJson.stats.tabMenus;
 
@@ -31,6 +38,7 @@ const SlideShow = ({ mainTitle, labels, toggle, currency, tooltip }) => {
           mainTitle={mainTitle}
           labels={labels}
           tooltip={tooltip}
+          subTitle={subTitle}
         />
       </Carousel.Item>
       <Carousel.Item>
