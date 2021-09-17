@@ -25,7 +25,7 @@ const BreakDown = ({ style }) => {
         result: calculate({
           numberEmployees,
           variable: label.formulaVariable,
-          divider: 0.3,
+          divider: 1,
         }),
       };
     });
@@ -44,11 +44,9 @@ const BreakDown = ({ style }) => {
       const yourCostCompare = ctx.cost[0].yourCost.formulaVariable;
       const object = ctx.items.map((ctx) => ctx.result);
       const sum = object.reduce((a, b) => a + b, 0);
-      ctx.withFormula = Math.floor(sum);
-      ctx.withOutFormula = Math.floor(sum * 3.33);
       ctx.withFormulaCompare = Math.floor(numberEmployees * coggniCompare);
       ctx.withOutFormulaCompare = Math.floor(numberEmployees * yourCostCompare);
-      ctx.savings = Math.floor(sum * 3.33) - sum;
+      ctx.savings = ctx.withOutFormulaCompare;
       ctx.savingsCompare =
         ctx.withOutFormulaTabCompare - ctx.withFormulaCompare;
       return ctx;

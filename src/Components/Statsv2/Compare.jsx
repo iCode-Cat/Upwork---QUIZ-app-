@@ -74,21 +74,13 @@ const Bar = styled.div`
   z-index: 0;
 `;
 
-const Compare = ({ stats, currency, toggle }) => {
-  const {
-    cost,
-    withFormula,
-    withOutFormula,
-    withFormulaCompare,
-    withOutFormulaCompare,
-  } = stats[toggle];
+const Compare = ({ stats, currency, toggle, compare }) => {
+  const { cost, withFormulaCompare, withOutFormulaCompare } = stats[toggle];
   const { cognniCost, yourCost } = cost[0];
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
     <Wrapper>
-      <Title>
-        Here's how much money you can <br /> save every year
-      </Title>
+      <Title>{compare.mainTitle2}</Title>
       <div className='progress-wrapper'>
         <ProgressWrapper>
           <Label>

@@ -171,19 +171,20 @@ module.exports.defaultJson = {
     tabMenus: [
       {
         key: 0,
-        subTitle: 'Savings',
+        subTitle: 'Potential Impact',
         name: 'Potential Impact',
-        mainTitle: 'With Cognni you can minimize the potential impact by:',
+        mainTitle: 'Your potential impact cost',
+        mainTitle2: 'Minimize your potential impact cost',
         tooltip: true,
         costs: [
           {
             yourCost: {
-              title: 'The total potential cost is',
-              formulaVariable: 494.4,
+              title: 'The total potential impact cost',
+              formulaVariable: 3474,
             },
             cognniCost: {
-              title: 'With Cognni you can minimize your potential impact by',
-              formulaVariable: 486.4,
+              title: 'With Cognni you can minimize your potential impact',
+              formulaVariable: 2268,
             },
           },
         ],
@@ -225,6 +226,7 @@ module.exports.defaultJson = {
         name: 'Cost of Exposure',
         subTitle: 'Savings',
         mainTitle: 'Potential financial impact',
+        compareTitle: "Here's how much money you can <br /> save every year",
         tooltip: true,
         costs: [
           {
