@@ -9,6 +9,7 @@ const ErrorMessage = ({ checked, errorValue }) => {
     fontWeight: '400',
     marginLeft: '1rem',
     marginTop: '1rem',
+    height: '30px',
   };
 
   return (

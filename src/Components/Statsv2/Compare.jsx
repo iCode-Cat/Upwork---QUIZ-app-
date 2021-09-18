@@ -11,18 +11,27 @@ const Wrapper = styled.div`
     gap: 2.8rem;
     margin: 7.2rem auto 0 auto;
     max-width: 700px;
+    padding: 0 1rem;
   }
 `;
 const ProgressWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
+  @media (max-width: 50em) {
+    grid-template-columns: auto;
+    justify-content: center;
+    justify-items: center;
+  }
 `;
 const Title = styled.p`
   text-align: center;
   font-size: 3.2rem;
   font-weight: 700;
   color: var(--black);
+  @media (max-width: 50em) {
+    font-size: 2.4rem;
+  }
 `;
 const Label = styled.div`
   display: grid;
@@ -34,6 +43,10 @@ const Label = styled.div`
   margin-right: 3rem;
   margin-left: 1.1rem;
   justify-self: flex-end;
+  @media (max-width: 50em) {
+    font-size: 1.4rem;
+    justify-self: unset;
+  }
 `;
 const YourCost = styled.div`
   display: grid;
@@ -47,6 +60,9 @@ const YourCost = styled.div`
   font-size: 1.8rem;
   font-weight: 600;
   border: solid 2px #ab101020;
+  @media (max-width: 50em) {
+    width: 100%;
+  }
 `;
 const OurCost = styled.div`
   overflow: hidden;
@@ -60,6 +76,10 @@ const OurCost = styled.div`
   border-radius: 8px;
   font-size: 2.4rem;
   font-weight: 600;
+  @media (max-width: 50em) {
+    width: 100%;
+    max-width: 300px;
+  }
 `;
 
 const Bar = styled.div`

@@ -9,6 +9,12 @@ const Wrapper = styled.a`
   place-items: center;
   margin: 9rem 0;
   cursor: pointer;
+  @media (max-width: 50em) {
+    #animated-btn {
+      width: 100%;
+      max-width: 488px;
+    }
+  }
 `;
 
 const Text = styled.p`
@@ -30,6 +36,7 @@ const AnimatedButton = ({ lastSection }) => {
         viewBox='0 0 488 121'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
+        id='animated-btn'
       >
         <g id='Component 3'>
           <g id='Group 20'>

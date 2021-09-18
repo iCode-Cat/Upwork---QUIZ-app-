@@ -30,6 +30,19 @@
     animation-duration: 2s;
     animation-fill-mode: forwards;
   }
+  @media (max-width: 70em) {
+    &-wrapper {
+      margin: 0rem auto 10rem auto;
+      height: unset;
+      padding: unset;
+    }
+    &-title {
+      font-size: 2.4rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--black);
+    }
+  }
 }
 
 .breakdown {
@@ -37,6 +50,11 @@
     display: flex;
     margin-top: 6.4rem;
     gap: 8.4rem;
+    @media (max-width: 70em) {
+      flex-direction: column;
+      margin-top: 2rem;
+      gap: unset;
+    }
   }
   &-fade {
     position: absolute;
@@ -69,6 +87,26 @@
       font-weight: 400;
       color: var(--main);
     }
+  }
+  @media (max-width: 70em) {
+    &-wrapper {
+      margin-left: unset;
+    }
+
+    &-savings {
+      &-amount {
+        font-size: 3.4rem;
+      }
+      &-title {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 70em) {
+  .circle-svg {
+    width: 200px;
   }
 }
 

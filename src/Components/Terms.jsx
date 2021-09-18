@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   /* If step bigger than 1, disable to click */
   opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
   margin-top: 5rem;
+  cursor: pointer;
   @media (max-width: 50em) {
     margin-top: 2rem;
   }

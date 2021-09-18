@@ -142,6 +142,7 @@
 @media (max-width: 50em) {
   .wrapper {
     // width: 100vw;
+    // display: block;
     align-items: center;
     justify-items: unset;
     max-width: unset !important;
@@ -156,6 +157,19 @@
   .input_title {
     font-size: 1.4rem;
   }
+
+  .input_box {
+    grid-template-columns: 1fr;
+  }
+
+  // .input_container {
+  //   display: block;
+  //   gap: 4rem;
+  //   width: 100%;
+  //   margin-top: 4.8rem;
+  //   margin-bottom: 5rem;
+  // }
+
   .stepFirst {
     margin-bottom: unset;
   }
