@@ -7,7 +7,7 @@ const Wrapper = styled.a`
   position: relative;
   display: grid;
   place-items: center;
-  margin: 9rem 0;
+  margin: 2rem 0 5rem 0;
   cursor: pointer;
   @media (max-width: 50em) {
     #animated-btn {
@@ -47,7 +47,7 @@ const AnimatedButton = ({ lastSection }) => {
               width='480'
               height='120'
               rx='60'
-              fill='#E6F3E6'
+              fill='rgba(33, 149, 243, 0.15)'
             />
             <rect
               id='layer1'
@@ -56,7 +56,7 @@ const AnimatedButton = ({ lastSection }) => {
               width='446'
               height='90'
               rx='45'
-              fill='#D0E8D0'
+              fill='rgba(33, 149, 243, 0.35)'
             />
           </g>
           <g id='Buttons'>
@@ -66,7 +66,7 @@ const AnimatedButton = ({ lastSection }) => {
               width='406'
               height='60'
               rx='30'
-              fill='#4CAF50'
+              fill='#2196F3'
             />
             <g id='bi:file-earmark-arrow-up-fill'>
               <g id='Group'>

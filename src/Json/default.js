@@ -200,7 +200,7 @@ module.exports.defaultJson = {
             },
           },
           {
-            color: '#00B746',
+            color: '#FFC300',
             name: 'Ransomware Threats',
             formulaVariable: 868,
             tooltipText: {

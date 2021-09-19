@@ -21,7 +21,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 4,
   });
 
   const [isEnd, setIsEnd] = useState(true);
