@@ -9,9 +9,15 @@ const Wrapper = styled.div`
   .progress-wrapper {
     display: grid;
     gap: 2.8rem;
-    margin: 4.5rem auto 0 auto;
+    margin: 3.5rem auto 0 auto;
     max-width: 700px;
     padding: 0 1rem;
+  }
+  @media (max-width: 50em) {
+    margin-top: 1rem;
+    .progress-wrapper {
+      margin: 1rem auto 0 auto;
+    }
   }
 `;
 const ProgressWrapper = styled.div`
@@ -33,6 +39,7 @@ const Title = styled.p`
   color: var(--black);
   @media (max-width: 50em) {
     font-size: 2.4rem;
+    max-width: 300px;
   }
 `;
 const Label = styled.div`
@@ -52,8 +59,14 @@ const Label = styled.div`
 
   justify-self: flex-end;
   @media (max-width: 50em) {
+    display: flex;
+    justify-content: center;
     font-size: 1.4rem;
-    justify-self: unset;
+    width: 400px;
+    p {
+      max-width: unset;
+      margin-top: 0.5rem;
+    }
   }
 `;
 const YourCost = styled.div`
@@ -78,7 +91,7 @@ const OurCost = styled.div`
   align-items: center;
   position: relative;
   width: 365px;
-  height: 70px;
+  height: 60px;
   background: #d2edf6;
   color: #fff;
   border-radius: 8px;
@@ -87,6 +100,7 @@ const OurCost = styled.div`
   @media (max-width: 50em) {
     width: 100%;
     max-width: 300px;
+    margin-bottom: 2rem;
   }
 `;
 

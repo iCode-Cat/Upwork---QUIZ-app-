@@ -59,6 +59,7 @@ const Circle = ({ savings, currency, toggle, subTitle }) => {
         height='238'
         viewBox='0 0 238 238'
         fill='none'
+        className='circle-svg'
         xmlns='http://www.w3.org/2000/svg'
       >
         <path

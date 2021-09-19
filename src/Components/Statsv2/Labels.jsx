@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   gap: 0rem 0rem;
   @media (max-width: 70em) {
     max-width: 375px;
-    margin: 0 auto;
+    margin: 3rem auto 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

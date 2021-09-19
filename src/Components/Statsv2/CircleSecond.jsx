@@ -18,6 +18,7 @@ const CircleSecond = ({ savings, currency, toggle, subTitle }) => {
         }}
         width='238'
         height='238'
+        className='circle-svg'
         viewBox='0 0 238 238'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
