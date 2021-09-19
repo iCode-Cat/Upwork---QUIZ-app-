@@ -18,14 +18,13 @@ const Graphics = ({
       key={index}
       ref={parent}
       style={{
-        position: 'absolute',
+        position: index === 0 && 'absolute',
         width: '100%',
         background: '#FFF',
         transition: ' opacity 0.6s',
         opacity: `${toggle === index ? '1' : '0'}`,
         zIndex: `${toggle === index ? '1' : '0'}`,
       }}
-      className='stats-graphics'
     >
       <Title mainTitle={mainTitle} />
       <div className='breakdown-wrapper'>

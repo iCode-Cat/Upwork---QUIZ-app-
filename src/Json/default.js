@@ -165,7 +165,7 @@ module.exports.defaultJson = {
     },
   ],
   stats: {
-    tabMenuMod: 1,
+    tabMenuMod: 0,
     currency: '$',
     disclaimer: false,
     tabMenus: [
@@ -183,7 +183,7 @@ module.exports.defaultJson = {
               formulaVariable: 3474,
             },
             cognniCost: {
-              title: 'With Cognni you can minimize your potential impact',
+              title: 'You can save with Cognni',
               formulaVariable: 2268,
             },
           },
@@ -226,6 +226,7 @@ module.exports.defaultJson = {
         name: 'Cost of Exposure',
         subTitle: 'Cost',
         mainTitle: 'Potential financial impact',
+        mainTitle2: 'Minimize your potential impact cost',
         compareTitle: "Here's how much money you can <br /> save every year",
         tooltip: true,
         costs: [

@@ -4,18 +4,16 @@
     position: relative;
     place-items: center;
     width: 1170px;
-    margin: 14.6rem auto 10rem auto;
+    margin: 8.6rem auto 7rem auto;
     padding: 6rem 0 2.6rem 0;
     background: #fff;
     box-shadow: 0px 26px 80px 0px hsla(214, 9%, 64%, 0.1);
-    height: 620px;
-    overflow: hidden;
   }
   &-title {
     font-size: 3.2rem;
     font-weight: 600;
     color: var(--black);
-    margin-top: 6.3rem;
+    margin-top: 3rem;
   }
   // Pin SVG
   &-pin {
@@ -79,12 +77,16 @@
       font-size: 4rem;
       font-weight: 700;
       line-height: 20px;
-      margin-top: 2rem;
+      margin-top: 4rem;
       color: var(--blue);
     }
     &-title {
       font-size: 1.6rem;
       font-weight: 400;
+      max-width: 80px;
+      text-align: center;
+      margin-top: 2rem;
+      line-height: 20px;
       color: var(--main);
     }
   }
@@ -114,45 +116,16 @@
 .slider {
   &-wrapper {
     width: 100%;
-    padding: 0;
-    height: 500px;
   }
 }
 
-.carousel-control-prev-icon {
-  color: var(--blue);
-  // background: #fff;
+.svg-rope-pin {
+  transform: translate(0px, 60px);
 }
 
-.carousel-control-next {
-  width: unset;
-  margin-right: 3rem;
-  margin-bottom: 12rem;
-}
-.carousel-control-prev {
-  width: unset;
-  margin-left: 3rem;
-  margin-bottom: 12rem;
-}
+// Animations
 
-.carousel-indicators {
-  .active {
-    background-color: var(--blue) !important;
-    border: solid 0.1px var(--blue) !important;
-    background: var(--blue) !important;
-  }
-  button {
-    background-color: #e4f6fc !important;
-    border: solid 0.1px #e4f6fc !important ;
-    background: #e4f6fc !important;
-  }
-}
-
-.carousel-inner {
-  overflow: unset;
-}
-
-// Green Button Animations
+// Blue Button Animations
 #layer2 {
   animation-name: fade2;
   animation-duration: 2s;
@@ -170,8 +143,6 @@
   animation-delay: 2s;
   animation-timing-function: ease-in-out;
 }
-
-// Animations
 
 @keyframes dissolve {
   0% {
@@ -218,4 +189,8 @@
   100% {
     opacity: 0;
   }
+}
+
+// Circle svg manipulation
+#extend-path-black {
 }

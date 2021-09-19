@@ -5,11 +5,11 @@ import blueArrow from '../../Images/blueArrow.svg';
 
 const Wrapper = styled.div`
   display: grid;
-  margin-top: 6.3rem;
+  margin-top: 5rem;
   .progress-wrapper {
     display: grid;
     gap: 2.8rem;
-    margin: 7.2rem auto 0 auto;
+    margin: 4.5rem auto 0 auto;
     max-width: 700px;
     padding: 0 1rem;
   }
@@ -28,6 +28,8 @@ const Title = styled.p`
   text-align: center;
   font-size: 3.2rem;
   font-weight: 700;
+  max-width: 470px;
+  margin: 0 auto;
   color: var(--black);
   @media (max-width: 50em) {
     font-size: 2.4rem;
@@ -37,11 +39,17 @@ const Label = styled.div`
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  gap: 1.1rem;
+  gap: 0.5rem;
   font-size: 1.6rem;
   font-weight: 400;
-  margin-right: 3rem;
-  margin-left: 1.1rem;
+  margin-right: 1.5rem;
+  /* margin-left: 1.1rem; */
+
+  p {
+    text-align: center;
+    max-width: 140px;
+  }
+
   justify-self: flex-end;
   @media (max-width: 50em) {
     font-size: 1.4rem;
@@ -87,7 +95,7 @@ const Bar = styled.div`
   display: grid;
   padding: 0 3.65rem;
   align-items: center;
-  background: var(--blue);
+  background: var(--green);
   width: 70%;
   left: 0;
   height: 100%;
@@ -102,7 +110,7 @@ const Compare = ({ stats, currency, toggle, compare }) => {
     <Wrapper>
       <Title>{compare.mainTitle2}</Title>
       <div className='progress-wrapper'>
-        <ProgressWrapper>
+        {/* <ProgressWrapper>
           <Label>
             <img src={redArrow} alt='arrow' />
             <p>{yourCost.title}</p>
@@ -110,7 +118,7 @@ const Compare = ({ stats, currency, toggle, compare }) => {
           <YourCost>
             {currency + ' ' + numberFormat.format(withOutFormulaCompare)}
           </YourCost>
-        </ProgressWrapper>
+        </ProgressWrapper> */}
         <ProgressWrapper>
           <Label>
             <img src={blueArrow} alt='arrow' />
