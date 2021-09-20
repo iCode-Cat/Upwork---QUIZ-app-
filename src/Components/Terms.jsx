@@ -40,9 +40,8 @@ export const Terms = ({ checked, setChecked, step }) => {
     <Wrapper onClick={() => setChecked(!checked)} checked={checked} step={step}>
       <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' />
       <Text>
-        I agree to receive my quiz results and a series of emails that will
-        teach me how to get potential financial impact. I also have read and
-        agree to the <Link href='/'>Privacy Policy</Link> and
+        I agree to receive marketing communications and have read and agree to
+        Cognni's <Link href='/'>Privacy Policy</Link> and{' '}
         <Link href='/'> Terms of Service.</Link>
       </Text>
     </Wrapper>

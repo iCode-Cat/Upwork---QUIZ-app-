@@ -33,7 +33,7 @@ module.exports.defaultJson = {
   },
   terms: {
     content:
-      'I agree to receive my quiz results and a series of emails that will teach me how to get potential financial impact. I also have read and agree to the Privacy Policy and Terms of Service.',
+      "I agree to receive marketing communications and have read and agree to Cognni's Privacy Policy and Terms of Service.",
     privacyPolicyUrl: '/',
     termsOfServiceUrl: '/',
   },
