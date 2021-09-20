@@ -165,7 +165,7 @@ module.exports.defaultJson = {
     },
   ],
   stats: {
-    tabMenuMod: 0,
+    tabMenuMod: 1,
     currency: '$',
     disclaimer: false,
     tabMenus: [
