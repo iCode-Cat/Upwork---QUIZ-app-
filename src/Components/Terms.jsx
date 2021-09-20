@@ -37,7 +37,6 @@ const Link = styled.a`
 export const Terms = ({ checked, setChecked, step }) => {
   // Term text from json
   const terms = useSelector((state) => state.quiz.defaultJson.terms);
-  console.log(terms);
 
   return (
     <Wrapper onClick={() => setChecked(!checked)} checked={checked} step={step}>
