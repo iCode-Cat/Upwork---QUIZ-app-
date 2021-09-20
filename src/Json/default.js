@@ -97,15 +97,15 @@ module.exports.defaultJson = {
               icon: false,
             },
             {
-              text: 'Deploying Information Protection',
-              icon: false,
-            },
-            {
-              text: 'Investigating information risks',
+              text: 'Deploy MIP',
               icon: false,
             },
             {
               text: 'Data Classification',
+              icon: false,
+            },
+            {
+              text: 'Investigate Risks',
               icon: false,
             },
           ],
