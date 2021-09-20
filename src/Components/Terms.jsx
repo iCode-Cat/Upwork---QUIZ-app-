@@ -43,11 +43,11 @@ export const Terms = ({ checked, setChecked, step }) => {
       <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' />
       <Text>
         I agree to receive marketing communications and have read and agree to
-        Cognni's
+        Cognni's{' '}
         <Link target='_parent' href={terms.privacyPolicyUrl}>
           Privacy Policy
-        </Link>
-        and
+        </Link>{' '}
+        and{' '}
         <Link target='_parent' href={terms.termsOfServiceUrl}>
           Terms of Service.
         </Link>
