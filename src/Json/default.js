@@ -34,8 +34,8 @@ module.exports.defaultJson = {
   terms: {
     content:
       "I agree to receive marketing communications and have read and agree to Cognni's Privacy Policy and Terms of Service.",
-    privacyPolicyUrl: '/',
-    termsOfServiceUrl: '/',
+    privacyPolicyUrl: 'https://cognni.ai/privacy-policy/',
+    termsOfServiceUrl: 'https://cognni.ai/terms-of-use/',
   },
   steps: [
     {

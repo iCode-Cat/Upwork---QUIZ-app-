@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import checkFalse from '../Images/checkFalse.svg';
 import checkedTrue from '../Images/checkedTrue.svg';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,14 +36,16 @@ const Link = styled.a`
 
 export const Terms = ({ checked, setChecked, step }) => {
   // Term text from json
+  const terms = useSelector((state) => state.quiz.defaultJson.terms);
+  console.log(terms);
 
   return (
     <Wrapper onClick={() => setChecked(!checked)} checked={checked} step={step}>
       <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' />
       <Text>
         I agree to receive marketing communications and have read and agree to
-        Cognni's <Link href='/'>Privacy Policy</Link> and{' '}
-        <Link href='/'> Terms of Service.</Link>
+        Cognni's <Link href={terms.privacyPolicyUrl}>Privacy Policy</Link> and
+        <Link href={terms.termsOfServiceUrl}> Terms of Service.</Link>
       </Text>
     </Wrapper>
   );
