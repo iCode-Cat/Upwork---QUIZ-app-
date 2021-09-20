@@ -8,14 +8,12 @@ const ErrorMessage = ({ checked, errorValue }) => {
     fontSize: '1.5rem',
     fontWeight: '400',
     marginLeft: '1rem',
-    marginTop: '1rem',
-    height: '30px',
   };
 
   return (
     <span style={errorMsg}>
       {!checked
-        ? ' Please, accept service terms and conditions'
+        ? ' Please accept the Terms of Service and Privacy Policy'
         : 'Fill all red fields before next step'}
     </span>
   );
