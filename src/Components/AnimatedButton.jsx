@@ -27,7 +27,11 @@ const Text = styled.p`
 
 const AnimatedButton = ({ lastSection }) => {
   return (
-    <Wrapper href={lastSection.href} className='stats-animated-button'>
+    <Wrapper
+      href={lastSection.href}
+      target='_parent'
+      className='stats-animated-button'
+    >
       <svg
         className='stats-pin'
         width='16'
