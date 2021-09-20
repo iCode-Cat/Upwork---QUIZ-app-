@@ -276,6 +276,6 @@ module.exports.defaultJson = {
   },
   lastSection: {
     buttonText: 'Connect Cognni',
-    href: '/',
+    href: 'https://onboard.cognni.ai/consent',
   },
 };
