@@ -17,7 +17,7 @@ const SecondStep = ({
   scrollToView,
   results,
 }) => {
-  const { steps } = defaultJson;
+  const { steps, numberOfSteps } = defaultJson;
   const questions = steps[1].fields;
   const { index } = steps[1];
   const [errorValue, setError] = useState(false);
@@ -75,7 +75,11 @@ const SecondStep = ({
       }`}
     >
       {step2.current !== undefined && (
-        <Secondline DOM={step2} step={form.step} />
+        <Secondline
+          numberOfSteps={numberOfSteps}
+          DOM={step2}
+          step={form.step}
+        />
       )}
       {step2.current !== undefined && (
         <RopeMob

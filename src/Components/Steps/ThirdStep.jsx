@@ -4,6 +4,7 @@ import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import RopeMob from '../Timelines/RopeMob';
+import ThirdLine from './svg-line/ThirdLine';
 
 const ThirdStep = ({
   errorClassHandler,
@@ -74,6 +75,9 @@ const ThirdStep = ({
       }`}
       id='step1'
     >
+      {step3.current !== undefined && (
+        <ThirdLine DOM={step3} step={form.step} />
+      )}
       {step3.current !== undefined && (
         <RopeMob
           color='
