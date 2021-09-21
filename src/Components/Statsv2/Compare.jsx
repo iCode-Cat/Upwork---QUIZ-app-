@@ -107,7 +107,7 @@ const OurCost = styled.div`
 const Bar = styled.div`
   position: absolute;
   display: grid;
-  padding: 0 3.65rem;
+  padding: 0 0 0 2rem;
   align-items: center;
   background: var(--green);
   width: 70%;
