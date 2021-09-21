@@ -35,7 +35,7 @@ const Title = styled.p`
   font-size: 3.2rem;
   font-weight: 700;
   max-width: 470px;
-  margin: 0 auto;
+  margin: 1rem auto 0 auto;
   color: var(--black);
   @media (max-width: 50em) {
     font-size: 2.4rem;

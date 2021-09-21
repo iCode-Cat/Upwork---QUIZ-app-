@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import info from '../../Images/info.svg';
 import styled from 'styled-components';
 import Tooltip from './Tooltip';
@@ -44,6 +44,9 @@ const AmountWrapper = styled.div`
     cursor: pointer;
     margin-bottom: 0.3rem;
   }
+  @media (max-width: 50em) {
+    position: unset;
+  }
 `;
 
 const Amount = styled.div`
@@ -76,9 +79,28 @@ const Title = styled.p`
 
 const Labels = ({ items, currency, tooltip }) => {
   const [order, setOrder] = useState();
+
+  useEffect(() => {
+    window.addEventListener('click', (e) => {
+      const targetClass = e.target.className;
+      console.log(targetClass);
+      switch (targetClass) {
+        case 'tooltip-icon':
+        case 'sc-iemWCZ eAWAyE':
+        case 'sc-dIvrsQ gFBPFI':
+        case 'sc-bkbkJK kkvDZu':
+        case 'circle-savings-amount':
+        case undefined:
+          break;
+        default:
+          setOrder();
+      }
+    });
+  }, []);
+
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
-    <Wrapper>
+    <Wrapper className='labels-wrap'>
       {items.items &&
         items.items.map((label, index) => (
           <Label>
@@ -87,8 +109,10 @@ const Labels = ({ items, currency, tooltip }) => {
               <Amount>{currency + numberFormat.format(label.result)}</Amount>
               {tooltip && (
                 <img
+                  className='tooltip-icon'
                   onMouseLeave={() => setOrder()}
                   onMouseEnter={() => setOrder(index)}
+                  onClick={() => setOrder(index)}
                   src={info}
                   alt='info-icon'
                 />

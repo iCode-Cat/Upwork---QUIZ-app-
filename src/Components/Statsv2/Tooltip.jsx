@@ -18,6 +18,14 @@ const Wrapper = styled.section`
   transition: 1s;
   cursor: text;
   box-shadow: 0px 2px 20px 0px #5d606024;
+  @media (max-width: 50em) {
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 165px;
+    width: 100vw;
+  }
 `;
 
 const Text = styled.p`
@@ -34,7 +42,7 @@ const Title = styled.p`
 
 const Tooltip = ({ isVisible, data }) => {
   return (
-    <Wrapper isVisible={isVisible}>
+    <Wrapper className='tooltip-icon' isVisible={isVisible}>
       <i class='fas fa-info-circle'></i>
       <Title>{data.title}</Title>
       <Text>{data.content}</Text>
