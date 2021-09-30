@@ -5,8 +5,8 @@ const Pin = () => {
     <svg
       className='stats-pin'
       width='16'
-      height='116'
-      viewBox='0 0 16 116'
+      height='80'
+      viewBox='0 0 16 80'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >

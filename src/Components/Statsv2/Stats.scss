@@ -41,8 +41,6 @@
       font-weight: 600;
       color: var(--black);
     }
-    &-pin {
-    }
   }
 }
 
@@ -123,11 +121,11 @@
 }
 
 .svg-rope-pin {
-  transform: translate(0px, 30px);
+  transform: translate(0px, 15px);
 }
 
 .svg-rope-circle {
-  transform: translate(0px, -20px);
+  transform: translate(0px, -45px);
 }
 
 // Animations
