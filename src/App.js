@@ -137,7 +137,7 @@ function App() {
         stepHeight = step3.current.scrollHeight;
         break;
       case 4:
-        stepHeight = 300;
+        stepHeight = 315;
         break;
       default:
         break;
