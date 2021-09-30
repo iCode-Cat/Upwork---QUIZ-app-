@@ -12,6 +12,9 @@ import '../Components/Steps/svgLine.scss';
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 import CalculationStats from '../Components/Steps/CalculationStats';
 import scrollIntoView from 'scroll-into-view';
+import Recommendation from '../Components/Recommendation/Recommendation';
+import Pin from '../Components/Pin';
+import AnimatedButton from '../Components/AnimatedButton';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -124,6 +127,11 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
               <>
                 <Calculation defaultJson={defaultJson} />
                 <CalculationStats state={state} results={results} />
+                <Pin />
+                {/* <Recommendation /> */}
+                <Background report bg>
+                  <AnimatedButton />
+                </Background>
               </>
             )}
             {/* <img width='100%' src={footer} alt='' /> */}

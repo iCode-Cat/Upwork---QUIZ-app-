@@ -4,7 +4,7 @@
     position: relative;
     place-items: center;
     width: 1170px;
-    margin: 8.6rem auto 7rem auto;
+    margin: 8.6rem auto 0 auto;
     padding: 6rem 0 2.6rem 0;
     background: #fff;
     box-shadow: 0px 26px 80px 0px hsla(214, 9%, 64%, 0.1);
@@ -17,9 +17,10 @@
   }
   // Pin SVG
   &-pin {
-    position: absolute;
-    bottom: 150px;
+    display: grid;
+    width: 100%;
     z-index: 999;
+    background: center bottom / 100% rgb(221, 242, 247);
   }
 
   // Dissolve Animation
@@ -41,7 +42,6 @@
       color: var(--black);
     }
     &-pin {
-      bottom: 133px;
     }
   }
 }
@@ -123,7 +123,11 @@
 }
 
 .svg-rope-pin {
-  transform: translate(0px, 60px);
+  transform: translate(0px, 30px);
+}
+
+.svg-rope-circle {
+  transform: translate(0px, -20px);
 }
 
 // Animations

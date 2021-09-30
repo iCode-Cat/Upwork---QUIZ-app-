@@ -22,33 +22,17 @@ const Text = styled.p`
   color: hsla(0, 0%, 100%, 1);
   font-weight: 700;
   font-size: 1.8rem;
-  margin-top: 1rem;
 `;
 
-const AnimatedButton = ({ lastSection }) => {
+const AnimatedButton = () => {
+  const state = useSelector((state) => state.quiz);
+  const lastSection = state.defaultJson.lastSection;
   return (
     <Wrapper
       href={lastSection.href}
       target='_parent'
       className='stats-animated-button'
     >
-      <svg
-        className='stats-pin'
-        width='16'
-        height='116'
-        viewBox='0 0 16 116'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-      >
-        <path
-          className='svg-rope-pin'
-          d='M8 0L8 50'
-          stroke='black'
-          stroke-dasharray='3 3'
-        />
-        <circle cx='8' cy='108' r='7.5' fill='#00B746' stroke='black' />
-      </svg>
-
       <Text>{lastSection.buttonText}</Text>
       <svg
         width='488'

@@ -15,16 +15,11 @@ const Loader = styled.p`
   background: #ddf2f7;
 `;
 const CalculationStats = ({ results, state }) => {
-  const lastSection = state.defaultJson.lastSection;
-
   // Stats
   const resultsState = state.userState.results;
   return resultsState ? (
     <>
       <Stats results={results} state={state} />
-      <Background report bg>
-        <AnimatedButton lastSection={lastSection} />
-      </Background>
     </>
   ) : (
     <Loader></Loader>
