@@ -5,7 +5,7 @@ import blueArrow from '../../Images/blueArrow.svg';
 
 const Wrapper = styled.div`
   display: grid;
-  margin-top: 5rem;
+  margin-top: 2rem;
   .progress-wrapper {
     display: grid;
     gap: 2.8rem;
