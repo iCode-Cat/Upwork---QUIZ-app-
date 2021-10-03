@@ -43,12 +43,14 @@ const Icon = styled.img`
   width: 100%;
   max-width: 20px;
 `;
-const Title = styled.a`
-  cursor: pointer;
+const Title = styled.p`
   color: var(--main);
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 28px;
+  @media (max-width: 50em) {
+    font-size: 1.8rem;
+  }
 `;
 const Content = styled.p`
   margin-top: 2.4rem;
@@ -56,6 +58,19 @@ const Content = styled.p`
   font-weight: 400;
   line-height: 24px;
   color: var(--gray);
+  @media (max-width: 50em) {
+    font-size: 1.4rem;
+  }
+`;
+
+const Href = styled.a`
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--blue);
+  @media (max-width: 50em) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Card = ({
@@ -66,6 +81,8 @@ const Card = ({
   iconBgColor,
   icon,
   href,
+  hrefTitle,
+  readmore,
 }) => {
   return (
     <Wrapper>
@@ -77,9 +94,14 @@ const Card = ({
         <IconWrapper color={iconBgColor}>
           <Icon src={icon} alt='icon' />
         </IconWrapper>
-        <Title href={href}>{title}</Title>
+        <Title>{title}</Title>
       </Grid>
       <Content>{content}</Content>
+      {href && readmore && (
+        <Href href={href} target='_blank'>
+          {hrefTitle}
+        </Href>
+      )}
     </Wrapper>
   );
 };

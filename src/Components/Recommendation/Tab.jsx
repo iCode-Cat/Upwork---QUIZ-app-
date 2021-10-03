@@ -8,6 +8,9 @@ const Text = styled.p`
   color: ${(props) => (props.toggle ? '#34314C' : '#828282')};
   border-bottom: ${(props) =>
     props.toggle ? '2px #2196f3 solid' : '2px #2195f30 solid'};
+  @media (max-width: 50em) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Tab = ({ tabname, setTab, index, active, tab }) => {
