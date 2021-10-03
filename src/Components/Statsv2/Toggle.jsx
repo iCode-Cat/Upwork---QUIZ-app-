@@ -4,6 +4,7 @@ const Wrapper = styled.div`
   border-radius: 30px;
   background: var(--lightBlue);
   height: 46px;
+  margin-top: 2rem;
   @media (max-width: 50em) {
     margin-top: 2rem;
   }
