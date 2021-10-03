@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
+  margin-top: 2.4rem;
   border-radius: 30px;
   background: var(--lightBlue);
   height: 46px;
-  @media (max-width: 50em) {
-    margin-top: 2rem;
-  }
 `;
 const ToggleButton = styled.button`
   padding: 1.2rem 2.4rem;
