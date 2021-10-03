@@ -19,13 +19,14 @@ const Stats = ({ results, state }) => {
   // Change Data According to Toggle
   useEffect(() => {
     setData(tabMenus[toggle]);
-  }, [toggle]);
 
-  console.log(data);
+    if (tabMenuMod !== 0) {
+      setToggle(tabMenuMod - 1);
+    }
+  }, [toggle]);
 
   // Data Structure
   const { mainTitle, labels, tooltip, subTitle } = data;
-  console.log(tabMenuMod);
 
   return (
     <Background>
