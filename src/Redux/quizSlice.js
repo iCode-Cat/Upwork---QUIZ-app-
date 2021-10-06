@@ -14,6 +14,10 @@ export const quizSlice = createSlice({
   initialState,
   reducers: {
     setUserState: (state, action) => {
+      if (action.payload === 'connect') {
+        state.userState.step = 5;
+        return;
+      }
       state.userState = action.payload;
     },
     updateUserState: (state, action) => {

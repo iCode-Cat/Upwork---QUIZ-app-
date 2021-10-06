@@ -26,6 +26,7 @@ function App() {
   const step2 = useRef();
   const step3 = useRef();
   const dispatch = useDispatch();
+  const [eventId, setEventId] = useState();
 
   const listenParent = () => {
     // Listen to message from child window
@@ -86,7 +87,7 @@ function App() {
     // Indicate the postData according to requestObject
     if (requestObject === 'internal') {
       data.component = 'COMPONENT NAME';
-      data.eventId = 'roi_landing_page_visit';
+      data.eventId = eventId;
       data.tags = '';
       data.data = {
         ...userState,
@@ -99,7 +100,7 @@ function App() {
       data.deviceId = '';
       data.email = userState.email;
       data.tenantId = 'GUID';
-      data.eventId = 'roi_landing_page_visit';
+      data.eventId = eventId;
       data.tags = '';
       data.data = {
         userState,
@@ -177,18 +178,34 @@ function App() {
     window.parent.postMessage(message, '*');
   };
 
+  const eventIdHandler = () => {
+    const step = userState.step;
+    switch (step) {
+      case 1:
+      case 2:
+      case 3:
+        setEventId('risk_assessment_internal_click');
+        break;
+      case 4:
+        setEventId('risk_assessment_calculate');
+        break;
+      case 5:
+        setEventId('risk_assessment_connect');
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     listenParent();
     if (userState) {
       // Send monitoring
-      if (JSON !== null) {
-        monitoringLoop();
-      }
+      eventIdHandler();
+
       const stepCount = userState.step;
       const fullSize = app.current.scrollHeight;
       //  const steps = [null, step1, step2, step3, results];
-
-      console.log(stepHeightHandler(stepCount));
 
       sendMessageParent({
         message: {
@@ -199,9 +216,19 @@ function App() {
     }
   }, [userState.step]);
 
+  useEffect(() => {
+    if (JSON !== null) {
+      if (eventId === null) return;
+      monitoringLoop();
+    }
+    return () => {
+      setEventId(null);
+    };
+  }, [eventId]);
+
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson(parentMsg));
+    dispatch(updateJson('kizan'));
   }, [parentMsg]);
 
   useEffect(() => {

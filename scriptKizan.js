@@ -21,7 +21,6 @@
     const App = document.querySelector('#calculator');
     if (App === undefined) return;
     App.contentWindow.postMessage(msg, url);
-    console.log('posted');
     clearInterval(clear);
   };
 
@@ -49,6 +48,5 @@
 
   const clear = setInterval(() => {
     sendMessageChild('kizan', '*');
-    console.log(1);
   }, 1000);
 })();

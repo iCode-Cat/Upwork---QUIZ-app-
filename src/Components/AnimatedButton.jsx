@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Pin from '../Images/Pin.svg';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserState } from '../Redux/quizSlice';
 
 const Wrapper = styled.a`
   position: relative;
@@ -27,10 +28,12 @@ const Text = styled.p`
 const AnimatedButton = () => {
   const state = useSelector((state) => state.quiz);
   const lastSection = state.defaultJson.lastSection;
+  const dispatch = useDispatch();
   return (
     <Wrapper
+      onClick={() => dispatch(setUserState('connect'))}
       href={lastSection.href}
-      target='_parent'
+      target='_target'
       className='stats-animated-button'
     >
       <Text>{lastSection.buttonText}</Text>

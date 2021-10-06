@@ -3,7 +3,7 @@ module.exports.kizanJson = {
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   heroBackground: '',
-  parterId: 'c591e9a9-f54c-42d8-9383-7478f6d42439',
+  partnerId: 'c591e9a9-f54c-42d8-9383-7478f6d42439',
   campaignId: 'c591e9a9-f54c-42d8-9383-7478f6d42439',
   sendTo: 'shellic@kizan.com',
   heroVersion: 1,
