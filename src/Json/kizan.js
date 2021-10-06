@@ -8,7 +8,7 @@ module.exports.kizanJson = {
   sendTo: 'shellic@kizan.com',
   heroVersion: 1,
   hero: {
-    title: 'KIZAN',
+    title: 'Information Risk Assessment',
     sub_title: 'See how much information risks are costing you',
     button_text: 'Calculate your risk',
     logo: '/CompanyLogo.svg',

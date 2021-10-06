@@ -5,6 +5,7 @@ import { kizanJson } from '../Json/kizan';
 const initialState = {
   defaultJson: null,
   userState: false,
+  event: 'roi_landing_page_visit',
   globalStepHeight: 0,
 };
 
@@ -24,6 +25,7 @@ export const quizSlice = createSlice({
     updateStepHeight: (state, action) => {
       state.globalStepHeight = action.payload;
     },
+    handleEvent: (state, action) => {},
     updateJson: (state, action) => {
       const payload = action.payload;
       switch (payload) {

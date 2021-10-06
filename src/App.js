@@ -16,6 +16,7 @@ var messageEvent = eventMethod == 'attachEvent' ? 'onmessage' : 'message';
 
 function App() {
   const [parentMsg, setParentMsg] = useState(false);
+
   // Refs
   const app = useRef();
   // References
@@ -60,7 +61,7 @@ function App() {
 
     try {
       const post = await axios.post(url, data, config);
-      // console.log(post);
+      console.log(post);
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +89,7 @@ function App() {
       data.eventId = 'roi_landing_page_visit';
       data.tags = '';
       data.data = {
-        userState,
+        ...userState,
         sendTo: JSON.sendTo,
       };
     }
