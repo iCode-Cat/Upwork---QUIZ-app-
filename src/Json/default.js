@@ -51,7 +51,7 @@ module.exports.defaultJson = {
         },
         {
           name: 'email',
-          stateName: 'Work email',
+          stateName: 'workEmail',
           text: 'Enter your corporate email to get started',
           placeholder: 'Corporate email',
           questionType: 'text',

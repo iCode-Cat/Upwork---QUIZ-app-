@@ -28,7 +28,8 @@ const BooleanMulti = ({
   useEffect(() => {
     formStateHandler({
       field: fields.stateName,
-      value: shortAnswer.length < 1 ? '' : shortAnswer,
+      value:
+        shortAnswer.length < 1 ? '' : shortAnswer.map((data) => data.answer),
     });
   }, [shortAnswer]);
 

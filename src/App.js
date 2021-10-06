@@ -47,7 +47,6 @@ function App() {
   const state = useSelector((state) => state.quiz);
   const JSON = state.defaultJson;
   const userState = state.userState;
-  const scrollSize = state.scrollSize;
 
   // Posting Function
   const monitoringPost = async ({ url, data, headers, requestObject }) => {
@@ -70,6 +69,11 @@ function App() {
 
   // URIS
   const monitoringURIS = async ({ route, requestObject }) => {
+    let userObject = {};
+    userObject = { ...userState };
+    delete userObject.step;
+    console.log(userObject);
+
     const corsPass = 'https://weather-api-33323.herokuapp.com/';
     const URIS = [
       // {
@@ -90,7 +94,7 @@ function App() {
       data.eventId = eventId;
       data.tags = '';
       data.data = {
-        ...userState,
+        userState: userState.step !== 1 ? { ...userObject } : '',
         sendTo: JSON.sendTo,
       };
     }
@@ -103,7 +107,7 @@ function App() {
       data.eventId = eventId;
       data.tags = '';
       data.data = {
-        userState,
+        userState: userState.step !== 1 ? { ...userObject } : '',
         sendTo: JSON.sendTo,
       };
     }
@@ -228,7 +232,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson(parentMsg));
+    dispatch(updateJson('defaultJson'));
   }, [parentMsg]);
 
   useEffect(() => {

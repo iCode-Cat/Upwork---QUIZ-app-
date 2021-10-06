@@ -5,7 +5,6 @@ import { kizanJson } from '../Json/kizan';
 const initialState = {
   defaultJson: null,
   userState: false,
-  event: 'roi_landing_page_visit',
   globalStepHeight: 0,
 };
 
