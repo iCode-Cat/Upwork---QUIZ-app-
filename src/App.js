@@ -232,7 +232,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson('defaultJson'));
+    dispatch(updateJson(parentMsg));
   }, [parentMsg]);
 
   useEffect(() => {
