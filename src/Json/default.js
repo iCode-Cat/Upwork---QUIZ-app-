@@ -3,8 +3,8 @@ module.exports.defaultJson = {
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   heroBackground: '',
-  partnerId: null,
-  campaignId: null,
+  partnerId: '936af988-2d21-4f79-8598-b0dbdd469bfe',
+  campaignId: '936af988-2d21-4f79-8598-b0dbdd469bfe',
   sendTo: 'shelley@cognni.ai',
   heroVersion: 1,
   hero: {

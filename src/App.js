@@ -228,7 +228,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson('kizan'));
+    dispatch(updateJson(parentMsg));
   }, [parentMsg]);
 
   useEffect(() => {
