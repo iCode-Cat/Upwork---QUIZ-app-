@@ -26,7 +26,6 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   const [form, setForm] = useState({
     step: '',
   });
-
   const [isEnd, setIsEnd] = useState(true);
 
   // Functions

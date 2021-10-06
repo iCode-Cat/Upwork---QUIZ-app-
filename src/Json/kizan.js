@@ -1,14 +1,14 @@
-module.exports.defaultJson = {
+module.exports.kizanJson = {
   numberOfSteps: 2,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   heroBackground: '',
-  parterId: null,
-  campaignId: null,
-  sendTo: 'shelley@cognni.ai',
+  parterId: 'c591e9a9-f54c-42d8-9383-7478f6d42439',
+  campaignId: 'c591e9a9-f54c-42d8-9383-7478f6d42439',
+  sendTo: 'shellic@kizan.com',
   heroVersion: 1,
   hero: {
-    title: 'Information Risk Assessment',
+    title: 'KIZAN',
     sub_title: 'See how much information risks are costing you',
     button_text: 'Calculate your risk',
     logo: '/CompanyLogo.svg',

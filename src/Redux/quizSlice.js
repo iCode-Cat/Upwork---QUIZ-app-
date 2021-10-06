@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
-import { oxfordJson } from '../Json/oxford_123';
+import { kizanJson } from '../Json/kizan';
 
 const initialState = {
-  defaultJson,
+  defaultJson: null,
   userState: false,
   globalStepHeight: 0,
 };
@@ -24,11 +24,22 @@ export const quizSlice = createSlice({
     updateStepHeight: (state, action) => {
       state.globalStepHeight = action.payload;
     },
+    updateJson: (state, action) => {
+      const payload = action.payload;
+      switch (payload) {
+        case 'kizan':
+          state.defaultJson = kizanJson;
+          break;
+        case 'defaultJson':
+          state.defaultJson = defaultJson;
+          break;
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserState, updateUserState, updateStepHeight } =
+export const { setUserState, updateUserState, updateStepHeight, updateJson } =
   quizSlice.actions;
 
 export default quizSlice.reducer;

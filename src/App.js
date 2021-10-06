@@ -1,6 +1,7 @@
 import Homepage from './Pages/Homepage';
-import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateJson } from './Redux/quizSlice';
 import axios from 'axios';
 
 // Cors Error
@@ -8,7 +9,13 @@ import axios from 'axios';
 // Is monitoring work
 // Stage or another
 
+// Listen message from iFrame parent
+var eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
+var eventListener = window[eventMethod];
+var messageEvent = eventMethod == 'attachEvent' ? 'onmessage' : 'message';
+
 function App() {
+  const [parentMsg, setParentMsg] = useState(false);
   // Refs
   const app = useRef();
   // References
@@ -17,12 +24,26 @@ function App() {
   const step1 = useRef();
   const step2 = useRef();
   const step3 = useRef();
+  const dispatch = useDispatch();
+
+  const listenParent = () => {
+    // Listen to message from child window
+    return eventListener(
+      messageEvent,
+      function (e) {
+        if (e.origin !== 'http://localhost:3000' && e.data !== undefined)
+          setParentMsg(e.data);
+      },
+      false
+    );
+  };
 
   const tokenBearer =
     'Bearer NWM4MDE2NTItZjZhOS00NjdlLTk5NjgtNmZmNjUxMWRlYWEyOiYxPGhiXVZCYHZVTypgRHo8bXQrWWsrJjc5VGxZWWQwJD0qb0JmaUktZXpXUFRbNEAxaG5oR2RfJ1VeIUtOWg==';
   const tokenBasic =
     'Basic NWM4MDE2NTItZjZhOS00NjdlLTk5NjgtNmZmNjUxMWRlYWEyOiYxPGhiXVZCYHZVTypgRHo8bXQrWWsrJjc5VGxZWWQwJD0qb0JmaUktZXpXUFRbNEAxaG5oR2RfJ1VeIUtOWg==';
   const state = useSelector((state) => state.quiz);
+  const JSON = state.defaultJson;
   const userState = state.userState;
   const scrollSize = state.scrollSize;
 
@@ -64,19 +85,25 @@ function App() {
     // Indicate the postData according to requestObject
     if (requestObject === 'internal') {
       data.component = 'COMPONENT NAME';
-      data.eventId = '123';
-      data.tags = ['tag'];
-      data.data = userState;
+      data.eventId = 'roi_landing_page_visit';
+      data.tags = '';
+      data.data = {
+        userState,
+        sendTo: JSON.sendTo,
+      };
     }
 
     if (requestObject === 'external') {
-      data.partnerId = '121';
-      data.deviceId = 'test device';
-      data.email = 'user@gmail.com';
+      data.partnerId = JSON.partnerId;
+      data.deviceId = '';
+      data.email = userState.email;
       data.tenantId = 'GUID';
-      data.eventId = '123';
-      data.tags = ['tag'];
-      data.data = userState;
+      data.eventId = 'roi_landing_page_visit';
+      data.tags = '';
+      data.data = {
+        userState,
+        sendTo: JSON.sendTo,
+      };
     }
 
     const URI = URIS.map(async (ctx) => {
@@ -150,9 +177,12 @@ function App() {
   };
 
   useEffect(() => {
+    listenParent();
     if (userState) {
       // Send monitoring
-      monitoringLoop();
+      if (JSON !== null) {
+        monitoringLoop();
+      }
       const stepCount = userState.step;
       const fullSize = app.current.scrollHeight;
       //  const steps = [null, step1, step2, step3, results];
@@ -168,24 +198,33 @@ function App() {
     }
   }, [userState.step]);
 
+  // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    setInterval(() => {
-      let scrollSize = app.current.clientHeight;
-      sendMessageParent({ message: scrollSize });
-    }, 100);
-  }, []);
+    dispatch(updateJson(parentMsg));
+  }, [parentMsg]);
+
+  useEffect(() => {
+    if (JSON !== null) {
+      setInterval(() => {
+        let scrollSize = app.current.clientHeight;
+        sendMessageParent({ message: scrollSize });
+      }, 100);
+    }
+  }, [JSON]);
 
   return (
-    <div>
-      <Homepage
-        hero={hero}
-        step1={step1}
-        step2={step2}
-        step3={step3}
-        results={results}
-        app={app}
-      />
-    </div>
+    JSON !== null && (
+      <div>
+        <Homepage
+          hero={hero}
+          step1={step1}
+          step2={step2}
+          step3={step3}
+          results={results}
+          app={app}
+        />
+      </div>
+    )
   );
 }
 
