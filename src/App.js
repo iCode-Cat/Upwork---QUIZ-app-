@@ -224,7 +224,7 @@ function App() {
   useEffect(() => {
     if (JSON !== null) {
       if (eventId === null) return;
-      monitoringLoop();
+      // monitoringLoop();
     }
     return () => {
       setEventId(null);
@@ -233,7 +233,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson(parentMsg));
+    dispatch(updateJson('securityPractices'));
   }, [parentMsg]);
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import './Stats.scss';
 import Toggle from './Toggle';
 import SlideShow from './SlideShow';
 import Background from '../Background';
+import SectionGrade from '../SectionGrade';
 
 const Stats = ({ results, state }) => {
   // Redux State
@@ -14,7 +15,7 @@ const Stats = ({ results, state }) => {
   const defaultJson = state.defaultJson;
 
   const { stats } = defaultJson;
-  const { tabMenus, currency, tabMenuMod } = stats;
+  const { tabMenus, currency, tabMenuMod, sectionGrade } = stats;
 
   // Change Data According to Toggle
   useEffect(() => {
@@ -42,6 +43,7 @@ const Stats = ({ results, state }) => {
           tooltip={tooltip}
           subTitle={subTitle}
         />
+        {sectionGrade && <SectionGrade />}
       </section>
     </Background>
   );

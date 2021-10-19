@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
 import { kizanJson } from '../Json/kizan';
+import { securityPractices } from '../Json/SecurityPractices';
 
 const initialState = {
   defaultJson: null,
@@ -32,6 +33,9 @@ export const quizSlice = createSlice({
     updateJson: (state, action) => {
       const payload = action.payload;
       switch (payload) {
+        case 'securityPractices':
+          state.defaultJson = securityPractices;
+          break;
         case 'kizan':
           state.defaultJson = kizanJson;
           break;

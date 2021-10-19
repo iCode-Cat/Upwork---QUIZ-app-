@@ -17,6 +17,7 @@ import scrollIntoView from 'scroll-into-view';
 import Recommendation from '../Components/Recommendation/Recommendation';
 import Pin from '../Components/Pin';
 import AnimatedButton from '../Components/AnimatedButton';
+import SecurityPractices from '../Components/SecurityPractices';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -121,6 +122,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
             {form.step >= 4 && (
               <>
+                <SecurityPractices />
                 <Calculation defaultJson={defaultJson} />
                 <CalculationStats state={state} results={results} />
                 <Recommendation />

@@ -1,4 +1,4 @@
-module.exports.defaultJson = {
+module.exports.securityPractices = {
   numberOfSteps: 2,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
@@ -8,10 +8,11 @@ module.exports.defaultJson = {
   sendTo: 'shelley@cognni.ai',
   heroVersion: 1,
   hero: {
-    title: 'Information Risk Assessment',
-    sub_title: 'See how much information risks are costing you',
-    button_text: 'Calculate your risk',
-    logo: '/CompanyLogo.svg',
+    title: 'Compare yourself with the industry best practices',
+    sub_title:
+      'See how much you can save with autonomous mapping and information intelligence',
+    button_text: 'Get Started',
+    logo: '/security.svg',
   },
   heroTabMenu: {
     active: false,
@@ -168,8 +169,8 @@ module.exports.defaultJson = {
   stats: {
     tabMenuMod: 1,
     currency: '$',
-    sectionGrade: false,
     disclaimer: false,
+    sectionGrade: true,
     tabMenus: [
       {
         key: 0,
@@ -394,7 +395,7 @@ module.exports.defaultJson = {
     title: 'Information Security Best Practices',
     active: true,
     section1: {
-      sectionGrade: false,
+      sectionGrade: true,
       active: true,
       title: 'What you should be worried about?',
       image: '/securityImage1.svg',
@@ -417,10 +418,10 @@ module.exports.defaultJson = {
       ],
     },
     section2: {
-      sectionGrade: false,
+      sectionGrade: true,
       active: true,
       title: 'What should you do about it?',
-      image: '/securityImage1.svg',
+      image: '/securityImage2.svg',
       list: [
         {
           title: 'You need to do...',

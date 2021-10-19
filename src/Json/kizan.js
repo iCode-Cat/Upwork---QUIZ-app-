@@ -169,6 +169,7 @@ module.exports.kizanJson = {
     tabMenuMod: 1,
     currency: '$',
     disclaimer: false,
+    sectionGrade: false,
     tabMenus: [
       {
         key: 0,
@@ -388,6 +389,165 @@ module.exports.kizanJson = {
         ],
       },
     ],
+  },
+  recommendation: {
+    showButton: 'See Recommendation',
+    active: false,
+    tabs: [
+      {
+        tabname: 'Minimize Impact',
+        active: false,
+        cards: [
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon1.svg',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon2.svg',
+            iconBgColor: '#E4F6FC',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon3.svg',
+            iconBgColor: '#FFF3CC',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon4.svg',
+            iconBgColor: '#D4ECD5',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+        ],
+      },
+      {
+        tabname: 'Minimize Likelihood',
+        active: true,
+        cards: [
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+        ],
+      },
+    ],
+  },
+  informationPractices: {
+    title: 'Information Security Best Practices',
+    active: false,
+    section1: {
+      sectionGrade: false,
+      active: true,
+      title: 'What you should be worried about?',
+      image: '/securityImage1.svg',
+      list: [
+        {
+          title: '#1 Rank is Data Breaches',
+          content:
+            'Montes, vel neque tristique vitae fermentum libero pellentesque ullamcorper ut.',
+        },
+        {
+          title: '#2 Rank is Insider Threat',
+          content:
+            'Montes, vel neque tristique vitae fermentum libero pellentesque ullamcorper ut.',
+        },
+        {
+          title: '#3 Rank is Ransomware',
+          content:
+            'Montes, vel neque tristique vitae fermentum libero pellentesque ullamcorper ut.',
+        },
+      ],
+    },
+    section2: {
+      sectionGrade: false,
+      active: true,
+      title: 'What should you do about it?',
+      image: '/securityImage1.svg',
+      list: [
+        {
+          title: 'You need to do...',
+          content:
+            'Montes, vel neque tristique vitae fermentum libero pellentesque ullamcorper ut.',
+        },
+        {
+          title: 'You need to do...',
+          content:
+            'Montes, vel neque tristique vitae fermentum libero pellentesque ullamcorper ut.',
+        },
+      ],
+    },
   },
   lastSection: {
     buttonText: 'Connect Cognni',

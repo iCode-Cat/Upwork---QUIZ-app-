@@ -83,7 +83,6 @@ const Labels = ({ items, currency, tooltip }) => {
   useEffect(() => {
     window.addEventListener('click', (e) => {
       const targetClass = e.target.className;
-      console.log(targetClass);
       switch (targetClass) {
         case 'tooltip-icon':
         case 'sc-iemWCZ eAWAyE':
