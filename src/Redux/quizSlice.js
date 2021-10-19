@@ -36,9 +36,9 @@ export const quizSlice = createSlice({
         case 'securityPractices':
           state.defaultJson = securityPractices;
           break;
-        case 'kizan':
-          state.defaultJson = kizanJson;
-          break;
+        // case 'kizan':
+        //   state.defaultJson = kizanJson;
+        //   break;
         case 'default':
           state.defaultJson = defaultJson;
           break;
