@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
-import { kizanJson } from '../Json/kizan';
+// import { kizanJson } from '../Json/kizan';
 import { securityPractices } from '../Json/SecurityPractices';
 
 const initialState = {
