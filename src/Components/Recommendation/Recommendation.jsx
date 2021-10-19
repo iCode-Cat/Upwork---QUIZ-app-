@@ -3,16 +3,27 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import Card from './Card';
 import Tab from './Tab';
+import ShowButton from './ShowButton';
+import Pin from '../Pin';
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  padding: 1rem 0 5rem 0;
+  /* padding: 0rem 0 0 0; */
   background: center bottom / 100% rgb(221, 242, 247);
   justify-content: center;
-  justify-items: center;
-  align-items: flex-start;
+  padding: 1rem;
   gap: 3rem;
+  @media (max-width: 50em) {
+    grid-template-columns: auto;
+  }
+`;
+
+const SvgWrapper = styled.div`
+  grid-column: 1/3;
+  @media (max-width: 50em) {
+    grid-column: unset;
+  }
 `;
 
 const TabWrapper = styled.div`
@@ -22,17 +33,32 @@ const TabWrapper = styled.div`
   justify-self: flex-start;
   gap: 1.6rem;
   cursor: pointer;
+  @media (max-width: 50em) {
+    grid-column: unset;
+    justify-self: center;
+  }
 `;
 
 const Recommendation = () => {
   const [tabindex, setTab] = useState(0);
+  const [show, setShow] = useState(false);
   const recommendation = useSelector(
     (state) => state.quiz.defaultJson.recommendation
   );
-  return (
+
+  const isActive = recommendation.active;
+
+  if (!isActive) return '';
+
+  return !show ? (
+    <ShowButton showButton={recommendation.showButton} setShow={setShow} />
+  ) : (
     <Wrapper>
+      <SvgWrapper>
+        <Pin arrow />
+      </SvgWrapper>
       <TabWrapper>
-        {recommendation.map((tab, index) => (
+        {recommendation.tabs.map((tab, index) => (
           <Tab
             key={index}
             {...tab}
@@ -42,7 +68,7 @@ const Recommendation = () => {
           />
         ))}
       </TabWrapper>
-      {recommendation[tabindex].cards.map((items, index) => (
+      {recommendation.tabs[tabindex].cards.map((items, index) => (
         <Card key={index} {...items} />
       ))}
     </Wrapper>

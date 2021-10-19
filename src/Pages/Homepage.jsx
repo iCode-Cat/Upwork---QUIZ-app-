@@ -9,7 +9,9 @@ import Background from '../Components/Background';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import '../Components/Steps/svgLine.scss';
+// Dont Delete
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
+// Dont Delete
 import CalculationStats from '../Components/Steps/CalculationStats';
 import scrollIntoView from 'scroll-into-view';
 import Recommendation from '../Components/Recommendation/Recommendation';
@@ -63,7 +65,6 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   return (
     <main ref={app} className={style.wrapper}>
       <article>
-        {/* <img width='100%' src={header} alt='' /> */}
         <Hero
           step1={step1}
           scrollToView={scrollToView}
@@ -75,10 +76,6 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
         {isEnd && (
           <>
             <section className={style.steps}>
-              {/* Timeline animation for web */}
-              {/* <TimelineWeb /> */}
-              {/* Timeline animation for mob */}
-              {/* <TimelineMob /> */}
               {form.step >= 1 && (
                 <FirstStep
                   errorClassHandler={errorClassHandler}
@@ -126,14 +123,13 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
               <>
                 <Calculation defaultJson={defaultJson} />
                 <CalculationStats state={state} results={results} />
+                <Recommendation />
                 <Pin />
-                {/* <Recommendation /> */}
                 <Background report bg>
                   <AnimatedButton />
                 </Background>
               </>
             )}
-            {/* <img width='100%' src={footer} alt='' /> */}
           </>
         )}
       </article>

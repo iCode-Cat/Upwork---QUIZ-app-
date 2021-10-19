@@ -31,7 +31,7 @@
   }
   @media (max-width: 70em) {
     &-wrapper {
-      margin: 0rem auto 5rem auto;
+      margin: 0rem auto 2rem auto;
       height: unset;
       padding: unset;
     }
@@ -121,11 +121,15 @@
 }
 
 .svg-rope-pin {
-  transform: translate(0px, 15px);
+  transform: translate(0px, 30px);
 }
 
 .svg-rope-circle {
-  transform: translate(0px, -45px);
+  transform: translate(0px, -20px);
+}
+
+.svg-rope-arrow {
+  transform: translate(0px, 80px);
 }
 
 // Animations
