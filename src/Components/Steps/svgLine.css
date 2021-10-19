@@ -128,19 +128,19 @@
 }
 
 #svg-container-2 .firstline .rightBottomCorner {
-  -webkit-transform: translate(-57px, calc(100% - 74px));
-          transform: translate(-57px, calc(100% - 74px));
+  -webkit-transform: translate(-57px, calc(100% - 66px));
+          transform: translate(-57px, calc(100% - 66px));
 }
 
 #svg-container-2 .bottomHr {
   position: absolute;
-  bottom: 0;
+  bottom: -0.5px;
   left: -865px;
 }
 
 #svg-container-2 .bottomHrShort {
   position: absolute;
-  bottom: 8px;
+  bottom: -0.4px;
   left: -384px;
 }
 
@@ -152,7 +152,7 @@
 
 #svg-container-2 .bottomCornerEnd {
   position: absolute;
-  bottom: -32px;
+  bottom: -40.4px;
   left: -437px;
 }
 
@@ -185,6 +185,99 @@
 
 @media (max-width: 65em) {
   #svg-container-2 {
+    display: none;
+  }
+}
+
+#svg-container-3 {
+  position: absolute;
+  top: 69.89px;
+  left: -300px;
+  z-index: -1;
+}
+
+#svg-container-3 .leftCornerFirst {
+  position: absolute;
+  left: 58.7px;
+  top: -40px;
+}
+
+#svg-container-3 .firstline {
+  top: 0px;
+  width: 120px;
+}
+
+#svg-container-3 .firstline * {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#svg-container-3 .firstline .arrow1 {
+  -webkit-transform: translate(-7px, 3%);
+          transform: translate(-7px, 3%);
+  -webkit-animation: arrow1 3s forwards;
+          animation: arrow1 3s forwards;
+}
+
+#svg-container-3 .firstline .arrow2 {
+  -webkit-transform: translate(-7px, 0%);
+          transform: translate(-7px, 0%);
+  -webkit-animation: arrow2 3s forwards;
+          animation: arrow2 3s forwards;
+}
+
+#svg-container-3 .firstline .leftCorner {
+  -webkit-transform: translate(0px, calc(100% - 57px));
+          transform: translate(0px, calc(100% - 57px));
+}
+
+#svg-container-3 .bottomHr {
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+}
+
+#svg-container-3 .bottomHrShort {
+  position: absolute;
+  bottom: -0.2px;
+  left: 116px;
+}
+
+#svg-container-3 .rightCorner {
+  position: absolute;
+  bottom: -69px;
+  left: 478px;
+}
+
+#svg-container-3 #pin-head {
+  -webkit-transform: translate(41px, 55px);
+          transform: translate(41px, 55px);
+}
+
+@keyframes arrow1 {
+  0% {
+    -webkit-transform: translate(-7px, 3%);
+            transform: translate(-7px, 3%);
+  }
+  100% {
+    -webkit-transform: translate(-7px, 50%);
+            transform: translate(-7px, 50%);
+  }
+}
+
+@keyframes arrow2 {
+  0% {
+    -webkit-transform: translate(-7px, 0%);
+            transform: translate(-7px, 0%);
+  }
+  100% {
+    -webkit-transform: translate(-7px, 47%);
+            transform: translate(-7px, 47%);
+  }
+}
+
+@media (max-width: 65em) {
+  #svg-container-3 {
     display: none;
   }
 }

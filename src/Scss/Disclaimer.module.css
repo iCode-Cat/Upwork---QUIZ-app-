@@ -1,0 +1,21 @@
+.disclaimer {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1.2rem;
+  margin-top: 3.8rem;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  position: relative;
+  cursor: pointer;
+}
+
+.disclaimer_text {
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+/*# sourceMappingURL=Disclaimer.module.css.map */

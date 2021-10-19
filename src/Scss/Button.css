@@ -1,0 +1,86 @@
+.btn_settings {
+  border-radius: 100px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  min-height: 50px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: 1px solid #00000000;
+  white-space: nowrap;
+}
+
+.btnShadow {
+  -webkit-box-shadow: 0px 17px 30px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 17px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+.btnSm {
+  padding: 1.1rem 3.1rem;
+}
+
+.btnMd {
+  padding: 1.1rem 4.6rem;
+}
+
+.btnLg {
+  padding: 1.1rem 8.1rem;
+}
+
+.btnBlue, .btnBlueMutaiton {
+  background: #2196f3;
+  color: #fff;
+}
+
+.btnBlue i, .btnBlueMutaiton i {
+  color: #fff;
+  opacity: 100 !important;
+}
+
+.btnGreen {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btnGreenDisable {
+  background: #4caf50;
+  opacity: 0.6;
+  color: #ffffff;
+}
+
+.btnBlueDisable {
+  background: rgba(32, 148, 243, 0.6);
+  color: #fff;
+}
+
+.btnWhite {
+  font-weight: 400;
+  background: #fff;
+  color: #565656;
+  border: 1px solid #aeaeae;
+}
+
+.btnWhite:hover {
+  border: 1px solid #ffc300;
+  color: #ffc300;
+}
+
+.btnBlue:hover, .btnBlueMutaiton:hover {
+  background: #2080cd;
+  color: #fff !important;
+}
+
+.btnBlueMutaiton {
+  font-weight: 400;
+}
+
+.submitError {
+  border: 1px solid #ff8282;
+}
+
+@media (max-width: 50em) {
+  .btn_settings {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=Button.css.map */
