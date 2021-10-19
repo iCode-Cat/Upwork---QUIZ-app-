@@ -275,100 +275,120 @@ module.exports.kizanJson = {
       },
     ],
   },
-  recommendation: [
-    {
-      tabname: 'Minimize Impact',
-      active: true,
-      cards: [
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '/icon1.svg',
-          iconBgColor: '#F8E7E7',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '/icon2.svg',
-          iconBgColor: '#E4F6FC',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '/icon3.svg',
-          iconBgColor: '#FFF3CC',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '/icon4.svg',
-          iconBgColor: '#D4ECD5 ',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-      ],
-    },
-    {
-      tabname: 'Minimize Likelihood',
-      active: true,
-      cards: [
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '',
-          iconBgColor: '#F8E7E7',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '',
-          iconBgColor: '#F8E7E7',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '',
-          iconBgColor: '#F8E7E7',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-        {
-          readTime: '60 minutes',
-          frequency: 'once a year',
-          icon: '',
-          iconBgColor: '#F8E7E7',
-          title: 'Review you critical information behavior ',
-          href: '/',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        },
-      ],
-    },
-  ],
+  recommendation: {
+    showButton: 'See Recommendation',
+    active: false,
+    tabs: [
+      {
+        tabname: 'Minimize Impact',
+        active: false,
+        cards: [
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon1.svg',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon2.svg',
+            iconBgColor: '#E4F6FC',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon3.svg',
+            iconBgColor: '#FFF3CC',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '/icon4.svg',
+            iconBgColor: '#D4ECD5',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+        ],
+      },
+      {
+        tabname: 'Minimize Likelihood',
+        active: true,
+        cards: [
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+          {
+            readTime: '60 minutes',
+            frequency: 'once a year',
+            icon: '',
+            iconBgColor: '#F8E7E7',
+            title: 'Review you critical information behavior ',
+            href: '/',
+            hrefTitle: 'Read more',
+            readmore: true,
+            content:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+          },
+        ],
+      },
+    ],
+  },
   lastSection: {
     buttonText: 'Connect Cognni',
     href: 'https://onboard.cognni.ai/consent',
