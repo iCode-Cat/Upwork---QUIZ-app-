@@ -1,5 +1,5 @@
 module.exports.singleFlow = {
-  numberOfSteps: 2,
+  numberOfSteps: 1,
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   heroBackground: '',
@@ -57,6 +57,59 @@ module.exports.singleFlow = {
           placeholder: 'Corporate email',
           questionType: 'text',
           validation: 'email',
+        },
+        {
+          name: 'Relevant Threats',
+          stateName: 'relevantThreats',
+          text: 'Which of the following information risks are you worried about?',
+          questionType: 'booleanMulti',
+          questionId: 1,
+          options: [
+            {
+              text: 'Data breaches',
+              icon: false,
+              answerId: 1,
+            },
+            {
+              text: 'Insider threats',
+              icon: false,
+              nswerId: 2,
+            },
+            {
+              text: 'Ransomware attacks',
+              icon: false,
+              answerId: 3,
+            },
+            {
+              text: 'Regulations',
+              icon: false,
+              answerId: 4,
+            },
+          ],
+        },
+        {
+          name: 'Relevant Use Cases',
+          stateName: 'useCases',
+          text: 'Which of the following are you already doing to minimize the risk?',
+          questionType: 'booleanMulti',
+          options: [
+            {
+              text: 'Cloud migration',
+              icon: false,
+            },
+            {
+              text: 'Deploy MIP',
+              icon: false,
+            },
+            {
+              text: 'Data Classification',
+              icon: false,
+            },
+            {
+              text: 'Investigate Risks',
+              icon: false,
+            },
+          ],
         },
       ],
       button: 'Next Step',
