@@ -233,7 +233,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson('securityPractices'));
+    dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 
   useEffect(() => {

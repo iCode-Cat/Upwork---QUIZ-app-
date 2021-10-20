@@ -91,8 +91,8 @@ const FirstStep = ({
         />
       )}
       <div className={style.step}>
-        <strong>Step {index}</strong>
-        <p>of {defaultJson.numberOfSteps}</p>
+        {/* <strong>Step {index}</strong> */}
+        <p>Answer the questions</p>
       </div>
       <div className={style.input_container}>
         {questions.map((fields, index) =>

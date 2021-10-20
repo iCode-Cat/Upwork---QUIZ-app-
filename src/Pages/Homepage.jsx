@@ -90,7 +90,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                   results={results}
                 />
               )}
-              {form.step >= 2 && defaultJson.numberOfSteps >= 2 && (
+              {/* {form.step >= 2 && defaultJson.numberOfSteps >= 2 && (
                 <Background>
                   <SecondStep
                     errorClassHandler={errorClassHandler}
@@ -117,7 +117,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                   setForm={setForm}
                   results={results}
                 />
-              )}
+              )} */}
             </section>
 
             {form.step >= 4 && (
