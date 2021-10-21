@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { defaultJson } from '../Json/default';
-import { kizanJson } from '../Json/kizan';
+// import { kizanJson } from '../Json/kizan';
 import { securityPractices } from '../Json/SecurityPractices';
 import { singleFlow } from '../Json/singleFlow';
 
@@ -41,9 +41,9 @@ export const quizSlice = createSlice({
         case 'securityPractices':
           state.defaultJson = securityPractices;
           break;
-        case 'kizan':
-          state.defaultJson = kizanJson;
-          break;
+        // case 'kizan':
+        //   state.defaultJson = kizanJson;
+        //   break;
         case 'singleFlow':
           state.defaultJson = singleFlow;
           break;
