@@ -39,7 +39,8 @@
   // width: 100px;
   display: grid;
   grid-auto-flow: column;
-  gap: 6px;
+  align-items: center;
+  gap: 10px;
   font-size: 1.8rem;
   strong {
     color: rgb(47, 47, 47);

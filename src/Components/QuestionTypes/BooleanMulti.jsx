@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from '../../Scss/Steps.module.scss';
+
 import Button from '../Button';
 const BooleanMulti = ({
   errorValue,
@@ -8,7 +9,6 @@ const BooleanMulti = ({
   errorClassHandler,
 }) => {
   const [shortAnswer, setShortAnswer] = useState([]);
-
   const stateAnswerHandler = (i, btn) => {
     if (shortAnswer.find((answer) => answer.index === i)) {
       const filter = shortAnswer.filter((item) => item.index !== i);

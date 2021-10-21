@@ -1,7 +1,7 @@
 import React from 'react';
 import DelayedComponents from '../../../Handlers/DelayedComponents';
 
-const FirstLine = ({ DOM, step }) => {
+const FirstLine = ({ DOM, step, numberOfSteps }) => {
   // 56 pixels of corner SVG
   let dynamicHeight = DOM.current.clientHeight;
 
@@ -44,7 +44,7 @@ const FirstLine = ({ DOM, step }) => {
           </DelayedComponents>
         )}
       </svg>
-      {step > 1 && (
+      {step > 1 && numberOfSteps !== 1 && (
         <>
           <DelayedComponents delay={700}>
             <svg
@@ -71,6 +71,44 @@ const FirstLine = ({ DOM, step }) => {
                 d='M49 70.5L49 21C49 9.95431 40.0457 1 29 1L0.5 1'
                 stroke='black'
                 stroke-dasharray='3 3'
+              />
+            </svg>
+          </DelayedComponents>
+        </>
+      )}
+      {step > 1 && numberOfSteps === 1 && (
+        <>
+          <DelayedComponents delay={700}>
+            <svg
+              width='467'
+              className='bottomHr'
+              height='2'
+              viewBox='0 0 467 2'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path d='M0 1H866.5' stroke='black' stroke-dasharray='3 3' />
+            </svg>
+          </DelayedComponents>
+          <DelayedComponents delay={900}>
+            <svg
+              className='rightCorner step1Rope'
+              width='100'
+              height='71'
+              viewBox='0 0 50 71'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M49 70.5L49 21C49 9.95431 40.0457 1 29 1L0.5 1'
+                stroke='black'
+                stroke-dasharray='3 3'
+              />
+              <path
+                className='step1Arrow'
+                d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
+                fill='#2196F3'
+                stroke='#565656'
               />
             </svg>
           </DelayedComponents>

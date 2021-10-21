@@ -84,6 +84,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                   scrollToView={scrollToView}
                   step1={step1}
                   defaultJson={defaultJson}
+                  state={state}
                   formStateHandler={formStateHandler}
                   form={form}
                   setForm={setForm}

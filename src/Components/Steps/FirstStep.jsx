@@ -4,6 +4,8 @@ import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { Terms } from '../Terms';
+import { useDispatch } from 'react-redux';
+import { setQuestionOrder } from '../../Redux/quizSlice';
 import RopeMob from '../Timelines/RopeMob';
 import FirstLine from './svg-line/FirstLine';
 import Secondline from './svg-line/SecondLine';
@@ -17,29 +19,41 @@ const FirstStep = ({
   step1,
   scrollToView,
   step2,
+  state,
   results,
 }) => {
-  const { steps } = defaultJson;
+  const questionOrder = state.questionOrder;
+  const dispatch = useDispatch();
+  const { steps, numberOfSteps } = defaultJson;
   const questions = steps[0].fields;
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
+  const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
   // order for single flow
   const [order, setOrder] = useState(0);
-  // Indicate last question of the flow
+  // Indicate last question of the flow-
   const [lastQuestion, setLastQuestion] = useState(false);
-
+  // Insert all questions of this step to one state-+
   const stateHandler = () => {
     questions.map((value) => {
+      if (value.relatedQuestion) return;
       const formField = value.stateName;
       form[formField] = '';
       setForm({ ...form });
     });
   };
 
+  // Insert questions to another state
+
   // Increment for single flow
   const incrementHandler = () => {
     setOrder(order + 1);
+  };
+  // Decrement for single flow
+  const decrementHandler = () => {
+    if (order === 0) return;
+    setOrder(order - 1);
   };
 
   const checkLastStep = () => {
@@ -49,32 +63,44 @@ const FirstStep = ({
     return false;
   };
 
+  const InsertQuestions = () => {
+    const filter = questions.filter((item) => !item.relatedQuestion);
+    setQuestionsState([...filter]);
+  };
+
   useEffect(() => {
     stateHandler();
+    InsertQuestions();
   }, []);
 
-  const checkEmpty = () => {
-    const result = questions.map((value, index) => {
-      const formField = value.stateName;
+  // Everytime question order updated
+  useEffect(() => {
+    if (questionOrder === null) return;
+    const filter = questions.filter(
+      (item) => item.questionId === questionOrder
+    );
+    setQuestionsState([...questionsState, ...filter]);
+    dispatch(setQuestionOrder(null));
+    setLastQuestion(true);
+  }, [order]);
 
+  const checkEmpty = () => {
+    const result = questionsState.map((value, index) => {
+      const formField = value.stateName;
       if (form[formField] === '' || !checked) {
         setError(true);
         return true;
       }
 
-      if (index === order && index !== questions.length - 1) {
-        setOrder(order + 1);
+      if (index === order && index !== questionsState.length && !lastQuestion) {
+        incrementHandler();
         setError(false);
-      }
-
-      if (index === questions.length - 2) {
-        setLastQuestion(true);
       }
 
       return false;
     });
     // Check whether array includes error of empty input
-    console.log(result);
+
     return result.some((value) => value === true);
   };
 
@@ -100,7 +126,7 @@ const FirstStep = ({
       id='step1'
     >
       {step1.current !== undefined && (
-        <FirstLine DOM={step1} step={form.step} />
+        <FirstLine DOM={step1} step={form.step} numberOfSteps={numberOfSteps} />
       )}
 
       {step1.current !== undefined && (
@@ -116,17 +142,18 @@ const FirstStep = ({
         <p>Answer the questions</p>
       </div>
       <div className={style.input_container}>
-        {questions.map(
-          (fields, index) =>
-            order === index &&
-            QuesionTypeHandler(
-              fields,
-              index,
-              errorValue,
-              formStateHandler,
-              errorClassHandler
-            )
-        )}
+        {questionsState.length > 0 &&
+          questionsState.map(
+            (fields, index) =>
+              order === index &&
+              QuesionTypeHandler(
+                fields,
+                index,
+                errorValue,
+                formStateHandler,
+                errorClassHandler
+              )
+          )}
       </div>
 
       <div className={style.submit} onClick={checkEmpty} type='submit'>

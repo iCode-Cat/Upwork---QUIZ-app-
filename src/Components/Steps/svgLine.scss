@@ -35,6 +35,15 @@
     bottom: -69px;
     left: 980px;
   }
+
+  .step1Rope {
+    left: 554px;
+  }
+
+  .step1Arrow {
+    transform: translate(41px, 81%);
+  }
+
   @keyframes arrow1 {
     0% {
       transform: translate(-7px, 3%);

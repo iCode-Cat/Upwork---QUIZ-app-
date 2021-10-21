@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
+import { useDispatch } from 'react-redux';
+import { setQuestionOrder } from '../../Redux/quizSlice';
+import Logo from '../SecurityPractices/Logo';
 const Options = ({
   errorValue,
   fields,
   formStateHandler,
   errorClassHandler,
 }) => {
+  const dispatch = useDispatch();
   const [shortAnswer, setShortAnswer] = useState({
     type: 'shortAnswer',
     isAnswered: false,
@@ -26,6 +30,7 @@ const Options = ({
                 isAnswered: true,
                 index: i,
               });
+              dispatch(setQuestionOrder(btn.callQuestion));
               // numberEmployees: null,
               formStateHandler({
                 field: fields.stateName,
