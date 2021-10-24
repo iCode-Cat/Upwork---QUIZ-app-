@@ -18,12 +18,14 @@ import Recommendation from '../Components/Recommendation/Recommendation';
 import Pin from '../Components/Pin';
 import AnimatedButton from '../Components/AnimatedButton';
 import SecurityPractices from '../Components/SecurityPractices';
+import SingleFlow from '../Components/SingleFlow/SingleFlow';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
   const state = useSelector((state) => state.quiz);
   const dispatch = useDispatch();
   const defaultJson = state.defaultJson;
+  const { singleFLow } = defaultJson;
 
   // State that saves user answers
   const [form, setForm] = useState({
@@ -74,52 +76,68 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
           form={form}
           formStateHandler={formStateHandler}
         />
+
         {isEnd && (
           <>
-            <section className={style.steps}>
-              {form.step >= 1 && (
-                <FirstStep
-                  errorClassHandler={errorClassHandler}
-                  step2={step2}
-                  scrollToView={scrollToView}
-                  step1={step1}
-                  defaultJson={defaultJson}
-                  state={state}
-                  formStateHandler={formStateHandler}
-                  form={form}
-                  setForm={setForm}
-                  results={results}
-                />
-              )}
-              {/* {form.step >= 2 && defaultJson.numberOfSteps >= 2 && (
-                <Background>
-                  <SecondStep
+            {singleFLow && form.step === 1 ? (
+              <SingleFlow
+                errorClassHandler={errorClassHandler}
+                step2={step2}
+                scrollToView={scrollToView}
+                step1={step1}
+                defaultJson={defaultJson}
+                state={state}
+                formStateHandler={formStateHandler}
+                form={form}
+                setForm={setForm}
+                results={results}
+              />
+            ) : (
+              <section className={style.steps}>
+                {form.step >= 1 && (
+                  <FirstStep
                     errorClassHandler={errorClassHandler}
-                    step3={step3}
-                    scrollToView={scrollToView}
                     step2={step2}
+                    scrollToView={scrollToView}
+                    step1={step1}
+                    defaultJson={defaultJson}
+                    state={state}
+                    formStateHandler={formStateHandler}
+                    form={form}
+                    setForm={setForm}
+                    results={results}
+                  />
+                )}
+                {form.step >= 2 && defaultJson.numberOfSteps >= 2 && (
+                  <Background>
+                    <SecondStep
+                      errorClassHandler={errorClassHandler}
+                      step3={step3}
+                      scrollToView={scrollToView}
+                      step2={step2}
+                      defaultJson={defaultJson}
+                      formStateHandler={formStateHandler}
+                      form={form}
+                      setForm={setForm}
+                      results={results}
+                    />
+                  </Background>
+                )}
+                {form.step >= 3 && defaultJson.numberOfSteps >= 3 && (
+                  <ThirdStep
+                    errorClassHandler={errorClassHandler}
+                    hero={hero}
+                    scrollToView={scrollToView}
+                    step3={step3}
                     defaultJson={defaultJson}
                     formStateHandler={formStateHandler}
                     form={form}
                     setForm={setForm}
                     results={results}
                   />
-                </Background>
-              )}
-              {form.step >= 3 && defaultJson.numberOfSteps >= 3 && (
-                <ThirdStep
-                  errorClassHandler={errorClassHandler}
-                  hero={hero}
-                  scrollToView={scrollToView}
-                  step3={step3}
-                  defaultJson={defaultJson}
-                  formStateHandler={formStateHandler}
-                  form={form}
-                  setForm={setForm}
-                  results={results}
-                />
-              )} */}
-            </section>
+                )}
+              </section>
+            )}
 
             {form.step >= 4 && (
               <>

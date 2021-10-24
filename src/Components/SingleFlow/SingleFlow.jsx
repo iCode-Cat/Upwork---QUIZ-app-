@@ -4,11 +4,13 @@ import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { Terms } from '../Terms';
+import { useDispatch } from 'react-redux';
+import { setQuestionOrder } from '../../Redux/quizSlice';
 import RopeMob from '../Timelines/RopeMob';
-import FirstLine from './svg-line/FirstLine';
-import Secondline from './svg-line/SecondLine';
+import FirstLine from '../Steps/svg-line/FirstLine';
+import Secondline from '../Steps/svg-line/SecondLine';
 
-const FirstStep = ({
+const SingleFlow = ({
   errorClassHandler,
   defaultJson,
   formStateHandler,
@@ -17,20 +19,41 @@ const FirstStep = ({
   step1,
   scrollToView,
   step2,
+  state,
   results,
 }) => {
-  const { steps } = defaultJson;
+  const questionOrder = state.questionOrder;
+  const dispatch = useDispatch();
+  const { steps, numberOfSteps } = defaultJson;
   const questions = steps[0].fields;
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
+  const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
-
+  // order for single flow
+  const [order, setOrder] = useState(0);
+  // Indicate last question of the flow-
+  const [lastQuestion, setLastQuestion] = useState(false);
+  // Insert all questions of this step to one state-+
   const stateHandler = () => {
     questions.map((value) => {
+      if (value.relatedQuestion) return;
       const formField = value.stateName;
       form[formField] = '';
       setForm({ ...form });
     });
+  };
+
+  // Insert questions to another state
+
+  // Increment for single flow
+  const incrementHandler = () => {
+    setOrder(order + 1);
+  };
+  // Decrement for single flow
+  const decrementHandler = () => {
+    if (order === 0) return;
+    setOrder(order - 1);
   };
 
   const checkLastStep = () => {
@@ -40,20 +63,44 @@ const FirstStep = ({
     return false;
   };
 
+  const InsertQuestions = () => {
+    const filter = questions.filter((item) => !item.relatedQuestion);
+    setQuestionsState([...filter]);
+  };
+
   useEffect(() => {
     stateHandler();
+    InsertQuestions();
   }, []);
 
+  // Everytime question order updated
+  useEffect(() => {
+    if (questionOrder === null) return;
+    const filter = questions.filter(
+      (item) => item.questionId === questionOrder
+    );
+    setQuestionsState([...questionsState, ...filter]);
+    dispatch(setQuestionOrder(null));
+    setLastQuestion(true);
+  }, [order]);
+
   const checkEmpty = () => {
-    const result = questions.map((value) => {
+    const result = questionsState.map((value, index) => {
       const formField = value.stateName;
       if (form[formField] === '' || !checked) {
         setError(true);
         return true;
       }
+
+      if (index === order && index !== questionsState.length && !lastQuestion) {
+        incrementHandler();
+        setError(false);
+      }
+
       return false;
     });
     // Check whether array includes error of empty input
+
     return result.some((value) => value === true);
   };
 
@@ -79,7 +126,7 @@ const FirstStep = ({
       id='step1'
     >
       {step1.current !== undefined && (
-        <FirstLine DOM={step1} step={form.step} />
+        <FirstLine DOM={step1} step={form.step} numberOfSteps={numberOfSteps} />
       )}
 
       {step1.current !== undefined && (
@@ -91,23 +138,26 @@ const FirstStep = ({
         />
       )}
       <div className={style.step}>
-        <strong>Step {index}</strong>
-        <p>of {defaultJson.numberOfSteps}</p>
+        {/* <strong>Step {index}</strong> */}
+        <p>Answer the questions</p>
       </div>
       <div className={style.input_container}>
-        {questions.map((fields, index) =>
-          QuesionTypeHandler(
-            fields,
-            index,
-            errorValue,
-            formStateHandler,
-            errorClassHandler
-          )
-        )}
+        {questionsState.length > 0 &&
+          questionsState.map(
+            (fields, index) =>
+              order === index &&
+              QuesionTypeHandler(
+                fields,
+                index,
+                errorValue,
+                formStateHandler,
+                errorClassHandler
+              )
+          )}
       </div>
 
       <div className={style.submit} onClick={checkEmpty} type='submit'>
-        {checkLastStep() ? (
+        {checkLastStep() && lastQuestion ? (
           <Button
             submit
             size='btnLg'
@@ -116,15 +166,16 @@ const FirstStep = ({
           />
         ) : (
           <Button
-            submit
             size='btnLg'
             type={`${
               form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
             }`}
-            text={defaultJson.nextButton}
+            text={'Next'}
           />
         )}
-        <ErrorMessage errorValue={errorValue} checked={checked} />
+        {errorValue && (
+          <ErrorMessage errorValue={errorValue} checked={checked} />
+        )}
       </div>
 
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
@@ -132,4 +183,4 @@ const FirstStep = ({
   );
 };
 
-export default FirstStep;
+export default SingleFlow;
