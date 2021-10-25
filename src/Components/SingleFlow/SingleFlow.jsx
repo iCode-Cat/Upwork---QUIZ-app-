@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
@@ -9,6 +10,46 @@ import { setQuestionOrder } from '../../Redux/quizSlice';
 import RopeMob from '../Timelines/RopeMob';
 import FirstLine from '../Steps/svg-line/FirstLine';
 import { useTotalQuestion } from './useTotalQuestion';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+const Backward = styled.i`
+  cursor: pointer;
+  opacity: 70%;
+`;
+
+const Wrapper = styled.form`
+  animation: fade 1s forwards;
+  .enter {
+    animation: fade 1s forwards;
+  }
+  .remove-btn {
+    margin-right: 0.5rem;
+  }
+
+  .item-enter {
+    opacity: 0;
+  }
+  .item-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .item-exit {
+    opacity: 1;
+  }
+  .item-exit-active {
+    display: none;
+    transition: opacity 500ms ease-in;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
 
 const SingleFlow = ({
   errorClassHandler,
@@ -142,7 +183,7 @@ const SingleFlow = ({
   };
 
   return (
-    <form
+    <Wrapper
       ref={step1}
       onSubmit={(e) => errorHandler(e)}
       className={`${style.wrapper}  ${style.stepFirst} ${
@@ -164,14 +205,19 @@ const SingleFlow = ({
       )}
       <div className={style.step}>
         {/* <strong>Step {index}</strong> */}
-        <p onClick={decrementHandler}>{`Answer the questions ${
-          counter + 1
-        }/${totalQuestions}`}</p>
+        {order !== 0 && (
+          <Backward
+            onClick={decrementHandler}
+            className='fas fa-arrow-left'
+          ></Backward>
+        )}
+        <p>{`Answer the questions ${counter + 1}/${totalQuestions}`}</p>
       </div>
       <div className={style.input_container}>
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
             <div
+              className={`${order === index ? 'enter anim' : 'exit'}`}
               style={{
                 display: `${order === index ? 'block' : 'none'}`,
                 pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
@@ -213,7 +259,7 @@ const SingleFlow = ({
       </div>
 
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
-    </form>
+    </Wrapper>
   );
 };
 
