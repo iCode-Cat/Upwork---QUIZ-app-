@@ -22,6 +22,11 @@ const Wrapper = styled.form`
   .enter {
     animation: fade 1s forwards;
   }
+
+  .anim-exit {
+    animation: fade-exit 1s forwards;
+  }
+
   .remove-btn {
     margin-right: 0.5rem;
   }
@@ -47,6 +52,15 @@ const Wrapper = styled.form`
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes fade-exit {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.6;
     }
   }
 `;
@@ -147,9 +161,11 @@ const SingleFlow = ({
 
       if (order !== index) return;
       if (form[formField] === '' || !checked) {
+        console.log('error');
         setError(true);
         return true;
       }
+
       // Prevent submit button to increment counter
       setDecrement(decrement + 1);
 
@@ -208,7 +224,7 @@ const SingleFlow = ({
         {order !== 0 && (
           <Backward
             onClick={decrementHandler}
-            className='fas fa-arrow-left'
+            className='fas fa-arrow-left anim-exit'
           ></Backward>
         )}
         <p>{`Answer the questions ${counter + 1}/${totalQuestions}`}</p>
@@ -217,7 +233,9 @@ const SingleFlow = ({
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
             <div
-              className={`${order === index ? 'enter anim' : 'exit'}`}
+              className={`${order === index ? 'enter anim' : ''} ${
+                counter !== index ? 'anim-exit' : ''
+              }`}
               style={{
                 display: `${order === index ? 'block' : 'none'}`,
                 pointerEvents: `${counter !== index ? 'none' : 'unset'}`,

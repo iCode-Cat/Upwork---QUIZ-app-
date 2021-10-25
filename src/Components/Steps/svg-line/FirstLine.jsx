@@ -15,9 +15,10 @@ const FirstLine = ({ DOM, step, numberOfSteps }) => {
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
+        {/* If not single flow should be dynamicHeight / 2  instead 220 */}
         <path
           id='rope1'
-          d={`M1 0V${step === 1 ? dynamicHeight / 2 : dynamicHeight - 56}`}
+          d={`M1 0V${step === 1 ? 220 : dynamicHeight - 56}`}
           stroke='black'
           strokeDasharray='3 3'
         />
