@@ -7,3 +7,4 @@ Things to fix on single flow.
 4- Animation when question changing - low
 5- Green submit button on last question - High
 6- Validation problems - High
+7- Add single flow option to JSON - low +

@@ -79,7 +79,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
         {isEnd && (
           <>
-            {singleFLow && form.step === 1 ? (
+            {singleFLow && form.step >= 1 ? (
               <SingleFlow
                 errorClassHandler={errorClassHandler}
                 step2={step2}
