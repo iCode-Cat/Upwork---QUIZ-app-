@@ -33,6 +33,7 @@ const SingleFlow = ({
   const [errorValue, setError] = useState(false);
   const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
+  const [decrement, setDecrement] = useState(0);
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -57,6 +58,9 @@ const SingleFlow = ({
   const decrementHandler = () => {
     if (order === 0) return;
     setOrder(order - 1);
+    setDecrement(decrement - 1);
+    setAllAnswered(false);
+    // setCounter(counter - 1);
   };
 
   const checkLastStep = () => {
@@ -99,8 +103,12 @@ const SingleFlow = ({
         return true;
       }
       // Prevent submit button to increment counter
-      if (counter + 1 !== totalQuestions) {
+      setDecrement(decrement + 1);
+      if (counter + 1 !== totalQuestions && decrement === counter) {
         setCounter(counter + 1);
+      }
+      if (counter + 1 === totalQuestions) {
+        setAllAnswered(true);
       }
       if (index === order && index !== questionsState.length && !allAnswered) {
         incrementHandler();
@@ -112,6 +120,8 @@ const SingleFlow = ({
     // Check whether array includes error of empty input
     return result.some((value) => value === true);
   };
+
+  console.log(decrement);
 
   const errorHandler = (e) => {
     e.preventDefault();
@@ -157,7 +167,13 @@ const SingleFlow = ({
       <div className={style.input_container}>
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
-            <div style={{ display: `${order === index ? 'block' : 'none'}` }}>
+            <div
+              style={{
+                display: `${order === index ? 'block' : 'none'}`,
+                pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
+                opacity: `${counter !== index ? '0.7' : '1'}`,
+              }}
+            >
               {QuesionTypeHandler(
                 fields,
                 index,
@@ -171,7 +187,7 @@ const SingleFlow = ({
       </div>
 
       <div className={style.submit} onClick={checkEmpty} type='submit'>
-        {allAnswered ? (
+        {allAnswered && decrement >= counter ? (
           <Button
             submit
             size='btnLg'
