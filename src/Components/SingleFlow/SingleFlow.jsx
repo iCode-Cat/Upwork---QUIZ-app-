@@ -26,7 +26,8 @@ const SingleFlow = ({
   const dispatch = useDispatch();
   const { steps, numberOfSteps } = defaultJson;
   const questions = steps[0].fields;
-  const [allAnswered, setAllAnswered, setCounter, counter] = useTotalQuestion();
+  const [allAnswered, setAllAnswered, setCounter, counter, totalQuestions] =
+    useTotalQuestion();
   console.log(allAnswered);
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
@@ -97,7 +98,10 @@ const SingleFlow = ({
         setError(true);
         return true;
       }
-      setCounter(counter + 1);
+      // Prevent submit button to increment counter
+      if (counter + 1 !== totalQuestions) {
+        setCounter(counter + 1);
+      }
       if (index === order && index !== questionsState.length && !allAnswered) {
         incrementHandler();
         setError(false);
@@ -146,7 +150,9 @@ const SingleFlow = ({
       )}
       <div className={style.step}>
         {/* <strong>Step {index}</strong> */}
-        <p onClick={decrementHandler}>Answer the questions</p>
+        <p onClick={decrementHandler}>{`Answer the questions ${
+          counter + 1
+        }/${totalQuestions}`}</p>
       </div>
       <div className={style.input_container}>
         {questionsState.length > 0 &&

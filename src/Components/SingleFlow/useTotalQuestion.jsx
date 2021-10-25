@@ -30,5 +30,5 @@ export function useTotalQuestion() {
     }
   }, [counter]);
 
-  return [allAnswered, setAllAnswered, setCounter, counter];
+  return [allAnswered, setAllAnswered, setCounter, counter, totalQuestions];
 }
