@@ -26,14 +26,21 @@ const SingleFlow = ({
   const dispatch = useDispatch();
   const { steps, numberOfSteps } = defaultJson;
   const questions = steps[0].fields;
-  const [allAnswered, setAllAnswered, setCounter, counter, totalQuestions] =
-    useTotalQuestion();
-  console.log(allAnswered);
+  const [
+    allAnswered,
+    setAllAnswered,
+    setCounter,
+    counter,
+    totalQuestions,
+    decrement,
+    setDecrement,
+  ] = useTotalQuestion();
+
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
   const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
-  const [decrement, setDecrement] = useState(0);
+
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -104,12 +111,11 @@ const SingleFlow = ({
       }
       // Prevent submit button to increment counter
       setDecrement(decrement + 1);
+
       if (counter + 1 !== totalQuestions && decrement === counter) {
         setCounter(counter + 1);
       }
-      if (counter + 1 === totalQuestions) {
-        setAllAnswered(true);
-      }
+
       if (index === order && index !== questionsState.length && !allAnswered) {
         incrementHandler();
         setError(false);
@@ -120,8 +126,6 @@ const SingleFlow = ({
     // Check whether array includes error of empty input
     return result.some((value) => value === true);
   };
-
-  console.log(decrement);
 
   const errorHandler = (e) => {
     e.preventDefault();

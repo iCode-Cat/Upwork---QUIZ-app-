@@ -6,6 +6,7 @@ export function useTotalQuestion() {
   const singleFlow = state.defaultJson.steps[0].fields;
   const [allAnswered, setAllAnswered] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [decrement, setDecrement] = useState(0);
 
   // Loop through the questions
   const filter = singleFlow
@@ -25,10 +26,18 @@ export function useTotalQuestion() {
   const totalQuestions = filter.reduce((a, b) => a + b);
 
   useEffect(() => {
-    if (counter === totalQuestions - 1) {
+    if (counter === totalQuestions - 1 && counter === decrement) {
       setAllAnswered(true);
     }
-  }, [counter]);
+  }, [decrement]);
 
-  return [allAnswered, setAllAnswered, setCounter, counter, totalQuestions];
+  return [
+    allAnswered,
+    setAllAnswered,
+    setCounter,
+    counter,
+    totalQuestions,
+    decrement,
+    setDecrement,
+  ];
 }
