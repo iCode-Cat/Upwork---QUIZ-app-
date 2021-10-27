@@ -11,10 +11,16 @@ import RopeMob from '../Timelines/RopeMob';
 import FirstLine from '../Steps/svg-line/FirstLine';
 import { useTotalQuestion } from './useTotalQuestion';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import ProgressCircles from './ProgressCircles';
 
 const Backward = styled.i`
   cursor: pointer;
   opacity: 70%;
+`;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
 `;
 
 const Wrapper = styled.form`
@@ -150,7 +156,7 @@ const SingleFlow = ({
     );
 
     setQuestionsState([...questionsState, ...filter]);
-    dispatch(setQuestionOrder(null));
+    // dispatch(setQuestionOrder(null));
     // lastQuestionHandler(order);
     // lastQuestionHandler();
   }, [order]);
@@ -219,7 +225,7 @@ const SingleFlow = ({
           referance={step1}
         />
       )}
-      <div className={style.step}>
+      <Container className={style.step}>
         {/* <strong>Step {index}</strong> */}
         {order !== 0 && (
           <Backward
@@ -227,8 +233,8 @@ const SingleFlow = ({
             className='fas fa-arrow-left anim-exit'
           ></Backward>
         )}
-        <p>{`Answer the questions ${counter + 1}/${totalQuestions}`}</p>
-      </div>
+        <p>Answer the questions</p>
+      </Container>
       <div className={style.input_container}>
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
@@ -237,11 +243,20 @@ const SingleFlow = ({
                 counter !== index ? 'anim-exit' : ''
               }`}
               style={{
-                display: `${order === index ? 'block' : 'none'}`,
+                display: `${
+                  order === index ||
+                  (fields.options &&
+                    fields.options.find(
+                      (ctx) => ctx.callQuestion === questionOrder
+                    ))
+                    ? 'block'
+                    : 'none'
+                }`,
                 pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
                 opacity: `${counter !== index ? '0.7' : '1'}`,
               }}
             >
+              {fields.callQuestion === '1' && alert('hello')}
               {QuesionTypeHandler(
                 fields,
                 index,
@@ -277,6 +292,7 @@ const SingleFlow = ({
       </div>
 
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
+      <ProgressCircles done={counter + 1} total={totalQuestions} />
     </Wrapper>
   );
 };
