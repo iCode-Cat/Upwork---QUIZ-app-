@@ -115,6 +115,16 @@ module.exports.singleFlow = {
           ],
         },
         {
+          name: 'email',
+          stateName: 'workEmail2',
+          text: 'Enter your corporate email to get started',
+          placeholder: 'Corporate email',
+          questionType: 'text',
+          validation: 'email',
+        },
+      ],
+      relatedQuestions: [
+        {
           name: 'test',
           stateName: 'test',
           text: 'Question according to your answer Cloud migration',
@@ -156,110 +166,6 @@ module.exports.singleFlow = {
         },
       ],
       button: 'Next Step',
-    },
-    {
-      index: 2,
-      fields: [
-        {
-          name: 'Relevant Threats',
-          stateName: 'relevantThreats',
-          text: 'Which of the following information risks are you worried about?',
-          questionType: 'booleanMulti',
-          options: [
-            {
-              text: 'Data breaches',
-              icon: false,
-            },
-            {
-              text: 'Insider threats',
-              icon: false,
-            },
-            {
-              text: 'Ransomware attacks',
-              icon: false,
-            },
-            {
-              text: 'Regulations',
-              icon: false,
-            },
-          ],
-        },
-        {
-          name: 'Relevant Use Cases',
-          stateName: 'useCases',
-          text: 'Which of the following are you already doing to minimize the risk?',
-          questionType: 'booleanMulti',
-          options: [
-            {
-              text: 'Cloud migration',
-              icon: false,
-            },
-            {
-              text: 'Deploy MIP',
-              icon: false,
-            },
-            {
-              text: 'Data Classification',
-              icon: false,
-            },
-            {
-              text: 'Investigate Risks',
-              icon: false,
-            },
-          ],
-        },
-      ],
-      button: 'Next Step',
-    },
-    {
-      index: 3,
-      fields: [
-        {
-          name: 'Not used 1',
-          stateName: 'howProtectInfo',
-          text: 'How are you protecting your information?',
-          placeholder: 'Choose answer',
-          questionType: 'dropdown',
-          options: [
-            {
-              text: 'Not yet',
-            },
-            {
-              text: 'Microsoft Information Protection',
-            },
-            {
-              text: 'Forcepoint DLP',
-            },
-            {
-              text: 'Mcafee DLP',
-            },
-            {
-              text: 'Other DLP',
-            },
-          ],
-        },
-        {
-          name: 'Not used 2',
-          stateName: 'howProtectRisk',
-          text: 'How are you protecting your information?',
-          placeholder: 'Choose answer',
-          questionType: 'dropdown',
-          options: [
-            {
-              text: 'Not yet',
-            },
-            {
-              text: 'Microsoft Cloud App Security',
-            },
-            {
-              text: 'Microsoft Sentinel',
-            },
-            {
-              text: 'Other CASB or SIEM',
-            },
-          ],
-        },
-      ],
     },
   ],
   stats: {

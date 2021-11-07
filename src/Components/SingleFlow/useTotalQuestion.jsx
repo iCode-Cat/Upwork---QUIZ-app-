@@ -16,7 +16,6 @@ export function useTotalQuestion() {
       // Question with this property means, it has following question
       if (ctx.callQuestion) {
         array.push(index);
-        array.push(index);
       } else {
         array.push(index);
       }

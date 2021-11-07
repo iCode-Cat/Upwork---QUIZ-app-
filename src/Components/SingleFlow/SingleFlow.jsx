@@ -4,6 +4,7 @@ import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
+import RelatedQuestions from '../RelatedQuestions';
 import { Terms } from '../Terms';
 import { useDispatch } from 'react-redux';
 import { setQuestionOrder } from '../../Redux/quizSlice';
@@ -101,7 +102,7 @@ const SingleFlow = ({
   const [errorValue, setError] = useState(false);
   const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
-
+  const [relatedsAnwered, setRelatedsAnswered] = useState(true);
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -149,24 +150,28 @@ const SingleFlow = ({
   }, []);
 
   // Everytime question order updated
-  useEffect(() => {
-    if (questionOrder === null) return;
-    const filter = questions.filter(
-      (item) => item.questionId === questionOrder
-    );
+  // useEffect(() => {
+  //   if (questionOrder === null) return;
+  //   const filter = questions.find(
+  //     (item) => item.callQuestion && item.relatedQuestions
+  //   );
 
-    setQuestionsState([...questionsState, ...filter]);
-    // dispatch(setQuestionOrder(null));
-    // lastQuestionHandler(order);
-    // lastQuestionHandler();
-  }, [order]);
+  //   const find = filter.relatedQuestions.find(
+  //     (ctx) => ctx.questionId === questionOrder
+  //   );
+
+  //   setQuestionsState([...questionsState, find]);
+  //   // dispatch(setQuestionOrder(null));
+  //   // lastQuestionHandler(order);
+  //   // lastQuestionHandler();
+  // }, [order]);
 
   const checkEmpty = () => {
     const result = questionsState.map((value, index) => {
       const formField = value.stateName;
 
       if (order !== index) return;
-      if (form[formField] === '' || !checked) {
+      if (form[formField] === '' || !checked || !relatedsAnwered) {
         console.log('error');
         setError(true);
         return true;
@@ -179,7 +184,12 @@ const SingleFlow = ({
         setCounter(counter + 1);
       }
 
-      if (index === order && index !== questionsState.length && !allAnswered) {
+      if (
+        index === order &&
+        index !== questionsState.length &&
+        !allAnswered &&
+        relatedsAnwered
+      ) {
         incrementHandler();
         setError(false);
       }
@@ -243,27 +253,32 @@ const SingleFlow = ({
                 counter !== index ? 'anim-exit' : ''
               }`}
               style={{
-                display: `${
-                  order === index ||
-                  (fields.options &&
-                    fields.options.find(
-                      (ctx) => ctx.callQuestion === questionOrder
-                    ))
-                    ? 'block'
-                    : 'none'
-                }`,
+                display: `${order === index ? 'block' : 'none'}`,
                 pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
                 opacity: `${counter !== index ? '0.7' : '1'}`,
               }}
             >
-              {fields.callQuestion === '1' && alert('hello')}
-              {QuesionTypeHandler(
-                fields,
-                index,
-                errorValue,
-                formStateHandler,
-                errorClassHandler,
-                setError
+              {fields?.options?.find((ctx) => ctx.callQuestion) ? (
+                <RelatedQuestions
+                  setRelatedsAnswered={setRelatedsAnswered}
+                  fields={fields}
+                  relatedQuestions={steps[0].relatedQuestions}
+                  index={index}
+                  errorValue={errorValue}
+                  errorClassHandler={errorClassHandler}
+                  formStateHandler={formStateHandler}
+                  setForm={setForm}
+                  form={form}
+                />
+              ) : (
+                QuesionTypeHandler(
+                  fields,
+                  index,
+                  errorValue,
+                  formStateHandler,
+                  errorClassHandler,
+                  setError
+                )
               )}
             </div>
           ))}
