@@ -102,6 +102,7 @@ const SingleFlow = ({
   const [errorValue, setError] = useState(false);
   const [questionsState, setQuestionsState] = useState([]);
   const [checked, setChecked] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState();
   const [relatedsAnwered, setRelatedsAnswered] = useState(true);
   // order for single flow
   const [order, setOrder] = useState(0);
@@ -167,6 +168,7 @@ const SingleFlow = ({
   // }, [order]);
 
   const checkEmpty = () => {
+    setButtonClicked(!buttonClicked);
     const result = questionsState.map((value, index) => {
       const formField = value.stateName;
 
@@ -269,6 +271,7 @@ const SingleFlow = ({
                   formStateHandler={formStateHandler}
                   setForm={setForm}
                   form={form}
+                  buttonClicked={buttonClicked}
                 />
               ) : (
                 QuesionTypeHandler(

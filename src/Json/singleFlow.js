@@ -125,14 +125,35 @@ module.exports.singleFlow = {
       ],
       relatedQuestions: [
         {
-          name: 'test',
-          stateName: 'test',
-          text: 'Question according to your answer Cloud migration',
-          placeholder: 'Question according to your answer',
-          questionType: 'text',
-          validation: 'text',
+          name: 'Relevant Use Cases',
+          stateName: 'useCases3',
+          text: 'Which of the following are you already doing to minimize the risk?',
+          questionType: 'boolean',
           questionId: 3,
+          callQuestion: true,
           relatedQuestion: true,
+          options: [
+            {
+              text: 'Cloud migration',
+              icon: false,
+              callQuestion: 5,
+            },
+            {
+              text: 'Deploy MIP',
+              icon: false,
+              callQuestion: 4,
+            },
+            {
+              text: 'Data Classification',
+              icon: false,
+              callQuestion: 5,
+            },
+            {
+              text: 'Investigate Risks',
+              icon: false,
+              callQuestion: 6,
+            },
+          ],
         },
         {
           name: 'test',
