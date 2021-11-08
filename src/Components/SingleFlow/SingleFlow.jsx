@@ -174,7 +174,6 @@ const SingleFlow = ({
 
       if (order !== index) return;
       if (form[formField] === '' || !checked || !relatedsAnwered) {
-        console.log('error');
         setError(true);
         return true;
       }

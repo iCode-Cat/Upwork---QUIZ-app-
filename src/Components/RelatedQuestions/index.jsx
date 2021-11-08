@@ -64,7 +64,7 @@ const Index = ({
     <Wrapper>
       {questions.length > 0 &&
         questions.map((question, key) => (
-          <div key={key}>
+          <div className={'enter anim'} key={key}>
             {QuesionTypeHandler(
               question,
               index,
