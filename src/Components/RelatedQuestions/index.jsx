@@ -22,6 +22,7 @@ const Index = ({
   setRelatedsAnswered,
   buttonClicked,
   decrementHandler,
+  order,
 }) => {
   const [questions, setQuestions] = useState([fields]);
   const questionOrder = useSelector((state) => state.quiz.questionOrder);
@@ -51,6 +52,14 @@ const Index = ({
 
   useEffect(() => {
     if (questionOrder === null) return;
+
+    if (
+      form[nextQuestion.stateName] === '' ||
+      (form[nextQuestion.stateName] === undefined && order === index)
+    ) {
+      setRelatedsAnswered(false);
+    }
+
     setLock(true);
     // dispatch(setQuestionOrder(null));
     const questionState = form[nextQuestion.stateName];

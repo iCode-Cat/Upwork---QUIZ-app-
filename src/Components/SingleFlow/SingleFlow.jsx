@@ -130,6 +130,7 @@ const SingleFlow = ({
     setOrder(order - 1);
     setDecrement(decrement - 1);
     setAllAnswered(false);
+    setRelatedsAnswered(true);
     // setCounter(counter - 1);
   };
 
@@ -271,6 +272,7 @@ const SingleFlow = ({
                   setForm={setForm}
                   form={form}
                   buttonClicked={buttonClicked}
+                  order={order}
                 />
               ) : (
                 QuesionTypeHandler(
