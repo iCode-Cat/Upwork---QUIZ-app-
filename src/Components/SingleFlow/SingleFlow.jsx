@@ -7,7 +7,6 @@ import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import RelatedQuestions from '../RelatedQuestions';
 import { Terms } from '../Terms';
 import { useDispatch } from 'react-redux';
-import { setQuestionOrder } from '../../Redux/quizSlice';
 import RopeMob from '../Timelines/RopeMob';
 import FirstLine from '../Steps/svg-line/FirstLine';
 import { useTotalQuestion } from './useTotalQuestion';
@@ -175,6 +174,7 @@ const SingleFlow = ({
 
       if (order !== index) return;
       if (form[formField] === '' || !checked || !relatedsAnwered) {
+        if (questionOrder !== null) return true;
         setError(true);
         return true;
       }
@@ -266,6 +266,7 @@ const SingleFlow = ({
                   fields={fields}
                   relatedQuestions={steps[0].relatedQuestions}
                   index={index}
+                  setError={setError}
                   errorValue={errorValue}
                   errorClassHandler={errorClassHandler}
                   formStateHandler={formStateHandler}
