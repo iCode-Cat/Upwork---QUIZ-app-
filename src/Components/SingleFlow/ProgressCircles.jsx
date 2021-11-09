@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;
+  justify-self: center;
   gap: 15px;
   margin-top: 2rem;
 `;

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { useSelector, useDispatch } from 'react-redux';
-import { setQuestionOrder } from '../../Redux/quizSlice';
+import { setRelatedQuestionState } from '../../Redux/quizSlice';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
   gap: 5rem;
+  .disabled {
+    pointer-events: none;
+    transition: 0.4s;
+  }
 `;
 
 const Index = ({
@@ -21,16 +25,36 @@ const Index = ({
   form,
   setRelatedsAnswered,
   buttonClicked,
-  decrementHandler,
   order,
 }) => {
   const [questions, setQuestions] = useState([fields]);
+
   const questionOrder = useSelector((state) => state.quiz.questionOrder);
+  const [Answered, setAnswered] = useState([]);
   const [lock, setLock] = useState(false);
+  const dispatch = useDispatch();
   const nextQuestion = relatedQuestions.find(
     (question) => question.questionId === questionOrder
   );
-  const dispatch = useDispatch();
+
+  const checkAnswerEmpty = () => {
+    if (
+      form[nextQuestion.stateName] === '' ||
+      form[nextQuestion.stateName] === undefined
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const questionStateHandler = () => {
+    questions.map((ctx) => {
+      if (form[ctx.stateName] !== '')
+        return setAnswered([...Answered, ctx.stateName]);
+    });
+  };
+
+  console.log(Answered);
 
   useEffect(() => {
     if (questionOrder === null) return;
@@ -42,38 +66,33 @@ const Index = ({
 
   useEffect(() => {
     if (questionOrder === null) return;
-    if (
-      form[nextQuestion.stateName] === '' ||
-      form[nextQuestion.stateName] === undefined
-    )
-      return;
+
+    if (checkAnswerEmpty()) return;
     setRelatedsAnswered(true);
   }, [form]);
 
   useEffect(() => {
     if (questionOrder === null) return;
-
-    if (
-      form[nextQuestion.stateName] === '' ||
-      (form[nextQuestion.stateName] === undefined && order === index)
-    ) {
+    if (checkAnswerEmpty() && order === index) {
       setRelatedsAnswered(false);
     }
-
     setLock(true);
-    // dispatch(setQuestionOrder(null));
-    const questionState = form[nextQuestion.stateName];
-
     if (lock) return;
     setQuestions([...questions, nextQuestion]);
     setForm({ ...form });
+    questionStateHandler();
   }, [buttonClicked]);
 
   return (
     <Wrapper>
       {questions.length > 0 &&
         questions.map((question, key) => (
-          <div className={'enter anim'} key={key}>
+          <div
+            className={`enter anim ${
+              Answered.find((ctx) => ctx === question.stateName) && 'disabled'
+            }`}
+            key={key}
+          >
             {QuesionTypeHandler(
               question,
               index,

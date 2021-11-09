@@ -9,6 +9,7 @@ const initialState = {
   userState: false,
   globalStepHeight: 0,
   questionOrder: null,
+  relatedQuestionsState: [],
 };
 
 export const quizSlice = createSlice({
@@ -34,6 +35,10 @@ export const quizSlice = createSlice({
     // Set question order for related questions
     setQuestionOrder: (state, action) => {
       state.questionOrder = action.payload;
+    },
+    setRelatedQuestionState: (state, action) => {
+      const questionState = state.relatedQuestionsState;
+      state.relatedQuestionsState = [...questionState, action.payload];
     },
     updateJson: (state, action) => {
       const payload = action.payload;
@@ -65,6 +70,7 @@ export const {
   updateStepHeight,
   updateJson,
   setQuestionOrder,
+  setRelatedQuestionState,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;
