@@ -168,7 +168,7 @@ module.exports.singleFlow = {
         {
           name: 'test',
           stateName: 'test3',
-          text: 'Question according to your answer Data Classification',
+          text: 'Question according to your answer Data Classification or Cloud migration',
           placeholder: 'Question according to your answer',
           questionType: 'text',
           validation: 'text',
