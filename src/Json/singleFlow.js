@@ -1,6 +1,7 @@
 module.exports.singleFlow = {
   numberOfSteps: 1,
   singleFLow: true,
+  singleFlowTitle: 'Answer the questions',
   nextButton: 'Next Step',
   ctaButton: 'Calculate',
   heroBackground: '',
@@ -302,11 +303,11 @@ module.exports.singleFlow = {
   },
   recommendation: {
     showButton: 'See Recommendation',
-    active: false,
+    active: true,
     tabs: [
       {
         tabname: 'Minimize Impact',
-        active: false,
+        active: true,
         cards: [
           {
             readTime: '60 minutes',
@@ -360,7 +361,7 @@ module.exports.singleFlow = {
       },
       {
         tabname: 'Minimize Likelihood',
-        active: true,
+        active: false,
         cards: [
           {
             readTime: '60 minutes',

@@ -54,8 +54,6 @@ const Index = ({
     });
   };
 
-  console.log(Answered);
-
   useEffect(() => {
     if (questionOrder === null) return;
     if (nextQuestion) {

@@ -85,7 +85,7 @@ const SingleFlow = ({
 }) => {
   const questionOrder = state.questionOrder;
   const dispatch = useDispatch();
-  const { steps, numberOfSteps } = defaultJson;
+  const { steps, numberOfSteps, singleFlowTitle } = defaultJson;
   const questions = steps[0].fields;
   const [
     allAnswered,
@@ -245,7 +245,7 @@ const SingleFlow = ({
             className='fas fa-arrow-left anim-exit'
           ></Backward>
         )}
-        <p>Answer the questions</p>
+        <p>{singleFlowTitle}</p>
       </Container>
       <div className={style.input_container}>
         {questionsState.length > 0 &&

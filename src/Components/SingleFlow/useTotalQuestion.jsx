@@ -21,8 +21,8 @@ export function useTotalQuestion() {
       }
       return array.length;
     });
-
-  const totalQuestions = filter.reduce((a, b) => a + b);
+  console.log(filter);
+  const totalQuestions = filter.reduce((a, b) => a + b, 0);
 
   useEffect(() => {
     if (counter === totalQuestions - 1 && counter === decrement) {

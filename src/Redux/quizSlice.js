@@ -3,7 +3,20 @@ import { defaultJson } from '../Json/default';
 // import { kizanJson } from '../Json/kizan';
 import { securityPractices } from '../Json/SecurityPractices';
 import { singleFlow } from '../Json/singleFlow';
-
+const sanityClient = require('@sanity/client');
+// Sanity Settings
+const client = sanityClient({
+  projectId: '0bflv8ro',
+  dataset: 'production',
+  apiVersion: '2021-12-08', // use current UTC date - see "specifying API version"!
+  token:
+    'skhwJrSNZ4vGqOKX544hAr1EjTrZqsbjqmuUMpRPp5DooWuPsMZNAxJmdJncW7yDQeKJkUWplcuJbxQWgbgdd1ik6miVFIV7sUCq88QGrSp6BL6RFU3rSOSkqFXbbRkul4tgPgKPf9D4O2NqCWuTwTmwcRCbWqjL4MzraJoJBnqew1YaWrPJ', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+});
+const query =
+  '*[_type == "partner"] { ..., stats {...,tabMenus[]->}, steps[] {...,fields[]-> {...,options[]{..., CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}} }';
+const params = 0;
+// const data = await client.fetch(query, params)
 const initialState = {
   defaultJson: null,
   userState: false,
@@ -11,6 +24,11 @@ const initialState = {
   questionOrder: null,
   relatedQuestionsState: [],
 };
+
+export const fetchPartnerTheme = createAsyncThunk('/api/sanity', async () => {
+  const sanity = await client.fetch(query, params);
+  return sanity;
+});
 
 export const quizSlice = createSlice({
   name: 'counter',
@@ -41,6 +59,7 @@ export const quizSlice = createSlice({
       state.relatedQuestionsState = [...questionState, action.payload];
     },
     updateJson: (state, action) => {
+      console.log(defaultJson);
       const payload = action.payload;
       switch (payload) {
         case 'securityPractices':
@@ -60,6 +79,15 @@ export const quizSlice = createSlice({
           console.log('No JSON provided');
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
+      state.defaultJson = action.payload[0];
+      console.log(action.payload);
+    });
+    builder.addCase(fetchPartnerTheme.rejected, (state, action) => {
+      console.log(action);
+    });
   },
 });
 

@@ -1,7 +1,7 @@
 import Homepage from './Pages/Homepage';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateJson } from './Redux/quizSlice';
+import { fetchPartnerTheme, updateJson } from './Redux/quizSlice';
 
 import axios from 'axios';
 
@@ -233,7 +233,8 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(updateJson('singleFlow'));
+    dispatch(fetchPartnerTheme());
+    // dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 
   useEffect(() => {
