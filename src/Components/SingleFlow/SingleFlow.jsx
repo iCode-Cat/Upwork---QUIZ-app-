@@ -267,7 +267,6 @@ const SingleFlow = ({
                   relatedQuestions={steps[0].relatedQuestions}
                   index={index}
                   setError={setError}
-                  errorValue={errorValue}
                   errorClassHandler={errorClassHandler}
                   formStateHandler={formStateHandler}
                   setForm={setForm}

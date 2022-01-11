@@ -9,7 +9,7 @@ const Button = ({ text, type, size, shadow, submit, error, icon }) => {
         error === 'true' ? 'submitError' : ''
       }`}
     >
-      {icon ? (
+      {/* {icon || icon !== 'No' ? (
         <i
           style={{
             fontSize: '1.75rem',
@@ -20,7 +20,7 @@ const Button = ({ text, type, size, shadow, submit, error, icon }) => {
         ></i>
       ) : (
         ''
-      )}
+      )} */}
       {text}
     </button>
   );

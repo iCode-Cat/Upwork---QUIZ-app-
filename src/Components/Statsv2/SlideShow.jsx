@@ -29,12 +29,12 @@ const SlideShow = ({
         tooltip={tooltip}
         subTitle={subTitle}
       />
-      <Compare
+      {/* <Compare
         toggle={toggle}
         stats={stats.userState.results}
         currency={currency}
         compare={compareContent[toggle]}
-      />
+      /> */}
     </div>
   );
 };

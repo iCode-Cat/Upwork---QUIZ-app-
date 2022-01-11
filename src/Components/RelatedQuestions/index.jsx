@@ -37,7 +37,9 @@ const Index = ({
     (question) => question.questionId === questionOrder
   );
 
+  console.log(nextQuestion);
   const checkAnswerEmpty = () => {
+    if (nextQuestion.questionId === 0) return false;
     if (
       form[nextQuestion.stateName] === '' ||
       form[nextQuestion.stateName] === undefined

@@ -8,15 +8,16 @@ const Wrapper = styled.div`
   width: 100%;
   background: #ffffff;
   padding: 4rem 3.2rem;
-  border-radius: 16px;
-  max-width: 543px;
-  min-height: 271px;
+  border-bottom: 1px solid rgba(155, 155, 155, 0.4);
+  /* border-radius: 16px; */
+  /* max-width: 543px; */
+  /* min-height: 271px; */
 `;
 const Grid = styled.div`
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.6rem;
   margin-top: ${(props) => (props.marginTop ? '1.6rem' : 'unset')};
 `;
@@ -47,11 +48,11 @@ const Title = styled.a`
   cursor: pointer;
   color: var(--main);
   font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 28px;
+  font-size: 2rem;
+  line-height: 24px;
 `;
 const Content = styled.p`
-  margin-top: 2.4rem;
+  margin-top: 1rem;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 24px;
@@ -77,9 +78,11 @@ const Card = ({
         <IconWrapper color={iconBgColor}>
           <Icon src={icon} alt='icon' />
         </IconWrapper>
-        <Title href={href}>{title}</Title>
+        <div>
+          <Title href={href}>{title}</Title>
+          <Content>{content}</Content>
+        </div>
       </Grid>
-      <Content>{content}</Content>
     </Wrapper>
   );
 };

@@ -73,7 +73,6 @@ function App() {
     let userObject = {};
     userObject = { ...userState };
     delete userObject.step;
-    console.log(userObject);
 
     const corsPass = 'https://weather-api-33323.herokuapp.com/';
     const URIS = [
