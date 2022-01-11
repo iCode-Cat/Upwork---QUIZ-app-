@@ -18,7 +18,7 @@ const Graphics = ({
       key={index}
       ref={parent}
       style={{
-        position: index === 0 && 'absolute',
+        // position: index === 0 && 'absolute',
         width: '100%',
         background: '#FFF',
         transition: ' opacity 0.6s',

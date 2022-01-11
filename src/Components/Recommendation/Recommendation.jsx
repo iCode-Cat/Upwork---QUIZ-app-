@@ -43,15 +43,15 @@ const Recommendation = () => {
   const [tabindex, setTab] = useState(0);
   const [show, setShow] = useState(false);
   const recommendation = useSelector(
-    (state) => state.quiz.defaultJson.recommendation
+    (state) => state.quiz.defaultJson?.recommendation
   );
 
-  const isActive = recommendation.active;
+  const isActive = recommendation?.active;
 
   if (!isActive) return '';
 
   return !show ? (
-    <ShowButton showButton={recommendation.showButton} setShow={setShow} />
+    <ShowButton showButton={recommendation?.showButton} setShow={setShow} />
   ) : (
     <Wrapper>
       <SvgWrapper>
