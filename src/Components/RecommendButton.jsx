@@ -25,15 +25,15 @@ const Text = styled.p`
   font-size: 1.8rem;
 `;
 
-const AnimatedButton = ({ text, link }) => {
+const RecommendButton = ({ text }) => {
   const state = useSelector((state) => state.quiz);
   const lastSection = state.defaultJson.lastSection;
   const dispatch = useDispatch();
   return (
     <Wrapper
       onClick={() => dispatch(setUserState('connect'))}
-      href={link ? link : lastSection.href}
-      target='_target'
+      //   href={lastSection.href}
+      //   target='_target'
       className='stats-animated-button'
     >
       <Text>{text}</Text>
@@ -54,7 +54,7 @@ const AnimatedButton = ({ text, link }) => {
               width='480'
               height='120'
               rx='60'
-              fill='rgba(33, 149, 243, 0.15)'
+              fill='rgba(230, 243, 230, 1)'
             />
             <rect
               id='layer1'
@@ -63,7 +63,7 @@ const AnimatedButton = ({ text, link }) => {
               width='446'
               height='90'
               rx='45'
-              fill='rgba(33, 149, 243, 0.35)'
+              fill='rgba(208, 232, 208, 1)'
             />
           </g>
           <g id='Buttons'>
@@ -73,7 +73,7 @@ const AnimatedButton = ({ text, link }) => {
               width='406'
               height='60'
               rx='30'
-              fill='#2196F3'
+              fill='rgba(0, 183, 70, 1)'
             />
             <g id='bi:file-earmark-arrow-up-fill'>
               <g id='Group'>
@@ -91,4 +91,4 @@ const AnimatedButton = ({ text, link }) => {
   );
 };
 
-export default AnimatedButton;
+export default RecommendButton;

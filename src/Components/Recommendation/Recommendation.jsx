@@ -58,9 +58,9 @@ const TabWrapper = styled.div`
   }
 `;
 
-const Recommendation = () => {
+const Recommendation = ({ show }) => {
   const [tabindex, setTab] = useState(0);
-  const [show, setShow] = useState(false);
+
   const recommendation = useSelector(
     (state) => state.quiz.defaultJson?.recommendation
   );
@@ -70,7 +70,8 @@ const Recommendation = () => {
   if (!isActive) return '';
 
   return !show ? (
-    <ShowButton showButton={recommendation?.showButton} setShow={setShow} />
+    // <ShowButton showButton={recommendation?.showButton} setShow={setShow} />
+    ''
   ) : (
     <Wrapper>
       {/* <SvgWrapper>

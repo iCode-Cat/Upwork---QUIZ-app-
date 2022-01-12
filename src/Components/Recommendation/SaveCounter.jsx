@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Wrapper = styled.div`
   display: grid;
@@ -6,7 +7,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 4rem 0;
+  padding: 4rem 1.2rem;
 `;
 const Title = styled.p`
   font-size: 2.4rem;
@@ -31,7 +32,7 @@ const LeftCounter = styled.div`
   place-items: center;
   flex-grow: 1;
   color: rgba(255, 255, 255, 1);
-  padding: 2.1rem 0;
+  padding: 2.1rem 1rem;
   border-radius: 8px;
   font-size: 2.4rem;
   font-weight: 500;
@@ -42,6 +43,7 @@ const RightCounter = styled.div`
   place-items: center;
   background: rgba(219, 245, 229, 1);
   flex-grow: 1;
+  padding: 2.1rem 1rem;
   overflow: hidden;
   border-radius: 8px;
   border-top-right-radius: 0px;
@@ -57,14 +59,20 @@ const RightCounter = styled.div`
 `;
 
 const SaveCounter = () => {
+  const state = useSelector((state) => state);
+  const result = state.quiz.userState.results[0].withFormulaCompare;
+  const numberFormat = new Intl.NumberFormat('en-US');
+
   return (
     <Wrapper>
-      <Title>Connect and Save More with Cognii</Title>
+      <Title>Connect and Save More with Cognni</Title>
       <Container>
         <RightCounter>
-          <p>You can save 707,616 USD a year or more...</p>
+          <p>
+            You can save {numberFormat.format(result)} USD a year or more...
+          </p>
         </RightCounter>
-        <LeftCounter>Save Up To $707,616</LeftCounter>
+        <LeftCounter>Save Up To ${numberFormat.format(result)}</LeftCounter>
       </Container>
     </Wrapper>
   );

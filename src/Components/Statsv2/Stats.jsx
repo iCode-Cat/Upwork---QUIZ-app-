@@ -4,8 +4,10 @@ import Toggle from './Toggle';
 import SlideShow from './SlideShow';
 import Background from '../Background';
 import SectionGrade from '../SectionGrade';
+import RecommendButton from '../RecommendButton';
 
-const Stats = ({ results, state }) => {
+const Stats = ({ results, state, setShow }) => {
+  console.log(setShow);
   // Redux State
 
   // Stats
@@ -44,6 +46,9 @@ const Stats = ({ results, state }) => {
           subTitle={subTitle}
         />
         {sectionGrade && <SectionGrade />}
+        <div onClick={() => setShow(true)} className='stats-recommend'>
+          <RecommendButton text='See Recommendation' />
+        </div>
       </section>
     </Background>
   );

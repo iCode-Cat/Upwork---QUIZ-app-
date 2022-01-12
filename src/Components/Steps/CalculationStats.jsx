@@ -14,12 +14,12 @@ const Loader = styled.p`
   color: var(--main);
   background: #ddf2f7;
 `;
-const CalculationStats = ({ results, state }) => {
+const CalculationStats = ({ results, state, setShow }) => {
   // Stats
   const resultsState = state.userState.results;
   return resultsState ? (
     <>
-      <Stats results={results} state={state} />
+      <Stats results={results} state={state} setShow={setShow} />
     </>
   ) : (
     <Loader></Loader>

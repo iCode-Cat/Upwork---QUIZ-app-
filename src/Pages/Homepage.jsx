@@ -19,9 +19,11 @@ import Pin from '../Components/Pin';
 import AnimatedButton from '../Components/AnimatedButton';
 import SecurityPractices from '../Components/SecurityPractices';
 import SingleFlow from '../Components/SingleFlow/SingleFlow';
+import LastSection from '../Components/LastSection';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
+  const [show, setShow] = useState(false);
   const state = useSelector((state) => state.quiz);
   const dispatch = useDispatch();
   const defaultJson = state.defaultJson;
@@ -143,11 +145,15 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
               <>
                 <SecurityPractices />
                 <Calculation defaultJson={defaultJson} />
-                <CalculationStats state={state} results={results} />
-                <Recommendation />
+                <CalculationStats
+                  state={state}
+                  results={results}
+                  setShow={setShow}
+                />
+                <Recommendation show={show} />
                 <Pin />
                 <Background report bg>
-                  <AnimatedButton />
+                  <LastSection />
                 </Background>
               </>
             )}
