@@ -8,6 +8,8 @@ const Wrapper = styled.div`
   justify-self: center;
   gap: 15px;
   margin-top: 2rem;
+  position: relative;
+  z-index: -1;
 `;
 const Circle = styled.div`
   width: 15px;

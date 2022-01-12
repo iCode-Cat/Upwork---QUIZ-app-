@@ -232,7 +232,9 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(fetchPartnerTheme());
+    dispatch(
+      fetchPartnerTheme({ partnerId: '936af988-2d21-4f79-8598-b0dbdd469bfe' })
+    );
     // dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 

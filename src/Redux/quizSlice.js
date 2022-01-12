@@ -25,10 +25,13 @@ const initialState = {
   relatedQuestionsState: [],
 };
 
-export const fetchPartnerTheme = createAsyncThunk('/api/sanity', async () => {
-  const sanity = await client.fetch(query, params);
-  return sanity;
-});
+export const fetchPartnerTheme = createAsyncThunk(
+  '/api/sanity',
+  async ({ partnerId }) => {
+    const sanity = await client.fetch(query, params);
+    return sanity.find((ctx) => ctx.partnerId === partnerId);
+  }
+);
 
 export const quizSlice = createSlice({
   name: 'counter',
@@ -82,7 +85,7 @@ export const quizSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
-      state.defaultJson = action.payload[0];
+      state.defaultJson = action.payload;
       console.log(action.payload);
     });
     builder.addCase(fetchPartnerTheme.rejected, (state, action) => {

@@ -260,7 +260,8 @@ const SingleFlow = ({
                 opacity: `${counter !== index ? '0.7' : '1'}`,
               }}
             >
-              {fields?.options?.find((ctx) => ctx.callQuestion) ? (
+              {fields?.options?.find((ctx) => ctx.callQuestion) &&
+              fields.callQuestion ? (
                 <RelatedQuestions
                   setRelatedsAnswered={setRelatedsAnswered}
                   fields={fields}
