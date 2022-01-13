@@ -6,7 +6,7 @@ const Circle = ({ savings, currency, toggle, subTitle }) => {
     <div className='circle-wrapper'>
       <div className='circle-savings'>
         <p className='circle-savings-amount'>
-          {currency + ' ' + numeral(savings).format('0a')}
+          {currency + ' ' + numeral(savings).format('0.0a')}
         </p>
         <p className='circle-savings-title'>{subTitle}</p>
       </div>
