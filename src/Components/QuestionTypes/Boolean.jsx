@@ -3,7 +3,8 @@ import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
 import { setQuestionOrder } from '../../Redux/quizSlice';
-import Logo from '../SecurityPractices/Logo';
+import { temp } from '../../Redux/dynamicSlice';
+
 const Options = ({
   errorValue,
   fields,
@@ -36,6 +37,14 @@ const Options = ({
                 field: fields.stateName,
                 value: btn.text,
               });
+
+              dispatch(
+                temp([
+                  btn.callRecommendation,
+                  btn.callWorryAbout,
+                  btn.callShouldDo,
+                ])
+              );
             }}
           >
             <Button

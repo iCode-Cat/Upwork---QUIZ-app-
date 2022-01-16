@@ -20,14 +20,22 @@ const Container = styled.div`
   }
 `;
 
-const Section = ({ active, image, list, sectionGrade, title, logoAlign }) => {
+const Section = ({
+  active,
+  image,
+  list,
+  sectionGrade,
+  title,
+  logoAlign,
+  data,
+}) => {
   if (!active) return '';
   return (
     <Wrapper logoAlign={logoAlign}>
       <Title>{title}</Title>
       <Container>
         <Logo logoAlign={logoAlign} src={image} />
-        <List data={list} />
+        <List data={data} />
       </Container>
       {sectionGrade && <SectionGrade />}
     </Wrapper>

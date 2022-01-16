@@ -6,11 +6,16 @@ import ErrorMessage from '../ErrorMessage';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import RelatedQuestions from '../RelatedQuestions';
 import { Terms } from '../Terms';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  recommendation,
+  worryAbout,
+  shouldDo,
+  temp,
+} from '../../Redux/dynamicSlice';
 import RopeMob from '../Timelines/RopeMob';
 import FirstLine from '../Steps/svg-line/FirstLine';
 import { useTotalQuestion } from './useTotalQuestion';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ProgressCircles from './ProgressCircles';
 
 const Backward = styled.i`
@@ -103,6 +108,7 @@ const SingleFlow = ({
   const [checked, setChecked] = useState(false);
   const [buttonClicked, setButtonClicked] = useState();
   const [relatedsAnwered, setRelatedsAnswered] = useState(true);
+  const dynamicZone = useSelector((state) => state.dynamic);
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -115,6 +121,23 @@ const SingleFlow = ({
       form[formField] = '';
       setForm({ ...form });
     });
+  };
+
+  const separateDynamic = () => {
+    const tempData = dynamicZone.temp;
+    if (!tempData) return;
+    // fill up the states by conditions
+    tempData?.map((ctx) => {
+      ctx?.map((t) => {
+        console.log(t._type);
+        if (t._type === 'shouldDo') return dispatch(shouldDo(t));
+        if (t._type === 'worryAbout') return dispatch(worryAbout(t));
+        if (t._type === 'recommendationCard')
+          return dispatch(recommendation(t));
+      });
+    });
+    // reset the temp
+    dispatch(temp(false));
   };
 
   // Insert questions to another state
@@ -178,7 +201,8 @@ const SingleFlow = ({
         setError(true);
         return true;
       }
-
+      // Do something for dynamic zone...
+      separateDynamic();
       // Prevent submit button to increment counter
       setDecrement(decrement + 1);
 

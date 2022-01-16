@@ -65,6 +65,8 @@ const Recommendation = ({ show }) => {
     (state) => state.quiz.defaultJson?.recommendation
   );
 
+  const dynamic = useSelector((state) => state.dynamic);
+
   const isActive = recommendation?.active;
 
   if (!isActive) return '';
@@ -89,8 +91,14 @@ const Recommendation = ({ show }) => {
         ))}
       </TabWrapper> */}
       <Title>Your Recommendations</Title>
-      <CardContainer>
+      {/* <CardContainer>
         {recommendation.tabs[tabindex].cards.map((items, index) => (
+          <Card key={index} {...items} />
+        ))}
+        <SaveCounter />
+      </CardContainer> */}
+      <CardContainer>
+        {dynamic.recommendation.map((items, index) => (
           <Card key={index} {...items} />
         ))}
         <SaveCounter />
