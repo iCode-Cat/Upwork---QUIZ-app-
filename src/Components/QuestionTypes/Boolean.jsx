@@ -38,6 +38,7 @@ const Options = ({
                 value: btn.text,
               });
 
+              // Deploy temp data of dynamic sections
               dispatch(
                 temp([
                   btn.callRecommendation,

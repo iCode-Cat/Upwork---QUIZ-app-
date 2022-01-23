@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import QuesionTypeHandler from '../../Handlers/QuestionTypeHandler';
 import { useSelector, useDispatch } from 'react-redux';
-import { setRelatedQuestionState } from '../../Redux/quizSlice';
+import {
+  setQuestionOrder,
+  setRelatedQuestionState,
+} from '../../Redux/quizSlice';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

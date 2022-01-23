@@ -18,9 +18,9 @@ const Graphics = ({
       key={index}
       ref={parent}
       style={{
-        // position: index === 0 && 'absolute',
+        position: index !== 0 && 'absolute',
         width: '100%',
-        background: '#FFF',
+        // background: '#FFF',
         transition: ' opacity 0.6s',
         opacity: `${toggle === index ? '1' : '0'}`,
         zIndex: `${toggle === index ? '1' : '0'}`,
@@ -33,13 +33,15 @@ const Graphics = ({
             currency={currency}
             savings={item.savings}
             subTitle={subTitle}
+            tab={0}
           />
         ) : (
-          <CircleSecond
-            type={toggle}
-            savings={item.savings}
+          <Circle
             currency={currency}
+            savings={item.savings}
             subTitle={subTitle}
+            type={toggle}
+            tab={1}
           />
         )}
 

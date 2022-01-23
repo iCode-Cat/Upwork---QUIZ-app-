@@ -109,6 +109,9 @@ const SingleFlow = ({
   const [buttonClicked, setButtonClicked] = useState();
   const [relatedsAnwered, setRelatedsAnswered] = useState(true);
   const dynamicZone = useSelector((state) => state.dynamic);
+  const [skipped, setSkipped] = useState(false);
+  const [skippedAll, setSkippedAll] = useState(false);
+  const [allSkip, setAllSkip] = useState(false);
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -129,7 +132,6 @@ const SingleFlow = ({
     // fill up the states by conditions
     tempData?.map((ctx) => {
       ctx?.map((t) => {
-        console.log(t._type);
         if (t._type === 'shouldDo') return dispatch(shouldDo(t));
         if (t._type === 'worryAbout') return dispatch(worryAbout(t));
         if (t._type === 'recommendationCard')
@@ -173,6 +175,25 @@ const SingleFlow = ({
     InsertQuestions();
   }, []);
 
+  useEffect(() => {
+    questionsState.forEach((field, index) => {
+      if (field.skip && order === index && skipped) {
+        checkEmpty();
+        setSkipped(false);
+      }
+    });
+  }, [skipped]);
+
+  useEffect(() => {
+    questionsState.forEach((field, index) => {
+      if (field.skip && skippedAll) {
+        checkEmpty();
+        setSkippedAll(false);
+      }
+    });
+    console.log(form);
+  }, [skippedAll]);
+
   // Everytime question order updated
   // useEffect(() => {
   //   if (questionOrder === null) return;
@@ -196,12 +217,19 @@ const SingleFlow = ({
       const formField = value.stateName;
 
       if (order !== index) return;
+
       if (form[formField] === '' || !checked || !relatedsAnwered) {
         if (questionOrder !== null) return true;
         setError(true);
         return true;
       }
+
       // Do something for dynamic zone...
+      if (checkAllSkipable()) {
+        setAllSkip(true);
+      } else {
+        setAllSkip(false);
+      }
       separateDynamic();
       // Prevent submit button to increment counter
       setDecrement(decrement + 1);
@@ -223,6 +251,7 @@ const SingleFlow = ({
       return false;
     });
     // Check whether array includes error of empty input
+
     return result.some((value) => value === true);
   };
 
@@ -238,6 +267,48 @@ const SingleFlow = ({
       });
     setError(false);
     checkLastStep() ? scrollToView(results) : scrollToView(step2);
+  };
+
+  const checkAllSkipable = () => {
+    const skipArray = [];
+    // Check current questions' state
+    // Detect unanswered ones
+    // If all unswered skipable add skip all button
+    questionsState.forEach((field, index) => {
+      if (form[field.stateName].length === 0) {
+        skipArray.push(field.skip);
+      }
+    });
+
+    return !skipArray?.some((skip) => !skip);
+  };
+
+  const skipHandler = () => {
+    // Find current question with skip option
+    questionsState.forEach((field, index) => {
+      if (field.skip && order === index) {
+        const stateName = field.stateName;
+        // Update userState answer
+        formStateHandler({
+          field: stateName,
+          value: 'skipped',
+        });
+        setSkipped(true);
+      }
+    });
+  };
+
+  const skipAllHandler = () => {
+    questionsState.forEach((field, index) => {
+      if (form[field.stateName].length === 0 && field.skip) {
+        console.log(field);
+        formStateHandler({
+          field: field.stateName,
+          value: 'skipped',
+        });
+      }
+    });
+    setSkippedAll(true);
   };
 
   return (
@@ -330,10 +401,31 @@ const SingleFlow = ({
             text={'Next'}
           />
         )}
+
         {errorValue && (
           <ErrorMessage errorValue={errorValue} checked={checked} />
         )}
       </div>
+      {questionsState.map(
+        (fields, index) =>
+          fields.skip &&
+          order === index && (
+            <span onClick={skipHandler}>
+              <Button size='btnLg' text={'Skip'} />
+            </span>
+          )
+      )}
+
+      {allSkip && (
+        <span
+          onClick={(e) => {
+            errorHandler(e);
+            skipAllHandler();
+          }}
+        >
+          <Button size='btnLg' text={'Skip All'} />
+        </span>
+      )}
 
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
       <ProgressCircles done={counter + 1} total={totalQuestions} />

@@ -9,6 +9,7 @@ import Background from '../Components/Background';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import '../Components/Steps/svgLine.scss';
+
 // Dont Delete
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 // Dont Delete
@@ -20,6 +21,8 @@ import AnimatedButton from '../Components/AnimatedButton';
 import SecurityPractices from '../Components/SecurityPractices';
 import SingleFlow from '../Components/SingleFlow/SingleFlow';
 import LastSection from '../Components/LastSection';
+import RecommendButton from '../Components/RecommendButton';
+import Chart from '../Components/Chart';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -150,11 +153,23 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                   results={results}
                   setShow={setShow}
                 />
-                <Recommendation show={show} />
-                <Pin />
-                <Background report bg>
-                  <LastSection />
+                <Background>
+                  <div
+                    onClick={() => setShow(true)}
+                    className='stats-recommend'
+                  >
+                    <RecommendButton text='See Recommendation' />
+                  </div>
                 </Background>
+                <Recommendation show={show} />
+                {show && (
+                  <>
+                    <Pin />
+                    <Background report bg>
+                      <LastSection />
+                    </Background>
+                  </>
+                )}
               </>
             )}
           </>

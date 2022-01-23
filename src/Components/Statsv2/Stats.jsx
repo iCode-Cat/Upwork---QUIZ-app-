@@ -46,9 +46,9 @@ const Stats = ({ results, state, setShow }) => {
           subTitle={subTitle}
         />
         {sectionGrade && <SectionGrade />}
-        <div onClick={() => setShow(true)} className='stats-recommend'>
+        {/* <div onClick={() => setShow(true)} className='stats-recommend'>
           <RecommendButton text='See Recommendation' />
-        </div>
+        </div> */}
       </section>
     </Background>
   );

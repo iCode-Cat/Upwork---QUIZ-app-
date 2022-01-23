@@ -10,7 +10,8 @@
     box-shadow: 0px 26px 80px 0px hsla(214, 9%, 64%, 0.1);
   }
   &-recommend {
-    margin-top: 4.3rem;
+    margin: 4.3rem 0;
+    width: 100%;
   }
   &-title {
     font-size: 3.2rem;
@@ -74,6 +75,9 @@
     display: grid;
     place-items: center;
     position: relative;
+    canvas {
+      pointer-events: none;
+    }
   }
   &-savings {
     text-align: center;
