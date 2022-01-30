@@ -31,16 +31,26 @@ const SecurityPractices = () => {
     (state) => state.quiz.defaultJson.informationPractices
   );
 
-  const list = useSelector((state) => state.dynamic);
+  const list = useSelector((state) => state);
+  const title = list.quiz.defaultJson.informationPractices.title;
+  const subTitle = list.quiz.defaultJson.informationPractices.subtitle;
 
   if (!data.active) return '';
 
   return (
     <Wrapper>
-      <Header />
-      <Section {...data.section1} data={list.worryAbout} />
+      <Header
+        title={title}
+        companyName={list.quiz.userState?.companyName}
+        subTitle={subTitle}
+      />
+      <Section {...data.section1} data={list.dynamic.worryAbout} />
       <Svg src={shortline} />
-      <Section logoAlign={'right'} {...data.section2} data={list.shouldDo} />
+      <Section
+        logoAlign={'right'}
+        {...data.section2}
+        data={list.dynamic.shouldDo}
+      />
       <Svg src={shortline} />
     </Wrapper>
   );

@@ -7,6 +7,7 @@ const Container = styled.div`
   background: #fff;
   width: 100%;
   max-width: 1120px;
+
   display: grid;
   justify-content: center;
   justify-items: center;

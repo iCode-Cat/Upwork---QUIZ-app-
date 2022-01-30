@@ -33,14 +33,34 @@ const ListContent = styled.p`
     font-size: 1.2rem;
   }
 `;
+const Link = styled.p`
+  color: blue;
+  cursor: pointer;
+`;
 
-const List = ({ data }) => {
+const List = ({ data, setInCard, setInCardData }) => {
   return (
     <Wrapper>
       {data.map((item, index) => (
         <Container key={index}>
           <ListTitle> {item.title} </ListTitle>
           <ListContent> {item.content} </ListContent>
+          {item.linkTitle && item.inCard && (
+            <Link
+              onClick={() => {
+                setInCard(true);
+                setInCardData({
+                  inCardTitle: item.inCardTitle,
+                  inCardSubtitle: item.inCardSubtitle,
+                  mainCardTitle: item.mainCardTitle,
+                  mainCardContent: item.mainCardContent,
+                  inCardLogo: item.inCardLogo,
+                });
+              }}
+            >
+              {item.linkTitle}
+            </Link>
+          )}
         </Container>
       ))}
     </Wrapper>

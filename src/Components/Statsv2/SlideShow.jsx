@@ -11,7 +11,7 @@ const SlideShow = ({
   subTitle,
 }) => {
   const stats = useSelector((state) => state.quiz);
-  const compareContent = stats.defaultJson.stats.tabMenus;
+  const subtitleSecond = stats.defaultJson.stats.subtitle;
 
   // if (!stats) {
   //   return <h1>CALCULATING</h1>;
@@ -28,6 +28,7 @@ const SlideShow = ({
         labels={labels}
         tooltip={tooltip}
         subTitle={subTitle}
+        subtitleSecond={subtitleSecond}
       />
       {/* <Compare
         toggle={toggle}

@@ -1,8 +1,22 @@
 import React, { useRef } from 'react';
+import styled from 'styled-components';
 import Circle from './Circle';
-import CircleSecond from './CircleSecond';
+// import CircleSecond from './CircleSecond';
 import Labels from './Labels';
 import Title from './Title';
+
+const SubTitle = styled.p`
+  /* margin-bottom: 4rem; */
+  text-align: center;
+  font-size: 2rem;
+  color: #34314c;
+
+  @media (max-width: 50em) {
+    margin-bottom: unset;
+    font-size: 1.5rem;
+    max-width: 243px;
+  }
+`;
 
 const Graphics = ({
   mainTitle,
@@ -11,6 +25,7 @@ const Graphics = ({
   currency,
   tooltip,
   subTitle,
+  subtitleSecond,
 }) => {
   const parent = useRef();
   return stats.map((item, index) => (
@@ -27,6 +42,7 @@ const Graphics = ({
       }}
     >
       <Title mainTitle={mainTitle} />
+      <SubTitle>{subtitleSecond}</SubTitle>
       <div className='breakdown-wrapper'>
         {index === 0 ? (
           <Circle

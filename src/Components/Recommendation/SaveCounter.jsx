@@ -58,21 +58,35 @@ const RightCounter = styled.div`
   }
 `;
 
+function relDiff(a, b) {
+  return Math.round(100 * Math.abs((a - b) / ((a + b) / 2)));
+}
+
 const SaveCounter = () => {
   const state = useSelector((state) => state);
   const result = state.quiz.userState.results[0].withFormulaCompare;
+  const resultCost = state.quiz.userState.results[0].withOutFormulaCompare;
   const numberFormat = new Intl.NumberFormat('en-US');
+  const recommendation = state.quiz.defaultJson.recommendation;
 
   return (
     <Wrapper>
-      <Title>Connect and Save More with Cognni</Title>
+      <Title>{recommendation.title}</Title>
       <Container>
         <RightCounter>
           <p>
-            You can save {numberFormat.format(result)} USD a year or more...
+            {recommendation.barLeft.replace(
+              '{percentage}',
+              relDiff(resultCost, result)
+            )}
           </p>
         </RightCounter>
-        <LeftCounter>Save Up To ${numberFormat.format(result)}</LeftCounter>
+        <LeftCounter>
+          {recommendation.barLRight.replace(
+            '{savings}',
+            numberFormat.format(result)
+          )}
+        </LeftCounter>
       </Container>
     </Wrapper>
   );
