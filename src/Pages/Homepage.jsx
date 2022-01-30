@@ -8,6 +8,7 @@ import Calculation from '../Components/Calculation/Stats';
 import Background from '../Components/Background';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
+import RiskAssessment from '../Components/RiskAssessment';
 import '../Components/Steps/svgLine.scss';
 
 // Dont Delete
@@ -147,6 +148,9 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
             {form.step >= 4 && (
               <>
                 <SecurityPractices />
+                <Background>
+                  <RiskAssessment />
+                </Background>
                 <Calculation defaultJson={defaultJson} />
                 <CalculationStats
                   state={state}
