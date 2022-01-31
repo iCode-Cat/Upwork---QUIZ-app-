@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserState } from '../Redux/quizSlice';
 import RiskAssessment from '../Components/RiskAssessment';
 import '../Components/Steps/svgLine.scss';
-
 // Dont Delete
 import TimelineWeb from '../Components/Timelines/TimelineWeb';
 // Dont Delete
@@ -23,7 +22,9 @@ import SecurityPractices from '../Components/SecurityPractices';
 import SingleFlow from '../Components/SingleFlow/SingleFlow';
 import LastSection from '../Components/LastSection';
 import RecommendButton from '../Components/RecommendButton';
+import shortline from '../Images/shortline.svg';
 import Chart from '../Components/Chart';
+import Control from '../Components/Forms/Control';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -151,6 +152,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                 <Background>
                   <RiskAssessment />
                 </Background>
+
                 <Calculation defaultJson={defaultJson} />
                 <CalculationStats
                   state={state}
@@ -162,14 +164,15 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
                     onClick={() => setShow(true)}
                     className='stats-recommend'
                   >
-                    <RecommendButton text='See Recommendation' />
+                    {!show && <RecommendButton text='See Recommendation' />}
                   </div>
                 </Background>
+
                 <Recommendation show={show} />
                 {show && (
                   <>
                     <Pin />
-                    <Background report bg>
+                    <Background>
                       <LastSection />
                     </Background>
                   </>

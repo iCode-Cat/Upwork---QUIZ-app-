@@ -59,6 +59,19 @@ const Content = styled.p`
   color: var(--gray);
 `;
 
+const TagContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  align-self: flex-start;
+  margin-top: 1rem;
+`;
+const Tag = styled.p`
+  background: ${(props) => props.color};
+  padding: 0.2em 2rem;
+  color: #fff;
+`;
+
 const Card = ({
   readTime,
   frequency,
@@ -67,6 +80,7 @@ const Card = ({
   iconBgColor,
   icon,
   href,
+  tags,
 }) => {
   return (
     <Wrapper>
@@ -83,6 +97,13 @@ const Card = ({
           <Content>{content}</Content>
         </div>
       </Grid>
+      <TagContainer>
+        {tags?.map((x) => (
+          <Tag color={x.color} key={x._key}>
+            {x.name}
+          </Tag>
+        ))}
+      </TagContainer>
     </Wrapper>
   );
 };

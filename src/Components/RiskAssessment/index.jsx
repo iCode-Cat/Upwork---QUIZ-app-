@@ -4,6 +4,15 @@ import { useSelector } from 'react-redux';
 import Logo from '../SecurityPractices/Logo';
 
 const Wrapper = styled.div`
+  position: relative;
+  i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 2rem;
+    font-size: 3rem;
+    opacity: 0.3;
+  }
   padding: 6rem 9.1rem;
   background: #fff;
   width: 100%;
@@ -18,6 +27,12 @@ const Wrapper = styled.div`
   @media (max-width: 50em) {
     padding: 3.2rem 1rem;
     gap: 4rem;
+  }
+`;
+
+const Svg = styled.img`
+  @media (max-width: 50em) {
+    display: none;
   }
 `;
 
@@ -128,8 +143,13 @@ const Index = () => {
   const state = useSelector((state) => state.quiz.defaultJson.riskAssesment);
   const [inlineCard, setInlineCard] = useState(false);
   const [inCardObject, setInCardObject] = useState();
+  if (!state.active) return '';
   return inlineCard ? (
     <Wrapper>
+      <i
+        onClick={() => setInlineCard(false)}
+        class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
+      ></i>
       <Text>{inCardObject.inCardTitle}</Text>
       <SubTitle onClick={() => setInlineCard(false)}>
         {inCardObject.inCardSubtitle}

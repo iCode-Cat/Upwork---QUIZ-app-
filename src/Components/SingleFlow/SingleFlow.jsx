@@ -76,6 +76,15 @@ const Wrapper = styled.form`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  margin-left: 1rem;
+  /* position: relative;
+  z-index: -1; */
+`;
+
 const SingleFlow = ({
   errorClassHandler,
   defaultJson,
@@ -401,32 +410,30 @@ const SingleFlow = ({
             text={'Next'}
           />
         )}
+        <ButtonContainer>
+          {questionsState.map(
+            (fields, index) =>
+              fields.skip &&
+              order === index && (
+                <span onClick={skipHandler}>
+                  <Button type='btnGray' size='btnMd' text={'Skip'} />
+                </span>
+              )
+          )}
 
-        {errorValue && (
-          <ErrorMessage errorValue={errorValue} checked={checked} />
-        )}
-      </div>
-      {questionsState.map(
-        (fields, index) =>
-          fields.skip &&
-          order === index && (
-            <span onClick={skipHandler}>
-              <Button size='btnLg' text={'Skip'} />
+          {allSkip && (
+            <span
+              onClick={(e) => {
+                errorHandler(e);
+                skipAllHandler();
+              }}
+            >
+              <Button type='btnGray' size='btnMd' text={'Skip All'} />
             </span>
-          )
-      )}
-
-      {allSkip && (
-        <span
-          onClick={(e) => {
-            errorHandler(e);
-            skipAllHandler();
-          }}
-        >
-          <Button size='btnLg' text={'Skip All'} />
-        </span>
-      )}
-
+          )}
+        </ButtonContainer>
+      </div>
+      {errorValue && <ErrorMessage errorValue={errorValue} checked={checked} />}
       <Terms step={form.step} setChecked={setChecked} checked={checked} />
       <ProgressCircles done={counter + 1} total={totalQuestions} />
     </Wrapper>

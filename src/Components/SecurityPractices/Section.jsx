@@ -79,12 +79,12 @@ const Section = ({
   if (!active) return '';
   return inCard ? (
     <Wrapper logoAlign={logoAlign}>
+      <i
+        onClick={() => setInCard(false)}
+        class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
+      ></i>
       <Title>{inCardData.inCardTitle}</Title>
-      {subtitle && (
-        <SubTitle onClick={() => setInCard(false)}>
-          {inCardData.inCardSubtitle}
-        </SubTitle>
-      )}
+      {subtitle && <SubTitle>{inCardData.inCardSubtitle}</SubTitle>}
       <Container>
         <InCardContainer>
           <ListTitle> {inCardData.mainCardTitle} </ListTitle>

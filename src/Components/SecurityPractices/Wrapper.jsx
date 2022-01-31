@@ -2,6 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: relative;
+  i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 2rem;
+    font-size: 3rem;
+    opacity: 0.3;
+  }
   padding: 6rem 6.4rem;
   box-shadow: 0px 26px 80px 0px #34383d12;
   background: #fff;

@@ -8,6 +8,11 @@ const Wrapper = styled.div`
   margin: 0 auto;
   text-align: center;
   padding: 4rem 1.2rem;
+  #costs-percetage {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-top: 1rem;
+  }
 `;
 const Title = styled.p`
   font-size: 2.4rem;
@@ -73,16 +78,20 @@ const SaveCounter = () => {
     <Wrapper>
       <Title>{recommendation.title}</Title>
       <Container>
-        <RightCounter>
-          <p>
-            {recommendation.barLeft.replace(
+        <RightCounter
+          dangerouslySetInnerHTML={{
+            __html: recommendation.barLeft.replace(
               '{percentage}',
-              relDiff(resultCost, result)
-            )}
-          </p>
-        </RightCounter>
+              `<span id="costs-percetage">${relDiff(
+                resultCost,
+                result
+              )}%</span>`
+            ),
+          }}
+        />
+
         <LeftCounter>
-          {recommendation.barLRight.replace(
+          {recommendation?.barRight?.replace(
             '{savings}',
             numberFormat.format(result)
           )}

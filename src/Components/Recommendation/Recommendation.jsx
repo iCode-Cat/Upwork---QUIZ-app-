@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   /* padding: 0rem 0 0 0; */
   background: center bottom / 100% rgb(221, 242, 247);
   justify-content: center;
-  padding: 1rem;
+
   /* gap: 3rem; */
   @media (max-width: 50em) {
     grid-template-columns: auto;
@@ -27,7 +27,7 @@ const Title = styled.p`
   font-weight: 500;
   line-height: 38px;
   text-align: center;
-  margin: 4rem 0;
+  margin: 0 0 4rem 0;
 `;
 
 const CardContainer = styled.div`

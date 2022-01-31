@@ -1,13 +1,24 @@
 import React from 'react';
 import '../Scss/Button.scss';
 
-const Button = ({ text, type, size, shadow, submit, error, icon }) => {
+const Button = ({
+  text,
+  type,
+  size,
+  shadow,
+  submit,
+  error,
+  icon,
+  onClick,
+  className = 'none',
+}) => {
   return (
     <button
+      onClick={onClick}
       type={submit ? 'submit' : 'button'}
-      className={`btn_settings ${type} ${size} ${shadow && 'btnShadow'} ${
-        error === 'true' ? 'submitError' : ''
-      }`}
+      className={`${className} btn_settings ${type} ${size} ${
+        shadow && 'btnShadow'
+      } ${error === 'true' ? 'submitError' : ''}`}
     >
       {/* {icon || icon !== 'No' ? (
         <i

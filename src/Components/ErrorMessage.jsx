@@ -8,6 +8,7 @@ const Wrapper = styled.span`
   font-size: 1.5rem;
   font-weight: 400;
   margin-left: 1rem;
+  margin-top: 1rem;
   @media (max-width: 50em) {
     margin-top: 0.5rem;
     height: 30px;
