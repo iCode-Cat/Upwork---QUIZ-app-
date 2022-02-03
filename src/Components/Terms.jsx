@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   margin-top: 5rem;
   cursor: pointer;
   @media (max-width: 50em) {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -39,8 +39,8 @@ export const Terms = ({ checked, setChecked, step }) => {
   const terms = useSelector((state) => state.quiz.defaultJson.terms);
 
   return (
-    <Wrapper onClick={() => setChecked(!checked)} checked={checked} step={step}>
-      <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' />
+    <Wrapper>
+      {/* <Icon src={checked ? checkedTrue : checkFalse} alt='check-false' /> */}
       <Text>
         I agree to receive marketing communications and have read and agree to
         Cognni's{' '}

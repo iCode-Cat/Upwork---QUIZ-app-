@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../../Scss/Steps.module.scss';
 import styled from 'styled-components';
+import { Terms } from '../Terms';
 
 const Astral = styled.p`
   color: var(--red);
@@ -35,6 +36,7 @@ const Input = ({ errorValue, fields, formStateHandler, errorClassHandler }) => {
         }`}
         placeholder={fields.placeholder}
       />
+      {fields.validation === 'email' && <Terms />}
     </div>
   );
 };

@@ -114,7 +114,7 @@ const SingleFlow = ({
   const { index } = steps[0];
   const [errorValue, setError] = useState(false);
   const [questionsState, setQuestionsState] = useState([]);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const [buttonClicked, setButtonClicked] = useState();
   const [relatedsAnwered, setRelatedsAnswered] = useState(true);
   const dynamicZone = useSelector((state) => state.dynamic);
@@ -362,6 +362,7 @@ const SingleFlow = ({
                 display: `${order === index ? 'block' : 'none'}`,
                 pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
                 opacity: `${counter !== index ? '0.7' : '1'}`,
+                position: 'relative',
               }}
             >
               {fields?.options?.find((ctx) => ctx.callQuestion) &&
@@ -388,6 +389,9 @@ const SingleFlow = ({
                   errorClassHandler,
                   setError
                 )
+              )}
+              {errorValue && (
+                <ErrorMessage errorValue={errorValue} checked={checked} />
               )}
             </div>
           ))}
@@ -433,8 +437,8 @@ const SingleFlow = ({
           )}
         </ButtonContainer>
       </div>
-      {errorValue && <ErrorMessage errorValue={errorValue} checked={checked} />}
-      <Terms step={form.step} setChecked={setChecked} checked={checked} />
+
+      {/* <Terms /> */}
       <ProgressCircles done={counter + 1} total={totalQuestions} />
     </Wrapper>
   );

@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.span`
+  position: absolute;
+  top: 80px;
   display: block;
   opacity: ${(props) => (props.errorValue ? '1' : '0')};
   color: #ff8282;
   font-size: 1.5rem;
   font-weight: 400;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   margin-top: 1rem;
   @media (max-width: 50em) {
     margin-top: 0.5rem;
