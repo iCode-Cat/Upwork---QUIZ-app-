@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Svg = styled.img`
+export const Svg = styled.img`
   @media (max-width: 50em) {
     display: none;
   }

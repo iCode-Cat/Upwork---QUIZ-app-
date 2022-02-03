@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import Logo from '../SecurityPractices/Logo';
+import shortline from '../../Images/shortline.svg';
 
 const Wrapper = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+`;
+
+const GeneralContainer = styled.div`
+  width: 100%;
   i {
     position: absolute;
     left: 0;
@@ -15,8 +23,7 @@ const Wrapper = styled.div`
   }
   padding: 6rem 9.1rem;
   background: #fff;
-  width: 100%;
-  max-width: 1120px;
+
   overflow: hidden;
   margin: 10rem auto 0 auto;
 
@@ -30,18 +37,19 @@ const Wrapper = styled.div`
   }
 `;
 
+export const Svg = styled.img`
+  justify-self: center;
+  @media (max-width: 50em) {
+    display: none;
+  }
+`;
+
 const Blank = styled.div`
   background: #fff;
   height: 100%;
   width: 100%;
   position: absolute;
   opacity: 0;
-`;
-
-const Svg = styled.img`
-  @media (max-width: 50em) {
-    display: none;
-  }
 `;
 
 const Container = styled.div`
@@ -112,9 +120,9 @@ const InlineContainer = styled.div`
   grid-template-columns: auto auto;
   place-items: center;
   gap: 10rem;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
   img {
-    max-width: 300px;
+    max-width: 200px;
   }
   @media (max-width: 50em) {
     /* padding: 4rem 3rem; */
@@ -156,60 +164,64 @@ const Index = () => {
   return (
     <Wrapper>
       <Blank className={inlineCard ? 'anim' : 'anim1'} />
-      {inlineCard ? (
-        <div>
-          <i
-            onClick={() => setInlineCard(false)}
-            class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
-          ></i>
-          <Text>{inCardObject.inCardTitle}</Text>
-          <SubTitle onClick={() => setInlineCard(false)}>
-            {inCardObject.inCardSubtitle}
-          </SubTitle>
-          <InlineContainer>
-            <InCardContainer>
-              <ListTitle>{inCardObject.mainCardTitle}</ListTitle>
-              <ListContent>{inCardObject.mainCardContent}</ListContent>
-            </InCardContainer>
-            <Logo logoAlign={'right'} src={inCardObject.inCardLogo} />
-          </InlineContainer>
-        </div>
-      ) : (
-        <div>
-          <Text>{state.title}</Text>
-          <SubTitle>{state.subtitle}</SubTitle>
-          <Container>
-            <div>
-              <img src='/riskAsessmentChart.svg' alt='' />
-            </div>
-            <LabelWrapper>
-              {state.labels?.map((x) => (
-                <LabelContainer key={x._id}>
-                  <LabelColor color={x.color}></LabelColor>
-                  <LabelName>{x.title}</LabelName>
-                  <LabelContent>{x.content}</LabelContent>
-                  {x.inCard && (
-                    <LabelLink
-                      onClick={() => {
-                        setInCardObject({
-                          inCardTitle: x.inCardTitle,
-                          inCardSubtitle: x.inCardSubtitle,
-                          mainCardTitle: x.mainCardTitle,
-                          mainCardContent: x.mainCardContent,
-                          inCardLogo: x.inCardLogo,
-                        });
-                        setInlineCard(true);
-                      }}
-                    >
-                      {x.linkTitle}
-                    </LabelLink>
-                  )}
-                </LabelContainer>
-              ))}
-            </LabelWrapper>
-          </Container>
-        </div>
-      )}
+      <GeneralContainer>
+        {inlineCard ? (
+          <div>
+            <i
+              onClick={() => setInlineCard(false)}
+              class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
+            ></i>
+            <Text>{inCardObject.inCardTitle}</Text>
+            <SubTitle onClick={() => setInlineCard(false)}>
+              {inCardObject.inCardSubtitle}
+            </SubTitle>
+            <InlineContainer>
+              <InCardContainer>
+                <ListTitle>{inCardObject.mainCardTitle}</ListTitle>
+                <ListContent>{inCardObject.mainCardContent}</ListContent>
+              </InCardContainer>
+              <Logo logoAlign={'right'} src={inCardObject.inCardLogo} />
+            </InlineContainer>
+          </div>
+        ) : (
+          <div>
+            <Text>{state.title}</Text>
+            <SubTitle>{state.subtitle}</SubTitle>
+            <Container>
+              <div>
+                <img src='/riskAsessmentChart.svg' alt='' />
+              </div>
+              <LabelWrapper>
+                {state.labels?.map((x) => (
+                  <LabelContainer key={x._id}>
+                    <LabelColor color={x.color}></LabelColor>
+                    <LabelName>{x.title}</LabelName>
+                    <LabelContent>{x.content}</LabelContent>
+                    {x.inCard && (
+                      <LabelLink
+                        onClick={() => {
+                          setInCardObject({
+                            inCardTitle: x.inCardTitle,
+                            inCardSubtitle: x.inCardSubtitle,
+                            mainCardTitle: x.mainCardTitle,
+                            mainCardContent: x.mainCardContent,
+                            inCardLogo: x.inCardLogo,
+                          });
+                          setInlineCard(true);
+                        }}
+                      >
+                        {x.linkTitle}
+                      </LabelLink>
+                    )}
+                  </LabelContainer>
+                ))}
+              </LabelWrapper>
+            </Container>
+          </div>
+        )}
+      </GeneralContainer>
+      <Svg src={shortline} />
+      <Svg src={shortline} />
     </Wrapper>
   );
 };
