@@ -101,8 +101,8 @@ const Recommendation = ({ show }) => {
         {dynamic.recommendation.map((items, index) => (
           <Card key={index} {...items} />
         ))}
-        <SaveCounter />
       </CardContainer>
+      <SaveCounter />
     </Wrapper>
   );
 };

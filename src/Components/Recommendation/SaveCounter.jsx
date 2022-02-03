@@ -7,7 +7,8 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 4rem 1.2rem;
+  margin-top: 8rem;
+  padding: 0rem 1.2rem;
   #costs-percetage {
     font-weight: 700;
     font-size: 3rem;
@@ -15,11 +16,20 @@ const Wrapper = styled.div`
   }
 `;
 const Title = styled.p`
-  font-size: 2.4rem;
+  font-size: 3.2rem;
   font-weight: 700;
   line-height: 29px;
   color: rgba(52, 49, 76, 1);
 `;
+
+const Subtitle = styled.p`
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 29px;
+  color: #34314c;
+  margin-top: 1rem;
+`;
+
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -76,7 +86,8 @@ const SaveCounter = () => {
 
   return (
     <Wrapper>
-      <Title>{recommendation.title}</Title>
+      <Title>Why Cognni?</Title>
+      <Subtitle>Subtitle</Subtitle>
       <Container>
         <RightCounter
           dangerouslySetInnerHTML={{
