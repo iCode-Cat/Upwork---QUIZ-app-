@@ -30,7 +30,7 @@ const Content = styled.div`
 
 const Control = ({ title, form }) => {
   return (
-    <Wrapper>
+    <Wrapper className='anim-fadeIn'>
       <Title>{title}</Title>
       <Content>
         <p>

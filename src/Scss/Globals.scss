@@ -70,12 +70,26 @@ button {
   -webkit-appearance: none;
 }
 
-.anim {
+.anim- {
   animation: fadeInAnimation 2s forwards;
 }
 
 .anim1 {
   animation: fadeInAnimation1 2s forwards;
+}
+
+.anim-fadeIn {
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInAnimation {
