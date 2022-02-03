@@ -3,13 +3,15 @@ import info from '../../Images/info.svg';
 import styled from 'styled-components';
 import Tooltip from './Tooltip';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 0fr);
   justify-items: flex-start;
   justify-content: flex-start;
   align-items: center;
-  gap: 0rem 0rem;
+  height: 100%;
   @media (max-width: 70em) {
     max-width: 375px;
     margin: 3rem auto 0 auto;
@@ -99,31 +101,34 @@ const Labels = ({ items, currency, tooltip }) => {
 
   const numberFormat = new Intl.NumberFormat('en-US');
   return (
-    <Wrapper className='labels-wrap'>
-      {items.items &&
-        items.items.map((label, index) => (
-          <Label>
-            <Dot color={label.color} />
-            <AmountWrapper className='label-amount'>
-              <Amount>{currency + numberFormat.format(label.result)}</Amount>
-              {tooltip && (
-                <img
-                  className='tooltip-icon'
-                  onMouseLeave={() => setOrder()}
-                  onMouseEnter={() => setOrder(index)}
-                  onClick={() => setOrder(index)}
-                  src={info}
-                  alt='info-icon'
+    <Wrapper>
+      <p>Potential Threats:</p>
+      <Container className='labels-wrap'>
+        {items.items &&
+          items.items.map((label, index) => (
+            <Label>
+              <Dot color={label.color} />
+              <AmountWrapper className='label-amount'>
+                <Amount>{currency + numberFormat.format(label.result)}</Amount>
+                {tooltip && (
+                  <img
+                    className='tooltip-icon'
+                    onMouseLeave={() => setOrder()}
+                    onMouseEnter={() => setOrder(index)}
+                    onClick={() => setOrder(index)}
+                    src={info}
+                    alt='info-icon'
+                  />
+                )}
+                <Tooltip
+                  data={label.tooltipText}
+                  isVisible={order === index && true}
                 />
-              )}
-              <Tooltip
-                data={label.tooltipText}
-                isVisible={order === index && true}
-              />
-            </AmountWrapper>
-            <Title>{label.name}</Title>
-          </Label>
-        ))}
+              </AmountWrapper>
+              <Title>{label.name}</Title>
+            </Label>
+          ))}
+      </Container>
     </Wrapper>
   );
 };
