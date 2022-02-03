@@ -12,6 +12,7 @@ const Container = styled.div`
   place-items: center;
   gap: 10rem;
   margin-top: 6rem;
+
   @media (max-width: 50em) {
     /* padding: 4rem 3rem; */
     margin-top: 0rem;
@@ -75,36 +76,44 @@ const Section = ({
     mainCardContent: '',
     inCardLogo: '',
   });
-  console.log(inCard);
   if (!active) return '';
-  return inCard ? (
-    <Wrapper logoAlign={logoAlign}>
-      <i
-        onClick={() => setInCard(false)}
-        class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
-      ></i>
-      <Title>{inCardData.inCardTitle}</Title>
-      {subtitle && <SubTitle>{inCardData.inCardSubtitle}</SubTitle>}
-      <Container>
-        <InCardContainer>
-          <ListTitle> {inCardData.mainCardTitle} </ListTitle>
-          <ListContent
-            dangerouslySetInnerHTML={{ __html: inCardData.mainCardContent }}
-          />
-        </InCardContainer>
-        <Logo logoAlign={'right'} src={inCardData.inCardLogo} />
-      </Container>
-    </Wrapper>
-  ) : (
-    <Wrapper logoAlign={logoAlign}>
-      <Title>{title}</Title>
-      {subtitle && <SubTitle>{subtitle}</SubTitle>}
 
-      <Container>
-        <Logo logoAlign={logoAlign} src={image} />
-        <List setInCardData={setInCardData} setInCard={setInCard} data={data} />
-      </Container>
-      {sectionGrade && <SectionGrade />}
+  return (
+    <Wrapper className='slide-fade' logoAlign={logoAlign} inCard={inCard}>
+      {inCard ? (
+        <div>
+          <i
+            onClick={() => setInCard(false)}
+            class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
+          ></i>
+          <Title>{inCardData.inCardTitle}</Title>
+          {subtitle && <SubTitle>{inCardData.inCardSubtitle}</SubTitle>}
+          <Container>
+            <InCardContainer>
+              <ListTitle> {inCardData.mainCardTitle} </ListTitle>
+              <ListContent
+                dangerouslySetInnerHTML={{ __html: inCardData.mainCardContent }}
+              />
+            </InCardContainer>
+            <Logo logoAlign={'right'} src={inCardData.inCardLogo} />
+          </Container>
+        </div>
+      ) : (
+        <div>
+          <Title>{title}</Title>
+          {subtitle && <SubTitle>{subtitle}</SubTitle>}
+
+          <Container>
+            <Logo logoAlign={logoAlign} src={image} />
+            <List
+              setInCardData={setInCardData}
+              setInCard={setInCard}
+              data={data}
+            />
+          </Container>
+          {sectionGrade && <SectionGrade />}
+        </div>
+      )}
     </Wrapper>
   );
 };

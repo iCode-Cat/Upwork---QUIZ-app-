@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   background: #fff;
   width: 100%;
   max-width: 1120px;
-
+  overflow: hidden;
   margin: 10rem auto 0 auto;
 
   img {
@@ -28,6 +28,14 @@ const Wrapper = styled.div`
     padding: 3.2rem 1rem;
     gap: 4rem;
   }
+`;
+
+const Blank = styled.div`
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
 `;
 
 const Svg = styled.img`
@@ -144,58 +152,64 @@ const Index = () => {
   const [inlineCard, setInlineCard] = useState(false);
   const [inCardObject, setInCardObject] = useState();
   if (!state.active) return '';
-  return inlineCard ? (
+
+  return (
     <Wrapper>
-      <i
-        onClick={() => setInlineCard(false)}
-        class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
-      ></i>
-      <Text>{inCardObject.inCardTitle}</Text>
-      <SubTitle onClick={() => setInlineCard(false)}>
-        {inCardObject.inCardSubtitle}
-      </SubTitle>
-      <InlineContainer>
-        <InCardContainer>
-          <ListTitle>{inCardObject.mainCardTitle}</ListTitle>
-          <ListContent>{inCardObject.mainCardContent}</ListContent>
-        </InCardContainer>
-        <Logo logoAlign={'right'} src={inCardObject.inCardLogo} />
-      </InlineContainer>
-    </Wrapper>
-  ) : (
-    <Wrapper>
-      <Text>{state.title}</Text>
-      <SubTitle>{state.subtitle}</SubTitle>
-      <Container>
+      <Blank className={inlineCard ? 'anim' : 'anim1'} />
+      {inlineCard ? (
         <div>
-          <img src='/riskAsessmentChart.svg' alt='' />
+          <i
+            onClick={() => setInlineCard(false)}
+            class='sc-fHeRUh bZQmLv fas fa-arrow-left anim-exit'
+          ></i>
+          <Text>{inCardObject.inCardTitle}</Text>
+          <SubTitle onClick={() => setInlineCard(false)}>
+            {inCardObject.inCardSubtitle}
+          </SubTitle>
+          <InlineContainer>
+            <InCardContainer>
+              <ListTitle>{inCardObject.mainCardTitle}</ListTitle>
+              <ListContent>{inCardObject.mainCardContent}</ListContent>
+            </InCardContainer>
+            <Logo logoAlign={'right'} src={inCardObject.inCardLogo} />
+          </InlineContainer>
         </div>
-        <LabelWrapper>
-          {state.labels?.map((x) => (
-            <LabelContainer key={x._id}>
-              <LabelColor color={x.color}></LabelColor>
-              <LabelName>{x.title}</LabelName>
-              <LabelContent>{x.content}</LabelContent>
-              {x.inCard && (
-                <LabelLink
-                  onClick={() => {
-                    setInCardObject({
-                      inCardTitle: x.inCardTitle,
-                      inCardSubtitle: x.inCardSubtitle,
-                      mainCardTitle: x.mainCardTitle,
-                      mainCardContent: x.mainCardContent,
-                      inCardLogo: x.inCardLogo,
-                    });
-                    setInlineCard(true);
-                  }}
-                >
-                  {x.linkTitle}
-                </LabelLink>
-              )}
-            </LabelContainer>
-          ))}
-        </LabelWrapper>
-      </Container>
+      ) : (
+        <div>
+          <Text>{state.title}</Text>
+          <SubTitle>{state.subtitle}</SubTitle>
+          <Container>
+            <div>
+              <img src='/riskAsessmentChart.svg' alt='' />
+            </div>
+            <LabelWrapper>
+              {state.labels?.map((x) => (
+                <LabelContainer key={x._id}>
+                  <LabelColor color={x.color}></LabelColor>
+                  <LabelName>{x.title}</LabelName>
+                  <LabelContent>{x.content}</LabelContent>
+                  {x.inCard && (
+                    <LabelLink
+                      onClick={() => {
+                        setInCardObject({
+                          inCardTitle: x.inCardTitle,
+                          inCardSubtitle: x.inCardSubtitle,
+                          mainCardTitle: x.mainCardTitle,
+                          mainCardContent: x.mainCardContent,
+                          inCardLogo: x.inCardLogo,
+                        });
+                        setInlineCard(true);
+                      }}
+                    >
+                      {x.linkTitle}
+                    </LabelLink>
+                  )}
+                </LabelContainer>
+              ))}
+            </LabelWrapper>
+          </Container>
+        </div>
+      )}
     </Wrapper>
   );
 };

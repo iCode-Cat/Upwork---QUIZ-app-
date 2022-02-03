@@ -2,6 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  /* animation: fadeInAnimation 2s; */
+
+  section {
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+  }
+
   position: relative;
   i {
     position: absolute;
@@ -26,8 +36,13 @@ const Container = styled.div`
     gap: 4rem;
   }
 `;
-const Wrapper = (props) => {
-  return <Container>{props.children}</Container>;
+const Wrapper = ({ children, className = 'undefined', inCard }) => {
+  return (
+    <Container>
+      <section className={!inCard ? 'anim' : 'anim1'}></section>
+      {children}
+    </Container>
+  );
 };
 
 export default Wrapper;

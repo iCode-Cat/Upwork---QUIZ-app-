@@ -14,7 +14,7 @@ const Image = styled.img`
 `;
 
 const Logo = ({ src, logoAlign }) => {
-  return <Image logoAlign={logoAlign} src={src} />;
+  return <Image height={314} logoAlign={logoAlign} src={src} />;
 };
 
 export default Logo;

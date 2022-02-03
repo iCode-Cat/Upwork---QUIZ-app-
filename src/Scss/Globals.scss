@@ -69,3 +69,39 @@ input[type='number'] {
 button {
   -webkit-appearance: none;
 }
+
+.anim {
+  animation: fadeInAnimation 2s forwards;
+}
+
+.anim1 {
+  animation: fadeInAnimation1 2s forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    z-index: -1;
+  }
+}
+
+@keyframes fadeInAnimation1 {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    z-index: -1;
+  }
+}
