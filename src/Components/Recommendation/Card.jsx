@@ -84,11 +84,11 @@ const Card = ({
 }) => {
   return (
     <Wrapper>
-      <Grid>
+      {/* <Grid>
         <ReadTime>{readTime}</ReadTime>
         <Frequency>{frequency}</Frequency>
-      </Grid>
-      <Grid marginTop>
+      </Grid> */}
+      <Grid>
         <IconWrapper color={iconBgColor}>
           <Icon src={icon} alt='icon' />
         </IconWrapper>

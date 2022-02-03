@@ -10,10 +10,12 @@ const Button = ({
   error,
   icon,
   onClick,
+  style = {},
   className = 'none',
 }) => {
   return (
     <button
+      style={style}
       onClick={onClick}
       type={submit ? 'submit' : 'button'}
       className={`${className} btn_settings ${type} ${size} ${

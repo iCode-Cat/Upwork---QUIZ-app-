@@ -47,6 +47,29 @@ const LastSection = () => {
     return false;
   };
 
+  const buttonObject = [
+    {
+      text: 'Try Cognni for Free',
+      type: 'btnBlue',
+      size: 'btnLg',
+    },
+    {
+      text: 'Connect for Risk Assessment',
+      type: 'btnBlue',
+      size: 'btnLg',
+    },
+    {
+      text: 'Set 1:1 Demo',
+      type: 'btnGreen',
+      size: 'btnLg',
+    },
+    {
+      text: 'Register for Risk Assessment',
+      type: 'btnGreen',
+      size: 'btnLg',
+    },
+  ];
+
   return (
     <Wrapper>
       {/* {checkIsAdmin() ? (
@@ -62,30 +85,15 @@ const LastSection = () => {
         </>
       )} */}
       <ButtonContainer>
-        <Button
-          onClick={() => setFlow(0)}
-          text='Try Cognni for Free'
-          type='btnBlue'
-          size='btnLg'
-        />
-        <Button
-          onClick={() => setFlow(1)}
-          text='Connect for Risk Assessment'
-          type='btnBlue'
-          size='btnLg'
-        />
-        <Button
-          onClick={() => setFlow(2)}
-          text='Set 1:1 Demo'
-          type='btnGreen'
-          size='btnLg'
-        />
-        <Button
-          onClick={() => setFlow(3)}
-          text='Register for Risk Assessment'
-          type='btnGreen'
-          size='btnLg'
-        />
+        {buttonObject.map((x, i) => (
+          <Button
+            onClick={() => setFlow(i)}
+            text={x.text}
+            type={x.type}
+            size={x.size}
+            style={{ opacity: flow === i ? 0.5 : 1 }}
+          />
+        ))}
       </ButtonContainer>
       {/* <AnimatedButton text='Try Cogni for Free' />
       <AnimatedButton text='Connect for Risk Assessment' />
