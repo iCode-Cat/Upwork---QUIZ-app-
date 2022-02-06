@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const Info = styled.p`
+  margin-bottom: 2rem;
+`;
+
 const Index = ({
   fields,
   index,
@@ -95,6 +99,7 @@ const Index = ({
             }`}
             key={key}
           >
+            {question?.information && <Info>{question?.information}</Info>}
             {QuesionTypeHandler(
               question,
               index,
