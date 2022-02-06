@@ -6,6 +6,7 @@ import blueArrow from '../../Images/blueArrow.svg';
 const Wrapper = styled.div`
   display: grid;
   margin-top: 2rem;
+  overflow: hidden;
   .progress-wrapper {
     display: grid;
     gap: 2.8rem;

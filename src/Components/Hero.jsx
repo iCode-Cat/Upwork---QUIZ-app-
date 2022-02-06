@@ -16,8 +16,18 @@ const Hero = ({
   step1,
 }) => {
   const [heroState, setHeroState] = useState({});
-  const [checked, setChecked] = useState(null);
+  const [checked, setChecked] = useState(true);
   const heroQuestion = defaultJson.hero.fields;
+
+  const igniteForm = () => {
+    if (checked === null || !checked) {
+      setChecked(false);
+      return;
+    }
+    form.step === '' && formStateHandler({ field: 'step', value: 1 });
+    scrollToView(step1);
+  };
+
   useEffect(() => {
     setHeroState({
       welcomePage: defaultJson.hero.title,
@@ -27,7 +37,7 @@ const Hero = ({
   }, [form.step]);
 
   const { welcomePage, subTitle, button } = heroState;
-
+  const initialQuestion = defaultJson.hero.initialQuestion;
   return (
     <section
       ref={hero}
@@ -45,26 +55,19 @@ const Hero = ({
             dangerouslySetInnerHTML={{ __html: subTitle }}
             className={style.description}
           />
-          <HeroQuestion
-            checked={checked}
-            setChecked={setChecked}
-            question={heroQuestion}
-          />
-
-          {button && (
-            <span
-              onClick={() => {
-                if (checked === null || !checked) {
-                  setChecked(false);
-                  return;
-                }
-                form.step === '' &&
-                  formStateHandler({ field: 'step', value: 1 });
-                scrollToView(step1);
-              }}
-            >
-              <Button shadow text={button} type='btnBlue' size='btnSm' />
-            </span>
+          {initialQuestion ? (
+            <HeroQuestion
+              checked={checked}
+              setChecked={setChecked}
+              question={heroQuestion}
+              igniteForm={igniteForm}
+            />
+          ) : (
+            button && (
+              <span onClick={() => igniteForm()}>
+                <Button shadow text={button} type='btnBlue' size='btnSm' />
+              </span>
+            )
           )}
         </div>
         <img

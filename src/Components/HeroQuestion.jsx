@@ -18,7 +18,7 @@ const Options = styled.div`
   gap: 2rem;
 `;
 
-const HeroQuestion = ({ question, setChecked, checked }) => {
+const HeroQuestion = ({ question, setChecked, checked, igniteForm }) => {
   const heroQuestion = question;
   const [choosen, setChoosen] = useState('');
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ const HeroQuestion = ({ question, setChecked, checked }) => {
               setChoosen(index);
               setChecked(true);
               dispatch(updateInformation(x.information));
+              igniteForm();
             }}
             type={choosen === index ? 'btnBlueMutaiton' : 'btnWhite'}
             size='btnSm'

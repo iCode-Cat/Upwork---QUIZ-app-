@@ -84,6 +84,7 @@ const Text = styled.p`
 const GeneralContainer = styled.div`
   width: 100%;
   position: relative;
+  overflow: hidden;
   i {
     cursor: pointer;
     position: absolute;
@@ -96,7 +97,6 @@ const GeneralContainer = styled.div`
   padding: 6rem 9.1rem;
   background: #fff;
 
-  overflow: hidden;
   /* margin: 10rem auto 0 auto; */
 
   img {
@@ -134,6 +134,7 @@ const Graphics = ({
       ref={parent}
       style={{
         position: index !== 0 ? 'absolute' : 'relative',
+        overflow: 'hidden',
         width: '100%',
         // background: '#FFF',
         transition: ' opacity 0.6s',
