@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
@@ -118,13 +118,17 @@ const SingleFlow = ({
   const [buttonClicked, setButtonClicked] = useState();
   const [relatedsAnwered, setRelatedsAnswered] = useState(true);
   const dynamicZone = useSelector((state) => state.dynamic);
+  const followUpInformationTitle = useSelector(
+    (state) => state.quiz.followUpInformationTitle
+  );
   const [skipped, setSkipped] = useState(false);
   const [skippedAll, setSkippedAll] = useState(false);
   const [allSkip, setAllSkip] = useState(false);
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
-  const [lastQuestion, setLastQuestion] = useState(false);
+  const [infoQuestion, setInfoQuestion] = useState(false);
+  const [infoQuestionTitle, setInfoQuestionTitle] = useState('');
   // Insert all questions of this step to one state-+
   const stateHandler = () => {
     questions.map((value) => {
@@ -200,7 +204,6 @@ const SingleFlow = ({
         setSkippedAll(false);
       }
     });
-    console.log(form);
   }, [skippedAll]);
 
   // Everytime question order updated
@@ -320,9 +323,25 @@ const SingleFlow = ({
     setSkippedAll(true);
   };
 
+  const initialInfoCheck = () => {
+    questionsState.forEach((fields, index) => {
+      if (fields.questionType === 'context' && order === index) {
+        setInfoQuestion(true);
+        setInfoQuestionTitle(fields.placeholder);
+        return;
+      }
+      if (order === index) {
+        setInfoQuestion(false);
+      }
+    });
+  };
+  useLayoutEffect(() => {
+    initialInfoCheck();
+  });
+
   useEffect(() => {
-    console.log(questionsState);
-  }, []);
+    initialInfoCheck();
+  }, [order]);
 
   return (
     <Wrapper
@@ -353,7 +372,11 @@ const SingleFlow = ({
             className='fas fa-arrow-left anim-exit'
           ></Backward>
         )}
-        <p>{singleFlowTitle}</p>
+        {!infoQuestion ? (
+          <p>{singleFlowTitle}</p>
+        ) : (
+          <p>{followUpInformationTitle}</p>
+        )}
       </Container>
       <div className={style.input_container}>
         {questionsState.length > 0 &&
@@ -395,6 +418,7 @@ const SingleFlow = ({
                   index
                 )
               )}
+
               {errorValue && (
                 <ErrorMessage errorValue={errorValue} checked={checked} />
               )}

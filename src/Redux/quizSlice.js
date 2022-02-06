@@ -24,6 +24,7 @@ const initialState = {
   questionOrder: null,
   relatedQuestionsState: [],
   initialInformation: {},
+  followUpInformationTitle: '',
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
@@ -86,6 +87,9 @@ export const quizSlice = createSlice({
     updateInformation: (state, action) => {
       state.initialInformation = action.payload;
     },
+    pingFollowUpQuestion: (state, action) => {
+      state.followUpInformationTitle = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
@@ -104,6 +108,7 @@ export const {
   setQuestionOrder,
   setRelatedQuestionState,
   updateInformation,
+  pingFollowUpQuestion,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;
