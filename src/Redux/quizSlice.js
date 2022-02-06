@@ -14,7 +14,7 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ..., stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
+  '*[_type == "partner"] { ..., hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
 const params = 0;
 // const data = await client.fetch(query, params)
 const initialState = {
@@ -23,6 +23,7 @@ const initialState = {
   globalStepHeight: 0,
   questionOrder: null,
   relatedQuestionsState: [],
+  initialInformation: {},
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
@@ -82,15 +83,15 @@ export const quizSlice = createSlice({
           console.log('No JSON provided');
       }
     },
+    updateInformation: (state, action) => {
+      state.initialInformation = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
       state.defaultJson = action.payload;
-      console.log(action.payload);
     });
-    builder.addCase(fetchPartnerTheme.rejected, (state, action) => {
-      console.log(action);
-    });
+    builder.addCase(fetchPartnerTheme.rejected, (state, action) => {});
   },
 });
 
@@ -102,6 +103,7 @@ export const {
   updateJson,
   setQuestionOrder,
   setRelatedQuestionState,
+  updateInformation,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

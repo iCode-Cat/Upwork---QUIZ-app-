@@ -3,6 +3,7 @@ import Numeric from '../Components/QuestionTypes/Numeric';
 import Boolean from '../Components/QuestionTypes/Boolean';
 import Dropdown from '../Components/QuestionTypes/Dropdown';
 import BooleanMulti from '../Components/QuestionTypes/BooleanMulti';
+import Context from '../Components/QuestionTypes/Context';
 
 // Handle question types according to JSON
 const QuestionTypeHandler = (
@@ -60,6 +61,18 @@ const QuestionTypeHandler = (
     return (
       <Dropdown
         key={index}
+        errorValue={errorValue}
+        fields={fields}
+        formStateHandler={formStateHandler}
+        errorClassHandler={errorClassHandler}
+      />
+    );
+  }
+  if (fields.questionType === 'context') {
+    return (
+      <Context
+        key={index}
+        index={index}
         errorValue={errorValue}
         fields={fields}
         formStateHandler={formStateHandler}

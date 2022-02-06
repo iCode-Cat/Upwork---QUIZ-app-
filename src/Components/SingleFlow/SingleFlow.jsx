@@ -320,6 +320,10 @@ const SingleFlow = ({
     setSkippedAll(true);
   };
 
+  useEffect(() => {
+    console.log(questionsState);
+  }, []);
+
   return (
     <Wrapper
       ref={step1}
@@ -387,7 +391,8 @@ const SingleFlow = ({
                   errorValue,
                   formStateHandler,
                   errorClassHandler,
-                  setError
+                  setError,
+                  index
                 )
               )}
               {errorValue && (

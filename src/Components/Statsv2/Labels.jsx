@@ -77,9 +77,16 @@ const Dot = styled.div`
 const Title = styled.p`
   grid-column: 2/3;
   font-size: 1.4rem;
+  cursor: pointer;
 `;
 
-const Labels = ({ items, currency, tooltip }) => {
+const Labels = ({
+  items,
+  currency,
+  tooltip,
+  setInlineCard,
+  setInCardObject,
+}) => {
   const [order, setOrder] = useState();
 
   useEffect(() => {
@@ -125,7 +132,19 @@ const Labels = ({ items, currency, tooltip }) => {
                   isVisible={order === index && true}
                 />
               </AmountWrapper>
-              <Title>{label.name}</Title>
+              <Title
+                onClick={() => {
+                  setInlineCard(true);
+                  setInCardObject({
+                    inCardTitle: label.name,
+                    inCardSubtitle: 'Optional',
+                    mainCardTitle: 'Test',
+                    mainCardContent: label.tooltipText,
+                  });
+                }}
+              >
+                {label.name}
+              </Title>
             </Label>
           ))}
       </Container>

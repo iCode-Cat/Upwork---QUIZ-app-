@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 import style from '../Scss/Hero.module.scss';
 import Button from './Button';
+import HeroQuestion from './HeroQuestion';
+
+const Error = styled.p``;
 
 const Hero = ({
   formStateHandler,
@@ -12,7 +16,8 @@ const Hero = ({
   step1,
 }) => {
   const [heroState, setHeroState] = useState({});
-
+  const [checked, setChecked] = useState(null);
+  const heroQuestion = defaultJson.hero.fields;
   useEffect(() => {
     setHeroState({
       welcomePage: defaultJson.hero.title,
@@ -40,9 +45,19 @@ const Hero = ({
             dangerouslySetInnerHTML={{ __html: subTitle }}
             className={style.description}
           />
+          <HeroQuestion
+            checked={checked}
+            setChecked={setChecked}
+            question={heroQuestion}
+          />
+
           {button && (
             <span
               onClick={() => {
+                if (checked === null || !checked) {
+                  setChecked(false);
+                  return;
+                }
                 form.step === '' &&
                   formStateHandler({ field: 'step', value: 1 });
                 scrollToView(step1);

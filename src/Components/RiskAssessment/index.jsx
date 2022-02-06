@@ -9,10 +9,12 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1120px;
   display: grid;
+  overflow: hidden;
 `;
 
 const GeneralContainer = styled.div`
   width: 100%;
+  position: relative;
   i {
     position: absolute;
     left: 0;
@@ -50,6 +52,7 @@ const Blank = styled.div`
   width: 100%;
   position: absolute;
   opacity: 0;
+  z-index: 1;
 `;
 
 const Container = styled.div`
@@ -163,8 +166,8 @@ const Index = () => {
 
   return (
     <Wrapper>
-      <Blank className={inlineCard ? 'anim' : 'anim1'} />
       <GeneralContainer>
+        <Blank className={inlineCard ? 'anim' : 'anim1'} />
         {inlineCard ? (
           <div>
             <i

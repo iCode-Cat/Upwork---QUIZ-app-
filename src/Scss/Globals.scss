@@ -70,7 +70,7 @@ button {
   -webkit-appearance: none;
 }
 
-.anim- {
+.anim {
   animation: fadeInAnimation 2s forwards;
 }
 
@@ -80,6 +80,10 @@ button {
 
 .anim-fadeIn {
   animation: fadeIn 1s forwards;
+}
+
+.btn-error {
+  border: 1px rgba(255, 0, 0, 0.452) solid;
 }
 
 @keyframes fadeIn {
