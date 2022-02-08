@@ -43,6 +43,11 @@ input {
   outline: none;
 }
 
+main {
+  position: relative;
+  display: grid;
+}
+
 a {
   text-decoration: none;
 }

@@ -21,7 +21,7 @@ const Form = styled.form`
   }
 `;
 
-export default function App() {
+export default function App({ dispatch, setPopup }) {
   const {
     register,
     handleSubmit,
@@ -73,7 +73,11 @@ export default function App() {
       {/* errors will return when field validation fails  */}
       {errors.exampleRequired && <span>This field is required</span>}
 
-      <input id='submit' type='submit' />
+      <input
+        onClick={() => dispatch(setPopup(true))}
+        id='submit'
+        type='submit'
+      />
     </Form>
   );
 }

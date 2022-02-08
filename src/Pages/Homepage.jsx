@@ -25,6 +25,7 @@ import RecommendButton from '../Components/RecommendButton';
 import shortline from '../Images/shortline.svg';
 import Chart from '../Components/Chart';
 import Control from '../Components/Forms/Control';
+import Popup from '../Components/Popup';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -74,6 +75,7 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
 
   return (
     <main ref={app} className={style.wrapper}>
+      {state.popup && <Popup dispatch={dispatch} />}
       <article>
         <Hero
           step1={step1}
@@ -83,7 +85,6 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
           form={form}
           formStateHandler={formStateHandler}
         />
-
         {isEnd && (
           <>
             {singleFLow && form.step >= 1 ? (

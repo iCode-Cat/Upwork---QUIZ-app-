@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import AnimatedButton from './AnimatedButton';
 import { useSelector } from 'react-redux';
 import Control from './Forms/Control';
 import Button from './Button';
@@ -9,6 +8,7 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
   padding: 0 0 4rem 0;
+  position: relative;
 `;
 const Title = styled.p`
   font-size: 24px;
@@ -42,6 +42,8 @@ const LastSection = () => {
   const isGlobalAdmin = state.quiz.userState?.globalAdmin;
   const [flow, setFlow] = useState('');
 
+  // const popup = useState((state) => state.quiz.popup);
+
   const checkIsAdmin = () => {
     if (isGlobalAdmin === 'Yes') return true;
     return false;
@@ -72,6 +74,7 @@ const LastSection = () => {
 
   return (
     <Wrapper>
+      {/* <Popup /> */}
       {/* {checkIsAdmin() ? (
         <>
           <Title margin='no'>Connect to Cognni</Title>
@@ -87,7 +90,9 @@ const LastSection = () => {
       <ButtonContainer>
         {buttonObject.map((x, i) => (
           <Button
-            onClick={() => setFlow(i)}
+            onClick={() => {
+              setFlow(i);
+            }}
             text={x.text}
             type={x.type}
             size={x.size}
@@ -95,6 +100,7 @@ const LastSection = () => {
           />
         ))}
       </ButtonContainer>
+
       {/* <AnimatedButton text='Try Cogni for Free' />
       <AnimatedButton text='Connect for Risk Assessment' />
       <AnimatedButton text='Set 1:1 Demo' />

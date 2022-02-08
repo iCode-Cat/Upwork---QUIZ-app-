@@ -25,6 +25,7 @@ const initialState = {
   relatedQuestionsState: [],
   initialInformation: {},
   followUpInformationTitle: '',
+  popup: false,
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
@@ -39,6 +40,9 @@ export const quizSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
+    setPopup: (state, action) => {
+      state.popup = action.payload;
+    },
     setUserState: (state, action) => {
       if (action.payload === 'connect') {
         state.userState.step = 5;
@@ -109,6 +113,7 @@ export const {
   setRelatedQuestionState,
   updateInformation,
   pingFollowUpQuestion,
+  setPopup,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

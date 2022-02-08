@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPartnerTheme, updateJson } from './Redux/quizSlice';
 
 import axios from 'axios';
+import Popup from './Components/Popup';
 
 // Cors Error
 // Dev does not work

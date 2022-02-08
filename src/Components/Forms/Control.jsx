@@ -1,6 +1,8 @@
 import Form from './Form';
 import styled from 'styled-components';
 import Button from '../Button';
+import { useDispatch } from 'react-redux';
+import { setPopup } from '../../Redux/quizSlice';
 
 const Wrapper = styled.div`
   display: grid;
@@ -29,6 +31,7 @@ const Content = styled.div`
 `;
 
 const Control = ({ title, form }) => {
+  const dispatch = useDispatch();
   return (
     <Wrapper className='anim-fadeIn'>
       <Title>{title}</Title>
@@ -49,13 +52,14 @@ const Control = ({ title, form }) => {
         )}
       </Content>
 
-      {form && <Form />}
+      {form && <Form dispatch={dispatch} setPopup={setPopup} />}
       {!form && (
         <Button
           className='connect-btn'
           text='Connect'
           type='btnBlue'
           size='btnLg'
+          onClick={() => dispatch(setPopup(true))}
         />
       )}
     </Wrapper>
