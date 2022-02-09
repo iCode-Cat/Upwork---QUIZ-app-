@@ -44,8 +44,8 @@ const Tooltip = ({ isVisible, data }) => {
   return (
     <Wrapper className='tooltip-icon' isVisible={isVisible}>
       <i class='fas fa-info-circle'></i>
-      <Title>{data.title}</Title>
-      <Text>{data.content}</Text>
+      <Title>{data?.title}</Title>
+      <Text>{data?.content}</Text>
     </Wrapper>
   );
 };
