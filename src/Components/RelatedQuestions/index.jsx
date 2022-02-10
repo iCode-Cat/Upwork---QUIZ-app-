@@ -87,6 +87,15 @@ const Index = ({
     setQuestions([...questions, nextQuestion]);
     setForm({ ...form });
     questionStateHandler();
+
+    questions.forEach((x) =>
+      x.options.forEach((option) => {
+        console.log(x?.questionId, option.callQuestion);
+        if (x?.questionId === option.callQuestion) {
+          console.log(x);
+        }
+      })
+    );
   }, [buttonClicked]);
 
   return (
@@ -99,15 +108,19 @@ const Index = ({
             }`}
             key={key}
           >
-            {question?.information && <Info>{question?.information}</Info>}
-            {QuesionTypeHandler(
-              question,
-              index,
-              errorValue,
-              formStateHandler,
-              errorClassHandler,
-              setError
-            )}
+            {
+              <>
+                {question?.information && <Info>{question?.information}</Info>}
+                {QuesionTypeHandler(
+                  question,
+                  index,
+                  errorValue,
+                  formStateHandler,
+                  errorClassHandler,
+                  setError
+                )}
+              </>
+            }
           </div>
         ))}
     </Wrapper>

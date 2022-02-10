@@ -124,6 +124,7 @@ const SingleFlow = ({
   const [skipped, setSkipped] = useState(false);
   const [skippedAll, setSkippedAll] = useState(false);
   const [allSkip, setAllSkip] = useState(false);
+
   // order for single flow
   const [order, setOrder] = useState(0);
   // Indicate last question of the flow-
@@ -291,7 +292,12 @@ const SingleFlow = ({
         skipArray.push(field.skip);
       }
     });
-
+    // Prevent to show skip all button on last question
+    if (
+      order === questionsState.length - 1 &&
+      order === questionsState.length - 2
+    )
+      return false;
     return !skipArray?.some((skip) => !skip);
   };
 
