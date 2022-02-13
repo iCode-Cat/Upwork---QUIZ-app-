@@ -294,7 +294,7 @@ const SingleFlow = ({
     });
     // Prevent to show skip all button on last question
     if (
-      order === questionsState.length - 1 &&
+      order === questionsState.length - 1 ||
       order === questionsState.length - 2
     )
       return false;

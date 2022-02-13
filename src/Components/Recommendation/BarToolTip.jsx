@@ -7,15 +7,21 @@ const Wrapper = styled.section`
   grid-template-columns: 0fr auto;
   gap: 1.3rem;
   align-items: center;
+  justify-items: flex-start;
+  text-align: left;
   background: #fff;
+  color: #000;
   border-radius: 8px;
+  right: 0;
+  bottom: 20px;
   position: absolute;
   width: 100vw;
   max-width: 452px;
   padding: 2.4rem;
-  bottom: 30px;
-  left: -190px;
   transition: 1s;
+  i {
+    font-size: 1.6rem !important;
+  }
   cursor: text;
   box-shadow: 0px 2px 20px 0px #5d606024;
   @media (max-width: 50em) {
@@ -40,7 +46,7 @@ const Title = styled.p`
   font-weight: 700;
 `;
 
-const Tooltip = ({ isVisible, data, className }) => {
+const BarToolTip = ({ isVisible, data, className }) => {
   return (
     <Wrapper className={`tooltip-icon ${className}`} isVisible={isVisible}>
       <i class='fas fa-info-circle'></i>
@@ -50,4 +56,4 @@ const Tooltip = ({ isVisible, data, className }) => {
   );
 };
 
-export default Tooltip;
+export default BarToolTip;
