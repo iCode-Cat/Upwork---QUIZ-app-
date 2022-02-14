@@ -68,7 +68,6 @@ export const quizSlice = createSlice({
       state.relatedQuestionsState = [...questionState, action.payload];
     },
     updateJson: (state, action) => {
-      console.log(defaultJson);
       const payload = action.payload;
       switch (payload) {
         case 'securityPractices':

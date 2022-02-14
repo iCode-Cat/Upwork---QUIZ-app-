@@ -52,7 +52,6 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   const scrollToView = (view) => {
     let speedInSeconds = 1;
     setTimeout(() => {
-      console.log(view);
       scrollIntoView(view.current, {
         time: 500,
       });

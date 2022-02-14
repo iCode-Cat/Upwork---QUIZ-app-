@@ -21,7 +21,7 @@ const SecondStep = ({
   const questions = steps[1].fields;
   const { index } = steps[1];
   const [errorValue, setError] = useState(false);
-  console.log(results);
+
   const stateHandler = () => {
     questions.map((value) => {
       const formField = value.stateName;

@@ -2,7 +2,6 @@ import React from 'react';
 import DelayedComponents from '../../../Handlers/DelayedComponents';
 
 const Secondline = ({ DOM, step, numberOfSteps }) => {
-  console.log(numberOfSteps);
   // 56 pixels of corner SVG
   let dynamicHeight = DOM.current.clientHeight;
 

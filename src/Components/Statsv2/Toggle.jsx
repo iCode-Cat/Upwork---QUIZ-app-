@@ -18,7 +18,6 @@ const ToggleButton = styled.button`
 `;
 
 const Toggle = ({ tabMenus, toggle, setToggle }) => {
-  console.log(tabMenus);
   return (
     <Wrapper>
       {tabMenus.map((item, index) => (

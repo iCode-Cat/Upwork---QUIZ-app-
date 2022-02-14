@@ -93,7 +93,9 @@ const Card = ({
           <Icon src={icon} alt='icon' />
         </IconWrapper>
         <div>
-          <Title href={href}>{title}</Title>
+          <Title target='_blank' href={href}>
+            {title}
+          </Title>
           <Content>{content}</Content>
         </div>
       </Grid>

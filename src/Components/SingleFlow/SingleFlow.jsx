@@ -319,7 +319,6 @@ const SingleFlow = ({
   const skipAllHandler = () => {
     questionsState.forEach((field, index) => {
       if (form[field.stateName].length === 0 && field.skip) {
-        console.log(field);
         formStateHandler({
           field: field.stateName,
           value: 'skipped',

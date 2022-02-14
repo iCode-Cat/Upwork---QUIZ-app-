@@ -17,7 +17,6 @@ const Chart = ({ tab }) => {
     return { nums, colors };
   };
 
-  console.log(results);
   const options = {
     plugins: {
       tooltip: {

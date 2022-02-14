@@ -90,9 +90,7 @@ const Index = ({
 
     questions.forEach((x) =>
       x.options.forEach((option) => {
-        console.log(x?.questionId, option.callQuestion);
         if (x?.questionId === option.callQuestion) {
-          console.log(x);
         }
       })
     );

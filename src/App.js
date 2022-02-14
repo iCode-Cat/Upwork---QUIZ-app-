@@ -63,7 +63,6 @@ function App() {
 
     try {
       const post = await axios.post(url, data, config);
-      console.log(post);
     } catch (error) {
       console.log(error);
     }

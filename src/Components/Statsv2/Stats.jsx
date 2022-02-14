@@ -7,7 +7,6 @@ import SectionGrade from '../SectionGrade';
 import RecommendButton from '../RecommendButton';
 
 const Stats = ({ results, state, setShow }) => {
-  console.log(setShow);
   // Redux State
 
   // Stats

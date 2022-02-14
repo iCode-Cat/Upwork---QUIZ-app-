@@ -31,8 +31,6 @@ export default function App({ dispatch, setPopup }) {
   const state = useSelector((state) => state.quiz.userState);
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch('example')); // watch input value by passing the name of it
-
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <Form onSubmit={handleSubmit(onSubmit)}>
