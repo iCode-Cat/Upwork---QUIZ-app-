@@ -45,7 +45,7 @@ export default function App({ dispatch, setPopup, inputs, submitButton }) {
 
       {errors.exampleRequired && <span>This field is required</span>}
 
-      <input id='submit' type='submit' />
+      <input value={submitButton} id='submit' type='submit' />
     </Form>
   );
 }
