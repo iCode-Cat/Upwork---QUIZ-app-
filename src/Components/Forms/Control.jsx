@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
 import { setPopup } from '../../Redux/quizSlice';
+import toMarkdown from '@sanity/block-content-to-markdown';
 
 const Wrapper = styled.div`
   display: grid;
@@ -30,36 +31,39 @@ const Content = styled.div`
   padding: 0 2rem;
 `;
 
-const Control = ({ title, form }) => {
+const serializers = {
+  types: {
+    code: (props) =>
+      '```' + props.node.language + '\n' + props.node.code + '\n```',
+  },
+};
+
+const Control = ({ title, form, connectionObject }) => {
   const dispatch = useDispatch();
+  console.log(connectionObject);
+  if (!connectionObject) return '';
   return (
     <Wrapper className='anim-fadeIn'>
-      <Title>{title}</Title>
+      <Title>{connectionObject?.title}</Title>
       <Content>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
-          corrupti qui veritatis aspernatur itaque quam perferendis quos.
-          Tempora perspiciatis recusandae, dolores ipsam esse fugit fuga
-          repudiandae voluptates tempore. Pariatur, id.
-        </p>
-        {!form && (
-          <ul>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-          </ul>
-        )}
+        <p>{toMarkdown(connectionObject?.content, { serializers })}</p>
       </Content>
-
-      {form && <Form dispatch={dispatch} setPopup={setPopup} />}
-      {!form && (
+      {connectionObject.inputs && (
+        <Form
+          submitButton={connectionObject.submitButton}
+          inputs={connectionObject.inputs}
+          dispatch={dispatch}
+          setPopup={setPopup}
+        />
+      )}
+      {!connectionObject.inputs && (
         <Button
           className='connect-btn'
-          text='Connect'
-          type='btnBlue'
+          text={connectionObject?.connect}
           size='btnLg'
+          color={connectionObject?.connectColor}
           onClick={() => dispatch(setPopup(true))}
+          link={connectionObject?.connectLink}
         />
       )}
     </Wrapper>

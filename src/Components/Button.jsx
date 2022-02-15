@@ -9,13 +9,15 @@ const Button = ({
   submit,
   error,
   icon,
+  color,
+  link,
   onClick,
   style = {},
   className = 'none',
 }) => {
   return (
     <button
-      style={style}
+      style={{ ...style, background: color, color: `${color && '#FFF'}` }}
       onClick={onClick}
       type={submit ? 'submit' : 'button'}
       className={`${className} btn_settings ${type} ${size} ${
@@ -34,7 +36,13 @@ const Button = ({
       ) : (
         ''
       )} */}
-      {text}
+      {link ? (
+        <a style={{ color: 'unset' }} target='_blank' href={link}>
+          {text}
+        </a>
+      ) : (
+        text
+      )}
     </button>
   );
 };

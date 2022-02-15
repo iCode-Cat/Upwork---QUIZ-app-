@@ -39,76 +39,34 @@ const ButtonContainer = styled.div`
 
 const LastSection = () => {
   const state = useSelector((state) => state);
-  const isGlobalAdmin = state.quiz.userState?.globalAdmin;
   const [flow, setFlow] = useState('');
+  const [connectionObject, setConnectionObject] = useState();
 
-  // const popup = useState((state) => state.quiz.popup);
+  const connection = state.quiz.defaultJson.connection;
 
-  const checkIsAdmin = () => {
-    if (isGlobalAdmin === 'Yes') return true;
-    return false;
-  };
-
-  const buttonObject = [
-    {
-      text: 'Try Cognni for Free',
-      type: 'btnBlue',
-      size: 'btnLg',
-    },
-    {
-      text: 'Connect for Risk Assessment',
-      type: 'btnBlue',
-      size: 'btnLg',
-    },
-    {
-      text: 'Set 1:1 Demo',
-      type: 'btnGreen',
-      size: 'btnLg',
-    },
-    {
-      text: 'Register for Risk Assessment',
-      type: 'btnGreen',
-      size: 'btnLg',
-    },
-  ];
+  console.log(connection);
 
   return (
     <Wrapper>
-      {/* <Popup /> */}
-      {/* {checkIsAdmin() ? (
-        <>
-          <Title margin='no'>Connect to Cognni</Title>
-          <Text>For detailed risk assesment report</Text>
-          <AnimatedButton text='Connect to Cognni' />
-        </>
-      ) : (
-        <>
-          <Title>Request a Demo</Title>
-          <AnimatedButton text='Reguest a Demo' link='https://lp.cognni.ai/' />
-        </>
-      )} */}
       <ButtonContainer>
-        {buttonObject.map((x, i) => (
+        {connection?.map((x, i) => (
           <Button
             onClick={() => {
               setFlow(i);
+              setConnectionObject(x);
             }}
-            text={x.text}
-            type={x.type}
-            size={x.size}
-            style={{ opacity: flow === i ? 0.5 : 1 }}
+            text={x.buttonTitle}
+            color={x.buttonColor}
+            size='btnLg'
+            style={{ opacity: flow === i ? 1 : 0.5 }}
           />
         ))}
       </ButtonContainer>
 
-      {/* <AnimatedButton text='Try Cogni for Free' />
-      <AnimatedButton text='Connect for Risk Assessment' />
-      <AnimatedButton text='Set 1:1 Demo' />
-      <AnimatedButton text='Register for Risk Assessment' /> */}
-      {flow === 0 && <Control title='Try Cognni for Free' />}
-      {flow === 1 && <Control title='Connect for Complete Risk Assessment' />}
-      {flow === 2 && <Control title='Set 1:1 Demo' form />}
-      {flow === 3 && <Control title='Register for Risk Assessment' form />}
+      <Control
+        connectionObject={connectionObject}
+        title='Try Cognni for Free'
+      />
     </Wrapper>
   );
 };

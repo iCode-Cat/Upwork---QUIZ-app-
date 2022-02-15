@@ -5,8 +5,7 @@ import { useDispatch } from 'react-redux';
 import { updateInformation } from '../Redux/quizSlice';
 
 const Wrapper = styled.div`
-  background: #fff;
-  padding: 2rem;
+  padding: 2rem 0;
   margin-bottom: 2rem;
   border-radius: 8px;
 `;

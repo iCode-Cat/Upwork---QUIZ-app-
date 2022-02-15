@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+
 import FirstStep from '../Components/Steps/FirstStep';
 import SecondStep from '../Components/Steps/SecondStep';
 import ThirdStep from '../Components/Steps/ThirdStep';

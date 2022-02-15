@@ -21,61 +21,31 @@ const Form = styled.form`
   }
 `;
 
-export default function App({ dispatch, setPopup }) {
+export default function App({ dispatch, setPopup, inputs, submitButton }) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
   const state = useSelector((state) => state.quiz.userState);
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(setPopup(true));
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input
-        {...register('firstName', { required: true })}
-        placeholder='First name*'
-      />
+      {inputs.map((x) => (
+        <input
+          {...register(x.name, { required: x.required })}
+          placeholder={x.placeholder}
+          defaultValue={state?.[x.defaultState]}
+        />
+      ))}
 
-      {/* include validation with required or other standard HTML validation rules */}
-      <input
-        {...register('lastName', { required: true })}
-        placeholder='Last name*'
-      />
-      <input
-        defaultValue={state?.companyRole && state?.companyRole}
-        {...register('jobTitle', { required: true })}
-        placeholder='Job Title*'
-      />
-      <input
-        defaultValue={state?.companyName && state?.companyName}
-        {...register('companyName', { required: true })}
-        placeholder='Company Name*'
-      />
-      <input
-        defaultValue={state?.workEmail && state?.workEmail}
-        {...register('email', { required: true })}
-        placeholder='Email*'
-      />
-      <input
-        {...register('phoneNumber', { required: true })}
-        placeholder='Phone number*'
-      />
-      <input
-        {...register('countryRegion', { required: true })}
-        placeholder='Country/Region*'
-      />
-      {/* errors will return when field validation fails  */}
       {errors.exampleRequired && <span>This field is required</span>}
 
-      <input
-        onClick={() => dispatch(setPopup(true))}
-        id='submit'
-        type='submit'
-      />
+      <input id='submit' type='submit' />
     </Form>
   );
 }

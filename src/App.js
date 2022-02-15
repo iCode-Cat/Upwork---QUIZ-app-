@@ -2,6 +2,7 @@ import Homepage from './Pages/Homepage';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPartnerTheme, updateJson } from './Redux/quizSlice';
+import { useSearchParams } from 'react-router-dom';
 
 import axios from 'axios';
 import Popup from './Components/Popup';
@@ -29,6 +30,9 @@ function App() {
   const step3 = useRef();
   const dispatch = useDispatch();
   const [eventId, setEventId] = useState();
+
+  // Route search get
+  const [searchParams] = useSearchParams();
 
   const listenParent = () => {
     // Listen to message from child window
@@ -232,9 +236,7 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(
-      fetchPartnerTheme({ partnerId: '936af988-2d21-4f79-8598-b0dbdd469bfe' })
-    );
+    dispatch(fetchPartnerTheme({ partnerId: searchParams.get('id') }));
     // dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 

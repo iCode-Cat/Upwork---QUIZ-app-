@@ -14,7 +14,7 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ..., hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
+  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
 const params = 0;
 // const data = await client.fetch(query, params)
 const initialState = {
