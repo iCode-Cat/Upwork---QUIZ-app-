@@ -32,6 +32,7 @@ export const fetchPartnerTheme = createAsyncThunk(
   '/api/sanity',
   async ({ uuid }) => {
     const sanity = await client.fetch(query, params);
+    console.log(uuid);
     return sanity.find((ctx) => ctx.uuid === uuid);
   }
 );

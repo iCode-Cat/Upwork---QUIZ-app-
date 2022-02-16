@@ -121,6 +121,7 @@ const SingleFlow = ({
   const followUpInformationTitle = useSelector(
     (state) => state.quiz.followUpInformationTitle
   );
+
   const [skipped, setSkipped] = useState(false);
   const [skippedAll, setSkippedAll] = useState(false);
   const [allSkip, setAllSkip] = useState(false);
@@ -347,7 +348,7 @@ const SingleFlow = ({
   useEffect(() => {
     initialInfoCheck();
   }, [order]);
-
+  console.log(form.step);
   return (
     <Wrapper
       ref={step1}
@@ -357,7 +358,7 @@ const SingleFlow = ({
       }`}
       id='step1'
     >
-      {step1.current !== undefined && (
+      {step1.current !== undefined && form.step > 1 && (
         <FirstLine DOM={step1} step={form.step} numberOfSteps={numberOfSteps} />
       )}
 
@@ -369,20 +370,7 @@ const SingleFlow = ({
           referance={step1}
         />
       )}
-      <Container className={style.step}>
-        {/* <strong>Step {index}</strong> */}
-        {order !== 0 && (
-          <Backward
-            onClick={decrementHandler}
-            className='fas fa-arrow-left anim-exit'
-          ></Backward>
-        )}
-        {!infoQuestion ? (
-          <p>{singleFlowTitle}</p>
-        ) : (
-          <p>{followUpInformationTitle}</p>
-        )}
-      </Container>
+
       <div className={style.input_container}>
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
@@ -397,6 +385,22 @@ const SingleFlow = ({
                 position: 'relative',
               }}
             >
+              <Container className={style.step}>
+                {/* <strong>Step {index}</strong> */}
+                {order !== 0 && (
+                  <Backward
+                    onClick={decrementHandler}
+                    className='fas fa-arrow-left anim-exit'
+                  ></Backward>
+                )}
+                {!infoQuestion ? (
+                  <p>
+                    {fields.text} {!fields.skip && '*'}
+                  </p>
+                ) : (
+                  <p>{followUpInformationTitle}</p>
+                )}
+              </Container>
               {fields?.options?.find((ctx) => ctx.callQuestion) &&
               fields.callQuestion ? (
                 <RelatedQuestions
@@ -454,7 +458,11 @@ const SingleFlow = ({
               fields.skip &&
               order === index && (
                 <span onClick={skipHandler}>
-                  <Button type='btnGray' size='btnMd' text={'Skip'} />
+                  <Button
+                    type='btnGray'
+                    size='btnMd'
+                    text={state.defaultJson.skipButton}
+                  />
                 </span>
               )
           )}
@@ -466,7 +474,11 @@ const SingleFlow = ({
                 skipAllHandler();
               }}
             >
-              <Button type='btnGray' size='btnMd' text={'Skip All'} />
+              <Button
+                type='btnGray'
+                size='btnMd'
+                text={state.defaultJson.skipAllButton}
+              />
             </span>
           )}
         </ButtonContainer>

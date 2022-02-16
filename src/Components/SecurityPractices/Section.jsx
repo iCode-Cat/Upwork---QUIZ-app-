@@ -9,9 +9,9 @@ import SectionGrade from '../SectionGrade';
 const Container = styled.div`
   display: grid;
   grid-template-columns: auto auto;
-  place-items: center;
+  /* place-items: center; */
   gap: 10rem;
-  margin-top: 6rem;
+  margin-top: 0rem;
 
   @media (max-width: 50em) {
     /* padding: 4rem 3rem; */

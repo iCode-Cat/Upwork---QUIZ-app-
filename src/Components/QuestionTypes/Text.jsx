@@ -15,10 +15,10 @@ const TextWrapper = styled.div`
 const Input = ({ errorValue, fields, formStateHandler, errorClassHandler }) => {
   return (
     <div className={style.input_box}>
-      <TextWrapper>
+      {/* <TextWrapper>
         <p className={style.input_title}>{fields.text}</p>
-        <Astral>*</Astral>
-      </TextWrapper>
+      
+      </TextWrapper> */}
 
       <input
         onChange={(e) =>

@@ -38,10 +38,10 @@ const Numeric = ({
 
   return (
     <div className={style.input_box}>
-      <TextWrapper>
+      {/* <TextWrapper>
         <p className={style.input_title}>{fields.text}</p>
-        <Astral>*</Astral>
-      </TextWrapper>
+        {!fields.skip && <Astral>*</Astral>}
+      </TextWrapper> */}
       <div className={style.relativeWrapper}>
         <input
           // style={{ textAlign: 'center' }}

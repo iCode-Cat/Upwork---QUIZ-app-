@@ -219,15 +219,12 @@ const SaveCounter = () => {
   const result = state.quiz.userState.results[0].withFormulaCompare;
   const resultCost = state.quiz.userState.results[0].withOutFormulaCompare;
   const recommendation = state.quiz.defaultJson.recommendation;
-  useMemo(() => {
-    console.log(recommendation);
-  }, []);
 
   const [leftTip, setLeftTip] = useState(false);
   const [RightTip, setRightTip] = useState(false);
   const [inlineCard, setInlineCard] = useState(false);
   const [inCardObject, setInCardObject] = useState();
-  console.log(inCardObject);
+
   return (
     <Wrapper>
       <Blank className={inlineCard ? 'anim' : 'anim1'} />
@@ -275,59 +272,61 @@ const SaveCounter = () => {
             <img src='/securityImage1.svg' alt='' />
           </CardContainer>
 
-          <Container>
-            <i
-              onMouseEnter={() => setRightTip(true)}
-              onMouseLeave={() => setRightTip(false)}
-              className='fas fa-info-circle tooltip-icon  icon-right'
-            >
-              <BarToolTip
-                className='right-tool'
-                isVisible={RightTip}
-                data={{
-                  title: 'TITLE',
-                  content:
-                    '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, accusamus autem eius laudantium sint sequi! Quo fuga molestias temporibus! Corporis expedita qui, id sint temporibus cumque ex quas magni impedit!',
+          {state.quiz.defaultJson.recommendation.isBarActive && (
+            <Container>
+              <i
+                onMouseEnter={() => setRightTip(true)}
+                onMouseLeave={() => setRightTip(false)}
+                className='fas fa-info-circle tooltip-icon  icon-right'
+              >
+                <BarToolTip
+                  className='right-tool'
+                  isVisible={RightTip}
+                  data={{
+                    title: 'TITLE',
+                    content:
+                      '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, accusamus autem eius laudantium sint sequi! Quo fuga molestias temporibus! Corporis expedita qui, id sint temporibus cumque ex quas magni impedit!',
+                  }}
+                />
+              </i>
+
+              <i
+                onMouseEnter={() => setLeftTip(true)}
+                onMouseLeave={() => setLeftTip(false)}
+                className='tooltip-icon icon-left'
+                class='fas fa-info-circle icon-left'
+              >
+                <BarToolTip
+                  className='left-tool'
+                  isVisible={leftTip}
+                  data={{
+                    title: 'TITLE',
+                    content:
+                      '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, accusamus autem eius laudantium sint sequi! Quo fuga molestias temporibus! Corporis expedita qui, id sint temporibus cumque ex quas magni impedit!',
+                  }}
+                />
+              </i>
+
+              <RightCounter
+                dangerouslySetInnerHTML={{
+                  __html: recommendation.barLeft.replace(
+                    '{percentage}',
+                    `<span id="costs-percetage">${relDiff(
+                      resultCost,
+                      result
+                    )}%</span>`
+                  ),
                 }}
               />
-            </i>
 
-            <i
-              onMouseEnter={() => setLeftTip(true)}
-              onMouseLeave={() => setLeftTip(false)}
-              className='tooltip-icon icon-left'
-              class='fas fa-info-circle icon-left'
-            >
-              <BarToolTip
-                className='left-tool'
-                isVisible={leftTip}
-                data={{
-                  title: 'TITLE',
-                  content:
-                    '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, accusamus autem eius laudantium sint sequi! Quo fuga molestias temporibus! Corporis expedita qui, id sint temporibus cumque ex quas magni impedit!',
-                }}
-              />
-            </i>
-
-            <RightCounter
-              dangerouslySetInnerHTML={{
-                __html: recommendation.barLeft.replace(
-                  '{percentage}',
-                  `<span id="costs-percetage">${relDiff(
-                    resultCost,
-                    result
-                  )}%</span>`
-                ),
-              }}
-            />
-
-            <LeftCounter>
-              {recommendation?.barRight?.replace(
-                '{savings}',
-                '$' + numeral(result).format('0.0a')
-              )}
-            </LeftCounter>
-          </Container>
+              <LeftCounter>
+                {recommendation?.barRight?.replace(
+                  '{savings}',
+                  '$' + numeral(result).format('0.0a')
+                )}
+              </LeftCounter>
+            </Container>
+          )}
         </div>
       )}
     </Wrapper>

@@ -13,6 +13,8 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: grid;
   gap: 2.1rem;
+  align-self: flex-start;
+
   @media (max-width: 50em) {
     gap: 0.8rem;
   }

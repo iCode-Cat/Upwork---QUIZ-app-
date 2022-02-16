@@ -38,7 +38,7 @@ export default function App({ dispatch, setPopup, inputs, submitButton }) {
       {inputs.map((x) => (
         <input
           {...register(x.name, { required: x.required })}
-          placeholder={x.placeholder}
+          placeholder={x.placeholder + x.required && '*'}
           defaultValue={state?.[x.defaultState]}
         />
       ))}

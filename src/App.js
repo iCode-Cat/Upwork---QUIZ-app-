@@ -236,7 +236,11 @@ function App() {
 
   // After receive message from parent ( Wrapper ) set JSON
   useEffect(() => {
-    dispatch(fetchPartnerTheme({ partnerId: searchParams.get('id') }));
+    dispatch(
+      fetchPartnerTheme({
+        uuid: searchParams.get('id') || '5003aa3b-e41c-4624-99c9-583f21b4ee96',
+      })
+    );
     // dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 
