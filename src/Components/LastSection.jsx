@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import Control from './Forms/Control';
 import Button from './Button';
 import { useState } from 'react';
+import Card from './Forms/Card';
 
 const Wrapper = styled.div`
   display: grid;
   place-items: center;
-  padding: 0 0 4rem 0;
+  padding: 0 0 15rem 0;
   position: relative;
 `;
 const Title = styled.p`
@@ -39,18 +40,28 @@ const ButtonContainer = styled.div`
 
 const LastSection = () => {
   const state = useSelector((state) => state);
-  const [flow, setFlow] = useState('');
-  const [connectionObject, setConnectionObject] = useState();
-
   const connection = state.quiz.defaultJson.connection;
 
+  const [flow, setFlow] = useState(0);
+  const [connectionObject, setConnectionObject] = useState(connection[0]);
   console.log(connection);
-
+  // Form Area
   return (
     <Wrapper>
       <ButtonContainer>
         {connection?.map((x, i) => (
-          <Button
+          <Card
+            layout={connection.layout}
+            {...x}
+            onClick={() => {
+              setFlow(i);
+              setConnectionObject(x);
+            }}
+            onToggle={flow === i}
+          />
+        ))}
+      </ButtonContainer>
+      {/* <Button
             onClick={() => {
               setFlow(i);
               setConnectionObject(x);
@@ -59,10 +70,7 @@ const LastSection = () => {
             color={x.buttonColor}
             size='btnLg'
             style={{ opacity: flow === i ? 1 : 0.5 }}
-          />
-        ))}
-      </ButtonContainer>
-
+          /> */}
       <Control
         connectionObject={connectionObject}
         title='Try Cognni for Free'

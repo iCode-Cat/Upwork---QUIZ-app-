@@ -1,9 +1,9 @@
-import Form from './Form';
+import FormH from './FormH';
 import styled from 'styled-components';
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
 import { setPopup } from '../../Redux/quizSlice';
-import toMarkdown from '@sanity/block-content-to-markdown';
+const BlockContent = require('@sanity/block-content-to-react');
 
 const Wrapper = styled.div`
   display: grid;
@@ -14,42 +14,62 @@ const Wrapper = styled.div`
   max-width: 1120px;
   background: #fff;
   margin-top: 5rem;
+
   .connect-btn {
     grid-column: 1/3;
     justify-self: center;
+    border-radius: 0px;
+    font-size: 1.8rem;
+    height: 55px;
   }
 `;
 
 const Title = styled.p`
-  padding: 2rem;
-  font-size: 3rem;
-  border-bottom: 1px solid #000;
+  padding: ${(props) =>
+    props.layout === 'hr' ? '2rem 0rem 0rem 0rem' : '2rem'};
+  font-size: 4.4rem;
+  border-bottom: ${(props) =>
+    props.layout === 'hr' ? 'unset' : '1px solid #0000003e'};
   grid-column: 1/3;
+  color: #212121;
+  text-align: ${(props) => (props.layout === 'hr' ? 'center' : 'unset')};
 `;
 
 const Content = styled.div`
   padding: 0 2rem;
+  font-size: 1.8rem;
+  color: #212121;
+  grid-column: ${(props) => (props.layout === 'hr' ? '1/3' : 'unset')};
+  text-align: ${(props) => (props.layout === 'hr' ? 'center' : 'unset')};
 `;
 
 const serializers = {
   types: {
-    code: (props) =>
-      '```' + props.node.language + '\n' + props.node.code + '\n```',
+    code: (props) => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    ),
   },
 };
 
-const Control = ({ title, form, connectionObject }) => {
+const Control = ({ title, form, connectionObject, layout = 'hr' }) => {
   const dispatch = useDispatch();
-  console.log(connectionObject);
+
   if (!connectionObject) return '';
   return (
     <Wrapper className='anim-fadeIn'>
-      <Title>{connectionObject?.title}</Title>
-      <Content>
-        <p>{toMarkdown(connectionObject?.content, { serializers })}</p>
+      <Title layout={layout}>{connectionObject?.title}</Title>
+      <Content layout={layout}>
+        <BlockContent
+          className='block-content'
+          blocks={connectionObject?.content}
+          serializers={serializers}
+        />
       </Content>
       {connectionObject.inputs && (
-        <Form
+        <FormH
+          layout={layout}
           submitButton={connectionObject.submitButton}
           inputs={connectionObject.inputs}
           dispatch={dispatch}

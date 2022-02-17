@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Form = styled.form`
   display: grid;
-  gap: 1.5rem;
+  gap: 3rem;
   background: #fff;
   padding: 1rem;
   margin: 0 2rem;
@@ -13,11 +13,17 @@ const Form = styled.form`
   input {
     border: 1px solid #000;
     padding: 0.6rem 1rem;
+    height: 47px;
+    ::placeholder {
+      opacity: 1;
+      color: #000;
+    }
   }
   #submit {
     background: #2196f3;
     color: #fff;
     border: none;
+    height: 55px;
   }
 `;
 
@@ -38,7 +44,7 @@ export default function App({ dispatch, setPopup, inputs, submitButton }) {
       {inputs.map((x) => (
         <input
           {...register(x.name, { required: x.required })}
-          placeholder={x.placeholder + x.required && '*'}
+          placeholder={`${x.placeholder} ${x.required && '*'}`}
           defaultValue={state?.[x.defaultState]}
         />
       ))}

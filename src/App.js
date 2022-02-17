@@ -1,7 +1,7 @@
 import Homepage from './Pages/Homepage';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPartnerTheme, updateJson } from './Redux/quizSlice';
+import { fetchPartnerTheme, fetchCards, updateJson } from './Redux/quizSlice';
 import { useSearchParams } from 'react-router-dom';
 
 import axios from 'axios';
@@ -241,6 +241,7 @@ function App() {
         uuid: searchParams.get('id') || '5003aa3b-e41c-4624-99c9-583f21b4ee96',
       })
     );
+    dispatch(fetchCards());
     // dispatch(updateJson('singleFlow'));
   }, [parentMsg]);
 

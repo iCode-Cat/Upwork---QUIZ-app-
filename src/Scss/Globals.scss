@@ -91,6 +91,13 @@ button {
   border: 1px rgba(255, 0, 0, 0.452) solid;
 }
 
+.block-content {
+  ul {
+    display: grid;
+    justify-items: flex-start;
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

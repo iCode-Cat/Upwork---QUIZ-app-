@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from '../../Scss/Steps.module.scss';
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
-import { setQuestionOrder } from '../../Redux/quizSlice';
+import { pushTags, setQuestionOrder } from '../../Redux/quizSlice';
 import { temp } from '../../Redux/dynamicSlice';
 
 const Options = ({
@@ -37,15 +37,15 @@ const Options = ({
                 field: fields.stateName,
                 value: btn.text,
               });
-
+              dispatch(pushTags(btn.conditionList.map((x) => x.name)));
               // Deploy temp data of dynamic sections
-              dispatch(
-                temp([
-                  btn.callRecommendation,
-                  btn.callWorryAbout,
-                  btn.callShouldDo,
-                ])
-              );
+              // dispatch(
+              //   temp([
+              //     btn.callRecommendation,
+              //     btn.callWorryAbout,
+              //     btn.callShouldDo,
+              //   ])
+              // );
             }}
           >
             <Button

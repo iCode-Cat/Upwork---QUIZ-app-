@@ -61,15 +61,13 @@ const TabWrapper = styled.div`
 const Recommendation = ({ show }) => {
   const [tabindex, setTab] = useState(0);
 
-  const recommendation = useSelector(
-    (state) => state.quiz.defaultJson?.recommendation
-  );
+  const state = useSelector((state) => state.quiz);
 
   const dynamic = useSelector((state) => state.dynamic);
 
-  const isActive = recommendation?.active;
+  // const isActive = recommendation?.active;
 
-  if (!isActive) return '';
+  // if (!isActive) return '';
 
   return !show ? (
     // <ShowButton showButton={recommendation?.showButton} setShow={setShow} />
@@ -98,9 +96,11 @@ const Recommendation = ({ show }) => {
         <SaveCounter />
       </CardContainer> */}
       <CardContainer>
-        {dynamic.recommendation.map((items, index) => (
-          <Card key={index} {...items} />
-        ))}
+        {state.cards
+          .filter((x) => state.tags.find((y) => y.name === 'a'))
+          .map((items, index) => (
+            <Card key={index} {...items} />
+          ))}
       </CardContainer>
       <SaveCounter />
     </Wrapper>

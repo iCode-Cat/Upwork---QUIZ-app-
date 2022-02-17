@@ -81,6 +81,8 @@ const Card = ({
   icon,
   href,
   tags,
+  description,
+  image,
 }) => {
   return (
     <Wrapper>
@@ -90,7 +92,7 @@ const Card = ({
       </Grid> */}
       <Grid>
         <IconWrapper color={iconBgColor}>
-          <Icon src={icon} alt='icon' />
+          <Icon src={image.asset.url} alt='icon' />
         </IconWrapper>
         <div>
           <Title target='_blank' href={href}>

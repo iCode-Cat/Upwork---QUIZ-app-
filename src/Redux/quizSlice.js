@@ -14,8 +14,11 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
+  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
 const params = 0;
+
+const card =
+  '*[_type == "card"] {...,conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{...,asset->{...}}                       }';
 // const data = await client.fetch(query, params)
 const initialState = {
   defaultJson: null,
@@ -26,6 +29,8 @@ const initialState = {
   initialInformation: {},
   followUpInformationTitle: '',
   popup: false,
+  cards: [],
+  tags: [],
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
@@ -36,6 +41,11 @@ export const fetchPartnerTheme = createAsyncThunk(
     return sanity.find((ctx) => ctx.uuid === uuid);
   }
 );
+
+export const fetchCards = createAsyncThunk('/api/sanity/cards', async () => {
+  const sanity = await client.fetch(card, params);
+  return sanity;
+});
 
 export const quizSlice = createSlice({
   name: 'counter',
@@ -91,6 +101,9 @@ export const quizSlice = createSlice({
     updateInformation: (state, action) => {
       state.initialInformation = action.payload;
     },
+    pushTags: (state, action) => {
+      state.tags = [...state.tags, action.payload];
+    },
     pingFollowUpQuestion: (state, action) => {
       state.followUpInformationTitle = action.payload;
     },
@@ -99,7 +112,12 @@ export const quizSlice = createSlice({
     builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
       state.defaultJson = action.payload;
     });
-    builder.addCase(fetchPartnerTheme.rejected, (state, action) => {});
+    builder.addCase(fetchCards.fulfilled, (state, action) => {
+      state.cards = action.payload;
+    });
+    builder.addCase(fetchCards.rejected, (state, action) => {
+      console.log(action);
+    });
   },
 });
 
@@ -114,6 +132,7 @@ export const {
   updateInformation,
   pingFollowUpQuestion,
   setPopup,
+  pushTags,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;
