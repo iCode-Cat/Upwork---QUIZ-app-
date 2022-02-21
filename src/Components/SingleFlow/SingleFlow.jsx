@@ -25,7 +25,7 @@ const Backward = styled.i`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 0fr auto;
 `;
 
 const Wrapper = styled.form`
@@ -348,7 +348,6 @@ const SingleFlow = ({
   useEffect(() => {
     initialInfoCheck();
   }, [order]);
-  console.log(form.step);
   return (
     <Wrapper
       ref={step1}
@@ -380,8 +379,6 @@ const SingleFlow = ({
               }`}
               style={{
                 display: `${order === index ? 'block' : 'none'}`,
-                pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
-                opacity: `${counter !== index ? '0.7' : '1'}`,
                 position: 'relative',
               }}
             >
@@ -395,38 +392,46 @@ const SingleFlow = ({
                 )}
                 {!infoQuestion ? (
                   <p>
-                    {fields.text} {!fields.skip && '*'}
+                    {fields.text?.replace('{companyName}', form?.companyName)}{' '}
+                    {!fields.skip && '*'}
                   </p>
                 ) : (
                   <p>{followUpInformationTitle}</p>
                 )}
               </Container>
-              {fields?.options?.find((ctx) => ctx.callQuestion) &&
-              fields.callQuestion ? (
-                <RelatedQuestions
-                  setRelatedsAnswered={setRelatedsAnswered}
-                  fields={fields}
-                  relatedQuestions={steps[0].relatedQuestions}
-                  index={index}
-                  setError={setError}
-                  errorClassHandler={errorClassHandler}
-                  formStateHandler={formStateHandler}
-                  setForm={setForm}
-                  form={form}
-                  buttonClicked={buttonClicked}
-                  order={order}
-                />
-              ) : (
-                QuesionTypeHandler(
-                  fields,
-                  index,
-                  errorValue,
-                  formStateHandler,
-                  errorClassHandler,
-                  setError,
-                  index
-                )
-              )}
+              <div
+                style={{
+                  pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
+                  opacity: `${counter !== index ? '0.7' : '1'}`,
+                }}
+              >
+                {fields?.options?.find((ctx) => ctx.callQuestion) &&
+                fields.callQuestion ? (
+                  <RelatedQuestions
+                    setRelatedsAnswered={setRelatedsAnswered}
+                    fields={fields}
+                    relatedQuestions={steps[0].relatedQuestions}
+                    index={index}
+                    setError={setError}
+                    errorClassHandler={errorClassHandler}
+                    formStateHandler={formStateHandler}
+                    setForm={setForm}
+                    form={form}
+                    buttonClicked={buttonClicked}
+                    order={order}
+                  />
+                ) : (
+                  QuesionTypeHandler(
+                    fields,
+                    index,
+                    errorValue,
+                    formStateHandler,
+                    errorClassHandler,
+                    setError,
+                    index
+                  )
+                )}
+              </div>
 
               {errorValue && (
                 <ErrorMessage errorValue={errorValue} checked={checked} />

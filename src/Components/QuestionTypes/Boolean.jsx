@@ -20,7 +20,7 @@ const Options = ({
 
   return (
     <div className={style.input_box}>
-      <p className={style.input_title}>{fields.text}</p>
+      {/* <p className={style.input_title}>{fields.text}</p> */}
       <div className={style.boolean_layout}>
         {fields.options.map((btn, i) => (
           <span

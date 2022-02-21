@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import style from '../../Scss/Steps.module.scss';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { pushTags } from '../../Redux/quizSlice';
 
 const Astral = styled.p`
   color: var(--red);
@@ -17,9 +19,10 @@ const Numeric = ({
   errorClassHandler,
 }) => {
   const input = useRef();
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(fields.placeholder);
+  const userState = useSelector((state) => state.quiz.userState);
   const step = 1;
-
   const increment = () => {
     setInputValue(inputValue + step);
   };
@@ -35,6 +38,21 @@ const Numeric = ({
       value: Number(inputValue),
     });
   }, [inputValue]);
+
+  // Update the tag
+  useEffect(() => {
+    if (userState.step === 1) return;
+    const amount = userState[fields.stateName];
+    // Do smth to update user tag by employee amount
+    // Get condition
+    fields?.numericCondition?.forEach((x) => {
+      if (amount >= x.minAmount && amount <= x.maxAmount) {
+        const tags = x.conditionedTag.map((x) => x.name);
+        dispatch(pushTags(tags));
+      }
+    });
+    console.log();
+  }, [userState.step]);
 
   return (
     <div className={style.input_box}>

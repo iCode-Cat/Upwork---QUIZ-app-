@@ -5,6 +5,17 @@ import Logo from './Logo';
 import Title from './Title';
 import Wrapper from './Wrapper';
 import SectionGrade from '../SectionGrade';
+const BlockContent = require('@sanity/block-content-to-react');
+
+const serializers = {
+  types: {
+    code: (props) => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    ),
+  },
+};
 
 const Container = styled.div`
   display: grid;
@@ -91,8 +102,10 @@ const Section = ({
           <Container>
             <InCardContainer>
               <ListTitle> {inCardData.mainCardTitle} </ListTitle>
-              <ListContent
-                dangerouslySetInnerHTML={{ __html: inCardData.mainCardContent }}
+              <BlockContent
+                className='block-content'
+                blocks={inCardData.mainCardContent}
+                serializers={serializers}
               />
             </InCardContainer>
             <Logo logoAlign={'right'} src={inCardData.inCardLogo} />

@@ -14,11 +14,11 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
+  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,numericCondition[]{...,conditionedTag[]->},options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
 const params = 0;
 
 const card =
-  '*[_type == "card"] {...,conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{...,asset->{...}}                       }';
+  '*[_type == "card"] {...,inlineCard{...,inCardLogo{asset->}},conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{...,asset->{...}}}';
 // const data = await client.fetch(query, params)
 const initialState = {
   defaultJson: null,
@@ -102,7 +102,7 @@ export const quizSlice = createSlice({
       state.initialInformation = action.payload;
     },
     pushTags: (state, action) => {
-      state.tags = [...state.tags, action.payload];
+      state.tags = [...state.tags, ...action.payload];
     },
     pingFollowUpQuestion: (state, action) => {
       state.followUpInformationTitle = action.payload;

@@ -44,7 +44,7 @@ const LastSection = () => {
 
   const [flow, setFlow] = useState(0);
   const [connectionObject, setConnectionObject] = useState(connection[0]);
-  console.log(connection);
+
   // Form Area
   return (
     <Wrapper>

@@ -4,6 +4,7 @@ import Header from './Header';
 import Section from './Section';
 import shortline from '../../Images/shortline.svg';
 import { useSelector } from 'react-redux';
+import CardCondition from '../../Hooks/useConditionedCards';
 
 const Wrapper = styled.div`
   display: grid;
@@ -30,10 +31,11 @@ const SecurityPractices = () => {
   const data = useSelector(
     (state) => state.quiz.defaultJson.informationPractices
   );
-
   const list = useSelector((state) => state);
   const title = list.quiz.defaultJson.informationPractices.title;
   const subTitle = list.quiz.defaultJson.informationPractices.subtitle;
+  const cards = CardCondition({ type: 'worryAbout' });
+  console.log(cards);
 
   if (!data.active) return '';
 
@@ -44,7 +46,7 @@ const SecurityPractices = () => {
         companyName={list.quiz.userState?.companyName}
         subTitle={subTitle}
       />
-      <Section {...data.section1} data={list.dynamic.worryAbout} />
+      <Section {...data.section1} data={cards} />
       <Svg src={shortline} />
       <Section
         logoAlign={'right'}

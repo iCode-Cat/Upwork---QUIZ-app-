@@ -1,5 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+const BlockContent = require('@sanity/block-content-to-react');
+
+const serializers = {
+  types: {
+    code: (props) => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    ),
+  },
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -46,17 +57,23 @@ const List = ({ data, setInCard, setInCardData }) => {
       {data.map((item, index) => (
         <Container key={index}>
           <ListTitle> {item.title} </ListTitle>
-          <ListContent> {item.content} </ListContent>
-          {item.linkTitle && item.inCard && (
+
+          <BlockContent
+            className='block-content'
+            blocks={item.details}
+            serializers={serializers}
+          />
+
+          {item.linkTitle && item.inlineCard && (
             <Link
               onClick={() => {
                 setInCard(true);
                 setInCardData({
-                  inCardTitle: item.inCardTitle,
-                  inCardSubtitle: item.inCardSubtitle,
-                  mainCardTitle: item.mainCardTitle,
-                  mainCardContent: item.mainCardContent,
-                  inCardLogo: item.inCardLogo,
+                  inCardTitle: item.inlineCard.inCardTitle,
+                  inCardSubtitle: item.inlineCard.inCardSubtitle,
+                  mainCardTitle: item.inlineCard.mainCardTitle,
+                  mainCardContent: item.inlineCard.mainCardContent,
+                  inCardLogo: item.inlineCard.inCardLogo.asset.url,
                 });
               }}
             >

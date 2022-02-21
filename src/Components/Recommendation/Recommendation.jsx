@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import Card from './Card';
@@ -6,6 +6,7 @@ import Tab from './Tab';
 import ShowButton from './ShowButton';
 import Pin from '../Pin';
 import SaveCounter from './SaveCounter';
+import CardCondition from '../../Hooks/useConditionedCards';
 
 const Wrapper = styled.div`
   display: grid;
@@ -60,10 +61,10 @@ const TabWrapper = styled.div`
 
 const Recommendation = ({ show }) => {
   const [tabindex, setTab] = useState(0);
-
   const state = useSelector((state) => state.quiz);
-
   const dynamic = useSelector((state) => state.dynamic);
+
+  const cards = CardCondition({ type: 'recommendations' });
 
   // const isActive = recommendation?.active;
 
@@ -96,11 +97,9 @@ const Recommendation = ({ show }) => {
         <SaveCounter />
       </CardContainer> */}
       <CardContainer>
-        {state.cards
-          .filter((x) => state.tags.find((y) => y.name === 'a'))
-          .map((items, index) => (
-            <Card key={index} {...items} />
-          ))}
+        {cards?.map((items, index) => (
+          <Card key={index} {...items} />
+        ))}
       </CardContainer>
       <SaveCounter />
     </Wrapper>

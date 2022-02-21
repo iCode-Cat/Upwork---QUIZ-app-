@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+const BlockContent = require('@sanity/block-content-to-react');
 
 const Wrapper = styled.div`
   display: flex;
@@ -72,11 +73,22 @@ const Tag = styled.p`
   color: #fff;
 `;
 
+const serializers = {
+  types: {
+    code: (props) => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    ),
+  },
+};
+
 const Card = ({
   readTime,
   frequency,
   title,
   content,
+  details,
   iconBgColor,
   icon,
   href,
@@ -98,7 +110,11 @@ const Card = ({
           <Title target='_blank' href={href}>
             {title}
           </Title>
-          <Content>{content}</Content>
+          <BlockContent
+            className='block-content'
+            blocks={details}
+            serializers={serializers}
+          />
         </div>
       </Grid>
       <TagContainer>
