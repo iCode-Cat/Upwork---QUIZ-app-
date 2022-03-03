@@ -215,12 +215,12 @@ function App() {
       const fullSize = app.current.scrollHeight;
       //  const steps = [null, step1, step2, step3, results];
 
-      sendMessageParent({
-        message: {
-          step: stepCount,
-          scrollSize: fullSize - stepHeightHandler(stepCount),
-        },
-      });
+      // sendMessageParent({
+      //   message: {
+      //     step: stepCount,
+      //     scrollSize: fullSize - stepHeightHandler(stepCount),
+      //   },
+      // });
     }
   }, [userState.step]);
 

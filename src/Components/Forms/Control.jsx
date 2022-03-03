@@ -1,7 +1,7 @@
 import FormH from './FormH';
 import styled from 'styled-components';
 import Button from '../Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPopup } from '../../Redux/quizSlice';
 const BlockContent = require('@sanity/block-content-to-react');
 
@@ -54,8 +54,9 @@ const serializers = {
 };
 
 const Control = ({ title, form, connectionObject, layout = 'hr' }) => {
+  const uuid = useSelector((state) => state.quiz.defaultJson.uuid);
   const dispatch = useDispatch();
-
+  console.log(connectionObject);
   if (!connectionObject) return '';
   return (
     <Wrapper className='anim-fadeIn'>
@@ -74,6 +75,7 @@ const Control = ({ title, form, connectionObject, layout = 'hr' }) => {
           inputs={connectionObject.inputs}
           dispatch={dispatch}
           setPopup={setPopup}
+          connectionObject={connectionObject}
         />
       )}
       {!connectionObject.inputs && (
@@ -82,8 +84,14 @@ const Control = ({ title, form, connectionObject, layout = 'hr' }) => {
           text={connectionObject?.connect}
           size='btnLg'
           color={connectionObject?.connectColor}
-          onClick={() => dispatch(setPopup(true))}
-          link={connectionObject?.connectLink}
+          onClick={() => {
+            if (connectionObject.showCtaPopup) {
+              dispatch(setPopup(true));
+            }
+          }}
+          link={
+            connectionObject.submissionOnCta ? '/submission?id=' + uuid : false
+          }
         />
       )}
     </Wrapper>

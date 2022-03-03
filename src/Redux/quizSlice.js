@@ -11,15 +11,17 @@ const client = sanityClient({
   apiVersion: '2021-12-08', // use current UTC date - see "specifying API version"!
   token:
     'skhwJrSNZ4vGqOKX544hAr1EjTrZqsbjqmuUMpRPp5DooWuPsMZNAxJmdJncW7yDQeKJkUWplcuJbxQWgbgdd1ik6miVFIV7sUCq88QGrSp6BL6RFU3rSOSkqFXbbRkul4tgPgKPf9D4O2NqCWuTwTmwcRCbWqjL4MzraJoJBnqew1YaWrPJ', // or leave blank for unauthenticated usage
-  useCdn: false, // `false` if you want to ensure fresh data
+  useCdn: true, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,numericCondition[]{...,conditionedTag[]->},options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...}} }';
+  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,numericCondition[]{...,conditionedTag[]->},options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...,tagFound[]->{...}}} }';
 const params = 0;
 
 const card =
-  '*[_type == "card"] {...,inlineCard{...,inCardLogo{asset->}},conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{...,asset->{...}}}';
+  '*[_type == "card"] {...,detailPopup->{..., content[]{..., content[]{...,asset->{...}}}},inlineCard{...,inCardLogo{asset->}},conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{asset->{...}}}';
 // const data = await client.fetch(query, params)
+const submission =
+  '*[_type == "submission"] {..., card[]{..., image{...,asset->}} ,image{..., asset->}}';
 const initialState = {
   defaultJson: null,
   userState: false,
@@ -31,13 +33,23 @@ const initialState = {
   popup: false,
   cards: [],
   tags: [],
+  submissions: [],
+  recommendationPopup: [],
+  recommendationPopupActive: false,
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
   '/api/sanity',
   async ({ uuid }) => {
     const sanity = await client.fetch(query, params);
-    console.log(uuid);
+    return sanity.find((ctx) => ctx.uuid === uuid);
+  }
+);
+
+export const fetchSubmissions = createAsyncThunk(
+  '/api/sanity/submissions',
+  async ({ uuid }) => {
+    const sanity = await client.fetch(submission, params);
     return sanity.find((ctx) => ctx.uuid === uuid);
   }
 );
@@ -107,6 +119,12 @@ export const quizSlice = createSlice({
     pingFollowUpQuestion: (state, action) => {
       state.followUpInformationTitle = action.payload;
     },
+    setRecPopup: (state, action) => {
+      state.recommendationPopup = action.payload;
+    },
+    setRecPopupActive: (state, action) => {
+      state.recommendationPopupActive = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPartnerTheme.fulfilled, (state, action) => {
@@ -115,8 +133,9 @@ export const quizSlice = createSlice({
     builder.addCase(fetchCards.fulfilled, (state, action) => {
       state.cards = action.payload;
     });
-    builder.addCase(fetchCards.rejected, (state, action) => {
-      console.log(action);
+    builder.addCase(fetchCards.rejected, (state, action) => {});
+    builder.addCase(fetchSubmissions.fulfilled, (state, action) => {
+      state.submissions = action.payload;
     });
   },
 });
@@ -133,6 +152,8 @@ export const {
   pingFollowUpQuestion,
   setPopup,
   pushTags,
+  setRecPopup,
+  setRecPopupActive,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

@@ -5,13 +5,17 @@ import './Scss/Globals.scss';
 import reportWebVitals from './reportWebVitals';
 import { store } from './Redux/store';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Submission from './Pages/Submission';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <Routes>
+          <Route path='/submission' element={<Submission />} />
+          <Route path='/' element={<App />} />
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

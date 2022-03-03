@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { setRecPopup, setRecPopupActive } from '../../Redux/quizSlice';
 const BlockContent = require('@sanity/block-content-to-react');
 
 const Wrapper = styled.div`
@@ -45,7 +47,7 @@ const Icon = styled.img`
   width: 100%;
   max-width: 20px;
 `;
-const Title = styled.a`
+const Title = styled.p`
   cursor: pointer;
   color: var(--main);
   font-weight: 700;
@@ -95,7 +97,10 @@ const Card = ({
   tags,
   description,
   image,
+  detailPopup,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <Wrapper>
       {/* <Grid>
@@ -107,7 +112,12 @@ const Card = ({
           <Icon src={image.asset.url} alt='icon' />
         </IconWrapper>
         <div>
-          <Title target='_blank' href={href}>
+          <Title
+            onClick={() => {
+              dispatch(setRecPopup(detailPopup));
+              dispatch(setRecPopupActive(true));
+            }}
+          >
             {title}
           </Title>
           <BlockContent

@@ -7,7 +7,7 @@ import { updateInformation } from '../Redux/quizSlice';
 const Wrapper = styled.div`
   padding: 2rem 0;
   /* align-self: center; */
-  margin: 4rem 0 2rem 8rem;
+  margin: 4rem 0 2rem 0rem;
   border-radius: 8px;
 `;
 const Title = styled.p``;

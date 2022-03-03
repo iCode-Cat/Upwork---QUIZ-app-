@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import style from '../Scss/Hero.module.scss';
 import Button from './Button';
 import HeroQuestion from './HeroQuestion';
+import SingleFlow from './SingleFlow/SingleFlow';
 
 const Error = styled.p``;
 
@@ -14,6 +15,11 @@ const Hero = ({
   hero,
   scrollToView,
   step1,
+  errorClassHandler,
+  state,
+  step2,
+  setForm,
+  results,
 }) => {
   const [heroState, setHeroState] = useState({});
   const [checked, setChecked] = useState(true);
@@ -55,12 +61,18 @@ const Hero = ({
             dangerouslySetInnerHTML={{ __html: subTitle }}
             className={style.description}
           />
-          {initialQuestion ? (
-            <HeroQuestion
-              checked={checked}
-              setChecked={setChecked}
-              question={heroQuestion}
-              igniteForm={igniteForm}
+          {!initialQuestion ? (
+            <SingleFlow
+              errorClassHandler={errorClassHandler}
+              step2={step2}
+              scrollToView={scrollToView}
+              step1={step1}
+              defaultJson={defaultJson}
+              state={state}
+              formStateHandler={formStateHandler}
+              form={form}
+              setForm={setForm}
+              results={results}
             />
           ) : (
             button && (

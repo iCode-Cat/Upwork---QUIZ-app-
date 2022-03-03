@@ -27,6 +27,7 @@ import shortline from '../Images/shortline.svg';
 import Chart from '../Components/Chart';
 import Control from '../Components/Forms/Control';
 import Popup from '../Components/Popup';
+import RecommendationPopup from '../Components/RecommendationPopup';
 
 const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   // Main state
@@ -35,10 +36,11 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
   const dispatch = useDispatch();
   const defaultJson = state.defaultJson;
   const { singleFLow } = defaultJson;
+  const recPopup = state.recommendationPopupActive;
 
   // State that saves user answers
   const [form, setForm] = useState({
-    step: '',
+    step: 1,
   });
   const [isEnd, setIsEnd] = useState(true);
 
@@ -84,22 +86,17 @@ const Homepage = ({ app, hero, results, step1, step2, step3 }) => {
           defaultJson={defaultJson}
           form={form}
           formStateHandler={formStateHandler}
+          errorClassHandler={errorClassHandler}
+          state={state}
+          step2={step2}
+          setForm={setForm}
+          results={results}
         />
+        {recPopup && <RecommendationPopup />}
         {isEnd && (
           <>
-            {singleFLow && form.step >= 1 ? (
-              <SingleFlow
-                errorClassHandler={errorClassHandler}
-                step2={step2}
-                scrollToView={scrollToView}
-                step1={step1}
-                defaultJson={defaultJson}
-                state={state}
-                formStateHandler={formStateHandler}
-                form={form}
-                setForm={setForm}
-                results={results}
-              />
+            {!singleFLow && form.step >= 1 ? (
+              ''
             ) : (
               <section className={style.steps}>
                 {form.step >= 1 && (

@@ -277,7 +277,7 @@ const SingleFlow = ({
     form.step === index &&
       formStateHandler({
         field: 'step',
-        value: checkLastStep() ? 4 : index + 1,
+        value: !checkLastStep() ? 4 : index + 1,
       });
     setError(false);
     checkLastStep() ? scrollToView(results) : scrollToView(step2);
@@ -342,11 +342,11 @@ const SingleFlow = ({
     });
   };
   useLayoutEffect(() => {
-    initialInfoCheck();
+    // initialInfoCheck();
   });
 
   useEffect(() => {
-    initialInfoCheck();
+    // initialInfoCheck();
   }, [order]);
   return (
     <Wrapper

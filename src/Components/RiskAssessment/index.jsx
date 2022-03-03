@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import Logo from '../SecurityPractices/Logo';
 import shortline from '../../Images/shortline.svg';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Wrapper = styled.div`
   position: relative;
@@ -61,6 +64,9 @@ const Container = styled.div`
   justify-content: space-between;
   justify-items: center;
   align-items: center;
+  canvas {
+    pointer-events: 'none';
+  }
 `;
 
 const Text = styled.p`
@@ -152,14 +158,76 @@ const ListContent = styled.p`
   }
 `;
 
+const ChartContainer = styled.div`
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  canvas {
+    pointer-events: none;
+  }
+  .chart-container {
+    position: absolute;
+  }
+  .chart-score {
+    font-size: 3.6rem;
+    font-weight: 600;
+    color: var(--main);
+  }
+  .chart-label {
+    color: var(--main);
+  }
+`;
+
 const InCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
 `;
 
+const options = {
+  plugins: {
+    tooltip: {
+      enabled: false,
+    },
+    hover: { mode: null },
+    events: [],
+  },
+};
+
 const Index = () => {
   const state = useSelector((state) => state.quiz.defaultJson.riskAssesment);
+  const tags = useSelector((state) => state.quiz.tags);
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    const conditioned = state.labels.map((label) => {
+      const conditionedTags = label.tagFound;
+      if (conditionedTags.every((tag) => tags.includes(tag.name))) {
+        return (50 * label.change) / 100;
+      }
+      return label.defaultValue;
+    });
+    setScores(conditioned);
+  }, []);
+  console.log(scores);
+  // .reduce((a, b) => a + b, 0) / 100
+
+  const data = {
+    datasets: [
+      {
+        data: scores,
+        backgroundColor: state.labels?.map((x) => x.color),
+        borderWidth: 10,
+        borderRadius: '1000',
+        cutout: 112,
+        rotation: -90,
+        radius: '100%',
+        showTooltips: false,
+      },
+    ],
+  };
+
   const [inlineCard, setInlineCard] = useState(false);
   const [inCardObject, setInCardObject] = useState();
   if (!state.active) return '';
@@ -191,9 +259,16 @@ const Index = () => {
             <Text>{state.title}</Text>
             <SubTitle>{state.subtitle}</SubTitle>
             <Container>
-              <div>
-                <img src='/riskAsessmentChart.svg' alt='' />
-              </div>
+              <ChartContainer>
+                <div className='chart-container'>
+                  <p className='chart-score'>
+                    {scores.reduce((a, b) => a + b, 0).toFixed(1)}
+                  </p>
+                  <p className='chart-label'>Risk Score</p>
+                </div>
+                <Doughnut data={data} options={options} />
+                {/* /* <img src='/riskAsessmentChart.svg' alt='' /> */}
+              </ChartContainer>
               <LabelWrapper>
                 {state.labels?.map((x) => (
                   <LabelContainer key={x._id}>

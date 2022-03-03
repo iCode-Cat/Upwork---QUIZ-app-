@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Form = styled.form`
   display: grid;
@@ -52,6 +53,7 @@ export default function App({
   inputs,
   submitButton,
   layout,
+  connectionObject,
 }) {
   const {
     register,
@@ -61,7 +63,16 @@ export default function App({
   } = useForm();
 
   const state = useSelector((state) => state.quiz.userState);
-  const onSubmit = (data) => dispatch(setPopup(true));
+  const uuid = useSelector((state) => state.quiz.defaultJson.uuid);
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    if (connectionObject.showCtaPopup) {
+      dispatch(setPopup(true));
+    }
+    if (connectionObject.submissionOnCta) {
+      window.location.href = '/submission?id=' + uuid;
+    }
+  };
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */

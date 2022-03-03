@@ -41,7 +41,11 @@ const Chart = ({ tab }) => {
     ],
   };
 
-  return <Doughnut data={data} options={options} />;
+  return (
+    <div>
+      <Doughnut data={data} options={options} />
+    </div>
+  );
 };
 
 export default Chart;
