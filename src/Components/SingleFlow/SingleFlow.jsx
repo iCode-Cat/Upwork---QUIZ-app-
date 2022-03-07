@@ -300,20 +300,17 @@ const SingleFlow = ({
     // Check current questions' state
     // Detect unanswered ones
     // If all unswered skipable add skip all button
-    console.log(questionsState);
     questionsState.forEach((field, index) => {
-      console.log(field.skip);
       if (form[field.stateName].length === 0) {
         skipArray.push(field.skip);
       }
     });
     // Prevent to show skip all button on last question
-    // if (
-    //   order === questionsState.length - 1 ||
-    //   order === questionsState.length - 2
-    // )
-    // return false;
-    console.log(skipArray);
+    if (
+      order === questionsState.length - 1 ||
+      order === questionsState.length - 2
+    )
+      return false;
 
     return !skipArray?.some((skip) => !skip);
   };
@@ -512,7 +509,11 @@ const SingleFlow = ({
             <span
               onClick={(e) => {
                 errorHandler(e);
-                skipAllHandler();
+                // skipAllHandler();
+                formStateHandler({
+                  field: 'step',
+                  value: 4,
+                });
               }}
             >
               <Button
