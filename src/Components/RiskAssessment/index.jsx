@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Logo from '../SecurityPractices/Logo';
 import shortline from '../../Images/shortline.svg';
 import { Doughnut } from 'react-chartjs-2';
+import ReactSpeedometer from 'react-d3-speedometer';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -264,13 +265,45 @@ const Index = () => {
             <SubTitle>{state.subtitle}</SubTitle>
             <Container>
               <ChartContainer>
-                <div className='chart-container'>
+                {/* <div className='chart-container'>
                   <p className='chart-score'>
                     {scores.reduce((a, b) => a + b, 0).toFixed(1)}
                   </p>
                   <p className='chart-label'>Risk Score</p>
-                </div>
-                <Doughnut data={data} options={options} />
+                </div> */}
+                <ReactSpeedometer
+                  value={650.5}
+                  // currentValueText='Happiness Level'
+                  customSegmentLabels={[
+                    {
+                      text: 'Worst',
+                      position: 'INSIDE',
+                      color: '#555',
+                    },
+                    {
+                      text: 'Bad',
+                      position: 'INSIDE',
+                      color: '#555',
+                    },
+                    {
+                      text: 'Ok',
+                      position: 'INSIDE',
+                      color: '#555',
+                      fontSize: '19px',
+                    },
+                    {
+                      text: 'Good',
+                      position: 'INSIDE',
+                      color: '#555',
+                    },
+                    {
+                      text: 'Great',
+                      position: 'INSIDE',
+                      color: '#555',
+                    },
+                  ]}
+                />
+                {/* <Doughnut data={data} options={options} /> */}
                 {/* /* <img src='/riskAsessmentChart.svg' alt='' /> */}
               </ChartContainer>
               <LabelWrapper>
