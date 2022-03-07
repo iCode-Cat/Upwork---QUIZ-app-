@@ -19,10 +19,12 @@ const serializers = {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
-  /* place-items: center; */
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 10rem;
+  justify-items: center;
   margin-top: 0rem;
+  width: 100%;
 
   @media (max-width: 50em) {
     /* padding: 4rem 3rem; */

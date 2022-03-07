@@ -83,7 +83,7 @@ const Hero = ({
           )}
         </div>
         <img
-          src={defaultJson.hero.logo}
+          src={defaultJson.hero.logo.asset.url}
           alt='logo-company'
           className={style.logo}
         />

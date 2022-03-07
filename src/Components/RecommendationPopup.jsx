@@ -31,9 +31,16 @@ const Wrapper = styled.div`
   min-height: 500px;
   background: #fff;
   display: grid;
-  max-width: 700px;
+  grid-template-rows: 0fr 0fr;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 3rem;
+  border-radius: 8px;
+  i {
+    justify-self: flex-end;
+    font-size: 2rem;
+    cursor: pointer;
+  }
   .popup {
     display: flex;
     flex-direction: column;
@@ -45,6 +52,8 @@ const Wrapper = styled.div`
     gap: 2rem;
     text-align: center;
     flex-grow: 1;
+    margin-top: 5rem;
+
     img {
       display: inline-block;
     }
@@ -52,34 +61,67 @@ const Wrapper = styled.div`
   .popup-buttons {
     display: grid;
     grid-auto-flow: column;
+    justify-items: center;
+    justify-content: space-between;
+
     gap: 2rem;
     margin-top: 1rem;
     button {
       background: #fff;
       border: solid 1px black;
       height: 40px;
+      padding: 0 2rem;
+      border-radius: 4px;
       cursor: pointer;
+    }
+    .popup-next {
+      background: rgb(33, 149, 243);
+      color: #fff;
+      border: solid 0px black;
     }
   }
   .popup-control {
     display: grid;
     grid-auto-flow: column;
-    gap: 1rem;
     justify-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin-top: 1.5rem;
+    gap: 1rem;
+    background: #80808010;
+    border-radius: 8px;
+    padding: 1rem;
 
-    div {
-      width: 15px;
-      height: 15px;
+    #popup-circle {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: solid 1px black;
       transition: 0.3s;
       cursor: pointer;
     }
+    .popup-line {
+      width: 20px;
+      height: 2px;
+      background: #000;
+      &-dot {
+        background: transparent;
+        border: none;
+        border-top: 2px dotted black;
+      }
+    }
+    .circle-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      gap: 1rem;
+    }
   }
   .control-active {
-    background: black;
+    background: rgb(33, 149, 243);
+    color: #fff;
   }
 `;
 
@@ -101,6 +143,28 @@ const RecommendationPopup = () => {
   return (
     <Container>
       <Wrapper>
+        <i
+          onClick={() => dispatch(setRecPopupActive(false))}
+          className='fas fa-times'
+        ></i>
+        <div className='popup-control'>
+          {controls.map((x, i) => (
+            <div className='circle-container'>
+              <div
+                id='popup-circle'
+                className={i === focus ? 'control-active' : 'control-disable'}
+                onClick={() => setFocus(i)}
+              >
+                {i + 1}
+              </div>
+              {i + 1 !== controls.length && (
+                <div
+                  className={`popup-line ${i !== focus && 'popup-line-dot'}`}
+                ></div>
+              )}
+            </div>
+          ))}
+        </div>
         <div className='popup'>
           <div className='popup-content'>
             {popup?.content?.map(
@@ -118,20 +182,12 @@ const RecommendationPopup = () => {
             <button onClick={() => controlHandler(-1)}>
               {popup.prevButton}
             </button>
-            <button onClick={() => controlHandler(+1)}>
+            <button className='popup-next' onClick={() => controlHandler(+1)}>
               {popup.nextButton}
             </button>
-            <button onClick={() => dispatch(setRecPopupActive(false))}>
+            {/* <button onClick={() => dispatch(setRecPopupActive(false))}>
               {popup.closeButton}
-            </button>
-          </div>
-          <div className='popup-control'>
-            {controls.map((x, i) => (
-              <div
-                className={i === focus ? 'control-active' : 'control-disable'}
-                onClick={() => setFocus(i)}
-              ></div>
-            ))}
+            </button> */}
           </div>
         </div>
       </Wrapper>

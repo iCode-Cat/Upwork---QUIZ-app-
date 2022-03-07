@@ -17,6 +17,11 @@ const Numeric = ({
   fields,
   formStateHandler,
   errorClassHandler,
+  nextButtonHandler,
+  index,
+  order,
+  disableNextButtonHandler,
+  form,
 }) => {
   const input = useRef();
   const dispatch = useDispatch();
@@ -38,6 +43,18 @@ const Numeric = ({
       value: Number(inputValue),
     });
   }, [inputValue]);
+
+  useEffect(() => {
+    if (fields.skip && form[fields.stateName].length === 0 && order === index) {
+      formStateHandler({
+        field: fields.stateName,
+        value: 'skip',
+      });
+    }
+    if (order === index) {
+      disableNextButtonHandler(!fields.skip);
+    }
+  }, [order]);
 
   // Update the tag
   useEffect(() => {
@@ -63,7 +80,11 @@ const Numeric = ({
       <div className={style.relativeWrapper}>
         <input
           // style={{ textAlign: 'center' }}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => {
+            nextButtonHandler();
+            setInputValue(e.target.value);
+            disableNextButtonHandler(false);
+          }}
           ref={input}
           required
           placeholder={fields.placeholder}

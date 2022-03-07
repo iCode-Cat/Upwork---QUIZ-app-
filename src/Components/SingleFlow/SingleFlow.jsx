@@ -17,10 +17,11 @@ import RopeMob from '../Timelines/RopeMob';
 import FirstLine from '../Steps/svg-line/FirstLine';
 import { useTotalQuestion } from './useTotalQuestion';
 import ProgressCircles from './ProgressCircles';
+import { setDisableNextButton, setNextButton } from '../../Redux/quizSlice';
 
 const Backward = styled.i`
   cursor: pointer;
-  opacity: 70%;
+  opacity: 1;
 `;
 
 const Container = styled.div`
@@ -29,7 +30,12 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.form`
+  height: 100%;
   animation: fade 1s forwards;
+  .hero-thanks {
+    position: absolute;
+    font-size: 4rem;
+  }
   .enter {
     animation: fade 1s forwards;
   }
@@ -71,7 +77,7 @@ const Wrapper = styled.form`
       opacity: 0;
     }
     100% {
-      opacity: 0.6;
+      opacity: 1;
     }
   }
 `;
@@ -128,6 +134,7 @@ const SingleFlow = ({
 
   // order for single flow
   const [order, setOrder] = useState(0);
+  console.log(order);
   // Indicate last question of the flow-
   const [infoQuestion, setInfoQuestion] = useState(false);
   const [infoQuestionTitle, setInfoQuestionTitle] = useState('');
@@ -165,6 +172,10 @@ const SingleFlow = ({
   };
   // Decrement for single flow
   const decrementHandler = () => {
+    setTimeout(() => {
+      // dispatch(setNextButton(true));
+      // dispatch(setDisableNextButton(false));
+    }, 1);
     if (order === 0) return;
     setOrder(order - 1);
     setDecrement(decrement - 1);
@@ -285,20 +296,25 @@ const SingleFlow = ({
 
   const checkAllSkipable = () => {
     const skipArray = [];
+
     // Check current questions' state
     // Detect unanswered ones
     // If all unswered skipable add skip all button
+    console.log(questionsState);
     questionsState.forEach((field, index) => {
+      console.log(field.skip);
       if (form[field.stateName].length === 0) {
         skipArray.push(field.skip);
       }
     });
     // Prevent to show skip all button on last question
-    if (
-      order === questionsState.length - 1 ||
-      order === questionsState.length - 2
-    )
-      return false;
+    // if (
+    //   order === questionsState.length - 1 ||
+    //   order === questionsState.length - 2
+    // )
+    // return false;
+    console.log(skipArray);
+
     return !skipArray?.some((skip) => !skip);
   };
 
@@ -369,8 +385,13 @@ const SingleFlow = ({
           referance={step1}
         />
       )}
-
-      <div className={style.input_container}>
+      <p style={{ opacity: form.step === 1 ? 0 : 1 }} className='hero-thanks'>
+        {state.defaultJson.messageSubmit}
+      </p>
+      <div
+        style={{ opacity: form.step > 1 ? 0 : 1 }}
+        className={style.input_container}
+      >
         {questionsState.length > 0 &&
           questionsState.map((fields, index) => (
             <div
@@ -400,10 +421,12 @@ const SingleFlow = ({
                 )}
               </Container>
               <div
-                style={{
-                  pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
-                  opacity: `${counter !== index ? '0.7' : '1'}`,
-                }}
+                style={
+                  {
+                    // pointerEvents: `${counter !== index ? 'none' : 'unset'}`,
+                    // opacity: `${counter !== index ? '0.7' : '1'}`,
+                  }
+                }
               >
                 {fields?.options?.find((ctx) => ctx.callQuestion) &&
                 fields.callQuestion ? (
@@ -427,8 +450,9 @@ const SingleFlow = ({
                     errorValue,
                     formStateHandler,
                     errorClassHandler,
-                    setError,
-                    index
+                    checkEmpty,
+                    order,
+                    form
                   )
                 )}
               </div>
@@ -440,25 +464,37 @@ const SingleFlow = ({
           ))}
       </div>
 
-      <div className={style.submit} onClick={checkEmpty} type='submit'>
+      <div
+        style={{ opacity: form.step > 1 ? 0 : 1 }}
+        className={style.submit}
+        onClick={checkEmpty}
+        type='submit'
+      >
         {allAnswered && decrement >= counter ? (
           <Button
             submit
             size='btnLg'
-            type={`${form.step === index ? 'btnGreen' : 'btnGreenDisable'}`}
+            type={`${
+              form.step === index && checked && !state.disableNextButton
+                ? 'btnGreen'
+                : 'btnGreenDisable'
+            }`}
             text={defaultJson.ctaButton}
           />
         ) : (
           <Button
+            style={{ opacity: state.showNextButton ? 1 : 0 }}
             size='btnLg'
             type={`${
-              form.step === index && checked ? 'btnBlue' : 'btnBlueDisable'
+              form.step === index && checked && !state.disableNextButton
+                ? 'btnBlue'
+                : 'btnBlueDisable'
             }`}
             text={'Next'}
           />
         )}
         <ButtonContainer>
-          {questionsState.map(
+          {/* {questionsState.map(
             (fields, index) =>
               fields.skip &&
               order === index && (
@@ -470,7 +506,7 @@ const SingleFlow = ({
                   />
                 </span>
               )
-          )}
+          )} */}
 
           {allSkip && (
             <span
@@ -490,7 +526,11 @@ const SingleFlow = ({
       </div>
 
       {/* <Terms /> */}
-      <ProgressCircles done={counter + 1} total={totalQuestions} />
+      <ProgressCircles
+        style={{ opacity: form.step === 0 && order !== 0 ? 1 : 0 }}
+        done={counter + 1}
+        total={totalQuestions}
+      />
     </Wrapper>
   );
 };

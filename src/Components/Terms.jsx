@@ -7,11 +7,11 @@ import { useSelector } from 'react-redux';
 const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
-  max-width: 602px;
+  max-width: 500px;
   width: 80vw;
   /* If step bigger than 1, disable to click */
   opacity: ${(props) => (props.checked && props.step !== 1 ? '0.6' : '1')};
-  margin-top: 5rem;
+  margin-top: 1rem;
   cursor: pointer;
   @media (max-width: 50em) {
     margin-top: 3rem;

@@ -1,7 +1,7 @@
 #svg-container-1 {
   position: absolute;
   top: 60px;
-  left: -300px;
+  left: -200px;
   z-index: -1;
 
   // First Line
@@ -33,7 +33,8 @@
   .rightCorner {
     position: absolute;
     bottom: -69px;
-    left: 980px;
+    left: 547px;
+    width: 100%;
   }
 
   .step1Rope {
@@ -41,7 +42,7 @@
   }
 
   .step1Arrow {
-    transform: translate(41px, 81%);
+    transform: translate(40px, 81%);
   }
 
   @keyframes arrow1 {

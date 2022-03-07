@@ -17,6 +17,7 @@ const Context = ({
   formStateHandler,
   errorClassHandler,
   index,
+  nextButtonHandler,
 }) => {
   const initialInformation = useSelector(
     (state) => state.quiz?.initialInformation
@@ -36,6 +37,7 @@ const Context = ({
       }
       dispatch(pingFollowUpQuestion(fields.text));
     }, 1);
+    nextButtonHandler();
   }, []);
 
   if (initialInformation && index === 0)

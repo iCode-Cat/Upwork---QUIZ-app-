@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from '../../Scss/Steps.module.scss';
 import styled from 'styled-components';
 import { Terms } from '../Terms';
@@ -12,7 +12,29 @@ const TextWrapper = styled.div`
   gap: 0.5rem;
 `;
 
-const Input = ({ errorValue, fields, formStateHandler, errorClassHandler }) => {
+const Input = ({
+  nextButtonHandler,
+  errorValue,
+  fields,
+  formStateHandler,
+  errorClassHandler,
+  order,
+  index,
+  disableNextButtonHandler,
+  form,
+}) => {
+  useEffect(() => {
+    if (fields.skip && form[fields.stateName].length === 0 && order === index) {
+      formStateHandler({
+        field: fields.stateName,
+        value: 'skip',
+      });
+    }
+    if (order === index) {
+      disableNextButtonHandler(!fields.skip);
+    }
+  }, [order]);
+
   return (
     <div className={style.input_box}>
       {/* <TextWrapper>
@@ -21,12 +43,19 @@ const Input = ({ errorValue, fields, formStateHandler, errorClassHandler }) => {
       </TextWrapper> */}
 
       <input
-        onChange={(e) =>
+        onChange={(e) => {
+          if (fields.validation === 'email' && e.target.value.includes('@')) {
+            disableNextButtonHandler(false);
+          }
+          if (fields.validation === 'text') {
+            disableNextButtonHandler(false);
+          }
+          nextButtonHandler();
           formStateHandler({
             field: fields.stateName,
             value: e.target.value,
-          })
-        }
+          });
+        }}
         type={fields.validation}
         required
         className={`${style.input} ${

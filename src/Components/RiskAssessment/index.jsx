@@ -127,8 +127,12 @@ const LabelLink = styled.div`
 const InlineContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   gap: 10rem;
+  justify-items: center;
+  margin-top: 0rem;
+  width: 100%;
   /* margin-top: 6rem; */
   img {
     max-width: 200px;

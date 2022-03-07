@@ -14,7 +14,7 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 });
 const query =
-  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,numericCondition[]{...,conditionedTag[]->},options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...,tagFound[]->{...}}} }';
+  '*[_type == "partner"] { ...,connection[]->{..., inputs[]->{...}}, hero{...,logo{...,asset->},fields->{..., options[]{...,information->}}},stats {...,tabMenus[]->}, steps[] {...,relatedQuestions[]->{...},fields[]-> {...,numericCondition[]{...,conditionedTag[]->},options[]{...,conditionList[]->{...},callRecommendation[]->,callShouldDo[]->,callWorryAbout[]->, CallOnAnswer->{...,options[]{..., CallOnAnswer->}}}}},riskAssesment{..., labels[]->{...,tagFound[]->{...}}} }';
 const params = 0;
 
 const card =
@@ -36,6 +36,8 @@ const initialState = {
   submissions: [],
   recommendationPopup: [],
   recommendationPopupActive: false,
+  showNextButton: false,
+  disableNextButton: false,
 };
 
 export const fetchPartnerTheme = createAsyncThunk(
@@ -63,6 +65,12 @@ export const quizSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
+    setDisableNextButton: (state, action) => {
+      state.disableNextButton = action.payload;
+    },
+    setNextButton: (state, action) => {
+      state.showNextButton = action.payload;
+    },
     setPopup: (state, action) => {
       state.popup = action.payload;
     },
@@ -154,6 +162,8 @@ export const {
   pushTags,
   setRecPopup,
   setRecPopupActive,
+  setNextButton,
+  setDisableNextButton,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

@@ -49,10 +49,10 @@ const FirstLine = ({ DOM, step, numberOfSteps }) => {
         <>
           <DelayedComponents delay={700}>
             <svg
-              width='867'
+              width='467'
               className='bottomHr'
               height='2'
-              viewBox='0 0 867 2'
+              viewBox='0 0 467 2'
               fill='none'
               xmlns='http://www.w3.org/2000/svg'
             >
@@ -72,6 +72,12 @@ const FirstLine = ({ DOM, step, numberOfSteps }) => {
                 d='M49 70.5L49 21C49 9.95431 40.0457 1 29 1L0.5 1'
                 stroke='black'
                 stroke-dasharray='3 3'
+              />
+              <path
+                className='step1Arrow'
+                d='M14.9282 1L8 13L1.0718 1L14.9282 1Z'
+                fill='#2196F3'
+                stroke='#565656'
               />
             </svg>
           </DelayedComponents>

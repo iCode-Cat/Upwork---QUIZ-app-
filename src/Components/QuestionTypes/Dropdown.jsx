@@ -8,19 +8,36 @@ const Dropdown = ({
   fields,
   formStateHandler,
   errorClassHandler,
+  index,
+  order,
+  disableNextButtonHandler,
+  form,
+  nextButtonHandler,
 }) => {
   const [toggleShort, setToggleShort] = useState({
     isActive: false,
     state: '',
   });
-  
 
   useEffect(() => {
     formStateHandler({
       field: fields.stateName,
       value: toggleShort.state,
     });
+    nextButtonHandler();
   }, [toggleShort]);
+
+  useEffect(() => {
+    if (fields.skip && form[fields.stateName].length === 0 && order === index) {
+      formStateHandler({
+        field: fields.stateName,
+        value: 'skip',
+      });
+    }
+    if (order === index) {
+      disableNextButtonHandler(!fields.skip);
+    }
+  }, [order]);
 
   return (
     <div className={style.input_box}>
@@ -29,6 +46,7 @@ const Dropdown = ({
         <input
           style={{ cursor: 'pointer' }}
           onClick={() => {
+            disableNextButtonHandler(false);
             setToggleShort({
               ...toggleShort,
               isActive: !toggleShort.isActive,
