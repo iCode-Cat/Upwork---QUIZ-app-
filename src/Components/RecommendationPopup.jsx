@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setRecPopupActive } from '../Redux/quizSlice';
 import styled from 'styled-components';
@@ -36,6 +36,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   padding: 3rem;
   border-radius: 8px;
+
   i {
     justify-self: flex-end;
     font-size: 2rem;
@@ -50,9 +51,23 @@ const Wrapper = styled.div`
     display: grid;
     justify-content: center;
     gap: 2rem;
-    text-align: center;
+    text-align: left;
     flex-grow: 1;
-    margin-top: 5rem;
+    margin-top: 3rem;
+
+    color: gray;
+    &-container {
+      display: grid;
+      gap: 1rem;
+    }
+    &-title {
+      font-weight: 600;
+    }
+    &-img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
 
     img {
       display: inline-block;
@@ -73,6 +88,9 @@ const Wrapper = styled.div`
       padding: 0 2rem;
       border-radius: 4px;
       cursor: pointer;
+      box-shadow: 2px 3px 9px -2px rgba(0, 0, 0, 0.17);
+      -webkit-box-shadow: 2px 3px 9px -2px rgba(0, 0, 0, 0.17);
+      -moz-box-shadow: 2px 3px 9px -2px rgba(0, 0, 0, 0.17);
     }
     .popup-next {
       background: rgb(33, 149, 243);
@@ -82,15 +100,15 @@ const Wrapper = styled.div`
   }
   .popup-control {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     justify-items: center;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 1.5rem;
-    gap: 1rem;
+    gap: 2rem;
     background: #80808010;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem;
 
     #popup-circle {
       display: grid;
@@ -98,30 +116,36 @@ const Wrapper = styled.div`
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: solid 1px black;
       transition: 0.3s;
       cursor: pointer;
+      font-weight: 700;
     }
     .popup-line {
-      width: 20px;
+      width: 100%;
       height: 2px;
-      background: #000;
+      background: gray;
       &-dot {
         background: transparent;
         border: none;
-        border-top: 2px dotted black;
+        border-top: 2px dotted gray;
       }
     }
     .circle-container {
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: auto auto 1fr;
       align-items: center;
-      gap: 1rem;
+      gap: 2rem;
+      width: 100%;
     }
   }
   .control-active {
     background: rgb(33, 149, 243);
     color: #fff;
+  }
+  .control-disable {
+    box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.17);
+    -webkit-box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.17);
   }
 `;
 
@@ -129,17 +153,30 @@ const controls = [1, 2, 3];
 
 const RecommendationPopup = () => {
   const [focus, setFocus] = useState(0);
+  const [activeColor, setActiveColor] = useState('');
   const state = useSelector((state) => state.quiz);
   const popup = state.recommendationPopup;
   const dispatch = useDispatch();
+  useEffect(() => {
+    popup?.content?.forEach((x, i) => {
+      if (focus === i) {
+        setActiveColor(x.activeColorBg);
+      }
+    });
+  }, [focus]);
+  const controlHandler = (num) => {
+    if (num === -1) {
+      return setFocus(0);
+    }
+    if (num === popup?.content?.length - 1) {
+      return setFocus(popup?.content?.length - 1);
+    }
+    setFocus(focus + num);
+  };
   if (!popup) return '';
   // recommendationPopup
   // setRecPopupActive
-
-  const controlHandler = (num) => {
-    setFocus(focus + num);
-  };
-
+  console.log(focus);
   return (
     <Container>
       <Wrapper>
@@ -148,18 +185,35 @@ const RecommendationPopup = () => {
           className='fas fa-times'
         ></i>
         <div className='popup-control'>
-          {controls.map((x, i) => (
+          {popup?.content?.map((x, i) => (
             <div className='circle-container'>
               <div
                 id='popup-circle'
-                className={i === focus ? 'control-active' : 'control-disable'}
                 onClick={() => setFocus(i)}
+                className={i === focus ? 'control-active' : 'control-disable'}
+                style={{
+                  color: i - 1 < focus ? x.activeColor : x.passiveColor,
+                  backgroundColor:
+                    i - 1 < focus ? x.activeColorBg : x.passiveColorBg,
+                }}
               >
                 {i + 1}
               </div>
-              {i + 1 !== controls.length && (
+              <p
+                style={{
+                  color: i > focus ? 'gray' : x.passiveColor,
+                }}
+                className='popup-stepName'
+              >
+                {x.stepName}
+              </p>
+              {i + 1 !== popup?.content?.length && (
                 <div
-                  className={`popup-line ${i !== focus && 'popup-line-dot'}`}
+                  className={`popup-line ${i > focus && 'popup-line-dot'}`}
+                  style={{
+                    backgroundColor:
+                      i - 1 < focus ? x.activeColorBg : x.passiveColorBg,
+                  }}
                 ></div>
               )}
             </div>
@@ -170,11 +224,19 @@ const RecommendationPopup = () => {
             {popup?.content?.map(
               (x, i) =>
                 i === focus && (
-                  <BlockContent
-                    className='block-content'
-                    blocks={x.content}
-                    serializers={serializers}
-                  />
+                  <div className='popup-content-container'>
+                    <p className='popup-content-title'>{x.title}</p>
+                    <BlockContent
+                      className='block-content'
+                      blocks={x.content}
+                      serializers={serializers}
+                    />
+                    <img
+                      src={x.image.asset.url}
+                      alt='img'
+                      className='popup-content-img'
+                    />
+                  </div>
                 )
             )}
           </div>
@@ -182,7 +244,11 @@ const RecommendationPopup = () => {
             <button onClick={() => controlHandler(-1)}>
               {popup.prevButton}
             </button>
-            <button className='popup-next' onClick={() => controlHandler(+1)}>
+            <button
+              style={{ background: activeColor }}
+              className='popup-next'
+              onClick={() => controlHandler(+1)}
+            >
               {popup.nextButton}
             </button>
             {/* <button onClick={() => dispatch(setRecPopupActive(false))}>

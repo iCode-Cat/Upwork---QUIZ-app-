@@ -18,7 +18,7 @@ const query =
 const params = 0;
 
 const card =
-  '*[_type == "card"] {...,detailPopup->{..., content[]{..., content[]{...,asset->{...}}}},inlineCard{...,inCardLogo{asset->}},conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{asset->{...}}}';
+  '*[_type == "card"] {...,detailPopup->{..., content[]{..., image{..., asset->}}},inlineCard{...,inCardLogo{asset->}},conditionedTagsExists[]->{...},conditionedTagsMissing[]->{...},image{asset->{...}}}';
 // const data = await client.fetch(query, params)
 const submission =
   '*[_type == "submission"] {..., card[]{..., image{...,asset->}} ,image{..., asset->}}';

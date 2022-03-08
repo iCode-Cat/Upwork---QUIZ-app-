@@ -361,6 +361,13 @@ const SingleFlow = ({
   useEffect(() => {
     // initialInfoCheck();
   }, [order]);
+
+  // Scroll handler
+  useEffect(() => {
+    if (form.step === 1) return;
+    window.scroll(0, window.innerHeight);
+  }, [form.step]);
+
   return (
     <Wrapper
       ref={step1}
